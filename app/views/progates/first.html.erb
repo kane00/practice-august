@@ -1,0 +1,197 @@
+<%= link_to 'Home', root_path %>
+<%= link_to 'Progate/HTML&CSS初級編', htmlcss_first_path %>
+<%= link_to 'Progate/HTML&CSS中級編', htmlcss_second_path %>
+
+
+<!-- 文字の大きさ -->
+<div style="padding: 100px 0 100px 0;">
+<!-- <h1>要素で囲んでください -->
+<h1>プログラミングの世界へようこそ</h1>
+<!-- <h2>要素で囲んでください -->
+<h2>Progateとは</h2>
+<!-- <p>要素で囲んでください -->
+<p>オンラインのプログラミング学習サービスです</p>
+</div>
+
+
+<!-- リンク作成 -->
+<div style="padding: 100px 0 100px 0;">
+<!-- https://prog-8.comへのリンクを作成してください -->
+<a href="https://prog-8.com">Progateへ</a>
+<!-- https://google.comへのリンクを作成してください -->
+<a href="https://google.com">Googleへ</a>
+</div>
+
+
+<!-- 画像表示 -->
+<div style="padding: 100px 0 100px 0;">
+  <!-- リンク先の画像を表示してください -->
+<img src="https://prog-8.com/images/html/beginner/wanko.jpg">
+<!-- リンク先の画像を表示してください　周りのスペースも確保 -->
+<img src="https://prog-8.com/images/html/beginner/school.jpg" style="margin: 100px;">
+</div>
+
+
+<!-- リストなどの作成 -->
+<div style="padding: 100px 0 100px 0;">
+<ul>
+  <li>html</li>
+  <li>php</li>
+  <li>ruby</li>
+</ul>
+<!-- olは数字を先頭につける -->
+</div>
+
+
+<!-- css -->
+<div style="padding: 100px 0 100px 0;" class="css_create">
+  <h1>Hello World</h1>
+  <p>プログラミングの世界へようこそ</p>
+</div>
+
+
+<!-- サイズ、背景色 -->
+<div style="padding: 100px 0 100px 0;" class="css2">
+  <h1>Hello World</h1>
+  <img src="https://prog-8.com/images/html/beginner/school.jpg">
+</div>
+
+
+<!-- タグに名前をつける -->
+<div style="padding: 100px 0 100px 0;">
+  <h2>レッスン一覧</h2>
+  <ul>
+    <!-- 1つ目の<li>要素にselectedというclassを与えてください -->
+    <li class="selected">HTML</li>
+    <li>PHP</li>
+    <li>Ruby</li>
+  </ul>
+</div>
+
+
+<!-- htmlの構造 -->
+<div style="padding: 100px 0 100px 0;">
+  <!-- DOCTYPE宣言を追加してください -->
+  <!DOCTYPE html>
+  <!-- <html>要素を追加してください -->
+    <html>
+      <head>
+      </head>
+      <body>
+        <div class="fontchange">
+          はろわAvenir Next
+        </div>
+      </body>
+    </html>
+</div>
+
+
+<!-- headの設定 -->
+<div style="padding: 100px 0 100px 0;">
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <!-- 雛形をコピーして、3つの要素を追加してください -->
+      <meta charset="utf-8"><!--文字化け防ぐ-->
+      <title>Progate</title><!--タイトル-->
+      <link rel="stylesheet" href="stylesheet.css"><!--css読み込み-->
+    </head>
+    <body>
+      <!-- <div>要素を追加し、「header」というclassをつけてください -->
+      <div class="header">
+        <!-- <div>要素を追加し、「header-logo」というclassをつけてください -->
+        <div class="header-logo">
+          Progate
+        </div>
+        <!-- <div>要素を追加し、「header-list」というclassをつけてください -->
+        <div class="header-list">
+          <ul>
+            <li>プログラミングとは</li>
+            <li>学べるレッスン</li>
+            <li>お問い合わせ</li>
+          </ul>
+        </div>
+      </div>
+
+
+      <!-- <div>要素を追加し、「main」というclassをつけてください -->
+      <div class="main">
+        <!-- <div>要素を追加し、「copy-container」というclassをつけてください -->
+        <div class="copy-container">
+          <h1>HELLO WORLD<span>.</span></h1>
+          <h2>プログラミングの世界へようこそ</h2>
+        </div>
+        <!-- <div>要素を追加し、「contents」というclassをつけてください -->
+        <div class="contents">
+          <!-- <h3>要素を追加してください -->
+          <h3 class="section-title">学べるレッスン</h3>
+          <!-- <div>要素を追加し、「contents-item」というclassをつけてください -->
+          <div class="contents-item">
+            <img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/html/study/html.svg" alt="" />
+            <p>HTML & CSS</p>
+          </div>
+          <!-- <div>要素を追加し、「contents-item」というclassをつけてください -->
+          <div class="contents-item">
+            <img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/html/study/php.svg" alt="" />
+            <p>PHP</p>
+          </div>
+          <!-- <div>要素を追加し、「contents-item」というclassをつけてください -->
+          <div class="contents-item">
+            <img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/html/study/ruby.svg" alt="" />
+            <p>Ruby</p>
+          </div>
+          <!-- <div>要素を追加し、「contents-item」というclassをつけてください -->
+          <div class="">
+            <img src="https://s3-ap-northeast-1.amazonaws.com/progate/shared/images/lesson/html/study/swift.svg" alt="" />
+            <p>Swift</p>
+          </div>
+        </div>
+        <!-- <div>要素を追加し、「contact-form」というclassをつけてください -->
+        <div class="contact-form">
+          <h3 class="section-title">お問い合わせ</h3>
+          <p>メールアドレス（必須）</p>
+          <!-- <input>要素を追加してください -->
+          <input>
+          <p>お問い合わせ内容（必須）</p>
+          <!-- <textarea>要素を追加してください -->
+          <textarea></textarea>
+          <p>※必須項目は必ずご入力ください</p>
+          <!-- <input>要素を追加してください -->
+          <input class="contact-submit" type="submit" value="送信">
+        </div>
+      </div>
+
+
+      <!-- <div>要素を追加し、「footer」というclassをつけてください -->
+      <div class="footer">
+        <!-- <div>要素を追加し、「footer-logo」というclassをつけてください -->
+        <div class="footer-logo">
+          Progate
+        </div>
+        <!-- <div>要素を追加し、「footer-list」というclassをつけてください -->
+        <div class="footer-list">
+          <ul>
+            <li>会社概要</li>
+            <li>採用</li>
+            <li>お問い合わせ</li>
+          </ul>
+        </div>
+      </div>
+    </body>
+  </html>
+</div>
+
+
+<!--  -->
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+

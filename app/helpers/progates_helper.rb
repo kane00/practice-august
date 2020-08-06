@@ -1,0 +1,2 @@
+module ProgatesHelper
+end

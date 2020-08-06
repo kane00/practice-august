@@ -1,0 +1,156 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require_self
+ */
+
+
+
+.css_create>h1{
+	/* 文字の色を#ff0000にしてください */
+	  color: #ff0000;
+	  /* 文字の大きさを40pxにしてください */
+	  font-size:40px;
+	  /* 文字の種類をserifにしてください */
+	  font-family:serif;
+}
+.css_create>p{
+	/* 文字の色を#0000ffにしてください */
+		color: #0000ff;
+	  /* 文字の大きさを20pxにしてください */
+	  font-size:20px;
+	  /* 文字の種類を"Lucida Grande"にしてください */
+	  font-family:"Lucida Grande";
+}
+.css2>h1{
+	color: #e6855e;
+	font-size: 30px;
+	background-color: #f3f372;
+	height: 80px;
+	width: 200px;
+}
+.css2>img{
+	height: 50px;
+	width: 70px;
+}
+.selected{
+  color: #ff0000;
+}
+.fontchange{
+	/* body要素のfont-familyを"Avenir Next"にしてください */
+	  font-size: 30px;
+	  font-family: "Avenir Next";
+}
+
+.header{
+  background-color: #f7f2b4;
+  height: 90px;
+}
+.header-logo{
+  font-size: 36px;
+  float: left;
+  padding: 33px 40px;
+}
+.header-list li{
+  list-style: none;
+  float: left;
+  padding: 33px 20px;
+}
+
+.main {
+  /* background-colorの指定を消してください */
+  /* heightの指定を消してください */
+  /* 上下のpaddingを100px、左右のpaddingを80pxにしてください */
+  padding: 100px 80px;
+}
+/* copy-containerの中のh1のfont-sizeを指定してください */
+.copy-container h1{
+  font-size: 140px;
+}
+/* copy-containerの中のh2のfont-sizeを指定してください */
+.copy-container h2{
+  font-size: 60px;
+}
+/* copy-containerの中のspanの色を指定してください */
+.copy-container span{
+  color: #ff4a4a;
+}
+/* contentsのheightを500pxにしてください */
+.contents {
+  height: 500px;
+  /* margin-topを100pxにしてください */
+  margin-top: 100px;
+}
+.section-title {
+  border-bottom: 2px solid #dee7ec;
+  /* font-sizeを28pxにしてください */
+  font-size: 28px;
+  /* padding-bottomを15pxにしてください */
+  padding-bottom: 15px;
+  /* margin-bottomを50pxにしてください */
+  margin-bottom: 50px;
+}
+.contents-item {
+  float: left;
+  /* margin-rightを40pxにしてください */
+  margin-right: 40px;
+}
+/* contents-itemの中のp要素のfont-size、margin-topを指定してください */
+.contents-item p{
+ font-size: 24px;
+ margin-top: 30px;
+}
+/* contact-formのpadding-topを100pxにしてください */
+.contact-form {
+  padding-top: 100px;
+}
+/* inputとtextareaのCSSを指定してください */
+.contact-form input, textarea{
+ width: 400px;
+ margin: 10px 0px 30px 0px;
+ padding: 20px;
+ font-size: 18px;
+ border: 1px solid #dee7ec;
+}
+/* contact-submitのCSSを指定してください */
+.contact-submit{
+  background-color: #dee7ec;
+  color: #889eab;
+}
+
+
+
+.footer {
+  /* background-colorを#2f5167に変更してください */
+  background-color: #2f5167;
+  /* colorを#fffにしてください */
+  color: #fff;
+  /* heightを120pxに変更してください */
+  height: 120px;
+  /* 上下左右のpaddingを40pxにしてください */
+  padding: 40px;
+}
+/* footer-logoのfont-sizeとfloatを指定してください */
+.footer-logo{
+  font-size: 32px;
+  float: left;
+}
+/* footer-listのfloatを指定してください */
+.footer-list{
+  float: right;
+}
+/* footer-listの中のli要素のpadding-bottomを指定してください */
+.footer-list li{
+  padding-bottom: 20px;
+}
+

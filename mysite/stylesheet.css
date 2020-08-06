@@ -1,0 +1,64 @@
+
+header{
+	height: 70px;
+	background-color: #ec715f;
+}
+
+.navigation li{
+	float: left;
+	list-style: none;
+	padding: 30px;
+	font-size: 16px;
+	color: #FAFAFA;
+}
+
+
+.main{
+	background-image: url(img/mv.png);
+	height: 650px;
+}
+.main-title{
+	text-align: center;
+	font-size: 64px;
+	color: #FAFAFA;
+	padding-top: 200px;
+}
+.main-subtitle{
+	text-align: center;
+	font-size: 20px;
+	color: #FAFAFA;
+	padding-top: 10px;
+}
+
+
+.portfolio{
+	background-color: #ECEFF1;
+	text-align: center;
+}
+.portfolio-title{
+	font-size: 32px;
+	color: #000000;
+	padding-top: 90px;
+	padding-bottom: 8px;
+	display: inline-block;
+  	position: relative;
+}
+/* 擬似要素で作る*/
+.portfolio-title:before {
+  content: '';
+  position: absolute;
+  left: 50%;
+  bottom: -1px; /*下線の上下位置調整*/
+  display: inline-block;
+  width: 70px; /*下線の幅*/
+  height: 3px; /*下線の太さ*/
+  transform: translate(-50%); /*位置調整*/
+  background-color: #ec715f; /*下線の色*/
+}
+.portfolio-text{
+	font-size: 16px;
+	color: #000000;
+	padding: 30px 0px;
+}
+
+
