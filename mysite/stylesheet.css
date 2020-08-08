@@ -1,3 +1,15 @@
+/* ブラウザがそれぞれ持っているCSSをリセットするため */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+.clearfix::after {
+  content: "";
+  display: block;
+  clear: both;
+}
+
 
 header{
 	height: 70px;
@@ -36,18 +48,19 @@ header{
 }
 .portfolio{
 	width: 930px;
-	text-align: center;
+	margin: auto;
+	padding: 90px 0px;
 }
-.portfolio-title{
+/*後に同じデザインが続くため統合*/
+.mysite-title{
 	font-size: 32px;
 	color: #000000;
-	padding-top: 90px;
 	padding-bottom: 8px;
 	display: inline-block;
   	position: relative;
 }
 /* 擬似要素で作る*/
-.portfolio-title:before {
+.mysite-title:before {
   content: '';
   position: absolute;
   left: 50%;
@@ -58,7 +71,8 @@ header{
   transform: translate(-50%); /*位置調整*/
   background-color: #ec715f; /*下線の色*/
 }
-.portfolio-text{
+/*後に同じデザインが続くため統合*/
+.mysite-text{
 	font-size: 16px;
 	color: #000000;
 	padding: 30px 0px;
@@ -92,3 +106,57 @@ header{
 	background-image: url(img/webcamp-mother.png);
 }
 
+.feature-back{
+}
+.feature{
+	width: 990px;
+	margin: auto;
+	padding: 90px 0px;
+	text-align: center;
+}
+.feature-pictures{
+
+}
+.feature-box{
+	float: left;
+	width: 320px;
+	height: auto;
+	padding-right: 10px;
+}
+.feature-box i {
+  display: inline-block;
+  font-size: 60px;
+}
+.feature-box-title{
+	font-size: 20px;
+	color: #000000;
+	padding: 10px 0px;
+}
+.feature-text{
+	font-size: 16px;
+	color: #000000;
+}
+
+.profile-back{
+	background-color: #ECEFF1;
+	text-align: center;
+}
+.profile{
+	width: 1024px;
+	margin: auto;
+	padding: 90px 0px;
+}
+.profile-box{
+	width: 512px;
+}
+.profile-picture{
+
+}
+.profile-title{
+	font-size: 20px;
+	padding-bottom: 5px;
+}
+.profile-text{
+	font-size: 16px;
+	padding-bottom: 20px;
+}
