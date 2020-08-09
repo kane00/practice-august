@@ -148,15 +148,49 @@ header{
 }
 .profile-box{
 	width: 512px;
+	float: left;
 }
 .profile-picture{
 
 }
+.profile-picture img{
+	border-radius: 50%; /*写真を丸型に*/
+	width: 250px;
+	height: 250px;
+}
 .profile-title{
+	text-align: left;
 	font-size: 20px;
 	padding-bottom: 5px;
+	font-weight: bold;
 }
 .profile-text{
 	font-size: 16px;
 	padding-bottom: 20px;
+}
+
+.contact-back{
+}
+.contact{
+	width: 800px;
+	margin: auto;
+	text-align: center;
+	padding: 90px 0px;
+}
+.contact-box{
+	float: left;
+	width: 400px;
+}
+.contact-title{
+	font-size: 20px;
+	font-weight: bold;
+	padding-bottom: 5px;
+}
+.contact-text{
+	font-weight: unset;
+	padding-bottom: 20px;
+}
+.contact-box i{
+	font-size: 50px;
+	padding-right: 20px;
 }
