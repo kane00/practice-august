@@ -6,4 +6,6 @@ class ProgatesController < ApplicationController
 	def second
 	end
 
+	def java
+	end
 end

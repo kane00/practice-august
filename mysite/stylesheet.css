@@ -113,7 +113,7 @@ header img{
 .navigation li{
 	float: left;
 	list-style: none;
-	padding: 30px;
+	padding: 5px 30px;
 	font-size: 16px;
 	color: #FAFAFA;
 	text-align: right;
