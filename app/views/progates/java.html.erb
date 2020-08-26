@@ -63,7 +63,35 @@
 </div>
 
 <div style="padding: 100px 0 100px 0;">
-	aa
+	Stringは文字の並び、intは整数(integer)を意味する英語です。なおString型のSは大文字、int型のiは小文字である点に注意しましょう<br>
+	変数について学習します。難しく聞こえますが、データ（値）をいれておく箱だと思いましょう。またその箱（変数）には名前（変数名）がついており、その名前を用いていつでも変数から値を取り出すことができます。変数はプログラミングの必須の知識なので、しっかり理解していきましょう。<br>
+	変数を使うには、まず変数を「定義」する必要があります。変数を定義することで値をいれる箱がつくられます。Javaで変数を定義するためには、①変数にいれる値のデータ型を指定する、②変数の名前を決める、という2つが必要です。<br>
+	int型→int number;<br>
+	String型→String name;<br>
+	変数を定義したら変数に値を入れます。これを代入と呼びます。「変数名 = 値」とするだけで代入することができます。<br>
+	「=」はプログラミングにおいて、右の値を左のものに代入するという意味です。数学のイコールのように「同じ」を意味するものではありません。<br>
+	変数から値を取り出すのは難しくありません。下図では、System.out.println()の()に変数をいれると、変数の中に入っている値が出力されているのがわかります。<br>
+	変数は値を一時的にいれる箱にすぎず、変数に対して何らかの処理を行うと、変数から値が取り出されて処理が行われます。<br>
+	String name;
+	name = "Sato";
+	System.out.println(name);
+	<br><br>
+	class Main {
+	  public static void main(String[] args) {
+	    // int型の変数numberを定義してください
+	    int number;
+	    // 変数numberに3を代入してください
+	    number = 3;
+	    // 変数numberを出力してください
+	    System.out.println(number);
+	    // String型の変数nameを定義してください
+	    String name;
+	    // 変数nameに"Wanko"を代入してください
+	    name = "Wanko";
+	    // 変数nameを出力してください
+	    System.out.println(name);
+	  }
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
