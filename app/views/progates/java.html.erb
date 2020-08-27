@@ -8,26 +8,26 @@
 	("Hello World")などで表示される。""がないと出力されない
 	Javaでは文の終わりにセミコロン（;）を付けなければなりません
 	<br><br>
-	class Main {
-	  public static void main(String[] args) {
-	    // この文章をコメントにしてください
-	    // 「こんにちは、Java」と出力してください
-	    System.out.println("こんにちは、Java");
-	  }
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // この文章をコメントにしてください<br>
+	    // 「こんにちは、Java」と出力してください<br>
+	    System.out.println("こんにちは、Java");<br>
+	  }<br>
 	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	文字列の"3"と数値の3（" "で囲まない）は別物として扱われます。また下図のように、5 + 2は7になりますが、"5 + 2"はそのまま「5 + 2」という文字列として出力されます。
 	<br><br>
-	class Main {
-	  public static void main(String[] args) {
-	    // 数値の17を出力してください
-	    System.out.println(17);
-	    // 5に3を足した値を出力してください
-	    System.out.println(5 + 3);
-	    // 「5 + 3」を文字列として出力してください
-	    System.out.println("5+3");
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // 数値の17を出力してください<br>
+	    System.out.println(17);<br>
+	    // 5に3を足した値を出力してください<br>
+	    System.out.println(5 + 3);<br>
+	    // 「5 + 3」を文字列として出力してください<br>
+	    System.out.println("5+3");<br>
 	  }
 	}
 </div>
@@ -35,30 +35,30 @@
 <div style="padding: 100px 0 100px 0;">
 	「%」（パーセント）で、割り算の余りを計算することができます。
 	<br><br>
-	class Main {
-	  public static void main(String[] args) {
-	    // 12を3で割った値を出力してください
-	    System.out.println(12/3);
-	    // 3に6を掛けた値を出力してください
-	    System.out.println(3*6);
-	    // 8を3で割った時の余りを出力してください
-	    System.out.println(8%3);
-	  }
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // 12を3で割った値を出力してください<br>
+	    System.out.println(12/3);<br>
+	    // 3に6を掛けた値を出力してください<br>
+	    System.out.println(3*6);<br>
+	    // 8を3で割った時の余りを出力してください<br>
+	    System.out.println(8%3);<br>
+	  }<br>
 	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	文字列を「足し算」すると、下図のように文字列を連結することができます。よって、下図にもあるように、"5" + "3"は2つの文字列を連結し、"53"となります。
 	<br><br>
-	class Main {
-	  public static void main(String[] args) {
-	    // "こんにちは"と"世界"を連結して出力してください
-	    System.out.println("こんにちは" + "世界");
-	    // "38"と"19"を連結して出力してください
-	    System.out.println("38" + "19");
-	    // 38と19を足して出力してください
-	    System.out.println(38 + 19);
-	  }
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // "こんにちは"と"世界"を連結して出力してください<br>
+	    System.out.println("こんにちは" + "世界");<br>
+	    // "38"と"19"を連結して出力してください<br>
+	    System.out.println("38" + "19");<br>
+	    // 38と19を足して出力してください<br>
+	    System.out.println(38 + 19);<br>
+	  }<br>
 	}
 </div>
 
@@ -76,40 +76,68 @@
 	name = "Sato";
 	System.out.println(name);
 	<br><br>
-	class Main {
-	  public static void main(String[] args) {
-	    // int型の変数numberを定義してください
-	    int number;
-	    // 変数numberに3を代入してください
-	    number = 3;
-	    // 変数numberを出力してください
-	    System.out.println(number);
-	    // String型の変数nameを定義してください
-	    String name;
-	    // 変数nameに"Wanko"を代入してください
-	    name = "Wanko";
-	    // 変数nameを出力してください
-	    System.out.println(name);
-	  }
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // int型の変数numberを定義してください<br>
+	    int number;<br>
+	    // 変数numberに3を代入してください<br>
+	    number = 3;<br>
+	    // 変数numberを出力してください<br>
+	    System.out.println(number);<br>
+	    // String型の変数nameを定義してください<br>
+	    String name;<br>
+	    // 変数nameに"Wanko"を代入してください<br>
+	    name = "Wanko";<br>
+	    // 変数nameを出力してください<br>
+	    System.out.println(name);<br>
+	  }<br>
 	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	下図の「int number = 3;」「String text = "Hello World";」のように、変数の値の代入は変数定義と同時に行うことができます。変数定義と同時に値を代入することを変数の初期化と呼びます。<br>
+	数値が入った変数なら、数値と同様に計算が可能です。数値と変数の計算も、変数同士の計算もできます。<br>
+	同様に文字列の入った変数であれば、文字列と同様に、文字列の連結を行うことが可能です。文字列が入っているからといって変数にダブルクォーテーションを付けてはいけません。付けてしまうと、変数ではなく文字列として扱われてしまうので注意しましょう
+	<br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    int number1 = 3;<br>
+	    // int型の変数number2を定義し、7を代入してください<br>
+	    int number2 = 7;<br>
+	    // number1 * number2を出力してください<br>
+	    System.out.println(number1 * number2);<br>
+	    // 変数textに「プログラミングを勉強しよう」を代入してください<br>
+	    String text = "プログラミングを勉強しよう";<br>
+	    // 「Progateで」と変数textを連結して出力してください<br>
+	    System.out.println("Progateで" + text);<br>
+	  }<br>
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	変数は、中に入っている値を変更することもできます。一度値を代入した変数に、その後再び値を代入すると、後で代入した値によって変数の中身が上書きされます。下図では、変数を途中で上書きしたことによって、出力結果が変わっています。<br>
+	変数numberを上書きするために、左の図のように「int number = 5;」とするとエラーになります。これは、変数名の前にデータ型をつけると変数を定義しようとしますが、同じ処理内で同一名の変数を定義できないためです。上書きするときはデータ型をつけないように注意しましょう。
+	<br><br>
+	class Main {
+	  public static void main(String[] args) {<br>
+	    int number = 11;<br>
+	    String text = "Ruby";<br>
+	    System.out.println(number);<br>
+	    System.out.println(text);<br>
+	    // 変数numberを9で上書きしてください(intはいらない)<br>
+	    number = 9;<br>
+	    // 変数numberを出力してください<br>
+	    System.out.println(number);<br>
+	    // 変数textを「Java」で上書きしてください(Stringはいらない)<br>
+	    text = "Java";<br>
+	    // 変数textを出力してください<br>
+	    System.out.println(text);<br>
+	  }<br>
+	}
 </div>
+
+
 
 <div style="padding: 100px 0 100px 0;">
 </div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
 

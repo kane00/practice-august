@@ -154,3 +154,9 @@
   padding-bottom: 20px;
 }
 
+
+.java_picture{
+  width: 800px;
+  height: 500px;
+  background-image: url(app/assets/images/自己代入.png);
+}
