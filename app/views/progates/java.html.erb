@@ -1,7 +1,11 @@
 <%= link_to 'Home', root_path %>
 <%= link_to 'Progate/HTML&CSS初級編', htmlcss_first_path %>
-<%= link_to 'Progate/HTML&CSS中級編', java_path %>
+<%= link_to 'Progate/Javaコース1', java_path %>
+<%= link_to 'Progate/Javaコース2', java_part2_path %>
 
+
+
+<h1>Java　コース1</h1>
 
 <div style="padding: 100px 0 100px 0;">
 	System.out.println();というのは、「()の中身を出力（表示）せよ」という「命令」
@@ -184,19 +188,19 @@
 	<%= image_tag '変数の注意点1.png' %><%= image_tag '変数の注意点2.png' %><br>
 	変数名を決めるときにまず大事なのは、何のデータをいれる変数なのかわかりやすい変数名をつけることです。何の値が入っている変数かわかりにくい名前は、コードが読みにくくなり、ミスを生む原因となります。わかりやすい変数名をつけるよう心がけましょう。
 	<%= image_tag '変数名.png' %><br><br>
-	class Main {
-	  public static void main(String[] args) {
-	    int length = 6;
-	    int height = 8;
-	    // 変数rectangleAreaに、四角形の面積を代入してください
-	    int rectangleArea = length * height;
-	    // 変数rectangleAreaを出力してください
-	    System.out.println(rectangleArea);
-	    // 変数triangleAreaに、三角形の面積を代入してください
-	    int triangleArea = length * height / 2;
-	    // 変数triangleAreaを出力してください
-	    System.out.println(triangleArea);
-	  }
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    int length = 6;<br>
+	    int height = 8;<br>
+	    // 変数rectangleAreaに、四角形の面積を代入してください<br>
+	    int rectangleArea = length * height;<br>
+	    // 変数rectangleAreaを出力してください<br>
+	    System.out.println(rectangleArea);<br>
+	    // 変数triangleAreaに、三角形の面積を代入してください<br>
+	    int triangleArea = length * height / 2;<br>
+	    // 変数triangleAreaを出力してください<br>
+	    System.out.println(triangleArea);<br>
+	  }<br>
 	}
 </div>
 
@@ -219,31 +223,67 @@
 	<%= image_tag '数値の計算の注意点1.png' %><%= image_tag '数値の計算の注意点2.png' %><br>
 	自動型変換の例を見てみましょう。int型とdouble型の計算では結果はdouble型になります。これは計算の過程でint型がdouble型に変換されるためです。よって「5 / 2.0」もしくは「5.0 / 2」の結果は2.5になります。5を5.0にするように、整数は必ず小数でも表せるため、Javaが自動で型変換を行ってくれます。
 	<%= image_tag '計算時の自動型変換1.png' %><%= image_tag '計算時の自動型変換2.png' %><br><br>
-	class Main {
-	  public static void main(String[] args) {
-	    int month = 12;
-	    int date = 31;
-	    // 「12月31日」となるように変数と文字列を連結して出力してください
-	    System.out.println(month + "月" + date + "日");
-	    // 7を2で割った値を出力してください
-	    System.out.println(7 / 2);
-	    // 7.0を2.0で割った値を出力してください
-	    System.out.println(7.0 / 2.0);
-	    // 7を2.0で割った値を出力してください
-	    System.out.println(7 / 2.0);
-	  }
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    int month = 12;<br>
+	    int date = 31;<br>
+	    // 「12月31日」となるように変数と文字列を連結して出力してください<br>
+	    System.out.println(month + "月" + date + "日");<br>
+	    // 7を2で割った値を出力してください<br>
+	    System.out.println(7 / 2);<br>
+	    // 7.0を2.0で割った値を出力してください<br>
+	    System.out.println(7.0 / 2.0);<br>
+	    // 7を2.0で割った値を出力してください<br>
+	    System.out.println(7 / 2.0);<br>
+	  }<br>
 	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	先ほどint型同士の計算「5 / 2」は2になってしまうことを学びましたが、それでは下図のようにint型の変数同士の割り算で、正確な値を出したいときはどうすればよいでしょうか？<br>
+	<%= image_tag 'int型同士の計算1.png' %><%= image_tag 'int型同士の計算2.png' %>
+	このようなときは強制的に型変換を行います。これをキャストと呼び、下図のように、(変換したいデータ型)値とします。
+	int型同士の値から、最終的にdouble型の計算結果を得たい場合、どちらか1つをキャストしてあげましょう（前ページで学んだように、片方がdouble型であれば結果はdouble型になります）。<br>
+	<%= image_tag 'キャスト1.png' %><%= image_tag 'キャスト2.png' %>
+	<br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    int number1 = 7;<br>
+	    int number2 = 2;<br>
+	    System.out.println(number1 / number2);<br>
+	    // number1をdouble型にキャストし、number2で割った値を出力してください<br>
+	    System.out.println((double)number1 / number2);<br>
+	  }<br>
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	レッスンの最後に、課題を解いてみましょう<br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // 変数nameに、好きな名前を代入してください<br>
+	    String name = "Taro";<br>
+	    // 変数ageに、好きな年齢を代入してください<br>
+	    int age = 20;<br>
+	    // 変数heightに、好きな身長を代入してください（例: 1.2）<br>
+	    double height = 1.2;<br>
+	    // 変数weightに、好きな体重を代入してください（例: 20.0）<br>
+	    double weight = 20.0;<br>
+	    // 変数bmiに、BMIを計算して代入してください<br>
+	    double bmi = weight / (height * height);<br>
+	    // 名前、年齢、身長、体重、BMIに関する情報を出力してください<br>
+	    System.out.println("名前は" + name + "です");<br>
+	    System.out.println("年齢は" + age + "歳です");<br>
+	    System.out.println("身長は" + height + "mです");<br>
+	    System.out.println("体重は" + weight + "kgです");<br>
+	    System.out.println("BMIは" + bmi + "です");<br>
+	  }<br>
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+next→<%= link_to 'Progate/Javaコース2', java_part2_path %>
 </div>
 
-<div style="padding: 100px 0 100px 0;">
-</div>
+
 

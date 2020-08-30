@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   get 'htmlcss_first' => 'progates#first'
   get 'htmlcss_second' => 'progates#second'
   get 'java' => 'progates#java'
+  get 'java_part2' => 'progates#java2'
 
   root 'posts#index'
 end

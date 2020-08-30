@@ -8,4 +8,8 @@ class ProgatesController < ApplicationController
 
 	def java
 	end
+
+	def java2
+	end
+
 end
