@@ -8,32 +8,162 @@
 <h1>Java　コース2</h1>
 
 
-
-
 <div style="padding: 100px 0 100px 0;">
-	
+	早速、真偽値という新しい値を学びます。真偽値には「true」と「false」という2つの値しか存在しません。trueは真（正しい）、falseは偽（間違っている）を意味します。真偽値のデータ型はboolean型です。true, falseにはダブルクォーテーションは付けないことに注意しましょう
+	<%= image_tag '真偽値とは1.png' %><%= image_tag '真偽値とは2.png' %><br>
+	比較演算子とは、値を比較するための記号で、比較した結果は真偽値（trueかfalse）になります。
+	「x == y」はxとyが同じかどうかを比較し、同じであればtrue、違っていればfalseとなります。また「x != y」はその逆になります。
+	代入の「=」と比較の「==」を混同しないように注意してください。
+	<%= image_tag '比較演算1.png' %><%= image_tag '比較演算2.png' %><br>
+	真偽値も出力することができます。ただし、trueやfalseはダブルクォーテーションで囲んではいけません。注意しましょう。
+	比較演算子の結果は真偽値になり、コンソールにも真偽値が出力されます。
+	<%= image_tag '真偽値出力1.png' %><%= image_tag '真偽値出力2.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // 「true」を用いて、「真」を表す真偽値を出力してください<br>
+	    System.out.println(true);<br>
+	    // 「false」を用いて、「偽」を表す真偽値を出力してください<br>
+	    System.out.println(false);<br>
+	    // 「==」を用いて、値を比較した結果を出力してください<br>
+	    System.out.println(12/4 == 3);<br>
+	    // 「!=」を用いて、値を比較した結果を出力してください<br>
+	    System.out.println(12/4 != 3);<br>
+	    // boolean型の変数boolを定義し、「3 * 9 == 27」を代入してください<br>
+	    boolean bool = 3 * 9 == 27;<br>
+	    // 変数boolの値を出力してください<br>
+	    System.out.println(bool);<br>
+	  }<br>
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	<, >という記号は数学でも用いる大小比較の記号です。x < yはxがyより小さければtrue, 大きければfalseを返します。x > yはその逆になります。また数学で同様に用いる≦, ≧という記号（以上や以下を表します）は、<=, >=と記述します。
+	<%= image_tag '大小比較1.png' %><%= image_tag '大小比較2.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // 8と5を比較し、falseとなるようにしてください<br>
+	    System.out.println(8 < 5);<br>
+	    // 3と2を比較し、trueとなるようにしてください<br>
+	    System.out.println(3 >= 2);<br>
+	  }<br>
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	論理演算子は「かつ」「または」「~でない」を表現する記号です。
+	まずは「かつ」について見てみましょう。
+	「かつ」は&&で表現し、「条件1 && 条件2」は「条件1がtrueかつ条件2もtrue」であれば結果もtrueになり、どちらか一方でもfalseであれば結果はfalseになります。
+	<%= image_tag '「かつ」1.png' %><%= image_tag '「かつ」2.png' %><br>
+	「または」は||で表現し、「条件1 || 条件2」は、「条件1または条件2のどちらか一方でもtrue」であれば結果はtrueになります。具体例を下図で確認してみましょう。
+	<%= image_tag '「または」1.png' %><%= image_tag '「または」2.png' %><br>
+	!を用いると、「〜でない」を表現できます。例えば、!(x >= 30)は「xが30以上でない（つまり30より小さい）」ときtrueになり、「xが30以上」のときfalseになります。
+	<%= image_tag '「〜でない」1.png' %><%= image_tag '「〜でない」2.png' %><br>
+	論理演算子で重要な2つの例を、下図の単純な出力で見比べてみましょう。
+	&&は、どちらもtrueでなければ全体の結果はtrueになりませんが、||は、どちらか一方でもtrueであれば全体の結果もtrueになります。このことをしっかり覚えておけば、論理演算子は怖くありません。
+	<%= image_tag '論理演算子.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // trueと出力されるようにしてください<br>
+	    System.out.println(true || false);<br>
+	    // falseと出力されるようにしてください<br>
+	    System.out.println(false && true);<br>
+	    // 「8 < 5」かつ「3 >= 2」の結果を出力してください<br>
+	    System.out.println(8 < 5 && 3 >= 2 );<br>
+	    // 「8 < 5」または「3 >= 2」の結果を出力してください<br>
+	    System.out.println(8<5 || 3>=2 );<br>
+	    // 「8 < 5」でない、の結果を出力してください<br>
+	    System.out.println( !(8<5) );<br>
+	  }<br>
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	if条件分岐
+	プログラミングでは、「特定の状況のときだけある処理を行う」ということがよくあります。このようなプログラムを条件分岐といいます。例えば日常生活でも「雨だったら、傘をもっていく」という条件分岐を行いますよね。条件分岐はプログラミングで必須の知識なので使いこなせるようになりましょう！
+	<%= image_tag '条件分岐とは.png' %><br>
+	最もよく使う条件分岐はif文です。ifは英語で「もし〜なら」という意味です。この「〜」に当たる部分が、ifの後の()の部分です。これを条件式と呼びます。条件式がtrueなら{}内の処理を行い、反対に条件式がfalseなら何もしません。まずはif文の()に条件式を入れ、{}の中に処理を書く、ということを覚えましょう。
+	<%= image_tag 'if文1.png' %><%= image_tag 'if文2.png' %><br>
+	if文の実際の使い方を見てみましょう。ここまでで学んだ、真偽値、比較演算子（==, < など）、論理演算子（&&, ||, ! ）が、条件式で活躍します.
+	<%= image_tag 'if文の例1.png' %><%= image_tag 'if文の例2.png' %><br>
+	if文で{ }という記号を使っています。詳しくはまだ知らなくて大丈夫ですが、これをブロックと呼び、複数の処理をまとめたいときに使うというぐらいに覚えておきましょう。if文では、条件がtrueのときに行う処理を、ブロックを使ってまとめています。なお{ }の後ろにはセミコロンは不要です。
+	<%= image_tag 'ブロック1.png' %><%= image_tag 'ブロック2.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // 条件式に直接trueをいれてください<br>
+	    if (true) {<br>
+	      System.out.println("条件式がtrueのため、出力されます");<br>
+	    }<br>
+	    // 条件式に直接falseをいれてください<br>
+	    if (false) {<br>
+	      System.out.println("条件式がfalseのため、出力されません");<br>
+	    }<br>
+	    int x = 5;<br>
+	    // if文を用いて、変数xが2より大きいとき「xは2より大きい」と出力してください<br>
+	    if (x > 2){<br>
+	      System.out.println("xは2より大きい");<br>
+	    }<br>
+	    // if文を用いて、変数xが8より大きいとき「xは8より大きい」と出力してください<br>
+	    if (x>8){<br>
+	      System.out.println("xは8より大きい");<br>
+	    }<br>
+	  }<br>
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	elseとは英語で「そのほかの」というような意味です。ifとelseを組み合わせると、「もし〜なら◯◯、そうでなければ△△」という条件分岐が可能になります。ifとelseを使った構文は下図になります。{ }の位置などしっかり覚えましょう。
+	<%= image_tag 'else1.png' %><%= image_tag 'else2.png' %><br>
+	if文ではelse ifを用いて、さらなる条件分岐が可能です。ifとelse if、elseを組み合わせると、「もし〜なら◯◯、そうではなくてもし××なら△△、どちらでもない場合は□□」という条件分岐を実現できます。下図の2つの例で、それぞれどの処理が実行されるのか確認しておきましょう！
+	<%= image_tag 'else if1.png' %><%= image_tag 'else if2.png' %><br>
+	else ifは必要なだけ並べることができますが、複数の条件に合致しても、実行されるのは最初に合致した条件だけなので注意しましょう。
+	<%= image_tag '実行される処理.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    int number = 12;<br>
+	    // numberが20より小さいとき、どちらでもないときの条件分岐を追加してください<br>
+	    if (number < 10) {<br>
+	      System.out.println("10より小さい");<br>
+	    }<br>
+	    else if (number <20){<br>
+	      System.out.println("10以上、20より小さい");<br>
+	    }<br>
+	    else{<br>
+	      System.out.println("20以上");<br>
+	    }<br>
+	  }<br>
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	条件分岐にはswitch文という構文もあります。switch文は下図のように記述し、条件の値がcaseの値と一致するとき、処理が実行されます。
+	switch文は構文が少し複雑です。caseの後ろのコロン（:）などは忘れがちなので注意しましょう。breakについては後述します。
+	<%= image_tag 'switch文.png' %><br>
+	switch文の具体例をif文と比較して見てみましょう。switch文では、()の中の条件の値と、caseの値が「==」になるとき、処理が実行されます。
+	switch文は、「とある値（今回はx % 2）が何であるか」で処理を分けたいとき（特にその分岐が多いとき）、
+	if文よりシンプルに書くことができます。使うことも多いので、ぜひ覚えておきましょう。
+	<%= image_tag 'if文とswitch文1.png' %><%= image_tag 'if文とswitch文2.png' %><br>
+	switch条件分岐break
+	switch文ではbreakが非常に重要です。breakとはswitch文を終了する命令です。breakがないと、合致したcaseの処理を行った後、その次のcaseの処理も実行してしまいます。意図せぬ処理が起こってしまいますので、switch文を使うときにはbreakを忘れないように気をつけましょう。
+	<%= image_tag 'break1.png' %><%= image_tag 'break2.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    int number = 12;<br>
+	    // switch文を用いて、numberを3で割った余りで条件分岐をしてください<br>
+	    switch (number % 3){<br>
+	      case 0:<br>
+	        System.out.println("3で割り切れます");<br>
+	        break;<br>
+	      case 1:<br>
+	        System.out.println("3で割ると1余ります");<br>
+	        break;<br>
+	      case 2:<br>
+	        System.out.println("3で割ると2余ります");<br>
+	        break;<br>
+	    }<br>
+	  }<br>
+	}
 </div>
 
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
 
 <div style="padding: 100px 0 100px 0;">
 </div>
