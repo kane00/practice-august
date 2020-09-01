@@ -164,6 +164,203 @@
 	}
 </div>
 
+<div style="padding: 100px 0 100px 0;">
+	switch文では、どのcaseとも一致しなかったときに実行する処理を、defaultに指定することができます。これはif文のelseに似ています。
+	<%= image_tag 'default1.png' %><%= image_tag 'default2.png' %><br>
+	条件分岐から離れ、インデントについて学習しましょう。インデントとは先頭の字下げのことです。左の図では、どこからどこまでがどのcaseに対応するか、わかりにくいですよね。前後の関係性や入れ子構造を見やすくするため、インデントを整えるのも大事なスキルです。なお、先頭の字下げは半角スペース2つがおすすめです。意識していきましょう。
+	<%= image_tag 'インデント1.png' %><%= image_tag 'インデント2.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    int number = 13;<br>
+	    // defaultを用いて、どのcaseにも合致しない場合の処理を記述してください<br>
+	    switch (number % 5) {<br>
+	      case 0:<br>
+	        System.out.println("大吉です");<br>
+	        break;<br>
+	      case 1:<br>
+	        System.out.println("中吉です");<br>
+	        break;<br>
+	      case 4:<br>
+	        System.out.println("凶です");<br>
+	        break;<br>
+	      default:<br>
+	        System.out.println("吉です");<br>
+	        break;<br>
+	    }<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	繰り返し処理とは、一定の処理を自動で繰り返し行う処理のことです。たとえば、1~100までの数字をコンソールに出力したい場合、下図のようにSystem.out.println()を100回書くのは面倒です。こういった処理を自動化するのが繰り返し処理です。<br>
+	繰り返し処理の代表的なものにwhile文というのがあります。whileとは「〜の間」という意味の英語です。while文は下図のように書き、「条件がtrueの間、{ }内の処理を繰り返す」ことができます。
+	<%= image_tag 'while文.png' %><br>
+	下図で、繰り返し処理の流れを見てみましょう。まずwhile文の前で変数の初期化を行います。この変数は、while文を繰り返すかどうか判断するために用います。処理が一周終わると、その度に変数は更新され、再び条件式がチェックされます。trueであればもう一周処理を行い、falseであれば繰り返しが終了します。
+	<%= image_tag 'while文の処理の流れ1.png' %><%= image_tag 'while文の処理の流れ2.png' %><br>
+	while文の具体例を見てみましょう。下図はにんじゃわんこが5回ジャンプを繰り返すプログラムです。まずはwhile文の外で変数を用意し、ジャンプをする度にその変数に1を足していきます。そうすると6回目の繰り返しでwhileの条件がfalseになり、繰り返し処理が終了します。
+	<%= image_tag 'while文の使用例1.png' %><%= image_tag 'while文の使用例2.gif' %><br>
+	先ほどのwhile文で最後に変数iに1を足し忘れると変数iは1のまま変わらず、条件が永遠にtrueになってしまうので、繰り返し処理が無限に行われてしまいます（無限ループ）。無限ループはコンピュータに異常な負荷をかけることになるので、確実に阻止しなければなりません。繰り返し処理では、必ずどこかで条件がfalseになるように実装しましょう。
+	<%= image_tag '無限ループ1.png' %><%= image_tag '無限ループ2.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    int number = 10;<br>
+	    // while文を用いて、numberが0より大きい場合に繰り返す、繰り返し処理を作ってください<br>
+	    while (number > 0) {<br>
+	      System.out.println(number);<br>
+	      number--;  //デクリメント、１ずつ減らす<br>
+	    }<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	for文も繰り返し処理の1つです。for文では、forの後の()内に、「変数の初期化、条件式、変数の更新」の3つを記述します。それぞれはセミコロン（;）で区切りますが、最後の変数の更新にはセミコロン（;）をつけないことに注意してください。while文と比較して覚えてしまいましょう。
+	<%= image_tag 'for文1.png' %><%= image_tag 'for文2.png' %><%= image_tag 'for文3.png' %><br>
+	前回学習した、にんじゃわんこが5回ジャンプするwhile文の例を、for文で書きかえてみましょう。繰り返し処理は、while文・for文どちらでも実装できますが、for文の方がすっきりと書けることが多いです。どちらでも記述できるようにしておきましょう。
+	<%= image_tag 'for文の使用例.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // for文を用いて、繰り返し処理をつくってください<br>
+	    for( int i = 1; i <= 10; i++ ){  //i++の後は;はいらない <br>
+	      System.out.println(i + "回目のループです");<br>
+	    }<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	繰り返し処理を終了するためには、条件をfalseにする以外に、breakを使って強制的に終了させる方法があります。下図のようにif文などの条件分岐と組み合わせることで、任意の箇所で繰り返し処理を終了させることができます。
+	<%= image_tag 'forのbreak1.png' %><%= image_tag 'forのbreak2.png' %><br>
+	繰り返し処理を終了するbreakと違い、continueはその周の処理だけをスキップして、次の周を実行することができます。continueもif文などと組み合わせて利用するのが一般的です。
+	<%= image_tag 'continue1.png' %><%= image_tag 'continue2.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    System.out.println("=== while文 ===");<br>
+	    int i = 1;<br>
+	    while (i < 10) {<br>
+	      // iが5の倍数のとき、繰り返し処理を終了してください<br>
+	      if (i % 5 == 0) {<br>
+	        break;<br>
+	      }<br>
+	      System.out.println(i);<br>
+	      i++;<br>
+	    }<br>
+	    <br>
+	    System.out.println("=== for文 ===");<br>
+	    for (int j = 1; j < 10; j++) {<br>
+	      // jが3の倍数のとき、処理をスキップしてください<br>
+	      if (j % 3 == 0) {<br>
+	        continue;<br>
+	      }<br>
+	      System.out.println(j);<br>
+	    }<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	配列とは、変数のセットのようなものです。変数が1つしか値を扱えないのに対し、配列は複数の値をまとめていれておくことができます。配列は仕切りのある箱のようなもので、それぞれのスペースに値が入っています。配列に入っているそれぞれの値のことを要素と呼びます。
+	<%= image_tag '配列とは1.png' %><%= image_tag '配列とは2.png' %><br>
+	配列を扱う場合には、配列型の変数に配列を代入します。配列型は、「int型の要素を持つ配列型」「String型の要素を持つ配列型」という風に指定する必要があります。
+	int型の要素を持つ配列はint[], String型の要素を持つ配列はString[]と記述します。
+	<%= image_tag '配列の定義.png' %><br>
+	配列は{ }の中に、コンマ（,）で区切りながら値を書くことでつくることができます。下図で配列型の変数に配列を代入しています。[]と{}を混同しないように注意しましょう。
+	<%= image_tag '配列の作り方1.png' %><%= image_tag '配列の作り方2.png' %><br>
+	配列の要素には、前から順に「0, 1, 2・・・」と数字が割り振られています。これをインデックス番号といいます。インデックス番号は0から始まる点に注意してください。
+	配列の各要素は、配列名[インデックス番号]とすることで取得することができます。
+	<%= image_tag 'インデックス番号と要素の取得1.png' %><%= image_tag 'インデックス番号と要素の取得2.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // 変数namesに、配列を代入してください<br>
+	    String[] names = {"にんじゃわんこ", "ひつじ仙人", "ベイビーわんこ"};<br>
+	    // インデックス番号が0の要素を出力してください<br>
+	    System.out.println(names[0]);<br>
+	    // インデックス番号が2の要素を出力してください<br>
+	    System.out.println(names[2]);<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	配列の各要素は変数のようなものです。
+	下図のように、特定の要素に値を代入することで、要素を上書きすることが可能です。
+	<%= image_tag '配列の要素を 上書きする1.png' %><%= image_tag '配列の要素を 上書きする2.png' %><br>
+	下図のように、配列では存在しない要素に値を代入することはできないので注意してください。
+	<%= image_tag '要素の上書きにおける注意点.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // 変数languagesを定義し、配列を代入してください<br>
+	    String[] languages = {"Ruby", "PHP", "Python"};<br>
+	    // インデックス番号が「1」の要素を出力してください<br>
+	    System.out.println(languages[1]);<br>
+	    // インデックス番号が「1」の要素を「Java」で上書きしてください<br>
+	    languages[1] = "Java";<br>
+	    // インデックス番号が「1」の要素を出力してください<br>
+	    System.out.println(languages[1]);<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	配列では、下図のように、それぞれの要素に対し同様の処理を行うことがしばしばあります。これは先ほど学んだ繰り返し処理を用いることで容易に実現できます。ここからは、配列に対して繰り返し処理を行う方法を見ていきましょう。
+	<%= image_tag '配列と繰り返し.gif' %><br>
+	配列namesの要素を全て出力するために、左の図のように書くのは非常に面倒です。これをfor文で書いてみると右の図のようになります。このようにすれば配列の要素の値を簡単に一覧表示できるようになります。
+	<%= image_tag '配列とfor文1.png' %><%= image_tag '配列とfor文2.png' %><br>
+	配列には、要素の数を数えるlengthという機能が備わっています。lengthは、「配列.length」のようにドット（.）でつないで用います。lengthを用いれば、先ほどのfor文の条件式「i < 3」を下図のように書き換えることができ、配列の要素数を気にする必要がなくなります。
+	<%= image_tag 'length1.png' %><%= image_tag 'length2.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    String[] names = {"にんじゃわんこ", "ひつじ仙人", "ベイビーわんこ"};<br>
+	    // for文を用いて、「私の名前は◯◯です」と出力してください<br>
+	    for (int i = 0; i < names.length; i++){<br>
+	      System.out.println("私の名前は" + names[i] + "です");<br>
+	    }<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	for文は配列用に特別な構文（拡張for文）を用意しています。これを使えば、先ほどのfor文をよりシンプルに書くことができます。拡張for文は下図のように記述します。
+	<%= image_tag '拡張for文の用法.png' %><br>
+	拡張for文では、配列の各要素の値を順に代入する変数を用意します。具体例とイメージ図を見てみましょう。
+	下図の例では、繰り返しの度に、変数nameに配列namesの要素が順に代入されていきます。また拡張for文では、自動的に要素の数だけ繰り返しが行われます。2枚の図をしっかり覚えましょう。
+	<%= image_tag '拡張for文のイメージ1.png' %><%= image_tag '拡張for文のイメージ2.png' %><br>
+	普通のfor文と比較し、拡張for文への書き換えができるようになりましょう。普通のfor文ではインデックス番号を用いて配列の要素を取得しなければなりませんが、拡張for文では変数に配列の要素自体が代入されます。拡張for文の方がシンプルに書けることが多いので覚えておきましょう。
+	<%= image_tag '普通のfor文との比較1.png' %><%= image_tag '普通のfor文との比較2.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    String[] names = {"にんじゃわんこ", "ひつじ仙人", "ベイビーわんこ"};<br>
+	    // 配列用のfor文を用いて、「私の名前は◯◯です」と出力してください<br>
+	    for(String name: names){  //変数名の後ろはただのコロン<br>
+	       System.out.println("私の名前は" + name + "です");<br>
+	    }<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	レッスンの最後に、課題を解いてみましょう。整数を要素に持つ配列の中で、「奇数の要素」と「偶数の要素」の和をそれぞれ求め、出力します。
+	<%= image_tag 'Java2総合課題1.png' %><%= image_tag 'Java2総合課題2.png' %><br><br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // 変数numbersに、与えられた数字の配列を代入してください<br>
+	    int[] numbers = {1, 4, 6, 9, 13, 16};<br>
+	    int oddSum = 0;<br>
+	    int evenSum = 0;<br>
+	    // for文を用いて、配列numbersの偶数の和と奇数の和を求めてください<br>
+	    for(int number: numbers){<br>
+	      if (number % 2 != 0) {  //2で割って余りが0以外(余りは必ず1)=奇数<br>
+	        oddSum += number;  //addSumにプラスしていく<br>
+	      }<br>
+	      else {  //2で割って余りが0=偶数<br>
+	        evenSum += number;  //addSumにプラスしていく<br>
+	      }<br>
+	    }<br>
+	    System.out.println("奇数の和は" + oddSum + "です");<br>
+	    System.out.println("偶数の和は" + evenSum + "です");<br>
+	  }<br>
+	}
+</div>
 
 <div style="padding: 100px 0 100px 0;">
 </div>
