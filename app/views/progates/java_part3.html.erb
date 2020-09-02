@@ -1,0 +1,211 @@
+<div style="padding: 20px 0 20px 0;">
+	<%= link_to 'Home', root_path %>
+	<%= link_to 'Progate/HTML&CSS初級編', htmlcss_first_path %>
+	<%= link_to 'Progate/Javaコース1', java_path %>
+	<%= link_to 'Progate/Javaコース2', java_part2_path %>
+</div>
+
+<h1>Java　コース3</h1>
+
+
+<div style="padding: 100px 0 100px 0;">
+	このレッスンでは、メソッドとクラスについて学びます。メソッドとクラスを用いることで、
+大規模なプログラムをまとまりのある「部品」に切り分け、人間に把握しやすいものにすることができます。
+このレッスンを学んで、アプリケーションを作るための準備をしていきましょう！
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	メソッドとは、何らかの処理を割り当てた部品です。これまでmainメソッドだけに記述してきた処理部分を、メソッドに切り分けていきます。
+	Javaのファイルを実行すると、自動的にmainメソッドが実行されます。mainメソッドの処理をメソッドに切り分けると、mainメソッドが各メソッドに指示を出し、各メソッドが個々の処理を実行するという構造になります。
+	<%= image_tag 'メソッドのイメージ.gif' %><br>
+	メソッドに切り分けたコードと、そうでないコードを比較してみましょう。
+	左の図は、mainメソッドの中に処理が羅列されていて、処理の内容やまとまりがわかりにくいですね。メソッドに切り分けることでコードが整理されます。また、メソッドは何度でも使いまわすことができます。
+	<%= image_tag 'メソッドを使った プログラム1.png' %><%= image_tag 'メソッドを使った プログラム2.png' %><br>
+	メソッドとは、処理をまとめた部品だと考えれば、決して難しくはありません。左の図では、helloというメソッドを定義し、mainメソッドでhelloメソッドを呼び出しています。詳しくはまだわからなくて大丈夫です。右の図の流れを確認して、まずは演習でメソッドを体験してみましょう。
+	<%= image_tag 'メソッドを呼び出してみよう1.png' %><%= image_tag 'メソッドを呼び出してみよう2.png' %><br>
+	class Main {
+	  public static void main(String[] args) {
+	    hello();
+	  }
+	  public static void hello() {
+	    // "Hello World"を、"Hello Java"に書き換えてください
+	    System.out.println("Hello Java");
+	  }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	メソッドについて詳しく学んでいきましょう。まずはメソッドの定義です。「public static void」の部分はまだ定型として覚えておきましょう。またメソッド名の後の()についても後ほど学びます。ブロック（{}で囲まれた部分）の中に、そのメソッドが行う処理を記述します。メソッドの名前は好きに付けることができますが、処理の内容が想像できるような名前をつけましょう。メソッドの定義
+	<%= image_tag 'メソッドの定義1.png' %><%= image_tag 'メソッドの定義2.png' %><br>
+	メソッドはクラスの中に定義します。下図の具体例では、helloメソッドはMainクラスのブロック（{}）の中に定義されています。このようにクラスの中に定義しないとエラーになりますので気をつけましょう。メソッド定義の場所
+	<%= image_tag 'メソッド定義の場所.png' %><br>
+	メソッドを呼び出すためには、メソッド名()とするだけです。呼び出しの時の()を忘れないようにしましょう。詳しくは後ほど学びます
+	<%= image_tag 'メソッドの呼び出し1.png' %><%= image_tag 'メソッドの呼び出し2.png' %><br>
+	class Main {
+	  public static void main(String[] args) {
+	    // printDataメソッドを呼び出してください
+	    printData();
+	  }
+	  // printDataメソッドを定義してください
+	  public static void printData(){  //public static voidは決まりみたいなもの
+	    System.out.println("私の名前はKate Jonesです");
+	  }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	引数（ひきすう）とはメソッドに与える追加情報のようなものです。メソッドを呼び出すときに、一緒に引数を渡すと、メソッドの中でその値を利用することができます。
+	<%= image_tag '引数とは.gif' %><br>
+	メソッドに引数を渡すには、まず引数を受け取れるメソッドを定義しなければなりません。そのためには、メソッドの定義部分で、引数を受け取るための箱となる変数（仮引数（かりひきすう））を指定します。
+	下図のように、「public static void メソッド名()」の()に仮引数を指定します。仮引数は、変数定義と同様に、データ型を指定する必要があります。
+	<%= image_tag '引数を受け取るメソッド1.png' %><%= image_tag '引数を受け取るメソッド2.png' %><br>
+	メソッドに引数を渡すには、メソッド名(引数)としてメソッドを呼び出します。渡された引数は、メソッドの仮引数で指定した変数に代入され、その変数はメソッドの処理の中で用いることができます。
+	<%= image_tag 'メソッドに引数を渡す1.png' %><%= image_tag 'メソッドに引数を渡す2.png' %><br>
+	class Main {
+	  public static void main(String[] args) {
+	    // 引数に「Kate Jones」を渡してください
+	    printData("Kate Jones");
+	    // 引数に「John Christopher Smith」を渡してください
+	    printData("John Christopher Smith");
+	  }
+	  // 引数を受け取るようにしてください
+	  public static void printData(String name) {
+	    // 「私の名前は◯◯です」と出力されるように書き換えてください
+	    System.out.println("私の名前は" + name + "です");
+	  }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	引数は複数渡すこともできます。メソッドが複数の引数を受け取るためには、仮引数をコンマ（,）で区切って定義します。また、引数は左から順番に「第1引数、第2引数・・・」というように呼びます。覚えておきましょう。
+	<%= image_tag '複数の引数をもつメソッド1.png' %><%= image_tag '複数の引数をもつメソッド2.png' %><br>
+	それでは、メソッドに複数の引数を渡す様子を見てみましょう。
+	<%= image_tag '複数の引数を渡してみよう1.png' %><%= image_tag '複数の引数を渡してみよう2.png' %><br>
+	仮引数は任意に順番を決められますが、メソッドを呼び出すときは、仮引数の順番通りに引数を渡さなければなりません。
+	例えば下図は引数を渡す順序が反対になっています。その結果、String型の仮引数に整数を入れようとするので、エラーになってしまいます。
+	<%= image_tag '引数を渡す順番.png' %><br>
+	class Main {
+	  public static void main(String[] args) {
+	    // それぞれ年齢に関する引数を追加してください
+	    printData("Kate Jones", 27);  //「,(カンマ)」で区切る
+	    printData("John Christopher Smith", 65);
+	  }
+	  // 年齢に関する引数を受け取れるようにしてください
+	  public static void printData(String name, int age) {
+	    System.out.println("私の名前は" + name + "です");
+	    // 「年齢は◯◯歳です」と出力してください
+	    System.out.println("年齢は" + age + "歳です");
+	  }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	メソッドの処理結果を、メソッドの呼び出し元で使いたい場合があります。このようなときは、メソッドが戻り値（もどりち）を返すようにします。
+	メソッドを工場に例えてみましょう。工場（メソッド）は、発注者（mainメソッド）から材料（引数）を受け取り、決められた加工（処理）を行って完成品を発注者に返します。この完成品にあたるのが戻り値です。
+	<%= image_tag '戻り値とは.png' %><br>
+	メソッドの中でreturnを使うと、returnの値をメソッドの呼び出し元に返すことができます。
+	また、戻り値があるメソッドは、戻り値のデータ型を指定します。ここまで定型だった「public static void」のvoidの部分で指定します。右の図のaddメソッドは、戻り値が整数なので「public static int ...」となります。
+	<%= image_tag '戻り値のあるメソッド1.png' %><%= image_tag '戻り値のあるメソッド2.png' %><br>
+	戻り値がある場合、メソッドの呼び出し部分がそのまま値に変わります。よって、下図のようにメソッドの呼び出し部分を、変数に代入することができます。
+	<%= image_tag '戻り値の具体例1.png' %><%= image_tag '戻り値の具体例2.png' %><br>
+	これまで定型だったvoidとは何でしょうか。voidは戻り値がない、という意味です。下図のhelloメソッドには、returnはなく戻り値はありません。このように戻り値のない（returnがない）メソッドには、voidを指定します。
+	<%= image_tag 'void.png' %><br>
+	class Main {
+	  public static void main(String[] args) {
+	    // ③fullNameメソッドの結果を変数nameに代入してください
+	    String name = fullName("Kate", "Jones");
+	    // ④printDataの引数を書き換えてください
+	    printData(name, 27);
+	    // こちらは書き換えないでください
+	    printData("John Christopher Smith", 65);
+	  }
+	  public static void printData(String name, int age) {
+	    System.out.println("私の名前は" + name + "です");
+	    System.out.println("年齢は" + age + "歳です");
+	  }
+	  // ①fullNameメソッドを定義してください
+	  public static String fullName(String firstName, String lastName){
+	      return firstName + " " + lastName;  //②firstName + " " + lastNameを戻り値としてください
+	    }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	同名のメソッドは原則として定義できません。なぜなら同じメソッドが複数存在すると、メソッドを呼び出したときにどのメソッドを用いればいいのか、コンピュータがわからなくなってしまうためです。
+	<%= image_tag '同名のメソッド1.png' %><%= image_tag '同名のメソッド2.png' %><br>
+	ただし、引数の型や個数が違う場合は同名のメソッドを定義できます。同名のメソッドがあっても、引数が違えばどれを呼べばいいのかコンピュータが判断できるためです。
+	このように同名のメソッドを定義することをオーバーロードと言います。
+	<%= image_tag 'オーバーロード1.png' %><%= image_tag 'オーバーロード2.png' %><br>
+	class Main {
+	  public static void main(String[] args) {
+	    printData(fullName("Kate", "Jones"), 27);
+	    // ②fullNameメソッドを用いて、printDataの引数を書き換えてください
+	    printData(fullName("John", "Christopher", "Smith"), 65);
+	  }
+	  public static void printData(String name, int age) {
+	    System.out.println("私の名前は" + name + "です");
+	    System.out.println("年齢は" + age + "歳です");
+	  }
+	  public static String fullName(String firstName, String lastName) {
+	    return firstName + " " + lastName;
+	  }
+	  // ①fullNameメソッドを定義してください
+	  public static String fullName(String firstName, String middleName, String lastName) {
+	    return firstName + " " + middleName + " " + lastName;
+	  }
+	}
+	mainって何→printDataだよ→それ何→fullNameと27のこと→fullNameって何→firstNameと(middleNameと)lastNameのこと→OKじゃあprintDataにそれ入れるわ→表示
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	メソッドは、mainメソッド以外のメソッドから呼び出すことも可能です。プログラムの部品であるメソッドが、相互に助けあってプログラムを形作ります。
+	<%= image_tag 'メソッドからメソッドを呼ぶ.png' %><br>
+	メソッドから他のメソッドを呼び出してみます。
+	averageメソッドは平均を求めるメソッドです。aとbの平均は「(a + b) / 2」で求められますが、足し算の部分はaddメソッドを利用しています。（(double)はキャストという型変換です。覚えていない人は「JavaⅠ」コースの型変換を復習しておきましょう）  double→小数点以下表示
+	<%= image_tag 'メソッドを組み合わせよう1.png' %><%= image_tag 'メソッドを組み合わせよう2.png' %><br>
+	class Main {
+	  public static void main(String[] args) {
+	    printData(fullName("Kate", "Jones"), 27, 1.6, 50.0);
+	    printData(fullName("John", "Christopher", "Smith"), 65, 1.75, 80.0);
+	  }
+	  public static void printData(String name, int age, double height, double weight) {
+	    System.out.println("私の名前は" + name + "です");
+	    System.out.println("年齢は" + age + "歳です");
+	    System.out.println("身長は" + height + "mです");
+	    System.out.println("体重は" + weight + "kgです");
+	    // ①変数bmiに、bmiメソッドを用いてBMIを代入してください
+	    double bmi = bmi(height, weight);
+	    // ③変数bmiを用いて、「BMIは◯◯です」と出力してください
+	    System.out.println("BMIは" + bmi + "です");
+	  }
+	  public static String fullName(String firstName, String lastName) {
+	    return firstName + " " + lastName;
+	  }
+	  public static String fullName(String firstName, String middleName, String lastName) {
+	    return firstName + " " + middleName + " " + lastName;
+	  }
+	  // ①bmiメソッドを定義してください②戻り値を定義してね
+	  public static double bmi(double height, double weight){
+	      return weight/height/height ;
+	    }
+	}
+</div>
+
+
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+
+<div style="padding: 100px 0 100px 0;">
+next→<%= link_to 'Progate/Javaコース3', java_part3_path %>
+</div>
