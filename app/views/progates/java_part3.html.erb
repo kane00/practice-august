@@ -191,12 +191,173 @@
 	}
 </div>
 
-
-
 <div style="padding: 100px 0 100px 0;">
+	最後に、真偽値を返すメソッドも作ってみましょう。真偽値のデータ型はbooleanなので、メソッド定義は下図のようになります。isEvenメソッドは引数の値が偶数かどうかを調べ、偶数であればtrue、奇数であればfalseを返します。
+	<%= image_tag '真偽値を返す.png' %><br>
+	真偽値を返す、isEvenメソッドを実際に使ってみましょう。
+	<%= image_tag '真偽値を返すメソッドの例1.png' %><%= image_tag '真偽値を返すメソッドの例2.png' %><br>
+	class Main {
+	  public static void main(String[] args) {
+	    printData(fullName("Kate", "Jones"), 27, 1.6, 50.0);
+	    printData(fullName("John", "Christopher", "Smith"), 65, 1.75, 80.0);
+	  }
+	  public static void printData(String name, int age, double height, double weight) {
+	    System.out.println("私の名前は" + name + "です");
+	    System.out.println("年齢は" + age + "歳です");
+	    System.out.println("身長は" + height + "mです");
+	    System.out.println("体重は" + weight + "kgです");
+	    double bmi = bmi(height, weight);
+	    System.out.println("BMIは" + bmi + "です");
+	    // ③isHealthyメソッドの結果で条件分岐を行ってください
+	   if (isHealthy(bmi)) {  //isHealthy(bmi)を()で囲む
+	     System.out.println("健康です");
+	   } else {
+	     System.out.println("健康ではありません");
+	   }
+	  }
+	  public static String fullName(String firstName, String lastName) {
+	    return firstName + " " + lastName;
+	  }
+	  public static String fullName(String firstName, String middleName, String lastName) {
+	    return firstName + " " + middleName + " " + lastName;
+	  }
+	  public static double bmi(double height, double weight) {
+	    return weight / height / height;
+	  }
+	  // ①isHealthyメソッドを定義してください　②isHealthyメソッドの中で、bmiが18.5以上、かつ25.0未満であればtrue、そうでなければfalseを返すようにしてください。
+	  public static boolean isHealthy(double bmi){  //データ型はboolean型で真偽値に合わせる
+	    return bmi >= 18.5 && bmi < 25.0 ;
+	  }
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	メソッドの次は、クラスについて学びましょう。
+	ここまでは、Mainクラスのmainメソッド内の処理をメソッドに切り分けてきましたが、その結果Mainクラス内にメソッドが多くなってしまいました。ここからはメソッドではなく、クラスを切り分けることを学んでいきます。
+	<%= image_tag 'クラスに触れてみよう.png' %><br>
+	クラスは、メソッドという小さな部品をまとめる、より大きな部品です。これまではmainメソッドと同じクラス（Mainクラス）のメソッドを使ってきましたが、他のクラスのメソッドを利用することも可能です。
+	<%= image_tag '複数のクラスを使う1.png' %><%= image_tag '複数のクラスを使う2.png' %><br>
+	下図の例には、MainクラスとPersonクラスの2つのクラスがあり、MainクラスのmainメソッドでPerson.hello()としています。このようにクラス名.メソッド名()とすることで、他のクラスのメソッドを呼び出すことができます。詳しくは後ほど学びますが、まずは演習で体験してみましょう。
+	<%= image_tag '他クラスのメソッドを呼び出す1.png' %><%= image_tag '他クラスのメソッドを呼び出す2.png' %><br>
+	[Main.java]
+	class Main {
+	  public static void main(String[] args) {
+	    Person.hello();
+	  }
+	}
+	[Person.java]
+	class Person {
+	  public static void hello() {
+	    // "Hello World"を、"Hello Java"に書き換えてください
+	    System.out.println("Hello Java");
+	  }
+	}
+	表示がHello World→Hello Javaに変わる
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	クラスの定義は「class クラス名」とします。
+	また右の図のように、クラス名の最初の文字は大文字にし、ファイル名は「クラス名.java」としなければなりません。これらのルールはしっかり覚えておきましょう。
+	<%= image_tag 'クラスの定義1.png' %><%= image_tag 'クラスの定義2.png' %><br>
+	Personクラスを作り、Mainクラスのmainメソッド以外をPersonクラスに移します。こうすることで、mainメソッド以外の「ロジック（論理）」部分をPersonクラスにまとめ、実行部分とロジック部分を切り分けることができます。このように分割することで、Mainクラスは実行用のクラス、Personクラスはロジックをまとめるクラスという役割分担が明確になります。
+	<%= image_tag 'Personクラスを作ろう1.png' %><%= image_tag 'Personクラスを作ろう2.png' %><br>
+	Mainクラスのmainメソッドから、Personクラスのメソッドを呼び出してみましょう。
+	<%= image_tag 'Personクラスのメソッドを呼び出す1.png' %><%= image_tag 'Personクラスのメソッドを呼び出す2.png' %><br>
+	Javaは、ファイルではなくクラスを実行します。また実行時にmainメソッドが呼ばれますが、正確にはmainメソッドを持つクラスしか実行できません（mainメソッドのないクラスは、他クラスから呼び出して使います）。
+	またクラス名に関係なく、実行時にはmainメソッドが呼ばれます（Mainクラスだからmainメソッドが呼ばれる、というわけではありません）。
+	<%= image_tag 'クラスについての補足1.png' %><%= image_tag 'クラスについての補足2.png' %><br>
+	[Main.java]
+	public class Main {
+	  public static void main(String[] args) {
+	    // ③このままMainクラスを実行するとエラーになります。Mainクラスのmainメソッドの中で、printDataメソッドとfullNameメソッドをPersonクラスから呼び出すように書き換えてください。
+	    // ④printDataメソッドとfullNameメソッドの呼び出しを書き換えてください
+	    Person.printData(Person.fullName("Kate", "Jones"), 27, 1.6, 50.0);
+	    Person.printData(Person.fullName("John", "Christopher", "Smith"), 65, 1.75, 80.0);
+	  }
+	}
+	[Person.java]
+	// ①Personクラスを定義してください
+	public class Person {
+	  // ②以下のメソッドすべてを、Personクラスに移動してください
+	  public static void printData(String name, int age, double height, double weight) {
+	    System.out.println("私の名前は" + name + "です");
+	    System.out.println("年齢は" + age + "歳です");
+	    System.out.println("身長は" + height + "mです");
+	    System.out.println("体重は" + weight + "kgです");
+	    double bmi = bmi(height, weight);
+	    System.out.println("BMIは" + bmi + "です");
+	    if (isHealthy(bmi)) {
+	      System.out.println("標準値です");
+	    } else {
+	      System.out.println("標準値の範囲外です");
+	    }
+	  }
+	  public static String fullName(String firstName, String lastName) {
+	    return firstName + " " + lastName;
+	  }
+	  public static String fullName(String firstName, String middleName, String lastName) {
+	    return firstName + " " + middleName + " " + lastName;
+	  }
+	  public static double bmi(double height, double weight) {
+	    return weight / height / height;
+	  }
+	  public static boolean isHealthy(double bmi) {
+	    return bmi >= 18.5 && bmi < 25.0;
+	  }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	Javaでは、他人が作ったクラスを利用することもできます。このようなクラスを外部ライブラリと呼び、自分のプログラムに読み込むことで利用できるようになります。すべてのプログラムを自分だけで開発する必要はありません。世界中のエンジニアが作った便利なメソッドを利用することで、開発の幅は一気に広がります。
+	<%= image_tag '外部ライブラリ.png' %><br>
+	外部ライブラリを自分のプログラムに読み込む（使えるようにする）には、importを用います。
+	数学的なメソッドを持つMathというクラス（ライブラリ）を読み込むには、class定義より上で「import java.lang.Math」とします。「java.lang」の部分は、Mathクラスの場所を示しているという程度に覚えておきましょう。
+	<%= image_tag '外部ライブラリのimport.png' %><br>
+	Mathクラスのmaxメソッドを使ってみます。maxメソッドは、引数に渡した2つの数値の大きい方を返してくれます。外部ライブラリをうまく活用すれば、自分で実装する手間が省けるので便利ですね。
+	演習では、引数の小数点以下を四捨五入して返すroundメソッドを使います。これはdouble型の引数を渡し、Math.round(引数)のように使います。
+	<%= image_tag 'Mathクラスのメソッド1.png' %><%= image_tag 'Mathクラスのメソッド2.png' %><br>
+	[Main.java]
+	class Main {
+	  public static void main(String[] args) {
+	    Person.printData(Person.fullName("Kate", "Jones"), 27, 1.6, 50.0);
+	    Person.printData(Person.fullName("John", "Christopher", "Smith"), 65, 1.75, 80.0);
+	  }
+	}
+	[Person.java]
+	// ①java.lang.Mathを読み込んでください
+	import java.lang.Math;
+	class Person {
+	  public static void printData(String name, int age, double height, double weight) {
+	    System.out.println("私の名前は" + name + "です");
+	    System.out.println("年齢は" + age + "歳です");
+	    System.out.println("身長は" + height + "mです");
+	    System.out.println("体重は" + weight + "kgです");
+	    double bmi = bmi(height, weight);
+	    // ②引数の小数点以下を四捨五入して返すroundメソッドを使ってみましょう。「BMIは◯◯です」と出力する部分で、Mathクラスのroundメソッドを用いて、変数bmiを四捨五入し出力するようにしてください。
+	    // ③Mathクラスのroundメソッドを用いて、BMIを四捨五入して出力するようにしてください
+	    System.out.println("BMIは" + Math.round(bmi) + "です");
+	    if (isHealthy(bmi)) {
+	      System.out.println("標準値です");
+	    } else {
+	      System.out.println("標準値の範囲外です");
+	    }
+	  }
+	  public static String fullName(String firstName, String lastName) {
+	    return firstName + " " + lastName;
+	  }
+	  public static String fullName(String firstName, String middleName, String lastName) {
+	    return firstName + " " + middleName + " " + lastName;
+	  }
+	  public static double bmi(double height, double weight) {
+	    return weight / height / height;
+	  }
+	  public static boolean isHealthy(double bmi) {
+	    return bmi >= 18.5 && bmi < 25.0;
+	  }
+	}
+</div>
+
+
 </div>
 
 <div style="padding: 100px 0 100px 0;">
