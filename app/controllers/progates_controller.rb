@@ -14,5 +14,13 @@ class ProgatesController < ApplicationController
 
 	def java3
 	end
-	
+
+	def java4
+	end
+
+	def javaadvance2
+	end
+
+	def java5
+	end
 end

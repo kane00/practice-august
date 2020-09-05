@@ -1,0 +1,558 @@
+<div style="padding: 20px 0 20px 0;">
+	Home→<br><%= link_to 'Home', root_path %>
+	<%= link_to 'Progate/HTML&CSS初級編', htmlcss_first_path %>
+	first→<%= link_to 'Progate/Javaコース1', java_path %>
+	prev→<%= link_to 'Progate/Javaコース3', java_part3_path %>
+</div>
+
+<h1>Java　コース4</h1>
+
+
+<div style="padding: 100px 0 100px 0;">
+	オブジェクト指向を学ぼう
+	このレッスンではプログラミングの最重要概念の1つ「オブジェクト指向」を学びます。
+	オブジェクト指向とは単なる文法ではなく、アプリケーションをどう作るか、という考え方にあたります。
+	初めはとっつきにくいものですが、一回ですべてを理解する必要はありません。
+	まずはイメージを掴んでいくことを意識して学んでいきましょう。
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	オブジェクトは「もの」、指向は「〜を中心に」といった意味で、オブジェクト指向とは「オブジェクト（もの）を中心にした」という意味になります。
+	オブジェクト指向は、プログラムの世界に現実世界の「もの」に似たオブジェクトを作り出し、そのオブジェクトを中心にプログラムを組み立てます。まだイメージはわかないと思いますが、安心してください。
+	<%= image_tag 'オブジェクト指向とは何か.png' %><br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	例えば自己紹介プログラムを考えてみましょう。もし2人が自己紹介をするプログラムなら、プログラムの中にあたかも人間がいるかのように、「人間オブジェクト」を2つ作り、そのオブジェクトたちに自己紹介をさせます。これがオブジェクト指向の簡単なイメージです。
+	右の図はまだ理解できなくて大丈夫です。これから順に学習していきます。
+	<%= image_tag 'オブジェクト指向に触れてみよう1.png' %><%= image_tag 'オブジェクト指向に触れてみよう2.png' %><br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	現実世界の「もの」は情報と振る舞いを持っています。例えば人間であれば、「名前」や「年齢」といった情報と、「あいさつをする」「歩く」といった振る舞いを持っています。
+	プログラムの中のオブジェクトは、現実世界の「もの」を真似たものです。よって、同じように情報と振る舞いを持つように作ります。
+	<%= image_tag 'オブジェクトの姿.png' %><br>
+	オブジェクト指向で大事なのはクラスとインスタンスです。なお、インスタンスというのはオブジェクトの別名です。
+	そしてクラスはインスタンスの設計図に当たります。インスタンス（オブジェクト）は、クラスという設計図をもとに作られるので
+	<%= image_tag 'クラスとインスタンス.png' %><br>
+	インスタンスは情報と振る舞いを持つことを学びました。この情報と振る舞いは、設計図であるクラスに定義します。
+	例えば、「名前」「年齢」という情報と「あいさつする」「歩く」という振る舞いを持つ人間のインスタンスを作るのであれば、Personというクラスにそれらの情報と振る舞いを定義します。
+	<%= image_tag 'インスタンスの情報と振る舞い.png' %><br>
+	JavaⅢでは、クラスを単にメソッドをまとめる部品だと説明しました。しかし、クラスの最大の特徴は、インスタンスの設計図になることです。
+	また、インスタンスは実体という意味です。オブジェクトの別名がインスタンスなのは、設計図から実際に生み出された実体であるためです。
+	<%= image_tag 'クラスインスタンスのまとめ.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person = new Person();<br>
+	    person.hello();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  public void hello() {<br>
+	    // 「こんにちは」と出力されるように書き換えてください<br>
+	    System.out.println("こんにちは");<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	クラスの基本的な作り方は、JavaⅢで学んだことと変わりません。
+	下図はクラスの中に何も記述されていませんので、まだ白紙の設計図にすぎません。この白紙の設計図からもインスタンスを生み出すことは可能です。
+	<%= image_tag 'クラスの定義.png' %><br>
+	クラスからインスタンスを生成するには「new クラス名()」とします。下図では空のクラスを元にインスタンスを生成しているので、インスタンスはまだ情報も振る舞いも持っていません。
+	<%= image_tag 'インスタンスの生成1.png' %><%= image_tag 'インスタンスの生成2.png' %><br>
+	インスタンスは変数に代入して用います。
+	変数にインスタンスを代入するには「クラス型 変数名 = new クラス名()」とします。これまでは変数名の前にデータ型を指定してきましたが、インスタンスの代入ではクラス型を指定します。クラス名がそのままクラス型になります。
+	<%= image_tag 'インスタンスに変数を代入する1.png' %><%= image_tag 'インスタンスに変数を代入する2.png' %><br>
+	インスタンスは、1つのクラスから何個でも生成できます。設計図を元に同じようなオブジェクトを簡単に大量に作ることができるのです。
+	そして同じクラスから作られたインスタンスは、すべて同じ種類の情報（中の値はインスタンスごとに変わり得ます）と振る舞いを持ちます。詳しくは次のレッスンから学んでいきます。
+	<%= image_tag 'インスタンスに変数を代入する1.png' %><%= image_tag 'インスタンスに変数を代入する2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // ②Personクラスのインスタンスを生成し、変数person1に代入してください<br>
+	    Person person1 = new Person();<br>
+	    // ③Personクラスのインスタンスを生成し、変数person2に代入してください<br>
+	    Person person2 = new Person();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	// ①Personクラスを定義してください<br>
+	class Person {<br>
+	  <br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	インスタンスは情報と振る舞いを持つことは学びました。インスタンスの情報にあたるものを「インスタンスフィールド」、振る舞いにあたるものを「インスタンスメソッド」と呼びます。ひとつずつ学習していきますので、まだ覚えなくて大丈夫です。
+	<%= image_tag 'インスタンスの情報と振る舞いについて.png' %><br>
+	まずはインスタンスメソッドについて学びましょう。
+	まずはこのインスタンスにどんな振る舞いをさせたいかを考えます。
+	人間なので「あいさつ」という振る舞いをつけることにしましょう。helloというインスタンスメソッドを定義してみます。
+	<%= image_tag 'インスタンスメソッドを定義しよう.png' %><br>
+	インスタンスの振る舞いは、プログラム上ではメソッドで表現します。このインスタンスのメソッドのことをインスタンスメソッドと呼びます。
+	インスタンスメソッドは「public 戻り値の型 メソッド名()」と定義します。Java Ⅲで学習したメソッドと違い「static」がありません。これについて詳しくは後ほど学びます。
+	<%= image_tag 'インスタントメソッドの定義1.png' %><%= image_tag 'インスタントメソッドの定義2.png' %><br>
+	インスタンスメソッドは、インスタンスのメソッドです。クラスに定義しても、実際は各インスタンスに属するというイメージを持っておきましょう。
+	それゆえ、インスタンスメソッドはインスタンス（を代入した変数）に対して呼び出します。JavaⅢで学んだメソッド同様、ドット（.）を使って呼び出しますが、「インスタンス名.メソッド名()」とします。
+	<%= image_tag 'インスタントメソッドの呼び出し1.png' %><%= image_tag 'インスタントメソッドの呼び出し2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person();<br>
+	    // ②person1に対して、helloメソッドを呼び出してください<br>
+	    // ・person1に対して、helloメソッドを呼び出してください。<br>
+	    // ・person2に対して、helloメソッドを呼び出してください。（インスタンスメソッドは、インスタンスを生成した後でしか呼び出せないので、呼び出す場所に注意しましょう）<br>
+	    person1.hello();<br>
+	    Person person2 = new Person();<br>
+	    // ③person2に対して、helloメソッドを呼び出してください<br>
+	    person2.hello();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  // ①インスタンスメソッドhelloを定義してください<br>
+	  public void hello(){<br>
+	    System.out.println("こんにちは");<br>
+	  }<br>
+	}<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	続いてインスタンスフィールドについて学びます。インスタンスフィールドとはインスタンスが持つ情報のことでしたね。
+	人間のインスタンスにどんな情報を持たせたいかを考え、それをクラスに定義しておきます。
+	人間ですのでまず「名前」という情報を持たせてあげましょう
+	<%= image_tag 'インスタンスフィールド.png' %><br>
+	インスタンスフィールドは、情報を格納しておく変数にすぎません。
+	その変数はクラスの一番上に定義します。
+	注意点として、「public データ型 変数名」というように、変数定義の前にpublicを付けてあげましょう。メソッドやフィールドのpublicの意味は、このレッスンの最後に学習します。
+	<%= image_tag 'インスタンスフィールドの定義1.png' %><%= image_tag 'インスタンスフィールドの定義2.png' %><br>
+	インスタンスフィールドも各インスタンスに属します。インスタンスを生成するときに、各インスタンスにフィールドがコピーされるというイメージで覚えておきましょう。
+	<%= image_tag 'インスタンスのフィールド.png' %><br>
+	インスタンスフィールドには、「インスタンス名.フィールド名」というように、インスタンスに対してドット（.）を用いてアクセスします。
+	ドットを用いること以外、変数と扱いはあまり変わりません。下図のように、値の取得とセット（代入）が可能です。
+	<%= image_tag 'インスタンスフィールドへのアクセス1.png' %><%= image_tag 'インスタンスフィールドへのアクセス2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person();<br>
+	    person1.hello();<br>
+	    // ②person1のインスタンスフィールドnameに「Kate Jones」をセットしてください<br>
+	    person1.name = "Kate Jones";<br>
+	    // ③person1のインスタンスフィールドnameの値を出力してください<br>
+	    System.out.println(person1.name);<br>
+	    Person person2 = new Person();<br>
+	    person2.hello();<br>
+	    // ④person2のインスタンスフィールドnameに「John Christopher Smith」をセットしてください<br>
+	    person2.name = "John Christopher Smith";<br>
+	    // ⑤person2のインスタンスフィールドnameの値を出力してください<br>
+	    System.out.println(person2.name);<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  // ①インスタンスフィールドnameを定義してください<br>
+	  public String name;<br>
+	  public void hello() {<br>
+	    System.out.println("こんにちは");<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	インスタンスフィールドnameの値を用いて、helloメソッドで「こんにちは、私は◯◯です」と、自分の名前とともに出力するようにしてみましょう。
+	こうするためには、右の図のようにhelloメソッドの中でnameフィールドの値を使うことができればいいはずです。
+	<%= image_tag 'クラスの中でインスタンスを扱う1.png' %><%= image_tag 'クラスの中でインスタンスを扱う2.png' %><br>
+	メソッド内でインスタンスフィールドにアクセスするためには「this」という特殊な変数を用います。
+	thisはクラス内のメソッドの定義の中でのみ使用できます。
+	thisはメソッドが呼ばれた時に、そのメソッドを呼び出しているインスタンスに置き換えられます。
+	<%= image_tag 'this1.png' %><%= image_tag 'this2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person();<br>
+	    person1.name = "Kate Jones";<br>
+	    person1.hello();<br>
+	    Person person2 = new Person();<br>
+	    person2.name = "John Christopher Smith";<br>
+	    person2.hello();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  public String name;<br>
+	  public void hello() {<br>
+	    // thisを用いて、「こんにちは、私は◯◯です」で出力するように以下を書き換えてください<br>
+	    System.out.println("こんにちは、私は" + this.name + "です");<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	ここまではインスタンスを生成してから、nameフィールドの値をセットしてきましたが、これはインスタンスフィールドが増えると面倒になりそうです。
+	実はインスタンスフィールドへの値のセットを楽にする方法が用意されています。
+	ここから2つの演習に渡って、その方法を学んでいきます
+	<%= image_tag 'インスタンスフィールドへの値のセット.png' %><br>
+	クラスには、コンストラクタというものがあります。
+	コンストラクタとは、newを使ってインスタンスを生成した後に自動で呼び出される特別なメソッドです
+	<%= image_tag 'コンストラクタ.png' %><br>
+	コンストラクタは特別なメソッドのため、定義方法が決まっています。①コンストラクタ名はクラス名と同じにする、②戻り値を書いてはいけない（voidも書かない）という2つの決まりを守りましょう。この2つさえ守れば、コンストラクタの完成です。
+	<%= image_tag 'コンストラクタの定義.png' %><br>
+	以下の例は、newでインスタンスを生成したときに、コンストラクタが呼び出されている例です。
+	これだけでは、最初の「インスタンスフィールドの値のセットを楽にする」ことはできませんが、まずは演習でコンストラクタを体験してみましょう
+	<%= image_tag 'コンストラクタの具体例1.png' %><%= image_tag 'コンストラクタの具体例2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person();<br>
+	    Person person2 = new Person();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  public String name;<br>
+	  // コンストラクタを定義してください<br>
+	  Person(){<br>
+	    System.out.println("インスタンスが生成されました");<br>
+	  }<br>
+	  public void hello() {<br>
+	    System.out.println("こんにちは、私は" + this.name + "です");<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	それではコンストラクタを用いて、インスタンスフィールドへの値のセットの面倒さを解決していきましょう。
+	newでインスタンスを生成した後に自動で実行されるコンストラクタの中で、各フィールドに値をセットするようにします。
+	<%= image_tag 'フィールドに値をセットする1.png' %><%= image_tag 'フィールドに値をセットする2.png' %><br>
+	newでインスタンスを作る際、「new クラス名()」の()には引数を渡すことができます。そしてその引数は直後に呼び出されるコンストラクタに受け渡されます。
+	こうして、コンストラクタに任意の情報を渡すことができるようになります。
+	<%= image_tag 'コンストラクタに情報を渡す.png' %><br>
+	インスタンスを生成する際に、インスタンスフィールドにセットしたい値を引数に渡し、コンストラクタでセットするようにしてあげましょう。
+	コンストラクタでも、thisを用いてインスタンスを利用することができます。
+	<%= image_tag 'フィールドに値をセットする1.png' %><%= image_tag 'フィールドに値をセットする2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // ③newの引数に「Kate Jones」を渡してください<br>
+	    Person person1 = new Person("Kate Jones");<br>
+	    person1.hello();<br>
+	    // ④newの引数に「John Christopher Smith」を渡してください<br>
+	    Person person2 = new Person("John Christopher Smith");<br>
+	    person2.hello();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  public String name;<br>
+	  // ①コンストラクタがString型の引数を受け取るようにしてください<br>
+	  Person(String name) {<br>
+	    System.out.println("インスタンスが生成されました");<br>
+	    // ②インスタンスフィールドnameに値をセットしてください<br>
+	    this.name = name;<br>
+	  }<br>
+	  public void hello() {<br>
+	    System.out.println("こんにちは、私は" + this.name + "です");<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	ここまででオブジェクト指向の基礎の基礎は学び終えました。
+	ここからはJavaⅢで作った自己紹介プログラムを、オブジェクト指向を使って実装していきます。まずは目標物を確認しましょう。
+	<%= image_tag '自己紹介プログラムを改善しよう.png' %><br>
+	自己紹介もPersonクラスのインスタンスが活躍します。まずはインスタンスフィールドを定義しましょう。今回は下図のような情報を持たせます。
+	実際の開発でも、インスタンスにどんな情報を持たせるかをまず考え、下図のように書き出したりします。現実世界の「もの」はありとあらゆる情報を持っていますが、プログラムの中では必要最小限の情報を持たせましょう。
+	<%= image_tag 'インスタンスフィールドを定義しよう.png' %><br>
+	インスタンス生成時にインスタンスフィールドの値をセットできるように、コンストラクタを作りましょう。
+	<%= image_tag 'コンストラクタを作ろう.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);<br>
+	    System.out.println(person1.firstName);<br>
+	    System.out.println(person1.lastName);<br>
+	    System.out.println(person1.age);<br>
+	    System.out.println(person1.height);<br>
+	    System.out.println(person1.weight);<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  // ①以下にインスタンスフィールドを定義してください<br>
+	  public String firstName;<br>
+	  public String lastName;<br>
+	  public int age;<br>
+	  public double height;<br>
+	  public double weight;<br>
+	  // ②以下にコンストラクタを定義し、インスタンスフィールドに値をセットしてください<br>
+	  Person(String firstName, String lastName, int age, double height, double weight){<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	}<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	インスタンスメソッドを定義しましょう。
+	まずは、JavaⅢで作ったfullNameメソッドとbmiメソッドを、インスタンスメソッドにします。
+	printDataメソッドは後ほど作ります（なお、JavaⅢで作成したisHealthyメソッドはこの演習では扱いません）。
+	<%= image_tag 'インスタンスメソッドを定義しよう-4-11.png' %><br>
+	JavaⅢでのfullNameメソッドと、新しく作るfullNameメソッドを比較してみましょう。
+	JavaⅢでは、引数で値を渡していましたが、この必要はもうありません。インスタンスメソッドは、thisを使って自分のインスタンスフィールド（情報）を取得できるからです。bmiメソッドも同様です。
+	<%= image_tag 'インスタンスメソッドに書き換える1.png' %><%= image_tag 'インスタンスメソッドに書き換える2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);<br>
+	    System.out.println(person1.fullName());<br>
+	    System.out.println(person1.age);<br>
+	    System.out.println(person1.bmi());<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  public String firstName;<br>
+	  public String lastName;<br>
+	  public int age;<br>
+	  public double height;<br>
+	  public double weight;<br>
+	  Person(String firstName, String lastName, int age, double height, double weight) {<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	  // ①fullNameメソッドを定義してください<br>
+	  //fullNameメソッドの中で、インスタンスのフルネームを返すようにします。thisを用いて、「JavaⅢ」の下記のコードを書き換えてください。<br>
+	  public String fullName(){<br>
+	    return this.firstName + " " + this.lastName;<br>
+	  }<br>
+	  // ②bmiメソッドを定義してください<br>
+	  public double bmi(){<br>
+	    return this.weight / this.height / this.height;<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	インスタンスが自分の情報をコンソールに出力するprintDataというインスタンスメソッドを定義しましょう。
+	printDataメソッドは、fullNameメソッドやbmiメソッドといった他のメソッドを呼び出します。インスタンスを指すthisを使えば、他のインスタンスメソッドを呼び出すことも可能です。
+	<%= image_tag '他のインスタンスメソッドを呼びだそう1.png' %><%= image_tag '他のインスタンスメソッドを呼びだそう2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);<br>
+	    person1.printData();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  public String firstName;<br>
+	  public String lastName;<br>
+	  public int age;<br>
+	  public double height;<br>
+	  public double weight;<br>
+	  Person(String firstName, String lastName, int age, double height, double weight) {<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	  public String fullName() {<br>
+	    return this.firstName + " " + this.lastName;<br>
+	  }<br>
+	  public double bmi() {<br>
+	    return this.weight / this.height / this.height;<br>
+	  }<br>
+	  // printDataメソッドを定義してください。printDataメソッドの中で、thisを用いて、下記の処理をおこなってください。<br>
+	  //・fullNameメソッドを用いて、の名前は◯◯ですと出力 ・ageフィールドを用いて、年齢は◯◯歳ですと出力 ・bmiメソッドを用いて、BMIは◯◯ですと出力<br>
+	  // （ただし、BMIは四捨五入してください。四捨五入の方法はJavaⅢで学習しました。覚えていない人はヒントを参照してください）<br>
+	  public void printData(){  //printDataメソッドの戻り値のデータ型には、voidを指定してください<br>
+	    System.out.println("私の名前は" + this.fullName() + "です");<br>
+	    System.out.println("年齢は" + this.age + "歳です");<br>
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	これまでインスタンスに属するインスタンスフィールドを学習してきましたが、実はクラスに属する、クラスフィールドというものもあります。
+	クラスフィールドは、staticをつけて「public static データ型 変数名」と定義します。
+	<%= image_tag 'クラスフィールドとその定義.png' %><br>
+	何人分のインスタンスを生成したか数えるために、countというフィールドで、インスタンスの生成回数を保存するようにしてみます。
+	countは個々のインスタンスが持つものではなく、Personクラスが持っていればよいので、クラスフィールドにしてあげましょう。
+	<%= image_tag 'クラスフィールドの具体例1.png' %><%= image_tag 'クラスフィールドの具体例2.png' %><br>
+	フィールドには、定義時に初期値を設定しておくことができます。
+	countはインスタンスの生成回数なので、下図のように定義時に0を代入しておきましょう。
+	<%= image_tag 'フィールドに初期値を設定する.png' %><br>
+	クラスフィールドには「クラス名.クラスフィールド名」でアクセスすることができます。
+	右の図ではコンストラクタで、countに1を足しています。このようにすれば、インスタンスの生成の度にcountに1が追加されていくので、左の図で取得しているcountの値が変化していることがわかります。
+	<%= image_tag 'クラスフィールドの具体例1.png' %><%= image_tag 'クラスフィールドの具体例2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);<br>
+	    person1.printData();<br>
+	    Person person2 = new Person("John", "Smith", 65, 1.75, 80.0);<br>
+	    person2.printData();<br>
+	    // ③「合計◯◯人です」と出力してください<br>
+	    System.out.println("合計" + Person.count + "人です");<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  // ①int型のクラスフィールドcountを定義し、0を代入してください<br>
+	  public static int count=0;<br>
+	  public String firstName;<br>
+	  public String lastName;<br>
+	  public int age;<br>
+	  public double height, weight;<br>
+	  Person(String firstName, String lastName, int age, double height, double weight) {<br>
+	    // ②変数countに1を足してください<br>
+	    Person.count ++;<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	  public String fullName() {<br>
+	    return this.firstName + " " + this.lastName;<br>
+	  }<br>
+	  public double bmi() {<br>
+	    return this.weight / this.height / this.height;<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("私の名前は" + this.fullName() + "です");<br>
+	    System.out.println("年齢は" + this.age + "歳です");<br>
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	クラスフィールドがクラスに属するフィールドであるように、クラスに属するメソッドもあります。これをクラスメソッドといいます。
+	クラスメソッドの定義は、「public static 戻り値の型 メソッド名()」とします。
+	<%= image_tag 'クラスに属するメソッド.png' %><br>
+	JavaⅢで学習したメソッドにはすべてstaticがついていました。実はこれらはすべてクラスメソッドだったのです。
+	クラスメソッドは「クラス名.メソッド名()」と呼び出します。これはクラスメソッドがクラスに属しているためです。クラスメソッドはインスタンスを生成しない状態でも呼び出すことができます。
+	<%= image_tag 'クラスメソッドの呼び出し1.png' %><%= image_tag 'クラスメソッドの呼び出し2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);<br>
+	    person1.printData();<br>
+	    Person person2 = new Person("John", "Smith", 65, 1.75, 80.0);<br>
+	    person2.printData();<br>
+	    // ②printCountメソッドを呼び出してください<br>
+	    Person.printCount();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  public static int count = 0;<br>
+	  public String firstName, lastName;<br>
+	  public int age;<br>
+	  public double height, weight;<br>
+	  Person(String firstName, String lastName, int age, double height, double weight) {<br>
+	    Person.count++;<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	  public String fullName() {<br>
+	    return this.firstName + " " + this.lastName;<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("私の名前は" + this.fullName() + "です");<br>
+	    System.out.println("年齢は" + this.age + "歳です");<br>
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");<br>
+	  }<br>
+	  public double bmi() {<br>
+	    return this.weight / this.height / this.height;<br>
+	  }<br>
+	  // ①クラスメソッドprintCount()を定義してください<br>
+	  public static void printCount(){<br>
+	    System.out.println("合計" + Person.count + "人です");<br>
+	  }<br>
+	}<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	インスタンスフィールドに戻ります。インスタンスがmiddleNameというフィールドも持つようにしましょう。
+	middleNameフィールドを定義することは簡単です。しかし、コンストラクタの引数に不用意にmiddleNameを追加してしまうと、middleNameを持たない人はインスタンスを生成するときにエラーが発生してしまいます。
+	<%= image_tag 'ミドルネームを追加しよう1.png' %><%= image_tag 'ミドルネームを追加しよう2.png' %><br>
+	この問題を解決するために、コンストラクタをオーバーロードすることができます。オーバーロードとは、引数の型や数が違えば同名のメソッドを定義できる仕組みでした（JavaⅢ）。middleNameを引数に受け取らないものと、受け取るもの、2つのコンストラクタを定義すれば、Javaは渡された引数に合わせて適切なコンストラクタを自動で呼び出してくれます。
+	<%= image_tag 'コンストラクタのオーバーロード1.png' %><%= image_tag 'コンストラクタのオーバーロード2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);<br>
+	    person1.printData();<br>
+	    // ③middleNameとして「Christopher」を渡してください<br>
+	    Person person2 = new Person("John", "Christopher", "Smith", 65, 1.75, 80.0);<br>
+	    person2.printData();<br>
+	    Person.printCount();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  public static int count = 0;<br>
+	  public String firstName;<br>
+	  // ①インスタンスフィールドmiddleNameを定義してください<br>
+	  public String middleName;<br>
+	  public String lastName;<br>
+	  public int age;<br>
+	  public double height, weight;<br>
+	  Person(String firstName, String lastName, int age, double height, double weight) {<br>
+	    Person.count++;<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	  // ②middleNameを受け取るコンストラクタを定義してください<br>
+	  // 新しく作ったコンストラクタの中に、元のコンストラクタの処理（Person.count++;    this.firstName = firstName;    this.lastName = lastName;    this.age = age;    this.height = height;    this.weight = weight;）を貼り付けてください。また、middleNameフィールドの値をセットしてください。<br>
+	  Person(String firstName, String middleName, String lastName, int age, double height, double weight){<br>
+	    Person.count++;<br>
+	    this.firstName = firstName;<br>
+	    this.middleName = middleName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	  public String fullName() {<br>
+	    return this.firstName + " " + this.lastName;<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("私の名前は" + this.fullName() + "です");<br>
+	    System.out.println("年齢は" + this.age + "歳です");<br>
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");<br>
+	  }<br>
+	  public double bmi() {<br>
+	    return this.weight / this.height / this.height;<br>
+	  }<br>
+	  public static void printCount() {<br>
+	    System.out.println("合計" + Person.count + "人です");<br>
+	  }<br>
+	}
+</div>
+
+
+
+<div style="padding: 100px 0 100px 0;">
+next→<%= link_to 'Progate/Javaコース5', java_part5_path %>
+break→<%= link_to 'Progate/Java道場コース2', java_advance_part2_path %>
+</div>
