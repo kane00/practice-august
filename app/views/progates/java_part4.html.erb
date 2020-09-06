@@ -550,7 +550,424 @@
 	}
 </div>
 
+<div style="padding: 100px 0 100px 0;">
+	コンストラクタをオーバーロードしたのはいいですが、2つのコンストラクタの中身はほとんど重複しています。コードの重複は、修正などを大変にしてしまう良くないコードです。
+	<%= image_tag 'コンストラクタの中身の重複1.png' %><%= image_tag 'コンストラクタの中身の重複2.png' %><br>
+	this()とすると、コンストラクタから他のコンストラクタを呼び出すことができます。this()はコンストラクタを呼び出すための特別なメソッドで、()に引数を渡すことも可能です。
+	また、thisはコンストラクタの先頭でしか呼び出せません。
+	<%= image_tag '他のコンストラクタを呼び出す1.png' %><%= image_tag '他のコンストラクタを呼び出す2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);<br>
+	    person1.printData();<br>
+	    Person person2 = new Person("John", "Christopher", "Smith", 65, 1.75, 80.0);<br>
+	    person2.printData();<br>
+	    Person.printCount();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  public static int count = 0;<br>
+	  public String firstName;<br>
+	  public String middleName;<br>
+	  public String lastName;<br>
+	  public int age;<br>
+	  public double height, weight;<br>
+	  Person(String firstName, String lastName, int age, double height, double weight) {<br>
+	    Person.count++;<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	  Person(String firstName, String middleName, String lastName, int age, double height, double weight) {<br>
+	    // ①this()を用いて、コンストラクタを呼び出してください<br>
+	    // コンストラクタの重複を取り除きましょう。middleNameを引数として受け取るコンストラクタの先頭行で、thisを用いて、他のコンストラクタを呼び出してください。ただし、thisに引数を渡すことを忘れないでください。<br>
+	    this(firstName, lastName, age, height, weight);<br>
+	    this.middleName = middleName;<br>
+	  }<br>
+	  public String fullName() {<br>
+	    return this.firstName + " " + this.lastName;<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("私の名前は" + this.fullName() + "です");<br>
+	    System.out.println("年齢は" + this.age + "歳です");<br>
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");<br>
+	  }<br>
+	  public double bmi() {<br>
+	    return this.weight / this.height / this.height;<br>
+	  }<br>
+	  public static void printCount() {<br>
+	    System.out.println("合計" + Person.count + "人です");<br>
+	  }<br>
+	}
+</div>
 
+<div style="padding: 100px 0 100px 0;">
+	さて、middleNameフィールドを追加することができましたが、下図のように、現在のfullNameメソッドでは、middleNameが表示されていません。
+	しかし、middleNameは持っている人もいれば、持っていない人もいるので、むやみにmiddleNameフィールドの値を連結することはできません。一体どうすれば良いでしょうか？
+	<%= image_tag 'fullNameメソッドの書き換え1.png' %><%= image_tag 'fullNameメソッドの書き換え2.png' %><br>
+	そもそも値がセットされていないmiddleNameフィールドには、一体何が入っているのでしょうか？
+	実はnullという値がはいっています。nullとは「何もない」を意味する特別な値です（文字列ではありません）。聞き慣れない言葉ですが、nullはプログラミングで必須の知識ですので覚えておきましょう。
+	<%= image_tag 'null.png' %><br>
+	Javaでは、変数の定義時に値を代入しなかった場合、実は決まったデフォルト値が変数に代入されます。フィールドも変数ですので同様です。下図のようにデータ型によって、入る値が決まっています。
+	先ほどのmiddleNameにnullが入っていたのは、middleNameがString型の変数であるためです。
+	<%= image_tag '変数の初期値.png' %><br>
+	それではfullNameメソッドの中で、middleNameがnullかどうかによって、返す値を変えるようにしましょう。
+	下図のように、条件分岐を行えばmiddleNameの値がセットされているインスタンスは、middleNameを含めたフルネームを、そうでないインスタンスならmiddleNameを含めないフルネームを返せるようになります。
+	<%= image_tag 'fullNameメソッドを書き換えよう.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);<br>
+	    person1.printData();<br>
+	    Person person2 = new Person("John", "Christopher", "Smith", 65, 1.75, 80.0);<br>
+	    person2.printData();<br>
+	    Person.printCount();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  public static int count = 0;<br>
+	  public String firstName;<br>
+	  public String middleName;<br>
+	  public String lastName;<br>
+	  public int age;<br>
+	  public double height;<br>
+	  public double weight;<br>
+	  Person(String firstName, String lastName, int age, double height, double weight) {<br>
+	    Person.count++;<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	  Person(String firstName, String middleName, String lastName, int age, double height, double weight) {<br>
+	    this(firstName, lastName, age, height, weight);<br>
+	    this.middleName = middleName;<br>
+	  }<br>
+	  public String fullName() {<br>
+	    // middleNameを持っている人はmiddleNameも出力されるようにしましょう。<br>
+	    // 以下を、middleNameがない場合とある場合で条件分岐を行ってください<br>
+	    if (middleName == null) {<br>
+	      return this.firstName + " " + this.lastName;<br>
+	    } else {<br>
+	      return this.firstName + " " + this.middleName + " " + this.lastName;<br>
+	    }<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("私の名前は" + this.fullName() + "です");<br>
+	    System.out.println("年齢は" + this.age + "歳です");<br>
+	    System.out.println("身長は" + this.height + "mです");<br>
+	    System.out.println("体重は" + this.weight + "kgです");<br>
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");<br>
+	  }<br>
+	  public double bmi() {<br>
+	    return this.weight / this.height / this.height;<br>
+	  }<br>
+	  public static void printCount() {<br>
+	    System.out.println("合計" + Person.count + "人です");<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	ここからは「カプセル化」というものを学んでいきます。
+	「カプセル化」とは、オブジェクト指向の重要な機能の１つで、使い手に必要ないものを隠してしまうことを言います。
+	<%= image_tag 'カプセル化.png' %><br>
+	まずは、現実世界の例でカプセル化のイメージをつかみましょう。
+	例えば、パソコンの回路はパソコンの内部に隠されており、ユーザーはキーボードなど限られた部分しか操作することができません。回路を隠す（カプセル化をする）と回路に触れてパソコンを壊してしまう危険を回避できます。
+	プログラミングでもこのような「カプセル化」の仕組みがあります。
+	<%= image_tag 'カプセル化のイメージ.png' %><br>
+	自分がクラスを作る際には他の人が安心してそのクラスを使えるように、他の人に使ってほしい機能は公開し、クラスの外で使ってほしくない機能は隠します。
+	使える機能を制限することで他の人はどの機能を使えばいいかが分かりやすく、また、安全にクラスを利用することができるようになります。
+	<%= image_tag 'クラスでのカプセル化.png' %><br>
+	カプセル化とは、具体的にはフィールドとメソッドへのアクセスを制限することです。クラスの外部からアクセスできるようにするには「public」を、アクセスできないようにするには「private」を用いて定義します。
+	下図はprivateなフィールドにMainクラスからアクセスできない様子を示しています。
+	<%= image_tag 'フィールドとメソッドのアクセス制限1.png' %><%= image_tag 'フィールドとメソッドのアクセス制限2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);<br>
+	    person1.printData();<br>
+	    Person person2 = new Person("John", "Christopher", "Smith", 65, 1.75, 80.0);<br>
+	    person2.printData();<br>
+	    Person.printCount();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  // フィールドに直接アクセスできないようにします。Personクラスに定義している、インスタンスフィールド及びクラスフィールドを、すべてprivateなフィールドに書き換えてください。<br>
+	  // ①以下をすべてprivateなフィールドに書き換えてください<br>
+	  private static int count = 0;<br>
+	  private String firstName;<br>
+	  private String middleName;<br>
+	  private String lastName;<br>
+	  private int age;<br>
+	  private double height;<br>
+	  private double weight;<br>
+	  Person(String firstName, String lastName, int age, double height, double weight) {<br>
+	    Person.count++;<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	  Person(String firstName, String middleName, String lastName, int age, double height, double weight) {<br>
+	    this(firstName, lastName, age, height, weight);<br>
+	    this.middleName = middleName;<br>
+	  }<br>
+	  public String fullName() {<br>
+	    if (this.middleName == null) {<br>
+	      return this.firstName + " " + this.lastName;<br>
+	    } else {<br>
+	      return this.firstName + " " + this.middleName + " " + this.lastName;<br>
+	    }<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("私の名前は" + this.fullName() + "です");<br>
+	    System.out.println("年齢は" + this.age + "歳です");<br>
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");<br>
+	  }<br>
+	  public double bmi() {<br>
+	    return this.weight / this.height / this.height;<br>
+	  }<br>
+	  public static void printCount() {<br>
+	    System.out.println("合計" + Person.count + "人です");<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	フィールドのアクセス権をprivateにすると、フィールドにクラスの外からアクセスすることができなくなります。
+	一方、privateでも、クラス内からはアクセスすることが可能です。
+	<%= image_tag 'クラス外からのアクセス1.png' %><%= image_tag 'クラス外からのアクセス2.png' %><br>
+	フィールドをprivateにした上で、クラス外から安全にフィールドの値を取得するために、フィールドの値を返すだけのメソッドを定義します。これをゲッターと呼びます。
+	ゲッターは「getフィールド名」のように命名するのが一般的です。
+	<%= image_tag 'ゲッター1.png' %><%= image_tag 'ゲッター2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);<br>
+	    person1.printData();<br>
+	    Person person2 = new Person("John", "Christopher", "Smith", 65, 1.75, 80.0);<br>
+	    person2.printData();<br>
+	    System.out.println("----------------------");<br>
+	    // ③person2に対して、getMiddleNameメソッドを呼び出し、「person2のミドルネームは◯◯です」と出力してください<br>
+	    System.out.println("person2のミドルネームは" + person2.getMiddleName() + "です");  //getMiddleNameメソッドの定義で、メソッド名の後に()がありません
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  private static int count = 0;<br>
+	  private String firstName;<br>
+	  private String middleName;<br>
+	  private String lastName;<br>
+	  private int age;<br>
+	  private double height;<br>
+	  private double weight;<br>
+	  Person(String firstName, String lastName, int age, double height, double weight) {<br>
+	    Person.count++;<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	  Person(String firstName, String middleName, String lastName, int age, double height, double weight) {<br>
+	    this(firstName, lastName, age, height, weight);<br>
+	    this.middleName = middleName;<br>
+	  }<br>
+	  // privateにしたフィールドの値をクラス外から取得できるようにゲッターを作りましょう。<br>
+	  // ①middleNameフィールドのゲッターを定義してください<br>
+	  // ②getMiddleNameメソッドの中で、インスタンスフィールドmiddleNameの値を返してください。<br>
+	  public String getMiddleName() {<br>
+	    return this.middleName;  //thisを用いて、middleNameフィールドの値を取得し、戻り値にしてください<br>
+	  }<br>
+	  public String fullName() {<br>
+	    if (this.middleName == null) {<br>
+	      return this.firstName + " " + this.lastName;<br>
+	    } else {<br>
+	      return this.firstName + " " + this.middleName + " " + this.lastName;<br>
+	    }<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("私の名前は" + this.fullName() + "です");<br>
+	    System.out.println("年齢は" + this.age + "歳です");<br>
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");<br>
+	  }<br>
+	  public double bmi() {<br>
+	    return this.weight / this.height / this.height;<br>
+	  }<br>
+	  public static void printCount() {<br>
+	    System.out.println("合計" + Person.count + "人です");<br>
+	  }<br>
+	}<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	フィールドのアクセス権をprivateにすると、当然フィールドの値をクラスの外から変更することもできなくなります。
+	<%= image_tag 'フィールドの値の変更.png' %><br>
+	そこで、フィールドの値を変更するメソッドを定義します。
+	このような、フィールドの値を変更するメソッドを特に「セッター」といいます。セッターは「setフィールド名」のように命名するのが一般的です。
+	<%= image_tag 'セッター1.png' %><%= image_tag 'セッター2.png' %><br>
+	何をprivateにし、何をpublicにするかというのは最初はよくわからないかもしれませんが、基本的なやり方があります。
+	最初のうちは、①フィールドはprivateに、②メソッドはpublicに、という2点沿っておけば、基本的に問題はありません。
+	<%= image_tag 'カプセル化の定石.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);<br>
+	    person1.printData();<br>
+	    Person person2 = new Person("John", "Christopher", "Smith", 65, 1.75, 80.0);<br>
+	    person2.printData();<br>
+	    System.out.println("----------------------");<br>
+	    // ②person1のmiddleNameフィールドの値を「Claire」にしてください<br>
+	    person1.setMiddleName("Claire");<br>
+	    System.out.println("ミドルネームを" + person1.getMiddleName() + "に変更しました");<br>
+	    person1.printData();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  private static int count = 0;<br>
+	  private String firstName;<br>
+	  private String middleName;<br>
+	  private String lastName;<br>
+	  private int age;<br>
+	  private double height;<br>
+	  private double weight;<br>
+	  Person(String firstName, String lastName, int age, double height, double weight) {<br>
+	    Person.count++;<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	  Person(String firstName, String middleName, String lastName, int age, double height, double weight) {<br>
+	    this(firstName, lastName, age, height, weight);<br>
+	    this.middleName = middleName;<br>
+	  }<br>
+	  public String getMiddleName() {<br>
+	    return this.middleName;<br>
+	  }<br>
+	  // セッターを用意し、Personクラス外からもフィールドの値をセットできるようにします。インスタンスメソッドsetMiddleNameを定義してください。このメソッドに戻り値はありません（void）。また、setMiddleNameメソッドはString型の引数を受け取り、仮引数の名前はmiddleNameとしてください。<br>
+	  // ①middleNameフィールドのセッターを定義してください<br>
+	  public void setMiddleName(String middleName) {  //public void setフィールド名(データ型 仮引数)<br>
+	    this.middleName = middleName;<br>
+	  }<br>
+	  public String fullName() {<br>
+	    if (this.middleName == null) {<br>
+	      return this.firstName + " " + this.lastName;<br>
+	    } else {<br>
+	      return this.firstName + " " + this.middleName + " " + this.lastName;<br>
+	    }<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("私の名前は" + this.fullName() + "です");<br>
+	    System.out.println("年齢は" + this.age + "歳です");<br>
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");<br>
+	  }<br>
+<br>
+	  public double bmi() {<br>
+	    return this.weight / this.height / this.height;<br>
+	  }<br>
+
+	  public static void printCount() {<br>
+	    System.out.println("合計" + Person.count + "人です");<br>
+	  }<br>
+	}<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	最後に、各インスタンスの仕事を保存する、「job」というインスタンスフィールドを追加しましょう。フィールド定義、コンストラクタの変更、ゲッター・セッターの定義、メソッドの修正を一通りやってみましょう。
+	<%= image_tag '仕事を追加しよう.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // ⑥仕事を「医者」にしてください<br>
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0, "医者");<br>
+	    person1.printData();<br>
+	    // ⑦仕事を「教師」にしてください<br>
+	    Person person2 = new Person("John", "Christopher", "Smith", 65, 1.75, 80.0, "教師");<br>
+	    person2.printData();<br>
+	    System.out.println("----------------------");<br>
+	    // ⑧person1の仕事を「獣医」に変更してください<br>
+	    person1.setJob("獣医");<br>
+	    // ⑨「person1の仕事を◯◯に変更しました」と出力されるようにしてください<br>
+	    System.out.println("person1の仕事を" + person1.getJob() + "に変更しました");  //getJobメソッドを呼び出してください、()忘れに注意<br>
+	    person1.printData();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  private static int count = 0;<br>
+	  private String firstName;<br>
+	  private String middleName;<br>
+	  private String lastName;<br>
+	  private int age;<br>
+	  private double height;<br>
+	  private double weight;<br>
+	  // ①インスタンスフィールド「job」を追加してください<br>
+	  //クラス外からは直接アクセスできない、String型のインスタンスフィールドjobを定義してください。<br>
+	  private String job;<br>
+	  // jobフィールドの値を、インスタンスの生成時にセットできるように、2つのコンストラクタを書き換えてください。（ただし、仮引数の名前はjobとし、newの最後の引数として渡すようにしてください。また、jobフィールドの値は、middleNameを引数に受け取らないコンストラクタの方でセットするようにしましょう）<br>
+	  // ②コンストラクタを書き換えてください<br>
+	  Person(String firstName, String lastName, int age, double height, double weight, String job) {<br>
+	    Person.count++;<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	    this.job = job;<br>
+	  }<br>
+	  // ③コンストラクタを書き換えてください<br>
+	  Person(String firstName, String middleName, String lastName, int age, double height, double weight, String job) {<br>
+	    this(firstName, lastName, age, height, weight, job);<br>
+	    this.middleName = middleName;<br>
+	  }<br>
+	  public String getMiddleName() {<br>
+	    return this.middleName;<br>
+	  }<br>
+	  // ④jobのゲッターを定義してください<br>
+	  public String getJob() {<br>
+	    return job = this.job;<br>
+	  }<br>
+	  public void setMiddleName(String middleName) {<br>
+	    this.middleName = middleName;<br>
+	  }<br>
+	  // ⑤jobのセッターを定義してください<br>
+	  public void setJob(String job) {<br>
+	   this.job = job; <br>
+	  }<br>
+	  public String fullName() {<br>
+	    if (this.middleName == null) {<br>
+	      return this.firstName + " " + this.lastName;<br>
+	    } else {<br>
+	      return this.firstName + " " + this.middleName + " " + this.lastName;<br>
+	    }<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("私の名前は" + this.fullName() + "です");<br>
+	    System.out.println("年齢は" + this.age + "歳です");<br>
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");<br>
+	    // ⑥「仕事は◯◯です」と出力してください<br>
+	    System.out.println("仕事は" + this.job + "です");<br>
+	  }<br>
+	  public double bmi() {<br>
+	    return this.weight / this.height / this.height;<br>
+	  }<br>
+	  public static void printCount() {<br>
+	    System.out.println("合計" + Person.count + "人です");<br>
+	  }<br>
+	}<br>
+</div>
 
 <div style="padding: 100px 0 100px 0;">
 next→<%= link_to 'Progate/Javaコース5', java_part5_path %>

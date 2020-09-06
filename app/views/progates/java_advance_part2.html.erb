@@ -5,32 +5,454 @@
 	prev→<%= link_to 'Progate/Javaコース4', java_part4_path %>
 </div>
 
+<h1>Java　道場コース2</h1>
 
 
 <div style="padding: 100px 0 100px 0;">
+	オブジェクト指向道場
+	学習コース「JavaⅣ」で学んだオブジェクト指向の基礎を、この「Java道場Ⅱ」で定着させましょう。
+	道場コースでは指示は少なくなっています。また各演習では、自分のコードが引き継がれていきます。
+	比較的自由に実装ができますが、オブジェクト指向を用いてプログラムを実装してみましょう。
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	Java道場へようこそ！
+	このコースでは、「自転車」と「車」という2種類のオブジェクトを用いてプログラムを組み立てます。
+	まずは見本の「▶」を押して、このコースで制作する目標物を確認してみましょう。
+	目標物のプログラムでは以下の3つの入力を受け取ります。
+	・自転車を走らせる距離（整数）
+	・車を走らせる距離（整数）
+	・車に給油する量（整数）
+	「○○を入力してください：」と表示されたら好きな整数値を入力してください。
+	確認が済んだら、「確認して次へ」を押しましょう。
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	まずはBicycleクラス（自転車オブジェクトの設計図となるクラス）の作成に取り組みます。ここでは以下のことを行いましょう。
+	・Bicycleクラスの定義
+	・Bicycleクラスにインスタンスフィールドnameを定義（private）
+	・インスタンスを生成し、右の図のようにnameの値を出力
+	<%= image_tag 'Bicycleクラスを作ろう1.png' %><%= image_tag 'Bicycleクラスを作ろう2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // ①クラス型 変数名 = new クラス名(引数, ・・・);<br>
+	    Bicycle bicycle = new Bicycle("ビアンキ");<br>
+	    System.out.println("【自転車の情報】");<br>
+	    // ⑤bicycleはprivateでアクセスできない設定にしている、getName()で許可してもってくる、bicycleを前に忘れずに<br>
+	    System.out.println("名前：" + bicycle.getName() );<br>
+	  }<br>
+	}<br>
+	[Bicycle.java]<br>
+	class Bicycle {<br>
+	  // ②インスタンスフィールドの定義<br>
+	  private String name;<br>
+	  // ③コンストラクタの定義<br>
+	  Bicycle(String name) {<br>
+	    this.name = name;<br>
+	  }<br>
+	  // ④Mainで使えるようにgetName()を定義する、返り値で<br>
+	  public String getName() {<br>
+	    return this.name;<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+		自転車に「色」という情報を持たせましょう。
+	・Bicycleクラスにインスタンスフィールドcolorを追加（private）
+	・printDataメソッドを定義して、右の図のようにnameとcolorの値を出力
+	<%= image_tag '色を追加しよう1.png' %><%= image_tag '色を追加しよう2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // クラス型 変数名 = new クラス名(引数, ・・・);<br>
+	    // ②フィールド追加<br>
+	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");<br>
+	    System.out.println("【自転車の情報】");<br>
+	    // ④printData()にまとめた<br>
+	    bicycle.printData();<br>
+	  }<br>
+	}<br>
+	[Bicycle.java]<br>
+	class Bicycle {<br>
+  private String name;<br>
+  // ①インスタンスフィールド追加<br>
+  private String color;<br>
+  Bicycle(String name, String color) {<br>
+    this.name = name;<br>
+    this.color = color;<br>
+  }<br>
+  //ここを消してprintData()にまとめる<br>
+  // public String getName() {<br>
+  //   return this.name;<br>
+  // }<br>
+  // public String getColor() {<br>
+  //   return this.color;<br>
+  // }<br>
+  // ③上６行をBicycle側でprintDataでまとめるとMain側の記述を減らせる<br>
+  public void printData() {<br>
+    System.out.println("名前：" + this.name);<br>
+    System.out.println("色：" + this.color);<br>
+  }<br>
+}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	自転車に「走行距離」という情報を持たせましょう。
+	・インスタンスフィールドdistanceを追加（private）
+	・distanceフィールドの初期値は0
+	・右の図のように、name, color, distanceの値を出力
+	<%= image_tag 'distanceフィールド1.png' %><%= image_tag 'distanceフィールド2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // クラス型 変数名 = new クラス名(引数, ・・・);<br>
+	    // ②<br>
+	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");  //初期値が0なので距離を入れなくてもOK<br>
+	    System.out.println("【自転車の情報】");<br>
+	    bicycle.printData();<br>
+	  }<br>
+	}<br>
+	[Bicycle.java]<br>
+	class Bicycle {<br>
+	  private String name;<br>
+	  private String color;<br>
+	  // ①private 追加、初期値０<br>
+	  private int distance = 0;<br>
+	  Bicycle(String name, String color) {  //int distanceを入れても入れなくても同じ<br>
+	    this.name = name;<br>
+	    this.color = color;<br>
+	    // this.distance = distance;  なくてもいい<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前：" + this.name);<br>
+	    System.out.println("色：" + this.color);<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	自転車に「走る」機能をつけましょう。
+	・インスタンスメソッドrunを定義
+	・runメソッドは、引数にint型の値（走る距離）を受け取る
+	・引数で受け取った値を用いて、右の図のように「◯◯km走ります」と出力
+	・引数で受け取った値を、distanceフィールドに加算する
+	<%= image_tag 'distanceフィールド1.png' %><%= image_tag 'distanceフィールド2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // クラス型 変数名 = new クラス名(引数, ・・・);<br>
+	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");<br>
+	    System.out.println("【自転車の情報】");<br>
+	    bicycle.printData();<br>
+	    // 出力見やすくするための措置<br>
+	    System.out.println("-----------------");<br>
+	    // ⑤runメソッドを用いて整数10を加える<br>
+	    bicycle.run(10);<br>
+	  }<br>
+	}<br>
+	[Bicycle.java]<br>
+	class Bicycle {<br>
+	  private String name;<br>
+	  private String color;<br>
+	  private int distance = 0;<br>
+	  //①runメソッド追加しなくてOK<br>
+	  //public int run;<br>
+	  Bicycle(String name, String color) {<br>
+	    this.name = name;<br>
+	    this.color = color;<br>
+	    this.run = run;<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前：" + this.name);<br>
+	    System.out.println("色：" + this.color);<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	  }<br>
+	  public void run(int distance) {  //②distanceを最初に入れると0kmからスターととなる<br>
+	    System.out.println(distance + "km走ります");  //③runメソッドの引数10はdistanceに入っている<br>
+	    this.distance += distance;  //④これまでのthis.distanceに追加していくよ<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	Scannerを使って、走る距離を受け取れるようにしましょう。
+	下図のように、自転車を走らせる距離を入力できるようにします。
+	<%= image_tag 'Scanner.gif' %><br>
+	[Main.java]<br>
+	// ②scannerをimportする<br>
+	import java.util.Scanner;<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    // ③Scannerを初期化<br>
+	    Scanner scanner = new Scanner(System.in);<br>
+	    // クラス型 変数名 = new クラス名(引数, ・・・);<br>
+	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");<br>
+	    System.out.println("【自転車の情報】");<br>
+	    bicycle.printData();<br>
+	    System.out.println("-----------------");<br>
+	    // ①改行しない出力,lnを除くのみ<br>
+	    System.out.print("走る距離を入力してください");<br>
+	    // ④入力してもらう値を引数としてrunメソッドに渡す処理をする<br>
+	    int i = scanner.nextInt();<br>
+	    bicycle.run(i);<br>
+	  }<br>
+	}<br>
+	[Bicycle.java]<br>
+	class Bicycle {<br>
+	  private String name;<br>
+	  private String color;<br>
+	  private int distance = 0;<br>
+	  Bicycle(String name, String color) {<br>
+	    this.name = name;<br>
+	    this.color = color;<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前：" + this.name);<br>
+	    System.out.println("色：" + this.color);<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	  }<br>
+	  public void run(int distance) {<br>
+	    System.out.println(distance + "km走ります");<br>
+	    this.distance += distance;<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	  }<br>
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	ここからは、Carクラス（車オブジェクトの設計図となるクラス）を作成していきます。
+	まずはCarクラスが、Bicycleクラスと同じフィールド、同じメソッドを持つようにします。
+	これまでに行ったことを一気に実装してみましょう。
+	<%= image_tag 'distanceフィールド1.png' %><%= image_tag 'distanceフィールド2.png' %><br>
+	[Main.java]<br>
+	import java.util.Scanner;<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Scanner scanner = new Scanner(System.in);<br>
+	    // クラス型 変数名 = new クラス名(引数, ・・・);<br>
+	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");<br>
+	    System.out.println("【自転車の情報】");<br>
+	    bicycle.printData();<br>
+	    System.out.println("-----------------");<br>
+	    System.out.print("走る距離を入力してください");<br>
+	    int i = scanner.nextInt();<br>
+	    bicycle.run(i);<br>
+	    //  ③Carクラスのインスタンスを用いた処理を記述していきます。<br>
+	    System.out.println("=================");<br>
+	    Car car = new Car("フェラーリ", "赤");<br>
+	    System.out.println("【車の情報】");<br>
+	    car.printData();<br>
+	  }<br>
+	}<br>
+	[Car.java]<br>
+	//  ①Carクラスを定義・Carクラスが、Bicycleクラスと同じフィールド、同じメソッドを持つようにする<br>
+	class Car {<br>
+	  private String name;<br>
+	  private String color;<br>
+	  private int distance = 0;<br>
+	  Car(String name, String color) {<br>
+	    this.name = name;<br>
+	    this.color = color;<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前：" + this.name);<br>
+	    System.out.println("色：" + this.color);<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	  }<br>
+	}<br>
+	[Bicycle.java]<br>
+	前回から変えていないので割愛<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	車にはガソリンが必要なので、「ガソリン量」という情報を持たせましょう。
+	・インスタンスフィールドfuelを追加（private）
+	・fuelフィールドの初期値は100（100Lが満タンだとします）
+	・右の図のように、fuelの値を出力
+	<%= image_tag 'fuelフィールド1.png' %><%= image_tag 'fuelフィールド2.png' %><br>
+	[Main.java]<br>
+	前回と同様なので割愛<br>
+	[Car.java]<br>
+	class Car {<br>
+	  private String name;<br>
+	  private String color;<br>
+	  private int distance = 0;<br>
+	  //  ①・Carクラスに、privateなインスタンスフィールドfuelを追加,fuelの初期値は100とする<br>
+	  private int fuel = 100;<br>
+	  Car(String name, String color) {<br>
+	    this.name = name;<br>
+	    this.color = color;<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前：" + this.name);<br>
+	    System.out.println("色：" + this.color);<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	    //  ②ガソリン量：◯◯Lとなるように、fuelフィールドの値を出力<br>
+	    System.out.println("ガソリン量：" + this.fuel + "L" );<br>
+	  }<br>
+	}<br>
+	[Bicycle.java]<br>
+	前回と同様なので割愛<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	現実の車と同じように、Carクラスのインスタンスが走れば、fuelフィールドの値が減るようにしましょう。なお、この演習では便宜上、1km走れば、ガソリンを1L消費するとします。
+	runメソッド内で、以下のような条件分岐を行い、走る距離がガソリンの残量を超えていた場合、走行できないようにします。
+	<%= image_tag 'runメソッドの改良.png' %><br>
+	先ほどの条件分岐を正しく行った場合、下図のような出力がされるようにします。
+	<%= image_tag 'runメソッドの出力1.png' %><%= image_tag 'runメソッドの出力1.png' %><br>
+	[Main.java]<br>
+	import java.util.Scanner;<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Scanner scanner = new Scanner(System.in);<br>
+	    // クラス型 変数名 = new クラス名(引数, ・・・);<br>
+	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");<br>
+	    System.out.println("【自転車の情報】");<br>
+	    bicycle.printData();<br>
+	    System.out.println("-----------------");<br>
+	    System.out.print("走る距離を入力してください：");<br>
+	    int bicycleDistance = scanner.nextInt();<br>
+	    bicycle.run(bicycleDistance);<br>
+	    System.out.println("=================");<br>
+	    Car car = new Car("フェラーリ", "赤");<br>
+	    System.out.println("【車の情報】");<br>
+	    car.printData();<br>
+	    //  ④・走る距離を入力してください：と出力（ただし、改行しない出力を行ってください）<br>
+	    //  ⑤・runメソッドを用いて、Carインスタンスを走らせる,ただし、「走る距離」はScannerを用いてコンソールから入力<br>
+	    System.out.println("-----------------");<br>
+	    System.out.print("走る距離を入力してください：");<br>
+	    int carDistance = scanner.nextInt();<br>
+	    car.run(carDistance);<br>
+	  }<br>
+	}<br>
+	[Car.java]<br>
+	class Car {<br>
+	  private String name;<br>
+	  private String color;<br>
+	  private int distance = 0;<br>
+	  private int fuel = 100;<br>
+	  Car(String name, String color) {<br>
+	    this.name = name;<br>
+	    this.color = color;<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前：" + this.name);<br>
+	    System.out.println("色：" + this.color);<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	    System.out.println("ガソリン量：" + this.fuel + "L" );<br>
+	  }<br>
+	  // ①「○○km走ります」と出力している箇所をつくる、のあとで、以下の条件分岐を行う<br>
+	  public void run(int distance) {<br>
+	    System.out.println(distance + "km走ります");<br>
+	    // <br>②「走る距離」が「ガソリン量」以下の場合、distanceフィールドとfuelフィールドの値を更新・「走る距離」が「ガソリン量」を上回っていた場合、ガソリンが足りませんと出力<br>
+	    if (distance <= this.fuel) {<br>
+	      this.distance += distance;<br>
+	      this.fuel -= distance;<br>
+	    } else {<br>
+	      System.out.println("ガソリンが足りません");<br>
+	    }<br>
+	    //  ③runメソッドの中で、条件分岐を行ったあと、以下の2つを順に出力・走行距離：○○km・ガソリン量：○○L<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	    System.out.println("ガソリン量：" + this.fuel + "L");<br>
+	  }<br>
+	}<br>
+	[Bicycle.java]<br>
+	変更点ないのでカット<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	車に「給油」機能をつけましょう。
+	・Carクラスにchargeメソッドを定義
+	・chargeメソッドは、引数にint型の値（給油する量）を受け取る
+	・引数の値を用いて、「◯◯L給油します」と出力
+	・chargeメソッドの中で、下図のような条件分岐を行う
+	<%= image_tag 'chargeメソッド.png' %><br>
+	先ほどの条件分岐を正しく行った場合、下図のような出力がされるようにします。
+	<%= image_tag 'chargeメソッドの出力1.png' %><%= image_tag 'chargeメソッドの出力2.png' %><%= image_tag 'chargeメソッドの出力3.png' %><br>
+	[Main.java]<br>
+	import java.util.Scanner;<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Scanner scanner = new Scanner(System.in);<br>
+	    // クラス型 変数名 = new クラス名(引数, ・・・);<br>
+	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");<br>
+	    System.out.println("【自転車の情報】");<br>
+	    bicycle.printData();<br>
+	    System.out.println("-----------------");<br>
+	    System.out.print("走る距離を入力してください：");<br>
+	    int bicycleDistance = scanner.nextInt();<br>
+	    bicycle.run(bicycleDistance);<br>
+	    System.out.println("=================");<br>
+	    Car car = new Car("フェラーリ", "赤");<br>
+	    System.out.println("【車の情報】");<br>
+	    car.printData();<br>
+	    System.out.println("-----------------");<br>
+	    System.out.print("走る距離を入力してください：");<br>
+	    int carDistance = scanner.nextInt();<br>
+	    car.run(carDistance);<br>
+	    //  ④・Carインスタンスを走らせている箇所のあとで、「-----------------」を出力・「給油する量を入力してください：」と出力（ただし、改行しない出力を行ってください<br>）・chargeメソッドを用いて、Carインスタンスに給油するただし、「給油量」はScannerを用いてコンソールから入力<br>
+	    System.out.println("-----------------");<br>
+	    System.out.print("給油する量を入力してください：");<br>
+	    int chargeLitre = scanner.nextInt();<br>
+	    car.charge(chargeLitre);<br>
+	  }<br>
+	}<br>
+	[Car.java]<br>
+	class Car {<br>
+	  private String name;<br>
+	  private String color;<br>
+	  private int distance = 0;<br>
+	  private int fuel = 100;<br>
+	  //  ①Carクラスにインスタンスメソッドchargeを定義<br>
+	  private int charge;<br>
+	  Car(String name, String color) {<br>
+	    this.name = name;<br>
+	    this.color = color;<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前：" + this.name);<br>
+	    System.out.println("色：" + this.color);<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	    System.out.println("ガソリン量：" + this.fuel + "L" );<br>
+	  }<br>
+	  public void run(int distance) {<br>
+	    System.out.println(distance + "km走ります");<br>
+	    if (distance <= this.fuel) {<br>
+	      this.distance += distance;<br>
+	      this.fuel -= distance;<br>
+	    } else {<br>
+	      System.out.println("ガソリンが足りません");<br>
+	    }<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	    System.out.println("ガソリン量：" + this.fuel + "L");<br>
+	  }<br>
+	  //  ②chargeメソッドの処理を書いていきましょう。<br>
+	  //  ③・chargeメソッドの先頭で、給油量を用いて、○○L給油しますと出力・chargeメソッド内で以下の条件分岐を行う。 - 「給油量」が0以下の場合、給油できませんと出力 - 「給油量」とfuelフィールドの値の合計が100以上の場合、満タンまで給油しますと出力し、fuelフィールドに100を代入 - <br>いずれでもない場合は、「給油量」を用いて、fuelフィールドの値を更新・条件分岐のあとで、ガソリン量：○○Lと出力<br>
+	  public void charge(int litre) {<br>
+	    System.out.println(litre + "L給油します");<br>
+	    if (litre <= 0) {<br>
+	      System.out.println("給油できません");<br>
+	    } else if (litre + fuel >= 100) {<br>
+	      System.out.println("満タンまで給油します");<br>
+	      this.fuel = 100;<br>
+	    } else {<br>
+	      this.fuel += litre;<br>
+	    }<br>
+	    System.out.println("ガソリン量：" + this.fuel + "L");<br>
+	  }<br>
+	}<br>
+	[Bicycle.java]<br>
+	変更なし<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 </div>
 
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-
-<div style="padding: 100px 0 100px 0;">
-</div>
 
 <div style="padding: 100px 0 100px 0;">
 next→<%= link_to 'Progate/Javaコース5', java_part5_path %>
