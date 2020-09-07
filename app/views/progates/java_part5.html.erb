@@ -9,11 +9,111 @@
 <h1>Java　コース5</h1>
 
 
-
+<div style="padding: 100px 0 100px 0;">
+	継承を学ぼう
+	このレッスンではJava学習Ⅳの練習コース「Java道場Ⅱ」で作り上げたプログラムを、
+	オブジェクト指向の機能を用いて改善していきます。
+	オブジェクト指向の本領が発揮されるのはここからです。
+	まずは「継承」というオブジェクト指向の重要な機能を学びましょう。
+	（「Java道場Ⅱ」を学習していない方は、ぜひそちらを先に学習してみましょう！）
+	まずは「Java道場Ⅱ」の完成物を実行してみましょう。
+	このレッスンで学ぶ「継承」という機能を知れば、この完成物を効率的に実装できるようになります。
+	このプログラムでは以下の3つの入力を受け取ります。
+	・自転車を走らせる距離（整数）
+	・車を走らせる距離（整数）
+	・車に給油する量（整数）
+	「○○を入力してください：」と表示されたら好きな整数値を入力してください。
+	「確認して次へ」を押して、先へ進みましょう。
+</div>
 
 <div style="padding: 100px 0 100px 0;">
-	
+	CarクラスとBicycleクラスは、下図のように重複があります。コードの重複は保守性（修正・改善のしやすさ）を下げるため、できるだけ避けるべきです。
+	またCarクラスとBicycleクラスはどちらも「乗り物」です。下図の重複部分はCarとBicycleの独自機能というよりは、「乗り物一般」に共通する情報と振る舞いであるといえるでしょう。
+	<%= image_tag 'CarとBicycleの重複1.png' %><%= image_tag 'CarとBicycleの重複2.png' %><br>
+	オブジェクト指向では、あるクラスの内容を他のクラスが「引き継ぐ」ことができます。
+	先ほどの重複部分を、Vehicleクラス（乗り物）に定義し、そのクラスをCarクラスとBicycleクラスが引き継ぐことができれば、重複部分をなくすことができそうですね。この方法をこれから学んでいきましょう。
+	<%= image_tag 'クラスの内容を引き継ぐ.png' %><br>
+	既存のクラスのフィールドやメソッドを別のクラスに引き継ぐ機能を「継承」といいます。さらに継承してできる新しいクラスには独自のフィールドやメソッドを追加してカスタマイズすることも可能です。
+	継承されるクラスを「スーパークラス」、継承してできる新しいクラスを「サブクラス」と呼びます。
+	<%= image_tag '継承.png' %><br>
+	継承を用いて新しくサブクラスを定義するときは、「extends」を用いて右の図のように「class サブクラス名 extends スーパークラス名」としてクラスを定義します。
+	extendsは「拡張する」という意味です。継承は、スーパークラスを元に、機能を拡張したサブクラスを作るための機能なのです。
+	<%= image_tag '継承の方法1.png' %><%= image_tag '継承の方法2.png' %><br>
+	[Main.java]
+	class Main {
+	  public static void main(String[] args) {
+	    Car car = new Car();
+	    Bicycle bicycle = new Bicycle();
+	  }
+	}
+	[Car.java]
+	// ③Vehicleクラスを継承してください
+	class Car extends Vehicle {
+	  // 共通のコードをVehicleクラスに移動してください(コードは消す)
+	}
+	[Bicycle.java]
+	// ④Vehicleクラスを継承してください
+	class Bicycle extends Vehicle {
+	  // 共通のコードをVehicleクラスに移動してください(共通コードは省略)
+	}
+	[Vehicle.java]
+	// ①Vehicleクラスを定義し、CarクラスとBicycleクラスの共通部分を移動してください
+	class Vehicle {
+	  // ②CarクラスとBicycleクラスの重複部分をVehicleクラスに移動してください。
+	  private String name;
+	  private String color;
+	  private int distance = 0;
+	  public String getName() {
+	    return this.name;
+	  }
+	  public String getColor() {
+	    return this.color;
+	  }
+	  public int getDistance() {
+	    return this.distance;
+	  }
+	  public void setName(String name) {
+	    this.name = name;
+	  }
+	  public void setColor(String color) {
+	    this.color = color;
+	  }
+	  public void printData() {
+	    System.out.println("名前：" + this.name);
+	    System.out.println("色：" + this.color);
+	    System.out.println("走行距離：" + this.distance + "km");
+	  }
+	}
 </div>
+
+<div style="padding: 100px 0 100px 0;">
+	Carクラス（サブクラス）はVehicleクラス（スーパークラス）のフィールドとメソッドを引き継いでいます。よって、Carクラス自体にはまだ何も定義されていませんが、Carクラスのインスタンスに対して、Vehicleクラスのインスタンスメソッドを呼び出すことが可能です。
+	<%= image_tag 'スーパークラスのメソッドを呼び出す1.png' %><%= image_tag 'スーパークラスのメソッドを呼び出す2.png' %><br>
+	[Main.java]
+	class Main {
+	  public static void main(String[] args) {
+	    Car car = new Car();
+	    // ①setNameメソッドを用いて、carの名前を「フェラーリ」にしてください
+	    car.setName("フェラーリ");
+	    // ②setColorメソッドを用いて、carの色を「赤」にしてください
+	    car.setColor("赤");
+	    Bicycle bicycle = new Bicycle();
+	    // ③setNameメソッドを用いて、bicycleの名前を「ビアンキ」にしてください
+	    bicycle.setName("ビアンキ");
+	    // ④setColorメソッドを用いて、bicycleの色を「緑」にしてください
+	    bicycle.setColor("緑");
+	    System.out.println("【車の情報】");
+	    car.printData();
+	    System.out.println("=================");
+	    System.out.println("【自転車の情報】");
+	    bicycle.printData();
+	  }
+	}
+	[Car.java][Bicycle.java][Vehicle.java]
+	前回から変更なし、省略
+</div>
+
+
 
 <div style="padding: 100px 0 100px 0;">
 </div>
