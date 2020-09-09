@@ -280,19 +280,342 @@
 	前回同様のため省略
 </div>
 
+<div style="padding: 100px 0 100px 0;">
+	コンストラクタでnameとcolorの値をセットできるようにしましょう。
+	サブクラスでコンストラクタを定義するときには1つの決まりがあります。それは「コンストラクタの先頭でスーパークラスのコンストラクタを呼びださなければならない」ということです。よってサブクラスのインスタンスを生成したときの流れは下図のようになります。
+	<%= image_tag 'サブクラスのコンストラクタ1.png' %><%= image_tag 'サブクラスのコンストラクタ2.png' %><br>
+	スーパークラスのコンストラクタを呼び出すには、super()を用います。
+	下図で、サブクラスのインスタンス生成時に、スーパークラスのコンストラクタが呼びだされていることを確認しましょう。
+	<%= image_tag 'スーパークラスのコンストラクタ呼び出し1.png' %><%= image_tag 'スーパークラスのコンストラクタ呼び出し2.png' %><br>
+	それではスーパークラスに定義されたフィールドに、コンストラクタで値をセットできるようにしてあげましょう。
+	まず下図のように、スーパークラスとサブクラスの双方でコンストラクタを定義しなければなりません。そして、サブクラスのコンストラクタ内でsuper()に引数を渡し、スーパークラスのコンストラクタを呼び出します。
+	<%= image_tag 'コンストラクタとsuper()-フィールドに値をセットする1.png' %><%= image_tag 'コンストラクタとsuper()-フィールドに値をセットする2.png' %><br>
+	[Main.java]
+	変更なしのため省略
+	[Car.java]
+	class Car extends Vehicle {
+	  private int fuel = 50;
+	  // ①Carクラスのコンストラクタを定義し、
+	  // ②superを用いてスーパークラスのコンストラクタを呼び出してください
+	  Car(String name, String color) {
+	    super(name, color);
+	  }
+	  public int getFuel() {
+	    return this.fuel;
+	  }
+	  public void printData() {
+	    super.printData();
+	    System.out.println("ガソリン量：" + this.fuel + "L");
+	  }
+	  public void charge(int litre) {
+	    System.out.println(litre + "L給油します");
+	    if (litre <= 0) {
+	      System.out.println("給油できません");
+	    } else if (litre + this.fuel >= 100) {
+	      System.out.println("満タンまで給油します");
+	      this.fuel = 100;
+	    } else {
+	      this.fuel += litre;
+	    }
+	    System.out.println("ガソリン量：" + this.fuel + "L");
+	  }
+	}
+	[Bicycle.java]
+	class Bicycle extends Vehicle {
+	  // ④Bicycleクラスのコンストラクタを定義し、
+	  // ⑤superを用いてスーパークラスのコンストラクタを呼び出してください
+	  Bicycle(String name, String color) {
+	    super(name, color);
+	  }
+	}
+	[Vehicle.java]
+	class Vehicle {
+	  private String name;
+	  private String color;
+	  private int distance = 0;
+	  // ③Vehicleクラスのコンストラクタを定義してください
+	  Vehicle(String name, String color){
+	    this.name = name;
+	    this.color = color;
+	  }
+	  public String getName() {
+	    return this.name;
+	  }
+	  public String getColor() {
+	    return this.color;
+	  }
+	  public int getDistance() {
+	    return this.distance;
+	  }
+	  public void setName(String name) {
+	    this.name = name;
+	  }
+	  public void setColor(String color) {
+	    this.color = color;
+	  }
+	  public void printData() {
+	    System.out.println("名前：" + this.name);
+	    System.out.println("色：" + this.color);
+	    System.out.println("走行距離：" + this.distance + "km");
+	  }
+	}
+</div>
 
+<div style="padding: 100px 0 100px 0;">
+	「Java道場Ⅱ」で作ったBicycleクラスとCarクラスにはrunメソッドがありました。このメソッドを組み込んでみましょう。
+	runメソッドはそれぞれのクラスで処理内容が異なるので、Vehicleクラスに定義して継承するのではなく、それぞれのサブクラスに独自のメソッドとして追加してあげましょう。
+	<%= image_tag 'protected-runメソッド1.png' %><%= image_tag 'protected-runメソッド2.png' %><br>
+	runメソッドは、元のコードをそのまま追加するとエラーが発生します。なぜならrunメソッドが、Vehicleクラスのdistanceフィールドにアクセスしようとするためです。printDataメソッドで学習したのと同様、Carクラスはサブクラスといえど、Vehicleクラスのprivateフィールドには直接アクセスすることはできません。しっかり意識していきましょう。
+	<%= image_tag 'フィールドのアクセス制限（復習）1.png' %><%= image_tag 'フィールドのアクセス制限（復習）2.png' %><br>
+	ゲッター・セッターとは違う方法で解決してみましょう。
+	privateの代わりに、protectedを用いると、クラス内とサブクラスからのみアクセスを許すフィールドを作ることができます。
+	よって、この場合はdistanceフィールドをprotectedに変更すれば無事にrunメソッドが動作するようになります。
+	<%= image_tag 'protected1.png' %><%= image_tag 'protected2.png' %><br>
+	ここで「public」「protected」「private」の3つのアクセス権についておさらいしましょう。
+	・public: どこからでもアクセス可能
+	・protected: そのクラスと子クラス内からのみアクセス可能
+	・private: そのクラス内からのみアクセス可能
+	<%= image_tag 'アクセス権のまとめ.png' %><br>
+	[Main.java]
+	import java.util.Scanner;
+	class Main {
+	  public static void main(String[] args) {
+	    Scanner scanner = new Scanner(System.in);
+	    Car car = new Car("フェラーリ", "赤");
+	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");
+	    System.out.println("【車の情報】");
+	    car.printData();
+	    System.out.println("-----------------");
+	    System.out.print("走る距離を入力してください：");
+	    int carDistance = scanner.nextInt();
+	    // ①「道場Ⅱ」で実装したrunメソッドがCarクラスとBicycleクラスにすでに用意されています。
+	    // ①runメソッドを呼び出して、引数にcarDistanceを渡してください
+	    car.run(carDistance);
+	    System.out.println("-----------------");
+	    System.out.print("給油する量を入力してください：");
+	    int litre = scanner.nextInt();
+	    car.charge(litre);
+	    System.out.println("=================");
+	    System.out.println("【自転車の情報】");
+	    bicycle.printData();
+	    System.out.println("-----------------");
+	    System.out.print("走る距離を入力してください：");
+	    int bicycleDistance = scanner.nextInt();
+	    // ②runメソッドを呼び出して、引数にbicycleDistanceを渡してください
+	    // ③この段階では、「distance has private access in Vehicle」というエラー文が表示されます。これがprivateなdistanceフィールドに、他のクラスからアクセスできないことを示すエラーです。
+	    bicycle.run(bicycleDistance);
+	  }
+	}
+	[Vehicle.java]
+	class Vehicle {
+	  private String name;
+	  private String color;
+	  // ④protectedを用いて書き換えてください
+	  protected int distance = 0;
+	  Vehicle(String name, String color) {
+	    this.name = name;
+	    this.color = color;
+	  }
+	  public String getName() {
+	    return this.name;
+	  }
+	  public String getColor() {
+	    return this.color;
+	  }
+	  public int getDistance() {
+	    return this.distance;
+	  }
+	  public void setName(String name) {
+	    this.name = name;
+	  }
+	  public void setColor(String color) {
+	    this.color = color;
+	  }
+	  public void printData() {
+	    System.out.println("名前：" + this.name);
+	    System.out.println("色：" + this.color);
+	    System.out.println("走行距離：" + this.distance + "km");
+	  }
+	}
+	[Car.java, Bicycle.java]
+	変更なしのため省略
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	車や自転車に限らず、乗り物はすべて「走行する」機能を持ちます。
+	よってプログラム上でも、Vehicleクラスを継承するすべてのクラスはrunメソッドを持っているべきです。よって本来であれば、runメソッドはVehicleクラスに定義し継承できれば楽なのですが、乗り物ごとに走行方法が違うため、Vehicleクラスでは処理内容を定めることができません。
+	<%= image_tag '詳細未定のメソッド1.png' %><%= image_tag '詳細未定のメソッド2.png' %><br>
+	そのため、処理が未定のメソッドを定義する方法があります。下図のようにメソッドの先頭にabstractをつけることで、抽象メソッドというメソッドを定義できます。抽象メソッドには中身の処理は書きません。
+	abstractとは「抽象的な」という意味です。具体的な処理が決まっていない未完成のメソッドであるため、「抽象メソッド」と呼ばれます。
+	<%= image_tag '抽象メソッド.png' %><br>
+	抽象メソッドは、サブクラスがそのメソッドをオーバーライド（上書き）していなければエラーになります。ですので、サブクラスがそのメソッドをオーバーライドし、処理内容を定義することを強制できます。
+	サブクラスに、あるメソッドを必ず持たせたいという場合は、スーパークラスに抽象メソッドとして定義しておくことが大事です。
+	<%= image_tag '抽象メソッドと抽象クラスのメリットとポイント1.png' %><%= image_tag '抽象メソッドと抽象クラスのメリットとポイント2.png' %><br>
+	抽象メソッドを1つでも持つクラスは、「抽象クラス」と呼ばれ、クラス名の前にabstractをつける必要があります。
+	抽象クラスはインスタンスを生成できません。抽象メソッドという未完成のメソッドを持つクラスは、それもまた未完成です。そのような未完成のクラスからはインスタンスを生成できないような仕組みになっています。
+	<%= image_tag '抽象クラス.png' %><br>
+	[Vehicle.java]
+	// ①runメソッドを、Vehicleクラスのサブクラスが必ず持つように、Vehicleクラスに抽象メソッドとして定義してみましょう。
+	// ③抽象メソッドを持つクラスは抽象クラスです。Vehicleクラスを抽象クラスに変更してください
+	abstract class Vehicle {
+	  private String name;
+	  private String color;
+	  protected int distance = 0;
+	  Vehicle(String name, String color) {
+	    this.name = name;
+	    this.color = color;
+	  }
+	  public String getName() {
+	    return this.name;
+	  }
+	  public String getColor() {
+	    return this.color;
+	  }
+	  public int getDistance() {
+	    return this.distance;
+	  }
+	  public void setName(String name) {
+	    this.name = name;
+	  }
+	  public void setColor(String color) {
+	    this.color = color;
+	  }
+	  public void printData() {
+	    System.out.println("名前：" + this.name);
+	    System.out.println("色：" + this.color);
+	    System.out.println("走行距離：" + this.distance + "km");
+	  }
+	  // ②抽象メソッドrunを定義してください
+	  abstract public void run(int distance);  //Vehicleクラスのrunメソッドに、{}は必要ありません
+	}
+	[Main.java, Car.java, Bicycle.java]
+	変更なしのため省略
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	少し発展的な内容を学んでいきましょう。
+	「JavaⅣ」で作り上げたPersonクラスと組み合わせて、乗り物をある人間が所有している状況をプログラムで表現してみましょう。
+	<%= image_tag '乗り物の所有者を定義しよう.png' %><br>
+	インスタンスフィールドにクラス型の変数を定義することで、フィールドにインスタンスを持つことが可能です。
+	下図のようにPerson型のownerというインスタンスフィールドを持つようにしてみましょう。
+	<%= image_tag 'クラス型のフィールド1.png' %><%= image_tag 'クラス型のフィールド2.png' %><br>
+	ゲッターとセッターを定義しておきましょう。
+	やり方はこれまでと変わりませんが、ゲッターの戻り値の型と、セッターの仮引数の型がクラス型になることに注意しましょう。
+	<%= image_tag 'ゲッターとセッター.png' %><br>
+	CarクラスのインスタンスやBicycleクラスのインスタンスに対してgetOwnerメソッドを呼び出すと、その戻り値はownerフィールドの値、すなわちPersonクラスのインスタンスとなっています。
+	よって左の図のように、getOwnerメソッドのあとにそのまま続けてPersonクラスのインスタンスメソッドprintDataを呼びだすことが可能です。
+	<%= image_tag 'インスタンスの戻り値1.png' %><%= image_tag 'インスタンスの戻り値2.png' %><br>
+	[Main.java]
+	class Main {
+	  public static void main(String[] args) {
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);
+	    Person person2 = new Person("John", "Christopher", "Smith", 65, 1.75, 80.0);
+	    Car car = new Car("フェラーリ", "赤");
+	    // ⑤setOwnerを用いて、carの所有者をperson1にしてください
+	    car.setOwner(person1);
+	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");
+	    // ⑥setOwnerを用いて、bicycleの所有者をperson2にしてください
+	    bicycle.setOwner(person2);
+	    System.out.println("【車の情報】");
+	    car.printData();
+	    System.out.println("-----------------");
+	    System.out.println("【車の所有者の情報】");
+	    // ⑦getOwnerメソッドを用いてcarのownerを取得し、さらにprintDataメソッドを用いてownerの情報を出力してください
+	    car.getOwner().printData();
+	    System.out.println("=================");
+	    System.out.println("【自転車の情報】");
+	    bicycle.printData();
+	    System.out.println("-----------------");
+	    System.out.println("【自転車の所有者の情報】");
+	    // ⑧getOwnerメソッドを用いてbicycleのownerを取得し、さらにprintDataメソッドを用いてownerの情報を出力してください
+	    bicycle.getOwner().printData();
+	  }
+	}
+	[Vehicle.java]
+	abstract class Vehicle {
+	  private String name;
+	  private String color;
+	  protected int distance = 0;
+	  //  ①Personクラスが用意されています。人間が乗り物を所有できるようにしていきましょう。
+	  //  ②インスタンスフィールドownerを定義してください
+	  private Person owner;
+	  Vehicle(String name, String color) {
+	    this.name = name;
+	    this.color = color;
+	  }
+	  public String getName() {
+	    return this.name;
+	  }
+	  public String getColor() {
+	    return this.color;
+	  }
+	  public int getDistance() {
+	    return this.distance;
+	  }
+	  // ③ownerフィールドのゲッターを定義してください
+	  public Person getOwner() {  //戻り型がPerson型
+	    return this.owner;
+	  }
+	  public void setName(String name) {
+	    this.name = name;
+	  }
+	  public void setColor(String color) {
+	    this.color = color;
+	  }
+	  // ④ownerフィールドのセッターを定義してください
+	  public void setOwner(Person person) {  //setOwnerメソッドの仮引数として、Person型の「person」を用いてください
+	    this.owner = person;  //this.owner = owner;ではない
+	  }
+	  public void printData() {
+	    System.out.println("名前：" + this.name);
+	    System.out.println("色：" + this.color);
+	    System.out.println("走行距離：" + this.distance + "km");
+	  }
+	  abstract public void run(int distance);
+	}
+	[Person.java]
+	class Person {
+	  private String firstName;
+	  private String middleName;
+	  private String lastName;
+	  private int age;
+	  private double height;
+	  private double weight;
+	  Person(String firstName, String lastName, int age, double height, double weight) {
+	    this.firstName = firstName;
+	    this.lastName = lastName;
+	    this.age = age;
+	    this.height = height;
+	    this.weight = weight;
+	  }
+	  Person(String firstName, String middleName, String lastName, int age, double height, double weight) {
+	    this(firstName, lastName, age, height, weight);
+	    this.middleName = middleName;
+	  }
+	  public String fullName() {
+	    if (this.middleName == null) {
+	      return this.firstName + " " + this.lastName;
+	    } else {
+	      return this.firstName + " " + this.middleName + " " + this.lastName;
+	    }
+	  }
+	  public void printData() {
+	    System.out.println("名前は" + this.fullName() + "です");
+	    System.out.println("年齢は" + this.age + "歳です");
+	    System.out.println("身長は" + this.height + "mです");
+	    System.out.println("体重は" + this.weight + "kgです");
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");
+	  }
+	  public double bmi() {
+	    return this.weight / this.height / this.height;
+	  }
+	}
+	[Car.java, Bicycle.java]
+	変更なし、省略
+</div>
 
 <div style="padding: 100px 0 100px 0;">
 	
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
 </div>
 
 <div style="padding: 100px 0 100px 0;">
