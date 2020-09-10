@@ -615,10 +615,138 @@
 </div>
 
 <div style="padding: 100px 0 100px 0;">
-	
+	Personクラスのインスタンスが乗り物を購入できるように、buyメソッドを定義しましょう。
+	購入する乗り物はCarクラスのインスタンスかBicycleクラスのインスタンスです。buyメソッドの引数はどちらの型のインスタンスも受け取る可能性がありますので、下図のようにオーバーロードする必要があります。
+	<%= image_tag 'buyメソッドを定義しよう.png' %><br>
+	buyメソッドの中で、引数に受け取ったインスタンスのセッターを用いて所有者を変更してあげます。
+	<%= image_tag 'buyメソッドの処理1.png' %><%= image_tag 'buyメソッドの処理2.png' %><br>
+	[Main.java]
+	class Main {
+	  public static void main(String[] args) {
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);
+	    Person person2 = new Person("John", "Christopher", "Smith", 65, 1.75, 80.0);
+	    Car car = new Car("フェラーリ", "赤");
+	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");
+	    // ④buyメソッドを用いて、person1にcarを購入させてください
+	    person1.buy(car);  // person1がcarを購入
+	    // ⑤buyメソッドを用いて、person2にbicycleを購入させてください
+	    person2.buy(bicycle);  // person2がbicycleを購入
+	    System.out.println("【車の情報】");
+	    car.printData();
+	    System.out.println("-----------------");
+	    System.out.println("【車の所有者の情報】");
+	    car.getOwner().printData();
+	    System.out.println("=================");
+	    System.out.println("【自転車の情報】");
+	    bicycle.printData();
+	    System.out.println("-----------------");
+	    System.out.println("【自転車の所有者の情報】");
+	    bicycle.getOwner().printData();
+	  }
+	}
+	[Person.java]
+	class Person {
+	  private String firstName;
+	  private String middleName;
+	  private String lastName;
+	  private int age;
+	  private double height;
+	  private double weight;
+	  Person(String firstName, String lastName, int age, double height, double weight) {
+	    this.firstName = firstName;
+	    this.lastName = lastName;
+	    this.age = age;
+	    this.height = height;
+	    this.weight = weight;
+	  }
+	  Person(String firstName, String middleName, String lastName, int age, double height, double weight) {
+	    this(firstName, lastName, age, height, weight);
+	    this.middleName = middleName;
+	  }
+	  public String fullName() {
+	    if (this.middleName == null) {
+	      return this.firstName + " " + this.lastName;
+	    } else {
+	      return this.firstName + " " + this.middleName + " " + this.lastName;
+	    }
+	  }
+	  public void printData() {
+	    System.out.println("名前は" + this.fullName() + "です");
+	    System.out.println("年齢は" + this.age + "歳です");
+	    System.out.println("身長は" + this.height + "mです");
+	    System.out.println("体重は" + this.weight + "kgです");
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");
+	  }
+	  public double bmi() {
+	    return this.weight / this.height / this.height;
+	  }
+	  // ①Personクラスのインスタンスが車や自転車を購入できるようにします。
+	  // ②Car型の引数を受け取るbuyメソッドを定義してください
+	  public void buy(Car car) {
+	    car.setOwner(this);
+	  }
+	  // ③Bicycle型の引数を受け取るbuyメソッドを定義してください
+	  public void buy(Bicycle bicycle) {
+	    bicycle.setOwner(this);
+	  }
+	}
+	[Car.java, Bicycle.java, Vehicle.java]
+	変更なし、省略
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	先ほど作ったbuyメソッドを改めて見てみましょう。これらはほとんど同じコードです。
+	しかもこの方法では、Vehicleクラスのサブクラスが今後増えた場合、毎回引数の型が違う同名のメソッドを定義していかなければなりません。
+	<%= image_tag 'buyメソッドの重複.png' %><br>
+	この問題を解決する方法があります。
+	下図のように引数としてVehicle型のインスタンスを受け取るようにすることで、Carクラスのインスタンスも、Bicycleクラスのインスタンスも受け取ることができるようになります。
+	<%= image_tag 'buyメソッドの改良1.png' %><%= image_tag 'buyメソッドの改良2.png' %><br>
+	buyメソッドの引数のクラス型をVehicle型にできる理由を説明します。
+	Carクラスは、Vehicleクラスを継承しているので、CarクラスのインスタンスはCar型である前にVehicle型でもあるのです。この関係にあるとき、サブクラスのインスタンスを、スーパークラスのクラス型変数に代入することが可能になります（このような特徴を「多態性（たたいせい）」といいます）。
+	<%= image_tag 'スーパークラスのクラス型に代入する1.png' %><%= image_tag 'スーパークラスのクラス型に代入する2.png' %><br>
+	[Person.java]
+	class Person {
+	  private String firstName;
+	  private String middleName;
+	  private String lastName;
+	  private int age;
+	  private double height;
+	  private double weight;
+	  Person(String firstName, String lastName, int age, double height, double weight) {
+	    this.firstName = firstName;
+	    this.lastName = lastName;
+	    this.age = age;
+	    this.height = height;
+	    this.weight = weight;
+	  }
+	  Person(String firstName, String middleName, String lastName, int age, double height, double weight) {
+	    this(firstName, lastName, age, height, weight);
+	    this.middleName = middleName;
+	  }
+	  public String fullName() {
+	    if (this.middleName == null) {
+	      return this.firstName + " " + this.lastName;
+	    } else {
+	      return this.firstName + " " + this.middleName + " " + this.lastName;
+	    }
+	  }
+	  public void printData() {
+	    System.out.println("名前は" + this.fullName() + "です");
+	    System.out.println("年齢は" + this.age + "歳です");
+	    System.out.println("身長は" + this.height + "mです");
+	    System.out.println("体重は" + this.weight + "kgです");
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");
+	  }
+	  public double bmi() {
+	    return this.weight / this.height / this.height;
+	  }
+	  // 以下2つを一つのメソッドで書き換えてください
+	  public void buy(Vehicle vehicle) {  //Vehicle型の引数を受け取るbuyメソッドの中で、vehicleに対して、setOwnerメソッドを呼び出してください
+	    vehicle.setOwner(this);
+	  }
+	}
+	[Main.java, Car.java, Bicycle.java, Vehicle.java]
+	変更なし、省略
 </div>
 
 <div style="padding: 100px 0 100px 0;">
