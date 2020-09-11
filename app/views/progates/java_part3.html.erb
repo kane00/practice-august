@@ -17,12 +17,12 @@
 <div style="padding: 100px 0 100px 0;">
 	メソッドとは、何らかの処理を割り当てた部品です。これまでmainメソッドだけに記述してきた処理部分を、メソッドに切り分けていきます。
 	Javaのファイルを実行すると、自動的にmainメソッドが実行されます。mainメソッドの処理をメソッドに切り分けると、mainメソッドが各メソッドに指示を出し、各メソッドが個々の処理を実行するという構造になります。
-	<%= image_tag 'メソッドのイメージ.gif' %><br>
+	<%= image_tag '/assets/images/メソッドのイメージ.gif' %><br>
 	メソッドに切り分けたコードと、そうでないコードを比較してみましょう。
 	左の図は、mainメソッドの中に処理が羅列されていて、処理の内容やまとまりがわかりにくいですね。メソッドに切り分けることでコードが整理されます。また、メソッドは何度でも使いまわすことができます。
-	<%= image_tag 'メソッドを使った プログラム1.png' %><%= image_tag 'メソッドを使った プログラム2.png' %><br>
+	<%= image_tag '/assets/メソッドを使った プログラム1.png' %><%= image_tag '/assets/メソッドを使った プログラム2.png' %><br>
 	メソッドとは、処理をまとめた部品だと考えれば、決して難しくはありません。左の図では、helloというメソッドを定義し、mainメソッドでhelloメソッドを呼び出しています。詳しくはまだわからなくて大丈夫です。右の図の流れを確認して、まずは演習でメソッドを体験してみましょう。
-	<%= image_tag 'メソッドを呼び出してみよう1.png' %><%= image_tag 'メソッドを呼び出してみよう2.png' %><br>
+	<%= image_tag '/assets/メソッドを呼び出してみよう1.png' %><%= image_tag '/assets/メソッドを呼び出してみよう2.png' %><br>
 	class Main {<br>
 	  public static void main(String[] args) {<br>
 	    hello();<br>
@@ -36,11 +36,11 @@
 
 <div style="padding: 100px 0 100px 0;">
 	メソッドについて詳しく学んでいきましょう。まずはメソッドの定義です。「public static void」の部分はまだ定型として覚えておきましょう。またメソッド名の後の()についても後ほど学びます。ブロック（{}で囲まれた部分）の中に、そのメソッドが行う処理を記述します。メソッドの名前は好きに付けることができますが、処理の内容が想像できるような名前をつけましょう。メソッドの定義
-	<%= image_tag 'メソッドの定義1.png' %><%= image_tag 'メソッドの定義2.png' %><br>
+	<%= image_tag '/assets/メソッドの定義1.png' %><%= image_tag '/assets/メソッドの定義2.png' %><br>
 	メソッドはクラスの中に定義します。下図の具体例では、helloメソッドはMainクラスのブロック（{}）の中に定義されています。このようにクラスの中に定義しないとエラーになりますので気をつけましょう。メソッド定義の場所
-	<%= image_tag 'メソッド定義の場所.png' %><br>
+	<%= image_tag '/assets/メソッド定義の場所.png' %><br>
 	メソッドを呼び出すためには、メソッド名()とするだけです。呼び出しの時の()を忘れないようにしましょう。詳しくは後ほど学びます
-	<%= image_tag 'メソッドの呼び出し1.png' %><%= image_tag 'メソッドの呼び出し2.png' %><br>
+	<%= image_tag '/assets/メソッドの呼び出し1.png' %><%= image_tag '/assets/メソッドの呼び出し2.png' %><br>
 	class Main {<br>
 	  public static void main(String[] args) {<br>
 	    // printDataメソッドを呼び出してください<br>
@@ -55,12 +55,12 @@
 
 <div style="padding: 100px 0 100px 0;">
 	引数（ひきすう）とはメソッドに与える追加情報のようなものです。メソッドを呼び出すときに、一緒に引数を渡すと、メソッドの中でその値を利用することができます。
-	<%= image_tag '引数とは.gif' %><br>
+	<%= image_tag '/assets/引数とは.gif' %><br>
 	メソッドに引数を渡すには、まず引数を受け取れるメソッドを定義しなければなりません。そのためには、メソッドの定義部分で、引数を受け取るための箱となる変数（仮引数（かりひきすう））を指定します。
 	下図のように、「public static void メソッド名()」の()に仮引数を指定します。仮引数は、変数定義と同様に、データ型を指定する必要があります。
-	<%= image_tag '引数を受け取るメソッド1.png' %><%= image_tag '引数を受け取るメソッド2.png' %><br>
+	<%= image_tag '/assets/引数を受け取るメソッド1.png' %><%= image_tag '/assets/引数を受け取るメソッド2.png' %><br>
 	メソッドに引数を渡すには、メソッド名(引数)としてメソッドを呼び出します。渡された引数は、メソッドの仮引数で指定した変数に代入され、その変数はメソッドの処理の中で用いることができます。
-	<%= image_tag 'メソッドに引数を渡す1.png' %><%= image_tag 'メソッドに引数を渡す2.png' %><br>
+	<%= image_tag '/assets/メソッドに引数を渡す1.png' %><%= image_tag '/assets/メソッドに引数を渡す2.png' %><br>
 	class Main {<br>
 	  public static void main(String[] args) {<br>
 	    // 引数に「Kate Jones」を渡してください<br>
@@ -77,13 +77,13 @@
 </div>
 
 <div style="padding: 100px 0 100px 0;">
-	引数は複数渡すこともできます。メソッドが複数の引数を受け取るためには、仮引数をコンマ（,）で区切って定義します。また、引数は左から順番に「第1引数、第2引数・・・」というように呼びます。覚えておきましょう。
-	<%= image_tag '複数の引数をもつメソッド1.png' %><%= image_tag '複数の引数をもつメソッド2.png' %><br>
-	それでは、メソッドに複数の引数を渡す様子を見てみましょう。
-	<%= image_tag '複数の引数を渡してみよう1.png' %><%= image_tag '複数の引数を渡してみよう2.png' %><br>
+	引数は複数渡すこともできます。メソッドが複数の引数を受け取るためには、仮引数をコンマ（,）で区切って定義します。また、引数は左から順番に「第1引数、第2引数・・・」というように呼びます。覚えておきましょう。<br>
+	<%= image_tag '/assets/複数の引数をもつメソッド1.png' %><%= image_tag '/assets/複数の引数をもつメソッド2.png' %><br>
+	それでは、メソッドに複数の引数を渡す様子を見てみましょう。<br>
+	<%= image_tag '/assets/複数の引数を渡してみよう1.png' %><%= image_tag '/assets/複数の引数を渡してみよう2.png' %><br>
 	仮引数は任意に順番を決められますが、メソッドを呼び出すときは、仮引数の順番通りに引数を渡さなければなりません。
-	例えば下図は引数を渡す順序が反対になっています。その結果、String型の仮引数に整数を入れようとするので、エラーになってしまいます。
-	<%= image_tag '引数を渡す順番.png' %><br>
+	例えば下図は引数を渡す順序が反対になっています。その結果、String型の仮引数に整数を入れようとするので、エラーになってしまいます。<br>
+	<%= image_tag '/assets/引数を渡す順番.png' %><br>
 	class Main {<br>
 	  public static void main(String[] args) {<br>
 	    // それぞれ年齢に関する引数を追加してください<br>
@@ -102,14 +102,14 @@
 <div style="padding: 100px 0 100px 0;">
 	メソッドの処理結果を、メソッドの呼び出し元で使いたい場合があります。このようなときは、メソッドが戻り値（もどりち）を返すようにします。
 	メソッドを工場に例えてみましょう。工場（メソッド）は、発注者（mainメソッド）から材料（引数）を受け取り、決められた加工（処理）を行って完成品を発注者に返します。この完成品にあたるのが戻り値です。
-	<%= image_tag '戻り値とは.png' %><br>
+	<br><%= image_tag '/assets/戻り値とは.png' %><br>
 	メソッドの中でreturnを使うと、returnの値をメソッドの呼び出し元に返すことができます。
 	また、戻り値があるメソッドは、戻り値のデータ型を指定します。ここまで定型だった「public static void」のvoidの部分で指定します。右の図のaddメソッドは、戻り値が整数なので「public static int ...」となります。
-	<%= image_tag '戻り値のあるメソッド1.png' %><%= image_tag '戻り値のあるメソッド2.png' %><br>
+	<br><%= image_tag '/assets/戻り値のあるメソッド1.png' %><%= image_tag '/assets/戻り値のあるメソッド2.png' %><br>
 	戻り値がある場合、メソッドの呼び出し部分がそのまま値に変わります。よって、下図のようにメソッドの呼び出し部分を、変数に代入することができます。
-	<%= image_tag '戻り値の具体例1.png' %><%= image_tag '戻り値の具体例2.png' %><br>
+	<br><%= image_tag '/assets/戻り値の具体例1.png' %><%= image_tag '/assets/戻り値の具体例2.png' %><br>
 	これまで定型だったvoidとは何でしょうか。voidは戻り値がない、という意味です。下図のhelloメソッドには、returnはなく戻り値はありません。このように戻り値のない（returnがない）メソッドには、voidを指定します。
-	<%= image_tag 'void.png' %><br>
+	<br><%= image_tag '/assets/void.png' %><br>
 	class Main {<br>
 	  public static void main(String[] args) {<br>
 	    // ③fullNameメソッドの結果を変数nameに代入してください<br>
@@ -132,10 +132,10 @@
 
 <div style="padding: 100px 0 100px 0;">
 	同名のメソッドは原則として定義できません。なぜなら同じメソッドが複数存在すると、メソッドを呼び出したときにどのメソッドを用いればいいのか、コンピュータがわからなくなってしまうためです。
-	<%= image_tag '同名のメソッド1.png' %><%= image_tag '同名のメソッド2.png' %><br>
+	<br><%= image_tag '/assets/同名のメソッド1.png' %><%= image_tag '/assets/同名のメソッド2.png' %><br>
 	ただし、引数の型や個数が違う場合は同名のメソッドを定義できます。同名のメソッドがあっても、引数が違えばどれを呼べばいいのかコンピュータが判断できるためです。
 	このように同名のメソッドを定義することをオーバーロードと言います。
-	<%= image_tag 'オーバーロード1.png' %><%= image_tag 'オーバーロード2.png' %><br>
+	<br><%= image_tag '/assets/オーバーロード1.png' %><%= image_tag '/assets/オーバーロード2.png' %><br>
 	class Main {<br>
 	  public static void main(String[] args) {<br>
 	    printData(fullName("Kate", "Jones"), 27);<br>
@@ -159,10 +159,10 @@
 
 <div style="padding: 100px 0 100px 0;">
 	メソッドは、mainメソッド以外のメソッドから呼び出すことも可能です。プログラムの部品であるメソッドが、相互に助けあってプログラムを形作ります。
-	<%= image_tag 'メソッドからメソッドを呼ぶ.png' %><br>
+	<br><%= image_tag '/assets/メソッドからメソッドを呼ぶ.png' %><br>
 	メソッドから他のメソッドを呼び出してみます。
 	averageメソッドは平均を求めるメソッドです。aとbの平均は「(a + b) / 2」で求められますが、足し算の部分はaddメソッドを利用しています。（(double)はキャストという型変換です。覚えていない人は「JavaⅠ」コースの型変換を復習しておきましょう）  double→小数点以下表示
-	<%= image_tag 'メソッドを組み合わせよう1.png' %><%= image_tag 'メソッドを組み合わせよう2.png' %><br>
+	<br><%= image_tag '/assets/メソッドを組み合わせよう1.png' %><%= image_tag '/assets/メソッドを組み合わせよう2.png' %><br>
 	class Main {<br>
 	  public static void main(String[] args) {<br>
 	    printData(fullName("Kate", "Jones"), 27, 1.6, 50.0);<br>
@@ -193,9 +193,9 @@
 
 <div style="padding: 100px 0 100px 0;">
 	最後に、真偽値を返すメソッドも作ってみましょう。真偽値のデータ型はbooleanなので、メソッド定義は下図のようになります。isEvenメソッドは引数の値が偶数かどうかを調べ、偶数であればtrue、奇数であればfalseを返します。
-	<%= image_tag '真偽値を返す.png' %><br>
+	<br><%= image_tag '/assets/真偽値を返す.png' %><br>
 	真偽値を返す、isEvenメソッドを実際に使ってみましょう。
-	<%= image_tag '真偽値を返すメソッドの例1.png' %><%= image_tag '真偽値を返すメソッドの例2.png' %><br>
+	<br><%= image_tag '/assets/真偽値を返すメソッドの例1.png' %><%= image_tag '/assets/真偽値を返すメソッドの例2.png' %><br>
 	class Main {<br>
 	  public static void main(String[] args) {<br>
 	    printData(fullName("Kate", "Jones"), 27, 1.6, 50.0);<br>
@@ -234,11 +234,11 @@
 <div style="padding: 100px 0 100px 0;">
 	メソッドの次は、クラスについて学びましょう。
 	ここまでは、Mainクラスのmainメソッド内の処理をメソッドに切り分けてきましたが、その結果Mainクラス内にメソッドが多くなってしまいました。ここからはメソッドではなく、クラスを切り分けることを学んでいきます。
-	<%= image_tag 'クラスに触れてみよう.png' %><br>
+	<br><%= image_tag '/assets/クラスに触れてみよう.png' %><br>
 	クラスは、メソッドという小さな部品をまとめる、より大きな部品です。これまではmainメソッドと同じクラス（Mainクラス）のメソッドを使ってきましたが、他のクラスのメソッドを利用することも可能です。
-	<%= image_tag '複数のクラスを使う1.png' %><%= image_tag '複数のクラスを使う2.png' %><br>
+	<br><%= image_tag '/assets/複数のクラスを使う1.png' %><%= image_tag '/assets/複数のクラスを使う2.png' %><br>
 	下図の例には、MainクラスとPersonクラスの2つのクラスがあり、MainクラスのmainメソッドでPerson.hello()としています。このようにクラス名.メソッド名()とすることで、他のクラスのメソッドを呼び出すことができます。詳しくは後ほど学びますが、まずは演習で体験してみましょう。
-	<%= image_tag '他クラスのメソッドを呼び出す1.png' %><%= image_tag '他クラスのメソッドを呼び出す2.png' %><br>
+	<br><%= image_tag '/assets/他クラスのメソッドを呼び出す1.png' %><%= image_tag '/assets/他クラスのメソッドを呼び出す2.png' %><br>
 	[Main.java]<br>
 	class Main {<br>
 	  public static void main(String[] args) {<br>
@@ -258,14 +258,14 @@
 <div style="padding: 100px 0 100px 0;">
 	クラスの定義は「class クラス名」とします。
 	また右の図のように、クラス名の最初の文字は大文字にし、ファイル名は「クラス名.java」としなければなりません。これらのルールはしっかり覚えておきましょう。
-	<%= image_tag 'クラスの定義1.png' %><%= image_tag 'クラスの定義2.png' %><br>
+	<br><%= image_tag '/assets/クラスの定義1.png' %><%= image_tag '/assets/クラスの定義2.png' %><br>
 	Personクラスを作り、Mainクラスのmainメソッド以外をPersonクラスに移します。こうすることで、mainメソッド以外の「ロジック（論理）」部分をPersonクラスにまとめ、実行部分とロジック部分を切り分けることができます。このように分割することで、Mainクラスは実行用のクラス、Personクラスはロジックをまとめるクラスという役割分担が明確になります。
-	<%= image_tag 'Personクラスを作ろう1.png' %><%= image_tag 'Personクラスを作ろう2.png' %><br>
+	<br><%= image_tag '/assets/Personクラスを作ろう1.png' %><%= image_tag '/assets/Personクラスを作ろう2.png' %><br>
 	Mainクラスのmainメソッドから、Personクラスのメソッドを呼び出してみましょう。
-	<%= image_tag 'Personクラスのメソッドを呼び出す1.png' %><%= image_tag 'Personクラスのメソッドを呼び出す2.png' %><br>
+	<br><%= image_tag '/assets/Personクラスのメソッドを呼び出す1.png' %><%= image_tag '/assets/Personクラスのメソッドを呼び出す2.png' %><br>
 	Javaは、ファイルではなくクラスを実行します。また実行時にmainメソッドが呼ばれますが、正確にはmainメソッドを持つクラスしか実行できません（mainメソッドのないクラスは、他クラスから呼び出して使います）。
 	またクラス名に関係なく、実行時にはmainメソッドが呼ばれます（Mainクラスだからmainメソッドが呼ばれる、というわけではありません）。
-	<%= image_tag 'クラスについての補足1.png' %><%= image_tag 'クラスについての補足2.png' %><br>
+	<br><%= image_tag '/assets/クラスについての補足1.png' %><%= image_tag '/assets/クラスについての補足2.png' %><br>
 	[Main.java]<br>
 	public class Main {<br>
 	  public static void main(String[] args) {<br>
@@ -309,13 +309,13 @@
 
 <div style="padding: 100px 0 100px 0;">
 	Javaでは、他人が作ったクラスを利用することもできます。このようなクラスを外部ライブラリと呼び、自分のプログラムに読み込むことで利用できるようになります。すべてのプログラムを自分だけで開発する必要はありません。世界中のエンジニアが作った便利なメソッドを利用することで、開発の幅は一気に広がります。
-	<%= image_tag '外部ライブラリ.png' %><br>
+	<br><%= image_tag '/assets/外部ライブラリ.png' %><br>
 	外部ライブラリを自分のプログラムに読み込む（使えるようにする）には、importを用います。
 	数学的なメソッドを持つMathというクラス（ライブラリ）を読み込むには、class定義より上で「import java.lang.Math」とします。「java.lang」の部分は、Mathクラスの場所を示しているという程度に覚えておきましょう。
-	<%= image_tag '外部ライブラリのimport.png' %><br>
+	<br><%= image_tag '/assets/外部ライブラリのimport.png' %><br>
 	Mathクラスのmaxメソッドを使ってみます。maxメソッドは、引数に渡した2つの数値の大きい方を返してくれます。外部ライブラリをうまく活用すれば、自分で実装する手間が省けるので便利ですね。
 	演習では、引数の小数点以下を四捨五入して返すroundメソッドを使います。これはdouble型の引数を渡し、Math.round(引数)のように使います。
-	<%= image_tag 'Mathクラスのメソッド1.png' %><%= image_tag 'Mathクラスのメソッド2.png' %><br>
+	<br><%= image_tag '/assets/Mathクラスのメソッド1.png' %><%= image_tag '/assets/Mathクラスのメソッド2.png' %><br>
 	[Main.java]<br>
 	class Main {<br>
 	  public static void main(String[] args) {<br>
@@ -359,15 +359,15 @@
 
 <div style="padding: 100px 0 100px 0;">
 	先ほど読み込んだ「java.lang.Math」はよく利用されるため、実は特別にimportせずに自動で読み込まれるようになっています。Mathクラス以外にも「java.lang.クラス名」となる外部ライブラリはすべて自動で読み込まれます。興味のある人は調べてみましょう。
-	<%= image_tag 'import不要のクラス1.png' %><%= image_tag 'import不要のクラス2.png' %><br>
+	<br><%= image_tag '/assets/import不要のクラス1.png' %><%= image_tag '/assets/import不要のクラス2.png' %><br>
 	これまではコンソールに値を「出力」してきましたが、実は左の図のようにコンソールに値を「入力」し、その値をプログラム内で使うこともできます。
 	コンソールへの入力を受け取るにはScannerというライブラリを用います。Scannerは「import java.util.Scanner」と読み込みます。ライブラリは、Googleで検索すれば使い方がわかりますので、覚える必要はありません。
-	<%= image_tag 'コンソールへの入力とScanner1.gif' %><%= image_tag 'コンソールへの入力とScanner2.png' %><br>
+	<br><%= image_tag '/assets/コンソールへの入力とScanner1.gif' %><%= image_tag '/assets/コンソールへの入力とScanner2.png' %><br>
 	Scannerの使い方を見てみましょう。まずScannerを初期化しscannerという変数にいれています。詳しくはまだ知らなくて大丈夫ですが、Scannerではこの初期化したものを代入した変数を使ってメソッドを呼び出します。scanner.next()とすると（Scanner.next()ではない）、コンソールに入力された文字列を受け取ることができます。
-	<%= image_tag 'Scannerで文字列を受け取る.png' %><br>
+	<br><%= image_tag '/assets/Scannerで文字列を受け取る.png' %><br>
 	Scannerの処理の流れを確認しましょう。scanner.next()が呼ばれると、一旦処理が中断しコンソールに値が入力されるのを待ちます。左の図では、コンソールに入力された値をscanner.next()が受け取り、変数nameに代入しています。
 	（図中のSystem.out.printは、改行せずに値を出力する命令です）
-	<%= image_tag 'コンソールへの入力とScanner1.gif' %><%= image_tag 'コンソールへの入力とScanner2.png' %><br>
+	<br><%= image_tag '/assets/コンソールへの入力とScanner1.gif' %><%= image_tag '/assets/コンソールへの入力とScanner2.png' %><br>
 	// ①java.util.Scannerを読み込んでください<br>
 	import java.util.Scanner;<br>
 	class Main {<br>
@@ -384,7 +384,7 @@
 
 <div style="padding: 100px 0 100px 0;">
 	Scannerを用いて、整数と小数を受け取る方法は下図です。整数を受け取るメソッドはnextIntメソッド、小数を受け取るメソッドはnextDoubleメソッドです。
-	<%= image_tag '数値の入力を受けとる1.png' %><%= image_tag '数値の入力を受けとる2.gif' %><br>
+	<br><%= image_tag '/assets/数値の入力を受けとる1.png' %><%= image_tag '/assets/数値の入力を受けとる2.gif' %><br>
 	import java.util.Scanner;<br><br>
 	[Main.java]<br><br>
 	class Main {<br><br>

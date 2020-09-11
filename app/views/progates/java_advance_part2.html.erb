@@ -32,7 +32,7 @@
 	・Bicycleクラスの定義
 	・Bicycleクラスにインスタンスフィールドnameを定義（private）
 	・インスタンスを生成し、右の図のようにnameの値を出力
-	<%= image_tag 'Bicycleクラスを作ろう1.png' %><%= image_tag 'Bicycleクラスを作ろう2.png' %><br>
+	<br><%= image_tag '/assets/Bicycleクラスを作ろう1.png' %><br><%= image_tag '/assets/Bicycleクラスを作ろう2.png' %><br>
 	[Main.java]<br>
 	class Main {<br>
 	  public static void main(String[] args) {<br>
@@ -62,7 +62,7 @@
 		自転車に「色」という情報を持たせましょう。
 	・Bicycleクラスにインスタンスフィールドcolorを追加（private）
 	・printDataメソッドを定義して、右の図のようにnameとcolorの値を出力
-	<%= image_tag '色を追加しよう1.png' %><%= image_tag '色を追加しよう2.png' %><br>
+	<br><%= image_tag '/assets/色を追加しよう1.png' %><br><%= image_tag '/assets/色を追加しよう2.png' %><br>
 	[Main.java]<br>
 	class Main {<br>
 	  public static void main(String[] args) {<br>
@@ -103,7 +103,7 @@
 	・インスタンスフィールドdistanceを追加（private）
 	・distanceフィールドの初期値は0
 	・右の図のように、name, color, distanceの値を出力
-	<%= image_tag 'distanceフィールド1.png' %><%= image_tag 'distanceフィールド2.png' %><br>
+	<br><%= image_tag '/assets/distanceフィールド1.png' %><br><%= image_tag '/assets/distanceフィールド2.png' %><br>
 	[Main.java]<br>
 	class Main {<br>
 	  public static void main(String[] args) {<br>
@@ -139,7 +139,7 @@
 	・runメソッドは、引数にint型の値（走る距離）を受け取る
 	・引数で受け取った値を用いて、右の図のように「◯◯km走ります」と出力
 	・引数で受け取った値を、distanceフィールドに加算する
-	<%= image_tag 'distanceフィールド1.png' %><%= image_tag 'distanceフィールド2.png' %><br>
+	<br><%= image_tag '/assets/distanceフィールド1.png' %><br><%= image_tag '/assets/distanceフィールド2.png' %><br>
 	[Main.java]<br>
 	class Main {<br>
 	  public static void main(String[] args) {<br>
@@ -181,7 +181,7 @@
 <div style="padding: 100px 0 100px 0;">
 	Scannerを使って、走る距離を受け取れるようにしましょう。
 	下図のように、自転車を走らせる距離を入力できるようにします。
-	<%= image_tag 'Scanner.gif' %><br>
+	<br><%= image_tag '/assets/Scanner.gif' %><br>
 	[Main.java]<br>
 	// ②scannerをimportする<br>
 	import java.util.Scanner;<br>
@@ -227,7 +227,7 @@
 	ここからは、Carクラス（車オブジェクトの設計図となるクラス）を作成していきます。
 	まずはCarクラスが、Bicycleクラスと同じフィールド、同じメソッドを持つようにします。
 	これまでに行ったことを一気に実装してみましょう。
-	<%= image_tag 'distanceフィールド1.png' %><%= image_tag 'distanceフィールド2.png' %><br>
+	<br><%= image_tag '/assets/distanceフィールド1.png' %><br><%= image_tag '/assets/distanceフィールド2.png' %><br>
 	[Main.java]<br>
 	import java.util.Scanner;<br>
 	class Main {<br>
@@ -273,7 +273,7 @@
 	・インスタンスフィールドfuelを追加（private）
 	・fuelフィールドの初期値は100（100Lが満タンだとします）
 	・右の図のように、fuelの値を出力
-	<%= image_tag 'fuelフィールド1.png' %><%= image_tag 'fuelフィールド2.png' %><br>
+	<br><%= image_tag '/assets/fuelフィールド1.png' %><br><%= image_tag '/assets/fuelフィールド2.png' %><br>
 	[Main.java]<br>
 	前回と同様なので割愛<br>
 	[Car.java]<br>
@@ -302,9 +302,9 @@
 <div style="padding: 100px 0 100px 0;">
 	現実の車と同じように、Carクラスのインスタンスが走れば、fuelフィールドの値が減るようにしましょう。なお、この演習では便宜上、1km走れば、ガソリンを1L消費するとします。
 	runメソッド内で、以下のような条件分岐を行い、走る距離がガソリンの残量を超えていた場合、走行できないようにします。
-	<%= image_tag 'runメソッドの改良.png' %><br>
+	<br><%= image_tag '/assets/runメソッドの改良.png' %><br>
 	先ほどの条件分岐を正しく行った場合、下図のような出力がされるようにします。
-	<%= image_tag 'runメソッドの出力1.png' %><%= image_tag 'runメソッドの出力1.png' %><br>
+	<br><%= image_tag '/assets/runメソッドの出力1.png' %><br><%= image_tag '/assets/runメソッドの出力1.png' %><br>
 	[Main.java]<br>
 	import java.util.Scanner;<br>
 	class Main {<br>
@@ -371,9 +371,9 @@
 	・chargeメソッドは、引数にint型の値（給油する量）を受け取る
 	・引数の値を用いて、「◯◯L給油します」と出力
 	・chargeメソッドの中で、下図のような条件分岐を行う
-	<%= image_tag 'chargeメソッド.png' %><br>
+	<br><%= image_tag '/assets/chargeメソッド.png' %><br>
 	先ほどの条件分岐を正しく行った場合、下図のような出力がされるようにします。
-	<%= image_tag 'chargeメソッドの出力1.png' %><%= image_tag 'chargeメソッドの出力2.png' %><%= image_tag 'chargeメソッドの出力3.png' %><br>
+	<br><%= image_tag '/assets/chargeメソッドの出力1.png' %><br><%= image_tag '/assets/chargeメソッドの出力2.png' %><br><%= image_tag '/assets/chargeメソッドの出力3.png' %><br>
 	[Main.java]<br>
 	import java.util.Scanner;<br>
 	class Main {<br>

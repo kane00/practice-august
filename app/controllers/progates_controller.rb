@@ -9,18 +9,22 @@ class ProgatesController < ApplicationController
 	def java
 	end
 
-	def java2
+	def java_part2
 	end
 
-	def java3
+	def java_part3
 	end
 
-	def java4
+	def java_part4
 	end
 
-	def javaadvance2
+	def java_advance_part2
 	end
 
-	def java5
+	def java_part5
 	end
+
+	def ruby
+	end
+	
 end

@@ -29,741 +29,728 @@
 <div style="padding: 100px 0 100px 0;">
 	CarクラスとBicycleクラスは、下図のように重複があります。コードの重複は保守性（修正・改善のしやすさ）を下げるため、できるだけ避けるべきです。
 	またCarクラスとBicycleクラスはどちらも「乗り物」です。下図の重複部分はCarとBicycleの独自機能というよりは、「乗り物一般」に共通する情報と振る舞いであるといえるでしょう。
-	<%= image_tag 'CarとBicycleの重複1.png' %><%= image_tag 'CarとBicycleの重複2.png' %><br>
+	<br><%= image_tag '/assets/CarとBicycleの重複1.png' %><br><%= image_tag '/assets/CarとBicycleの重複2.png' %><br>
 	オブジェクト指向では、あるクラスの内容を他のクラスが「引き継ぐ」ことができます。
 	先ほどの重複部分を、Vehicleクラス（乗り物）に定義し、そのクラスをCarクラスとBicycleクラスが引き継ぐことができれば、重複部分をなくすことができそうですね。この方法をこれから学んでいきましょう。
-	<%= image_tag 'クラスの内容を引き継ぐ.png' %><br>
+	<br><%= image_tag '/assets/クラスの内容を引き継ぐ.png' %><br>
 	既存のクラスのフィールドやメソッドを別のクラスに引き継ぐ機能を「継承」といいます。さらに継承してできる新しいクラスには独自のフィールドやメソッドを追加してカスタマイズすることも可能です。
 	継承されるクラスを「スーパークラス」、継承してできる新しいクラスを「サブクラス」と呼びます。
-	<%= image_tag '継承.png' %><br>
+	<br><%= image_tag '/assets/継承.png' %><br>
 	継承を用いて新しくサブクラスを定義するときは、「extends」を用いて右の図のように「class サブクラス名 extends スーパークラス名」としてクラスを定義します。
 	extendsは「拡張する」という意味です。継承は、スーパークラスを元に、機能を拡張したサブクラスを作るための機能なのです。
-	<%= image_tag '継承の方法1.png' %><%= image_tag '継承の方法2.png' %><br>
-	[Main.java]
-	class Main {
-	  public static void main(String[] args) {
-	    Car car = new Car();
-	    Bicycle bicycle = new Bicycle();
-	  }
-	}
-	[Car.java]
-	// ③Vehicleクラスを継承してください
-	class Car extends Vehicle {
-	  // 共通のコードをVehicleクラスに移動してください(コードは消す)
-	}
-	[Bicycle.java]
-	// ④Vehicleクラスを継承してください
-	class Bicycle extends Vehicle {
-	  // 共通のコードをVehicleクラスに移動してください(共通コードは省略)
-	}
-	[Vehicle.java]
-	// ①Vehicleクラスを定義し、CarクラスとBicycleクラスの共通部分を移動してください
-	class Vehicle {
-	  // ②CarクラスとBicycleクラスの重複部分をVehicleクラスに移動してください。
-	  private String name;
-	  private String color;
-	  private int distance = 0;
-	  public String getName() {
-	    return this.name;
-	  }
-	  public String getColor() {
-	    return this.color;
-	  }
-	  public int getDistance() {
-	    return this.distance;
-	  }
-	  public void setName(String name) {
-	    this.name = name;
-	  }
-	  public void setColor(String color) {
-	    this.color = color;
-	  }
-	  public void printData() {
-	    System.out.println("名前：" + this.name);
-	    System.out.println("色：" + this.color);
-	    System.out.println("走行距離：" + this.distance + "km");
-	  }
-	}
+	<br><%= image_tag '/assets/継承の方法1.png' %><br><%= image_tag '/assets/継承の方法2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Car car = new Car();<br>
+	    Bicycle bicycle = new Bicycle();<br>
+	  }<br>
+	}<br>
+	[Car.java]<br>
+	// ③Vehicleクラスを継承してください<br>
+	class Car extends Vehicle {<br>
+	  // 共通のコードをVehicleクラスに移動してください(コードは消す)<br>
+	}<br>
+	[Bicycle.java]<br>
+	// ④Vehicleクラスを継承してください<br>
+	class Bicycle extends Vehicle {<br>
+	  // 共通のコードをVehicleクラスに移動してください(共通コードは省略)<br>
+	}<br>
+	[Vehicle.java]<br>
+	// ①Vehicleクラスを定義し、CarクラスとBicycleクラスの共通部分を移動してください<br>
+	class Vehicle {<br>
+	  // ②CarクラスとBicycleクラスの重複部分をVehicleクラスに移動してください。<br>
+	  private String name;<br>
+	  private String color;<br>
+	  private int distance = 0;<br>
+	  public String getName() {<br>
+	    return this.name;<br>
+	  }<br>
+	  public String getColor() {<br>
+	    return this.color;<br>
+	  }<br>
+	  public int getDistance() {<br>
+	    return this.distance;<br>
+	  }<br>
+	  public void setName(String name) {<br>
+	    this.name = name;<br>
+	  }<br>
+	  public void setColor(String color) {<br>
+	    this.color = color;<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前：" + this.name);<br>
+	    System.out.println("色：" + this.color);<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	  }<br>
+	}<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	Carクラス（サブクラス）はVehicleクラス（スーパークラス）のフィールドとメソッドを引き継いでいます。よって、Carクラス自体にはまだ何も定義されていませんが、Carクラスのインスタンスに対して、Vehicleクラスのインスタンスメソッドを呼び出すことが可能です。
-	<%= image_tag 'スーパークラスのメソッドを呼び出す1.png' %><%= image_tag 'スーパークラスのメソッドを呼び出す2.png' %><br>
-	[Main.java]
-	class Main {
-	  public static void main(String[] args) {
-	    Car car = new Car();
-	    // ①setNameメソッドを用いて、carの名前を「フェラーリ」にしてください
-	    car.setName("フェラーリ");
-	    // ②setColorメソッドを用いて、carの色を「赤」にしてください
-	    car.setColor("赤");
-	    Bicycle bicycle = new Bicycle();
-	    // ③setNameメソッドを用いて、bicycleの名前を「ビアンキ」にしてください
-	    bicycle.setName("ビアンキ");
-	    // ④setColorメソッドを用いて、bicycleの色を「緑」にしてください
-	    bicycle.setColor("緑");
-	    System.out.println("【車の情報】");
-	    car.printData();
-	    System.out.println("=================");
-	    System.out.println("【自転車の情報】");
-	    bicycle.printData();
-	  }
-	}
-	[Car.java][Bicycle.java][Vehicle.java]
-	前回から変更なし、省略
+	<br><%= image_tag '/assets/スーパークラスのメソッドを呼び出す1.png' %><br><%= image_tag '/assets/スーパークラスのメソッドを呼び出す2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Car car = new Car();<br>
+	    // ①setNameメソッドを用いて、carの名前を「フェラーリ」にしてください<br>
+	    car.setName("フェラーリ");<br>
+	    // ②setColorメソッドを用いて、carの色を「赤」にしてください<br>
+	    car.setColor("赤");<br>
+	    Bicycle bicycle = new Bicycle();<br>
+	    // ③setNameメソッドを用いて、bicycleの名前を「ビアンキ」にしてください<br>
+	    bicycle.setName("ビアンキ");<br>
+	    // ④setColorメソッドを用いて、bicycleの色を「緑」にしてください<br>
+	    bicycle.setColor("緑");<br>
+	    System.out.println("【車の情報】");<br>
+	    car.printData();<br>
+	    System.out.println("=================");<br>
+	    System.out.println("【自転車の情報】");<br>
+	    bicycle.printData();<br>
+	  }<br>
+	}<br>
+	[Car.java][Bicycle.java][Vehicle.java]<br>
+	前回から変更なし、省略<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	サブクラスには、スーパークラスにない独自のフィールドやメソッドを追加し、カスタマイズすることができます。
 	インスタンスフィールドfuelはCarクラスに独自のフィールドです。fuelというフィールドと、そのゲッターをCarクラスに定義してあげましょう。
 	なお「道場Ⅱ」で実装したchargeメソッドもここで定義しましょう。
-	<%= image_tag 'サブクラスのフィールドとメソッド.png' %><br>
+	<br><%= image_tag '/assets/サブクラスのフィールドとメソッド.png' %><br>
 	サブクラスのインスタンスは、自身のクラスに定義したメソッドだけでなく、スーパークラスのメソッドも呼び出すことができます。
 	一方スーパークラスのインスタンスはサブクラスのメソッドを呼びだすことはできません。クラスの継承は一方的なため、スーパークラスはサブクラスのメソッドを見つけることはできずエラーが発生してしまいます。
-	<%= image_tag 'メソッド呼び出しの注意点1.png' %><%= image_tag 'メソッド呼び出しの注意点2.png' %><br>
+	<br><%= image_tag '/assets/メソッド呼び出しの注意点1.png' %><br><%= image_tag '/assets/メソッド呼び出しの注意点2.png' %><br>
 	サブクラスのインスタンスに対して、メソッドを呼ぶ際には図のようにメソッドが呼ばれます。
 	呼び出したメソッドが、サブクラスに定義されていればサブクラスから、定義されていなければスーパークラスから呼び出されます。
-	<%= image_tag 'メソッド呼び出しの仕組み.png' %><br>
-	[Main.java]
-	import java.util.Scanner;
-	class Main {
-	  public static void main(String[] args) {
-	    Scanner scanner = new Scanner(System.in);
-	    Car car = new Car();
-	    car.setName("フェラーリ");
-	    car.setColor("赤");
-	    Bicycle bicycle = new Bicycle();
-	    bicycle.setName("ビアンキ");
-	    bicycle.setColor("緑");
-	    System.out.println("【車の情報】");
-	    car.printData();
-	    // ④getFuelメソッドを用いて「ガソリン量：◯◯L」と出力してください
-	    System.out.println("ガソリン量:" + car.getFuel() + "L");
-	    System.out.println("-----------------");
-	    System.out.print("給油する量を入力してください：");
-	    int litre = scanner.nextInt();
-	    // ⑤chargeメソッドを呼び出して、引数にlitreを渡してください
-	    car.charge(litre);
-	    System.out.println("=================");
-	    System.out.println("【自転車の情報】");
-	    bicycle.printData();
-	  }
-	}
-	[Car.java]
-	class Car extends Vehicle {
-	  // ①インスタンスフィールドfuelを定義してください
-	  private int fuel = 50;
-	  // ②fuelフィールドのゲッターを定義してください
-	  public int getFuel() {
-	    return this.fuel;
-	  }
-	  // ③インスタンスメソッドchargeを定義してください
-	  public void charge(int litre) {
-	    System.out.println(litre + "L給油します");
-	    if (litre <= 0) {
-	      System.out.println("給油できません");
-	    } else if (litre + this.fuel >= 100) {
-	      System.out.println("満タンまで給油します");
-	      this.fuel = 100;
-	    } else {
-	      this.fuel += litre;
-	    }
-	    System.out.println("ガソリン量：" + this.fuel + "L");
-	  }
-	}
-	[Bicycle.java][Vehicle.java]
-	変更なし、省略
+	<br><%= image_tag '/assets/メソッド呼び出しの仕組み.png' %><br>
+	[Main.java]<br>
+	import java.util.Scanner;<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Scanner scanner = new Scanner(System.in);<br>
+	    Car car = new Car();<br>
+	    car.setName("フェラーリ");<br>
+	    car.setColor("赤");<br>
+	    Bicycle bicycle = new Bicycle();<br>
+	    bicycle.setName("ビアンキ");<br>
+	    bicycle.setColor("緑");<br>
+	    System.out.println("【車の情報】");<br>
+	    car.printData();<br>
+	    // ④getFuelメソッドを用いて「ガソリン量：◯◯L」と出力してください<br>
+	    System.out.println("ガソリン量:" + car.getFuel() + "L");<br>
+	    System.out.println("-----------------");<br>
+	    System.out.print("給油する量を入力してください：");<br>
+	    int litre = scanner.nextInt();<br>
+	    // ⑤chargeメソッドを呼び出して、引数にlitreを渡してください<br>
+	    car.charge(litre);<br>
+	    System.out.println("=================");<br>
+	    System.out.println("【自転車の情報】");<br>
+	    bicycle.printData();<br>
+	  }<br>
+	}<br>
+	[Car.java]<br>
+	class Car extends Vehicle {<br>
+	  // ①インスタンスフィールドfuelを定義してください<br>
+	  private int fuel = 50;<br>
+	  // ②fuelフィールドのゲッターを定義してください<br>
+	  public int getFuel() {<br>
+	    return this.fuel;<br>
+	  }<br>
+	  // ③インスタンスメソッドchargeを定義してください<br>
+	  public void charge(int litre) {<br>
+	    System.out.println(litre + "L給油します");<br>
+	    if (litre <= 0) {<br>
+	      System.out.println("給油できません");<br>
+	    } else if (litre + this.fuel >= 100) {<br>
+	      System.out.println("満タンまで給油します");<br>
+	      this.fuel = 100;<br>
+	    } else {<br>
+	      this.fuel += litre;<br>
+	    }<br>
+	    System.out.println("ガソリン量：" + this.fuel + "L");<br>
+	  }<br>
+	}<br>
+	[Bicycle.java][Vehicle.java]<br>
+	変更なし、省略<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	スーパークラスから継承しているメソッドの処理を、特定のサブクラスでカスタマイズしたいという場合を考えてみましょう。
 	例えば下図のように、Carクラスのインスタンスに対してprintDataメソッドを呼び出すときは、ガソリン量も表示したいとします。
-	<%= image_tag 'メソッドのカスタマイズ1.png' %><%= image_tag 'メソッドのカスタマイズ2.png' %><br>
+	<br><%= image_tag '/assets/メソッドのカスタマイズ1.png' %><br><%= image_tag '/assets/メソッドのカスタマイズ2.png' %><br>
 	スーパークラスから継承したメソッドと同名のメソッドをサブクラスに定義することで、スーパークラスのメソッドの内容を上書きすることができます。これを「オーバーライド」といいます。
 	すなわち、CarクラスにもprintDataメソッドを定義すると、VehicleクラスのprintDataメソッドが上書きされます。
-	<%= image_tag 'メソッドのオーバーライド オーバーライド1.png' %><%= image_tag 'メソッドのオーバーライド オーバーライド2.png' %><br>
+	<br><%= image_tag '/assets/メソッドのオーバーライド オーバーライド1.png' %><br><%= image_tag '/assets/メソッドのオーバーライド オーバーライド2.png' %><br>
 	サブクラスのインスタンスに対してメソッドを呼び出すと、まずサブクラスの中でそのメソッドを探し、持っていればそのメソッドを呼び出します。
 	つまりスーパークラスと同名のメソッドがサブクラスにあれば、それが実行されるので、結果的にメソッドの内容が上書きされたようになります（ここではCarクラスに定義したprintDataメソッドが呼ばれる）。
-	<%= image_tag 'オーバーライドの仕組み.png' %><br>
+	<br><%= image_tag '/assets/オーバーライドの仕組み.png' %><br>
 	CarクラスのprintDataメソッドではfuelの出力を加えるだけですが、fuel以外のname, color, distanceフィールドの出力にも注意が必要です。
 	これらは、Vehicleクラスにprivateなフィールドとして定義されており、外部のクラスであるCarクラスから直接アクセスすることはできません（カプセル化）。fuel以外のフィールドはゲッターを用いて取得するようにしましょう。
-	<%= image_tag 'フィールドへのアクセス制限1.png' %><%= image_tag 'メソッドのカスタマイズ2.png' %><br>
-	[Main.java]
-	import java.util.Scanner;
-	class Main {
-	  public static void main(String[] args) {
-	    Scanner scanner = new Scanner(System.in);
-	    Car car = new Car();
-	    car.setName("フェラーリ");
-	    car.setColor("赤");
-	    Bicycle bicycle = new Bicycle();
-	    bicycle.setName("ビアンキ");
-	    bicycle.setColor("緑");
-	    System.out.println("【車の情報】");
-	    car.printData();
-	    // ③「ガソリン量：○○L」と出力している箇所を消してください
-	    System.out.println("-----------------");
-	    System.out.print("給油する量を入力してください：");
-	    int litre = scanner.nextInt();
-	    car.charge(litre);
-	    System.out.println("=================");
-	    System.out.println("【自転車の情報】");
-	    bicycle.printData();
-	  }
-	}
-	[Car.java]
-	class Car extends Vehicle {
-	  private int fuel = 50;
-	  public int getFuel() {
-	    return this.fuel;
-	  }
-	  // ①printDataメソッドを定義してください
-	  // ②printDataメソッドで、順番に・名前：○○　・色：✕✕　・走行距離：□□km　・ガソリン量：△△Lと出力してください。
-	  public void printData() {
-	    System.out.println("名前：" + this.getName() );  //colorフィールドのゲッターを用いてください、nameの値を取得するために、thisに対してgetNameメソッドを用いてください
-	    System.out.println("色：" + this.getColor() );  //colorフィールドのゲッターを用いてください、colorの値を取得するために、thisに対してgetColorメソッドを用いてください
-	    System.out.println("走行距離：" + this.getDistance() + "km" );
-	    System.out.println("ガソリン量：" + this.fuel + "L");
-	  }
-	  public void charge(int litre) {
-	    System.out.println(litre + "L給油します");
-	    if (litre <= 0) {
-	      System.out.println("給油できません");
-	    } else if (litre + this.fuel >= 100) {
-	      System.out.println("満タンまで給油します");
-	      this.fuel = 100;
-	    } else {
-	      this.fuel += litre;
-	    }
-	    System.out.println("ガソリン量：" + this.fuel + "L");
-	  }
-	}
-	[Bicycle.java Vehicle.java]
-	前回同様のため省略
+	<br><%= image_tag '/assets/フィールドへのアクセス制限1.png' %><br><%= image_tag '/assets/メソッドのカスタマイズ2.png' %><br>
+	[Main.java]<br>
+	import java.util.Scanner;<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Scanner scanner = new Scanner(System.in);<br>
+	    Car car = new Car();<br>
+	    car.setName("フェラーリ");<br>
+	    car.setColor("赤");<br>
+	    Bicycle bicycle = new Bicycle();<br>
+	    bicycle.setName("ビアンキ");<br>
+	    bicycle.setColor("緑");<br>
+	    System.out.println("【車の情報】");<br>
+	    car.printData();<br>
+	    // ③「ガソリン量：○○L」と出力している箇所を消してください<br>
+	    System.out.println("-----------------");<br>
+	    System.out.print("給油する量を入力してください：");<br>
+	    int litre = scanner.nextInt();<br>
+	    car.charge(litre);<br>
+	    System.out.println("=================");<br>
+	    System.out.println("【自転車の情報】");<br>
+	    bicycle.printData();<br>
+	  }<br>
+	}<br>
+	[Car.java]<br>
+	class Car extends Vehicle {<br>
+	  private int fuel = 50;<br>
+	  public int getFuel() {<br>
+	    return this.fuel;<br>
+	  }<br>
+	  // ①printDataメソッドを定義してください<br>
+	  // ②printDataメソッドで、順番に・名前：○○　・色：✕✕　・走行距離：□□km　・ガソリン量：△△Lと出力してください。<br>
+	  public void printData() {<br>
+	    System.out.println("名前：" + this.getName() );  <br>//colorフィールドのゲッターを用いてください、nameの値を取得するために、thisに対してgetNameメソッドを用いてください<br>
+	    System.out.println("色：" + this.getColor() );  <br>//colorフィールドのゲッターを用いてください、colorの値を取得するために、thisに対してgetColorメソッドを用いてください<br>
+	    System.out.println("走行距離：" + this.getDistance() + "km" );<br>
+	    System.out.println("ガソリン量：" + this.fuel + "L");<br>
+	  }<br>
+	  public void charge(int litre) {<br>
+	    System.out.println(litre + "L給油します");<br>
+	    if (litre <= 0) {<br>
+	      System.out.println("給油できません");<br>
+	    } else if (litre + this.fuel >= 100) {<br>
+	      System.out.println("満タンまで給油します");<br>
+	      this.fuel = 100;<br>
+	    } else {<br>
+	      this.fuel += litre;<br>
+	    }<br>
+	    System.out.println("ガソリン量：" + this.fuel + "L");<br>
+	  }<br>
+	}<br>
+	[Bicycle.java Vehicle.java]<br>
+	前回同様のため省略<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	先ほどのprintDataメソッドのオーバーライドには重複があります。
 	CarクラスのprintDataメソッドは、ガソリン量を表示している箇所以外は、処理が重複しています。このコードの重複はなくしてあげましょう。
-	<%= image_tag 'メソッド内の重複1.png' %><%= image_tag 'メソッド内の重複2.png' %><br>
+	<br><%= image_tag '/assets/メソッド内の重複1.png' %><br><%= image_tag '/assets/メソッド内の重複2.png' %><br>
 	「super.メソッド名()」とすると、サブクラスのインスタンスメソッドから、スーパークラスのインスタンスメソッドを呼び出すことができます。
 	これを使えば、CarクラスのprintDataメソッドで、ガソリン量を表示する箇所以外の処理はVehicleクラスのprintDataメソッドを呼び出すことで代用することができます。
-	<%= image_tag 'スーパークラスのメソッドを呼ぶ1.png' %><%= image_tag 'スーパークラスのメソッドを呼ぶ2.png' %><br>
-	[Car.java]
-	class Car extends Vehicle {
-	  private int fuel = 50;
-	  public int getFuel() {
-	    return this.fuel;
-	  }
-	  public void printData() {
-	    // ①superを用いて、以下の重複部分を書き換えてください
-	    // System.out.println("名前：" + this.getName());
-	    // System.out.println("色：" + this.getColor());
-	    // System.out.println("走行距離：" + this.getDistance() + "km");
-	    super.printData();
-	    System.out.println("ガソリン量：" + this.fuel + " L");
-	  }
-	  public void charge(int litre) {
-	    System.out.println(litre + "L給油します");
-	    if (litre <= 0) {
-	      System.out.println("給油できません");
-	    } else if (litre + this.fuel >= 100) {
-	      System.out.println("満タンまで給油します");
-	      this.fuel = 100;
-	    } else {
-	      this.fuel += litre;
-	    }
-	    System.out.println("ガソリン量：" + this.fuel + "L");
-	  }
-	}
-	[Main.java, Bicycle.java, Vehicle.java]
-	前回同様のため省略
+	<br><%= image_tag '/assets/スーパークラスのメソッドを呼ぶ1.png' %><br><%= image_tag '/assets/スーパークラスのメソッドを呼ぶ2.png' %><br>
+	[Car.java]<br>
+	class Car extends Vehicle {<br>
+	  private int fuel = 50;<br>
+	  public int getFuel() {<br>
+	    return this.fuel;<br>
+	  }<br>
+	  public void printData() {<br>
+	    // ①superを用いて、以下の重複部分を書き換えてください<br>
+	    // System.out.println("名前：" + this.getName());<br>
+	    // System.out.println("色：" + this.getColor());<br>
+	    // System.out.println("走行距離：" + this.getDistance() + "km");<br>
+	    super.printData();<br>
+	    System.out.println("ガソリン量：" + this.fuel + " L");<br>
+	  }<br>
+	  public void charge(int litre) {<br>
+	    System.out.println(litre + "L給油します");<br>
+	    if (litre <= 0) {<br>
+	      System.out.println("給油できません");<br>
+	    } else if (litre + this.fuel >= 100) {<br>
+	      System.out.println("満タンまで給油します");<br>
+	      this.fuel = 100;<br>
+	    } else {<br>
+	      this.fuel += litre;<br>
+	    }<br>
+	    System.out.println("ガソリン量：" + this.fuel + "L");<br>
+	  }<br>
+	}<br>
+	[Main.java, Bicycle.java, Vehicle.java]<br>
+	前回同様のため省略<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	コンストラクタでnameとcolorの値をセットできるようにしましょう。
 	サブクラスでコンストラクタを定義するときには1つの決まりがあります。それは「コンストラクタの先頭でスーパークラスのコンストラクタを呼びださなければならない」ということです。よってサブクラスのインスタンスを生成したときの流れは下図のようになります。
-	<%= image_tag 'サブクラスのコンストラクタ1.png' %><%= image_tag 'サブクラスのコンストラクタ2.png' %><br>
+	<br><%= image_tag '/assets/サブクラスのコンストラクタ1.png' %><br><%= image_tag '/assets/サブクラスのコンストラクタ2.png' %><br>
 	スーパークラスのコンストラクタを呼び出すには、super()を用います。
 	下図で、サブクラスのインスタンス生成時に、スーパークラスのコンストラクタが呼びだされていることを確認しましょう。
-	<%= image_tag 'スーパークラスのコンストラクタ呼び出し1.png' %><%= image_tag 'スーパークラスのコンストラクタ呼び出し2.png' %><br>
+	<br><%= image_tag '/assets/スーパークラスのコンストラクタ呼び出し1.png' %><br><%= image_tag '/assets/スーパークラスのコンストラクタ呼び出し2.png' %><br>
 	それではスーパークラスに定義されたフィールドに、コンストラクタで値をセットできるようにしてあげましょう。
 	まず下図のように、スーパークラスとサブクラスの双方でコンストラクタを定義しなければなりません。そして、サブクラスのコンストラクタ内でsuper()に引数を渡し、スーパークラスのコンストラクタを呼び出します。
-	<%= image_tag 'コンストラクタとsuper()-フィールドに値をセットする1.png' %><%= image_tag 'コンストラクタとsuper()-フィールドに値をセットする2.png' %><br>
-	[Main.java]
-	変更なしのため省略
-	[Car.java]
-	class Car extends Vehicle {
-	  private int fuel = 50;
-	  // ①Carクラスのコンストラクタを定義し、
-	  // ②superを用いてスーパークラスのコンストラクタを呼び出してください
-	  Car(String name, String color) {
-	    super(name, color);
-	  }
-	  public int getFuel() {
-	    return this.fuel;
-	  }
-	  public void printData() {
-	    super.printData();
-	    System.out.println("ガソリン量：" + this.fuel + "L");
-	  }
-	  public void charge(int litre) {
-	    System.out.println(litre + "L給油します");
-	    if (litre <= 0) {
-	      System.out.println("給油できません");
-	    } else if (litre + this.fuel >= 100) {
-	      System.out.println("満タンまで給油します");
-	      this.fuel = 100;
-	    } else {
-	      this.fuel += litre;
-	    }
-	    System.out.println("ガソリン量：" + this.fuel + "L");
-	  }
-	}
-	[Bicycle.java]
-	class Bicycle extends Vehicle {
-	  // ④Bicycleクラスのコンストラクタを定義し、
-	  // ⑤superを用いてスーパークラスのコンストラクタを呼び出してください
-	  Bicycle(String name, String color) {
-	    super(name, color);
-	  }
-	}
-	[Vehicle.java]
-	class Vehicle {
-	  private String name;
-	  private String color;
-	  private int distance = 0;
-	  // ③Vehicleクラスのコンストラクタを定義してください
-	  Vehicle(String name, String color){
-	    this.name = name;
-	    this.color = color;
-	  }
-	  public String getName() {
-	    return this.name;
-	  }
-	  public String getColor() {
-	    return this.color;
-	  }
-	  public int getDistance() {
-	    return this.distance;
-	  }
-	  public void setName(String name) {
-	    this.name = name;
-	  }
-	  public void setColor(String color) {
-	    this.color = color;
-	  }
-	  public void printData() {
-	    System.out.println("名前：" + this.name);
-	    System.out.println("色：" + this.color);
-	    System.out.println("走行距離：" + this.distance + "km");
-	  }
+	<br><%= image_tag '/assets/コンストラクタとsuper()-フィールドに値をセットする1.png' %><br><%= image_tag '/assets/コンストラクタとsuper()-フィールドに値をセットする2.png' %><br>
+	[Main.java]<br>
+	変更なしのため省略<br>
+	[Car.java]<br>
+	class Car extends Vehicle {<br>
+	  private int fuel = 50;<br>
+	  // ①Carクラスのコンストラクタを定義し、<br>
+	  // ②superを用いてスーパークラスのコンストラクタを呼び出してください<br>
+	  Car(String name, String color) {<br>
+	    super(name, color);<br>
+	  }<br>
+	  public int getFuel() {<br>
+	    return this.fuel;<br>
+	  }<br>
+	  public void printData() {<br>
+	    super.printData();<br>
+	    System.out.println("ガソリン量：" + this.fuel + "L");<br>
+	  }<br>
+	  public void charge(int litre) {<br>
+	    System.out.println(litre + "L給油します");<br>
+	    if (litre <= 0) {<br>
+	      System.out.println("給油できません");<br>
+	    } else if (litre + this.fuel >= 100) {<br>
+	      System.out.println("満タンまで給油します");<br>
+	      this.fuel = 100;<br>
+	    } else {<br>
+	      this.fuel += litre;<br>
+	    }<br>
+	    System.out.println("ガソリン量：" + this.fuel + "L");<br>
+	  }<br>
+	}<br>
+	[Bicycle.java]<br>
+	class Bicycle extends Vehicle {<br>
+	  // ④Bicycleクラスのコンストラクタを定義し、<br>
+	  // ⑤superを用いてスーパークラスのコンストラクタを呼び出してください<br>
+	  Bicycle(String name, String color) {<br>
+	    super(name, color);<br>
+	  }<br>
+	}<br>
+	[Vehicle.java]<br>
+	class Vehicle {<br>
+	  private String name;<br>
+	  private String color;<br>
+	  private int distance = 0;<br>
+	  // ③Vehicleクラスのコンストラクタを定義してください<br>
+	  Vehicle(String name, String color){<br>
+	    this.name = name;<br>
+	    this.color = color;<br>
+	  }<br>
+	  public String getName() {<br>
+	    return this.name;<br>
+	  }<br>
+	  public String getColor() {<br>
+	    return this.color;<br>
+	  }<br>
+	  public int getDistance() {<br>
+	    return this.distance;<br>
+	  }<br>
+	  public void setName(String name) {<br>
+	    this.name = name;<br>
+	  }<br>
+	  public void setColor(String color) {<br>
+	    this.color = color;<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前：" + this.name);<br>
+	    System.out.println("色：" + this.color);<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	  }<br>
 	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	「Java道場Ⅱ」で作ったBicycleクラスとCarクラスにはrunメソッドがありました。このメソッドを組み込んでみましょう。
 	runメソッドはそれぞれのクラスで処理内容が異なるので、Vehicleクラスに定義して継承するのではなく、それぞれのサブクラスに独自のメソッドとして追加してあげましょう。
-	<%= image_tag 'protected-runメソッド1.png' %><%= image_tag 'protected-runメソッド2.png' %><br>
+	<br><%= image_tag '/assets/protected-runメソッド1.png' %><br><%= image_tag '/assets/protected-runメソッド2.png' %><br>
 	runメソッドは、元のコードをそのまま追加するとエラーが発生します。なぜならrunメソッドが、Vehicleクラスのdistanceフィールドにアクセスしようとするためです。printDataメソッドで学習したのと同様、Carクラスはサブクラスといえど、Vehicleクラスのprivateフィールドには直接アクセスすることはできません。しっかり意識していきましょう。
-	<%= image_tag 'フィールドのアクセス制限（復習）1.png' %><%= image_tag 'フィールドのアクセス制限（復習）2.png' %><br>
+	<br><%= image_tag '/assets/フィールドのアクセス制限（復習）1.png' %><br><%= image_tag '/assets/フィールドのアクセス制限（復習）2.png' %><br>
 	ゲッター・セッターとは違う方法で解決してみましょう。
 	privateの代わりに、protectedを用いると、クラス内とサブクラスからのみアクセスを許すフィールドを作ることができます。
 	よって、この場合はdistanceフィールドをprotectedに変更すれば無事にrunメソッドが動作するようになります。
-	<%= image_tag 'protected1.png' %><%= image_tag 'protected2.png' %><br>
+	<br><%= image_tag '/assets/protected1.png' %><br><%= image_tag '/assets/protected2.png' %><br>
 	ここで「public」「protected」「private」の3つのアクセス権についておさらいしましょう。
 	・public: どこからでもアクセス可能
 	・protected: そのクラスと子クラス内からのみアクセス可能
 	・private: そのクラス内からのみアクセス可能
-	<%= image_tag 'アクセス権のまとめ.png' %><br>
-	[Main.java]
-	import java.util.Scanner;
-	class Main {
-	  public static void main(String[] args) {
-	    Scanner scanner = new Scanner(System.in);
-	    Car car = new Car("フェラーリ", "赤");
-	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");
-	    System.out.println("【車の情報】");
-	    car.printData();
-	    System.out.println("-----------------");
-	    System.out.print("走る距離を入力してください：");
-	    int carDistance = scanner.nextInt();
-	    // ①「道場Ⅱ」で実装したrunメソッドがCarクラスとBicycleクラスにすでに用意されています。
-	    // ①runメソッドを呼び出して、引数にcarDistanceを渡してください
-	    car.run(carDistance);
-	    System.out.println("-----------------");
-	    System.out.print("給油する量を入力してください：");
-	    int litre = scanner.nextInt();
-	    car.charge(litre);
-	    System.out.println("=================");
-	    System.out.println("【自転車の情報】");
-	    bicycle.printData();
-	    System.out.println("-----------------");
-	    System.out.print("走る距離を入力してください：");
-	    int bicycleDistance = scanner.nextInt();
-	    // ②runメソッドを呼び出して、引数にbicycleDistanceを渡してください
-	    // ③この段階では、「distance has private access in Vehicle」というエラー文が表示されます。これがprivateなdistanceフィールドに、他のクラスからアクセスできないことを示すエラーです。
-	    bicycle.run(bicycleDistance);
-	  }
-	}
-	[Vehicle.java]
-	class Vehicle {
-	  private String name;
-	  private String color;
-	  // ④protectedを用いて書き換えてください
-	  protected int distance = 0;
-	  Vehicle(String name, String color) {
-	    this.name = name;
-	    this.color = color;
-	  }
-	  public String getName() {
-	    return this.name;
-	  }
-	  public String getColor() {
-	    return this.color;
-	  }
-	  public int getDistance() {
-	    return this.distance;
-	  }
-	  public void setName(String name) {
-	    this.name = name;
-	  }
-	  public void setColor(String color) {
-	    this.color = color;
-	  }
-	  public void printData() {
-	    System.out.println("名前：" + this.name);
-	    System.out.println("色：" + this.color);
-	    System.out.println("走行距離：" + this.distance + "km");
-	  }
-	}
-	[Car.java, Bicycle.java]
-	変更なしのため省略
+	<br><%= image_tag '/assets/アクセス権のまとめ.png' %><br>
+	[Main.java]<br>
+	import java.util.Scanner;<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Scanner scanner = new Scanner(System.in);<br>
+	    Car car = new Car("フェラーリ", "赤");<br>
+	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");<br>
+	    System.out.println("【車の情報】");<br>
+	    car.printData();<br>
+	    System.out.println("-----------------");<br>
+	    System.out.print("走る距離を入力してください：");<br>
+	    int carDistance = scanner.nextInt();<br>
+	    // ①「道場Ⅱ」で実装したrunメソッドがCarクラスとBicycleクラスにすでに用意されています。<br>
+	    // ①runメソッドを呼び出して、引数にcarDistanceを渡してください<br>
+	    car.run(carDistance);<br>
+	    System.out.println("-----------------");<br>
+	    System.out.print("給油する量を入力してください：");<br>
+	    int litre = scanner.nextInt();<br>
+	    car.charge(litre);<br>
+	    System.out.println("=================");<br>
+	    System.out.println("【自転車の情報】");<br>
+	    bicycle.printData();<br>
+	    System.out.println("-----------------");<br>
+	    System.out.print("走る距離を入力してください：");<br>
+	    int bicycleDistance = scanner.nextInt();<br>
+	    // ②runメソッドを呼び出して、引数にbicycleDistanceを渡してください<br>
+	    // ③この段階では、「distance has private access in <br>Vehicle」というエラー文が表示されます。これがprivateなdistanceフィールドに、他のクラスからアクセスできないことを示すエラーです。<br>
+	    bicycle.run(bicycleDistance);<br>
+	  }<br>
+	}<br>
+	[Vehicle.java]<br>
+	class Vehicle {<br>
+	  private String name;<br>
+	  private String color;<br>
+	  // ④protectedを用いて書き換えてください<br>
+	  protected int distance = 0;<br>
+	  Vehicle(String name, String color) {<br>
+	    this.name = name;<br>
+	    this.color = color;<br>
+	  }<br>
+	  public String getName() {<br>
+	    return this.name;<br>
+	  }<br>
+	  public String getColor() {<br>
+	    return this.color;<br>
+	  }<br>
+	  public int getDistance() {<br>
+	    return this.distance;<br>
+	  }<br>
+	  public void setName(String name) {<br>
+	    this.name = name;<br>
+	  }<br>
+	  public void setColor(String color) {<br>
+	    this.color = color;<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前：" + this.name);<br>
+	    System.out.println("色：" + this.color);<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	  }<br>
+	}<br>
+	[Car.java, Bicycle.java]<br>
+	変更なしのため省略<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	車や自転車に限らず、乗り物はすべて「走行する」機能を持ちます。
 	よってプログラム上でも、Vehicleクラスを継承するすべてのクラスはrunメソッドを持っているべきです。よって本来であれば、runメソッドはVehicleクラスに定義し継承できれば楽なのですが、乗り物ごとに走行方法が違うため、Vehicleクラスでは処理内容を定めることができません。
-	<%= image_tag '詳細未定のメソッド1.png' %><%= image_tag '詳細未定のメソッド2.png' %><br>
+	<br><%= image_tag '/assets/詳細未定のメソッド1.png' %><br><%= image_tag '/assets/詳細未定のメソッド2.png' %><br>
 	そのため、処理が未定のメソッドを定義する方法があります。下図のようにメソッドの先頭にabstractをつけることで、抽象メソッドというメソッドを定義できます。抽象メソッドには中身の処理は書きません。
 	abstractとは「抽象的な」という意味です。具体的な処理が決まっていない未完成のメソッドであるため、「抽象メソッド」と呼ばれます。
-	<%= image_tag '抽象メソッド.png' %><br>
+	<br><%= image_tag '/assets/抽象メソッド.png' %><br>
 	抽象メソッドは、サブクラスがそのメソッドをオーバーライド（上書き）していなければエラーになります。ですので、サブクラスがそのメソッドをオーバーライドし、処理内容を定義することを強制できます。
 	サブクラスに、あるメソッドを必ず持たせたいという場合は、スーパークラスに抽象メソッドとして定義しておくことが大事です。
-	<%= image_tag '抽象メソッドと抽象クラスのメリットとポイント1.png' %><%= image_tag '抽象メソッドと抽象クラスのメリットとポイント2.png' %><br>
+	<br><%= image_tag '/assets/抽象メソッドと抽象クラスのメリットとポイント1.png' %><br><%= image_tag '/assets/抽象メソッドと抽象クラスのメリットとポイント2.png' %><br>
 	抽象メソッドを1つでも持つクラスは、「抽象クラス」と呼ばれ、クラス名の前にabstractをつける必要があります。
 	抽象クラスはインスタンスを生成できません。抽象メソッドという未完成のメソッドを持つクラスは、それもまた未完成です。そのような未完成のクラスからはインスタンスを生成できないような仕組みになっています。
-	<%= image_tag '抽象クラス.png' %><br>
-	[Vehicle.java]
-	// ①runメソッドを、Vehicleクラスのサブクラスが必ず持つように、Vehicleクラスに抽象メソッドとして定義してみましょう。
-	// ③抽象メソッドを持つクラスは抽象クラスです。Vehicleクラスを抽象クラスに変更してください
-	abstract class Vehicle {
-	  private String name;
-	  private String color;
-	  protected int distance = 0;
-	  Vehicle(String name, String color) {
-	    this.name = name;
-	    this.color = color;
-	  }
-	  public String getName() {
-	    return this.name;
-	  }
-	  public String getColor() {
-	    return this.color;
-	  }
-	  public int getDistance() {
-	    return this.distance;
-	  }
-	  public void setName(String name) {
-	    this.name = name;
-	  }
-	  public void setColor(String color) {
-	    this.color = color;
-	  }
-	  public void printData() {
-	    System.out.println("名前：" + this.name);
-	    System.out.println("色：" + this.color);
-	    System.out.println("走行距離：" + this.distance + "km");
-	  }
-	  // ②抽象メソッドrunを定義してください
-	  abstract public void run(int distance);  //Vehicleクラスのrunメソッドに、{}は必要ありません
-	}
-	[Main.java, Car.java, Bicycle.java]
-	変更なしのため省略
+	<br><%= image_tag '/assets/抽象クラス.png' %><br>
+	[Vehicle.java]<br>
+	// ①runメソッドを、Vehicleクラスのサブクラスが必ず持つように、Vehicleクラスに抽象メソッドとして定義してみましょう。<br>
+	// ③抽象メソッドを持つクラスは抽象クラスです。Vehicleクラスを抽象クラスに変更してください<br>
+	abstract class Vehicle {<br>
+	  private String name;<br>
+	  private String color;<br>
+	  protected int distance = 0;<br>
+	  Vehicle(String name, String color) {<br>
+	    this.name = name;<br>
+	    this.color = color;<br>
+	  }<br>
+	  public String getName() {<br>
+	    return this.name;<br>
+	  }<br>
+	  public String getColor() {<br>
+	    return this.color;<br>
+	  }<br>
+	  public int getDistance() {<br>
+	    return this.distance;<br>
+	  }<br>
+	  public void setName(String name) {<br>
+	    this.name = name;<br>
+	  }<br>
+	  public void setColor(String color) {<br>
+	    this.color = color;<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前：" + this.name);<br>
+	    System.out.println("色：" + this.color);<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	  }<br>
+	  // ②抽象メソッドrunを定義してください<br>
+	  abstract public void run(int distance);  //Vehicleクラスのrunメソッドに、{}は必要ありません<br>
+	}<br>
+	[Main.java, Car.java, Bicycle.java]<br>
+	変更なしのため省略<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	少し発展的な内容を学んでいきましょう。
 	「JavaⅣ」で作り上げたPersonクラスと組み合わせて、乗り物をある人間が所有している状況をプログラムで表現してみましょう。
-	<%= image_tag '乗り物の所有者を定義しよう.png' %><br>
+	<br><%= image_tag '/assets/乗り物の所有者を定義しよう.png' %><br>
 	インスタンスフィールドにクラス型の変数を定義することで、フィールドにインスタンスを持つことが可能です。
 	下図のようにPerson型のownerというインスタンスフィールドを持つようにしてみましょう。
-	<%= image_tag 'クラス型のフィールド1.png' %><%= image_tag 'クラス型のフィールド2.png' %><br>
+	<br><%= image_tag '/assets/クラス型のフィールド1.png' %><br><%= image_tag '/assets/クラス型のフィールド2.png' %><br>
 	ゲッターとセッターを定義しておきましょう。
 	やり方はこれまでと変わりませんが、ゲッターの戻り値の型と、セッターの仮引数の型がクラス型になることに注意しましょう。
-	<%= image_tag 'ゲッターとセッター.png' %><br>
+	<br><%= image_tag '/assets/ゲッターとセッター.png' %><br>
 	CarクラスのインスタンスやBicycleクラスのインスタンスに対してgetOwnerメソッドを呼び出すと、その戻り値はownerフィールドの値、すなわちPersonクラスのインスタンスとなっています。
 	よって左の図のように、getOwnerメソッドのあとにそのまま続けてPersonクラスのインスタンスメソッドprintDataを呼びだすことが可能です。
-	<%= image_tag 'インスタンスの戻り値1.png' %><%= image_tag 'インスタンスの戻り値2.png' %><br>
-	[Main.java]
-	class Main {
-	  public static void main(String[] args) {
-	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);
-	    Person person2 = new Person("John", "Christopher", "Smith", 65, 1.75, 80.0);
-	    Car car = new Car("フェラーリ", "赤");
-	    // ⑤setOwnerを用いて、carの所有者をperson1にしてください
-	    car.setOwner(person1);
-	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");
-	    // ⑥setOwnerを用いて、bicycleの所有者をperson2にしてください
-	    bicycle.setOwner(person2);
-	    System.out.println("【車の情報】");
-	    car.printData();
-	    System.out.println("-----------------");
-	    System.out.println("【車の所有者の情報】");
-	    // ⑦getOwnerメソッドを用いてcarのownerを取得し、さらにprintDataメソッドを用いてownerの情報を出力してください
-	    car.getOwner().printData();
-	    System.out.println("=================");
-	    System.out.println("【自転車の情報】");
-	    bicycle.printData();
-	    System.out.println("-----------------");
-	    System.out.println("【自転車の所有者の情報】");
-	    // ⑧getOwnerメソッドを用いてbicycleのownerを取得し、さらにprintDataメソッドを用いてownerの情報を出力してください
-	    bicycle.getOwner().printData();
-	  }
-	}
-	[Vehicle.java]
-	abstract class Vehicle {
-	  private String name;
-	  private String color;
-	  protected int distance = 0;
-	  //  ①Personクラスが用意されています。人間が乗り物を所有できるようにしていきましょう。
-	  //  ②インスタンスフィールドownerを定義してください
-	  private Person owner;
-	  Vehicle(String name, String color) {
-	    this.name = name;
-	    this.color = color;
-	  }
-	  public String getName() {
-	    return this.name;
-	  }
-	  public String getColor() {
-	    return this.color;
-	  }
-	  public int getDistance() {
-	    return this.distance;
-	  }
-	  // ③ownerフィールドのゲッターを定義してください
-	  public Person getOwner() {  //戻り型がPerson型
-	    return this.owner;
-	  }
-	  public void setName(String name) {
-	    this.name = name;
-	  }
-	  public void setColor(String color) {
-	    this.color = color;
-	  }
-	  // ④ownerフィールドのセッターを定義してください
-	  public void setOwner(Person person) {  //setOwnerメソッドの仮引数として、Person型の「person」を用いてください
-	    this.owner = person;  //this.owner = owner;ではない
-	  }
-	  public void printData() {
-	    System.out.println("名前：" + this.name);
-	    System.out.println("色：" + this.color);
-	    System.out.println("走行距離：" + this.distance + "km");
-	  }
-	  abstract public void run(int distance);
-	}
-	[Person.java]
-	class Person {
-	  private String firstName;
-	  private String middleName;
-	  private String lastName;
-	  private int age;
-	  private double height;
-	  private double weight;
-	  Person(String firstName, String lastName, int age, double height, double weight) {
-	    this.firstName = firstName;
-	    this.lastName = lastName;
-	    this.age = age;
-	    this.height = height;
-	    this.weight = weight;
-	  }
-	  Person(String firstName, String middleName, String lastName, int age, double height, double weight) {
-	    this(firstName, lastName, age, height, weight);
-	    this.middleName = middleName;
-	  }
-	  public String fullName() {
-	    if (this.middleName == null) {
-	      return this.firstName + " " + this.lastName;
-	    } else {
-	      return this.firstName + " " + this.middleName + " " + this.lastName;
-	    }
-	  }
-	  public void printData() {
-	    System.out.println("名前は" + this.fullName() + "です");
-	    System.out.println("年齢は" + this.age + "歳です");
-	    System.out.println("身長は" + this.height + "mです");
-	    System.out.println("体重は" + this.weight + "kgです");
-	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");
-	  }
-	  public double bmi() {
-	    return this.weight / this.height / this.height;
-	  }
-	}
-	[Car.java, Bicycle.java]
-	変更なし、省略
+	<br><%= image_tag '/assets/インスタンスの戻り値1.png' %><br><%= image_tag '/assets/インスタンスの戻り値2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);<br>
+	    Person person2 = new Person("John", "Christopher", "Smith", 65, 1.75, 80.0);<br>
+	    Car car = new Car("フェラーリ", "赤");<br>
+	    // ⑤setOwnerを用いて、carの所有者をperson1にしてください<br>
+	    car.setOwner(person1);<br>
+	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");<br>
+	    // ⑥setOwnerを用いて、bicycleの所有者をperson2にしてください<br>
+	    bicycle.setOwner(person2);<br>
+	    System.out.println("【車の情報】");<br>
+	    car.printData();<br>
+	    System.out.println("-----------------");<br>
+	    System.out.println("【車の所有者の情報】");<br>
+	    // ⑦getOwnerメソッドを用いてcarのownerを取得し、さらにprintDataメソッドを用いてownerの情報を出力してください<br>
+	    car.getOwner().printData();<br>
+	    System.out.println("=================");<br>
+	    System.out.println("【自転車の情報】");<br>
+	    bicycle.printData();<br>
+	    System.out.println("-----------------");<br>
+	    System.out.println("【自転車の所有者の情報】");<br>
+	    // ⑧getOwnerメソッドを用いてbicycleのownerを取得し、さらにprintDataメソッドを用いてownerの情報を出力してください<br>
+	    bicycle.getOwner().printData();<br>
+	  }<br>
+	}<br>
+	[Vehicle.java]<br>
+	abstract class Vehicle {<br>
+	  private String name;<br>
+	  private String color;<br>
+	  protected int distance = 0;<br>
+	  //  ①Personクラスが用意されています。人間が乗り物を所有できるようにしていきましょう。<br>
+	  //  ②インスタンスフィールドownerを定義してください<br>
+	  private Person owner;<br>
+	  Vehicle(String name, String color) {<br>
+	    this.name = name;<br>
+	    this.color = color;<br>
+	  }<br>
+	  public String getName() {<br>
+	    return this.name;<br>
+	  }<br>
+	  public String getColor() {<br>
+	    return this.color;<br>
+	  }<br>
+	  public int getDistance() {<br>
+	    return this.distance;<br>
+	  }<br>
+	  // ③ownerフィールドのゲッターを定義してください<br>
+	  public Person getOwner() {  //戻り型がPerson型<br>
+	    return this.owner;<br>
+	  }<br>
+	  public void setName(String name) {<br>
+	    this.name = name;<br>
+	  }<br>
+	  public void setColor(String color) {<br>
+	    this.color = color;<br>
+	  }<br>
+	  // ④ownerフィールドのセッターを定義してください<br>
+	  public void setOwner(Person person) {  //setOwnerメソッドの仮引数として、Person型の「person」を用いてください<br>
+	    this.owner = person;  //this.owner = owner;ではない<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前：" + this.name);<br>
+	    System.out.println("色：" + this.color);<br>
+	    System.out.println("走行距離：" + this.distance + "km");<br>
+	  }<br>
+	  abstract public void run(int distance);<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  private String firstName;<br>
+	  private String middleName;<br>
+	  private String lastName;<br>
+	  private int age;<br>
+	  private double height;<br>
+	  private double weight;<br>
+	  Person(String firstName, String lastName, int age, double height, double weight) {<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	  Person(String firstName, String middleName, String lastName, int age, double height, double weight) {<br>
+	    this(firstName, lastName, age, height, weight);<br>
+	    this.middleName = middleName;<br>
+	  }<br>
+	  public String fullName() {<br>
+	    if (this.middleName == null) {<br>
+	      return this.firstName + " " + this.lastName;<br>
+	    } else {<br>
+	      return this.firstName + " " + this.middleName + " " + this.lastName;<br>
+	    }<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前は" + this.fullName() + "です");<br>
+	    System.out.println("年齢は" + this.age + "歳です");<br>
+	    System.out.println("身長は" + this.height + "mです");<br>
+	    System.out.println("体重は" + this.weight + "kgです");<br>
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");<br>
+	  }<br>
+	  public double bmi() {<br>
+	    return this.weight / this.height / this.height;<br>
+	  }<br>
+	}<br>
+	[Car.java, Bicycle.java]<br>
+	変更なし、省略<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	Personクラスのインスタンスが乗り物を購入できるように、buyメソッドを定義しましょう。
 	購入する乗り物はCarクラスのインスタンスかBicycleクラスのインスタンスです。buyメソッドの引数はどちらの型のインスタンスも受け取る可能性がありますので、下図のようにオーバーロードする必要があります。
-	<%= image_tag 'buyメソッドを定義しよう.png' %><br>
+	<br><%= image_tag '/assets/buyメソッドを定義しよう.png' %><br>
 	buyメソッドの中で、引数に受け取ったインスタンスのセッターを用いて所有者を変更してあげます。
-	<%= image_tag 'buyメソッドの処理1.png' %><%= image_tag 'buyメソッドの処理2.png' %><br>
-	[Main.java]
-	class Main {
-	  public static void main(String[] args) {
-	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);
-	    Person person2 = new Person("John", "Christopher", "Smith", 65, 1.75, 80.0);
-	    Car car = new Car("フェラーリ", "赤");
-	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");
-	    // ④buyメソッドを用いて、person1にcarを購入させてください
-	    person1.buy(car);  // person1がcarを購入
-	    // ⑤buyメソッドを用いて、person2にbicycleを購入させてください
-	    person2.buy(bicycle);  // person2がbicycleを購入
-	    System.out.println("【車の情報】");
-	    car.printData();
-	    System.out.println("-----------------");
-	    System.out.println("【車の所有者の情報】");
-	    car.getOwner().printData();
-	    System.out.println("=================");
-	    System.out.println("【自転車の情報】");
-	    bicycle.printData();
-	    System.out.println("-----------------");
-	    System.out.println("【自転車の所有者の情報】");
-	    bicycle.getOwner().printData();
-	  }
-	}
-	[Person.java]
-	class Person {
-	  private String firstName;
-	  private String middleName;
-	  private String lastName;
-	  private int age;
-	  private double height;
-	  private double weight;
-	  Person(String firstName, String lastName, int age, double height, double weight) {
-	    this.firstName = firstName;
-	    this.lastName = lastName;
-	    this.age = age;
-	    this.height = height;
-	    this.weight = weight;
-	  }
-	  Person(String firstName, String middleName, String lastName, int age, double height, double weight) {
-	    this(firstName, lastName, age, height, weight);
-	    this.middleName = middleName;
-	  }
-	  public String fullName() {
-	    if (this.middleName == null) {
-	      return this.firstName + " " + this.lastName;
-	    } else {
-	      return this.firstName + " " + this.middleName + " " + this.lastName;
-	    }
-	  }
-	  public void printData() {
-	    System.out.println("名前は" + this.fullName() + "です");
-	    System.out.println("年齢は" + this.age + "歳です");
-	    System.out.println("身長は" + this.height + "mです");
-	    System.out.println("体重は" + this.weight + "kgです");
-	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");
-	  }
-	  public double bmi() {
-	    return this.weight / this.height / this.height;
-	  }
-	  // ①Personクラスのインスタンスが車や自転車を購入できるようにします。
-	  // ②Car型の引数を受け取るbuyメソッドを定義してください
-	  public void buy(Car car) {
-	    car.setOwner(this);
-	  }
-	  // ③Bicycle型の引数を受け取るbuyメソッドを定義してください
-	  public void buy(Bicycle bicycle) {
-	    bicycle.setOwner(this);
-	  }
-	}
-	[Car.java, Bicycle.java, Vehicle.java]
-	変更なし、省略
+	<br><%= image_tag '/assets/buyメソッドの処理1.png' %><br><%= image_tag '/assets/buyメソッドの処理2.png' %><br>
+	[Main.java]<br>
+	class Main {<br>
+	  public static void main(String[] args) {<br>
+	    Person person1 = new Person("Kate", "Jones", 27, 1.6, 50.0);<br>
+	    Person person2 = new Person("John", "Christopher", "Smith", 65, 1.75, 80.0);<br>
+	    Car car = new Car("フェラーリ", "赤");<br>
+	    Bicycle bicycle = new Bicycle("ビアンキ", "緑");<br>
+	    // ④buyメソッドを用いて、person1にcarを購入させてください<br>
+	    person1.buy(car);  // person1がcarを購入<br>
+	    // ⑤buyメソッドを用いて、person2にbicycleを購入させてください<br>
+	    person2.buy(bicycle);  // person2がbicycleを購入<br>
+	    System.out.println("【車の情報】");<br>
+	    car.printData();<br>
+	    System.out.println("-----------------");<br>
+	    System.out.println("【車の所有者の情報】");<br>
+	    car.getOwner().printData();<br>
+	    System.out.println("=================");<br>
+	    System.out.println("【自転車の情報】");<br>
+	    bicycle.printData();<br>
+	    System.out.println("-----------------");<br>
+	    System.out.println("【自転車の所有者の情報】");<br>
+	    bicycle.getOwner().printData();<br>
+	  }<br>
+	}<br>
+	[Person.java]<br>
+	class Person {<br>
+	  private String firstName;<br>
+	  private String middleName;<br>
+	  private String lastName;<br>
+	  private int age;<br>
+	  private double height;<br>
+	  private double weight;<br>
+	  Person(String firstName, String lastName, int age, double height, double weight) {<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	  Person(String firstName, String middleName, String lastName, int age, double height, double weight) {<br>
+	    this(firstName, lastName, age, height, weight);<br>
+	    this.middleName = middleName;<br>
+	  }<br>
+	  public String fullName() {<br>
+	    if (this.middleName == null) {<br>
+	      return this.firstName + " " + this.lastName;<br>
+	    } else {<br>
+	      return this.firstName + " " + this.middleName + " " + this.lastName;<br>
+	    }<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前は" + this.fullName() + "です");<br>
+	    System.out.println("年齢は" + this.age + "歳です");<br>
+	    System.out.println("身長は" + this.height + "mです");<br>
+	    System.out.println("体重は" + this.weight + "kgです");<br>
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");<br>
+	  }<br>
+	  public double bmi() {<br>
+	    return this.weight / this.height / this.height;<br>
+	  }<br>
+	  // ①Personクラスのインスタンスが車や自転車を購入できるようにします。<br>
+	  // ②Car型の引数を受け取るbuyメソッドを定義してください<br>
+	  public void buy(Car car) {<br>
+	    car.setOwner(this);<br>
+	  }<br>
+	  // ③Bicycle型の引数を受け取るbuyメソッドを定義してください<br>
+	  public void buy(Bicycle bicycle) {<br>
+	    bicycle.setOwner(this);<br>
+	  }<br>
+	}<br>
+	[Car.java, Bicycle.java, Vehicle.java]<br>
+	変更なし、省略<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	先ほど作ったbuyメソッドを改めて見てみましょう。これらはほとんど同じコードです。
 	しかもこの方法では、Vehicleクラスのサブクラスが今後増えた場合、毎回引数の型が違う同名のメソッドを定義していかなければなりません。
-	<%= image_tag 'buyメソッドの重複.png' %><br>
+	<br><%= image_tag '/assets/buyメソッドの重複.png' %><br>
 	この問題を解決する方法があります。
 	下図のように引数としてVehicle型のインスタンスを受け取るようにすることで、Carクラスのインスタンスも、Bicycleクラスのインスタンスも受け取ることができるようになります。
-	<%= image_tag 'buyメソッドの改良1.png' %><%= image_tag 'buyメソッドの改良2.png' %><br>
+	<br><%= image_tag '/assets/buyメソッドの改良1.png' %><br><%= image_tag '/assets/buyメソッドの改良2.png' %><br>
 	buyメソッドの引数のクラス型をVehicle型にできる理由を説明します。
 	Carクラスは、Vehicleクラスを継承しているので、CarクラスのインスタンスはCar型である前にVehicle型でもあるのです。この関係にあるとき、サブクラスのインスタンスを、スーパークラスのクラス型変数に代入することが可能になります（このような特徴を「多態性（たたいせい）」といいます）。
-	<%= image_tag 'スーパークラスのクラス型に代入する1.png' %><%= image_tag 'スーパークラスのクラス型に代入する2.png' %><br>
-	[Person.java]
-	class Person {
-	  private String firstName;
-	  private String middleName;
-	  private String lastName;
-	  private int age;
-	  private double height;
-	  private double weight;
-	  Person(String firstName, String lastName, int age, double height, double weight) {
-	    this.firstName = firstName;
-	    this.lastName = lastName;
-	    this.age = age;
-	    this.height = height;
-	    this.weight = weight;
-	  }
-	  Person(String firstName, String middleName, String lastName, int age, double height, double weight) {
-	    this(firstName, lastName, age, height, weight);
-	    this.middleName = middleName;
-	  }
-	  public String fullName() {
-	    if (this.middleName == null) {
-	      return this.firstName + " " + this.lastName;
-	    } else {
-	      return this.firstName + " " + this.middleName + " " + this.lastName;
-	    }
-	  }
-	  public void printData() {
-	    System.out.println("名前は" + this.fullName() + "です");
-	    System.out.println("年齢は" + this.age + "歳です");
-	    System.out.println("身長は" + this.height + "mです");
-	    System.out.println("体重は" + this.weight + "kgです");
-	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");
-	  }
-	  public double bmi() {
-	    return this.weight / this.height / this.height;
-	  }
-	  // 以下2つを一つのメソッドで書き換えてください
-	  public void buy(Vehicle vehicle) {  //Vehicle型の引数を受け取るbuyメソッドの中で、vehicleに対して、setOwnerメソッドを呼び出してください
-	    vehicle.setOwner(this);
-	  }
-	}
-	[Main.java, Car.java, Bicycle.java, Vehicle.java]
-	変更なし、省略
+	<br><%= image_tag '/assets/スーパークラスのクラス型に代入する1.png' %><br><%= image_tag '/assets/スーパークラスのクラス型に代入する2.png' %><br>
+	[Person.java]<br>
+	class Person {<br>
+	  private String firstName;<br>
+	  private String middleName;<br>
+	  private String lastName;<br>
+	  private int age;<br>
+	  private double height;<br>
+	  private double weight;<br>
+	  Person(String firstName, String lastName, int age, double height, double weight) {<br>
+	    this.firstName = firstName;<br>
+	    this.lastName = lastName;<br>
+	    this.age = age;<br>
+	    this.height = height;<br>
+	    this.weight = weight;<br>
+	  }<br>
+	  Person(String firstName, String middleName, String lastName, int age, double height, double weight) {<br>
+	    this(firstName, lastName, age, height, weight);<br>
+	    this.middleName = middleName;<br>
+	  }<br>
+	  public String fullName() {<br>
+	    if (this.middleName == null) {<br>
+	      return this.firstName + " " + this.lastName;<br>
+	    } else {<br>
+	      return this.firstName + " " + this.middleName + " " + this.lastName;<br>
+	    }<br>
+	  }<br>
+	  public void printData() {<br>
+	    System.out.println("名前は" + this.fullName() + "です");<br>
+	    System.out.println("年齢は" + this.age + "歳です");<br>
+	    System.out.println("身長は" + this.height + "mです");<br>
+	    System.out.println("体重は" + this.weight + "kgです");<br>
+	    System.out.println("BMIは" + Math.round(this.bmi()) + "です");<br>
+	  }<br>
+	  public double bmi() {<br>
+	    return this.weight / this.height / this.height;<br>
+	  }<br>
+	  // 以下2つを一つのメソッドで書き換えてください<br>
+	  public void buy(Vehicle vehicle) {  //Vehicle型の引数を受け取るbuyメソッドの中で、vehicleに対して、setOwnerメソッドを呼び出してください<br>
+	    vehicle.setOwner(this);<br>
+	  }<br>
+	}<br>
+	[Main.java, Car.java, Bicycle.java, Vehicle.java]<br>
+	変更なし、省略<br>
 </div>
 
-<div style="padding: 100px 0 100px 0;">
-</div>
 
 <div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-next→<%= link_to 'Progate/Javaコース5', java_part5_path %>
+finish<br>
+Home→<%= link_to 'Home', root_path %>
 </div>
