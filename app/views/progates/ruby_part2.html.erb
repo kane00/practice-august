@@ -1,0 +1,117 @@
+<div style="padding: 20px 0 20px 0;">
+	Home→<%= link_to 'Home', root_path %>
+	<%= link_to 'Progate/HTML&CSS初級編', htmlcss_first_path %>
+	first→<%= link_to 'Progate/Rubyコース1', ruby_path %>
+	prev→<%= link_to 'Progate/Rubyコース1', ruby_path %>
+</div>
+
+<h1>Ruby　コース2</h1>
+
+<div style="padding: 100px 0 100px 0;">
+	Rubyの基本を身につけよう
+	このレッスンでは、「配列」「繰り返し処理」「ハッシュ」といった、プログラミングで必須の知識を学びます。
+	決して難しいものではありませんので、楽しく学んでいきましょう！
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	まずは、複数の値をまとめて扱う方法について学んで行きましょう。
+	例えば、ユーザーの名前についての値がいくつもあるとき、それぞれを変数として定義するより、「ユーザーの名前一覧」といったように、関連する値をまとめて管理すると便利です。
+	<br><%= image_tag '/assets/複数の値をまとめて扱おう.png' %><br>
+	複数の値をまとめて管理するには、配列というものを用います。
+	配列は、[値1, 値2, 値3]のように作ります。配列に入っているそれぞれの値のことを要素と呼びます。
+	配列を使うと、複数の文字列や数値をまとめて書くことができます。
+	<br><%= image_tag '/assets/ruby配列とは1.png' %><%= image_tag '/assets/ruby配列とは2.png' %><br>
+	配列も1つの値なので、変数に代入することができます。
+	配列を代入する変数名は慣習上、複数形にすることが多いので覚えておきましょう。
+	左の図のように、「puts names」とすると、配列の要素が1つずつ改行されて出力されます。
+	<br><%= image_tag '/assets/配列を変数に代入する1.png' %><%= image_tag '/assets/配列を変数に代入する2.png' %><br>
+	[index.rb]
+	# ①変数languagesに、複数の文字列を要素に持つ配列を代入してください
+	languages = ["日本語", "英語", "スペイン語"]
+	# ②変数languagesを出力してください
+	puts languages
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	配列の要素には、前から順に「0, 1, 2, ...」と数字が割り振られています。これをインデックス番号といいます。
+	インデックス番号は0から始まることに注意してください。
+	<br><%= image_tag '/assets/インデックス番号.png' %><br>
+	配列の各要素は、配列[インデックス番号]とすることで用いることができます。
+	図のように、names[1]とすると、配列namesの2つ目の要素の値を用いることができます。
+	<br><%= image_tag '/assets/配列の要素を用いる1.png' %><%= image_tag '/assets/配列の要素を用いる2.png' %><br>
+	変数の場合と同様に、配列の要素の値も変数展開を用いて文字列の中に含めることができます。
+	<br><%= image_tag '/assets/配列の要素と変数展開1.png' %><%= image_tag '/assets/配列の要素と変数展開2.png' %><br>
+	[index.rb]
+	languages = ["日本語", "英語", "スペイン語"]
+	# ①インデックス番号が1の要素を出力してください
+	puts languages[1]
+	# ②インデックス番号が0の要素を使って「◯◯を話せます」となるように出力してください
+	puts "#{languages[0]}を話せます"  #{names[0]}で文字列内に配列を加えることができる
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	配列の全ての要素を用いて、同じような出力をしたいとき、今までの知識を用いると左図のようになります。
+	これから学ぶ「繰り返し処理」というものを使うと、これを簡単にできます。次のスライドから、繰り返し処理の書き方を学習していきましょう。
+	<br><%= image_tag '/assets/ruby繰り返し処理1.png' %><%= image_tag '/assets/ruby繰り返し処理2.png' %><br>
+	繰り返し処理には、each文というものを使います。
+	each文を使うと、配列の要素を順番に取り出して処理を行うことができます。
+	each文は、図のように、「配列.each do |変数名|」と書き、「end」までの間に実行したい処理を書きます。
+	<br><%= image_tag '/assets/each文の書き方.png' %><br>
+	each文は配列の要素の数だけ繰り返し処理を行います。
+	図のように、「|」で囲まれた変数に配列の要素が1つずつ入っていき、その上でeach文の中の処理が実行されていきます。
+	each文内の変数名（name）は好きな名前をつけられますが、配列の変数名（names）の単数形にすることが慣習上多いです。
+	<br><%= image_tag '/assets/each文の仕組み1.png' %><%= image_tag '/assets/each文の仕組み2.png' %><br>
+	each文では、配列の要素が1つずつ変数に代入され、each文の中の処理が実行される、というイメージが大切です。
+	以下の図で、each文の流れを確認しましょう。
+	<br><%= image_tag '/assets/each文の流れ.gif' %><br>
+	[index.rb]
+	languages = ["日本語", "英語", "スペイン語"]
+	# ①配列languagesの要素を順番に取り出して処理を行うためのeach文を作成してください。ただし、それぞれの要素は変数languageに代入されるようにしてください。
+	# ②each文を用いて、要素ごとに「○○を話せます」と出力してください
+	# ③each文の中で、○○を話せますとなるように出力してください。ただし、○○の部分には、要素が順番に代入される変数languageの値を入れてください。
+	languages.each do |language|
+	  puts "#{language}を話せます"
+	end
+</div>
+
+
+
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+
+<div style="padding: 100px 0 100px 0;">
+next→<%= link_to 'Ruby_part3', ruby_part3_path %><br>
+Home→<%= link_to 'Home', root_path %>
+</div>

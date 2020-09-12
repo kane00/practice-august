@@ -26,5 +26,11 @@ class ProgatesController < ApplicationController
 
 	def ruby
 	end
+
+	def ruby_part2
+	end
+
+	def ruby_part3
+	end
 	
 end
