@@ -218,28 +218,98 @@
 	配列の要素には、文字列や数値だけでなく、ハッシュも使うことができるので、左の図のような配列を作ることができます。
 	その際、コードが横に長くなることを防ぐために、右の図のように要素ごとに改行することがよくありますので、覚えておきましょう。
 	<br><%= image_tag '/assets/配列の要素にハッシュを入れる1.png' %><%= image_tag '/assets/配列の要素にハッシュを入れる2.png' %><br>
-	
+	配列の要素には、先頭からインデックス番号が割り振られていることを思い出してください。
+	図のような配列では、配列の値がハッシュなので、配列[インデックス番号]で対応するハッシュを用いることができます。
+	<br><%= image_tag '/assets/配列の要素を確認する1.png' %><%= image_tag '/assets/配列の要素を確認する2.png' %><br>
+	[index.rb]
+	# ①要素がハッシュの配列を作成してください
+	# ②以下のハッシュを要素に持つ配列を作成し、変数examsに代入してください。要素1{subject: "Math", score: 80} 要素2{subject: "Science", score: 55}このとき、1つ目の要素の最後にコンマ（,）をつけることを忘れないでください。
+	exams = [
+	 {subject: "Math", score: 80},
+	 {subject: "Science", score: 55}
+	 ]
+	# ③インデックス番号が1の要素の値を出力してください
+	puts exams[1]
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	引き続き、要素がハッシュになっている配列を見ていきましょう。
+	配列[インデックス番号]でハッシュを用いることができるので、そのハッシュを代入した変数をつかって、変数[キー]とすることでハッシュの要素の値を用いることができます。
+	<br><%= image_tag '/assets/配列の中のハッシュ1.png' %><%= image_tag '/assets/配列の中のハッシュ2.png' %><br>
+	先ほどのハッシュの要素の値の扱い方は、さらに省略することができます。
+	具体的には、配列[インデックス番号][キー]で、特定のハッシュの値を用いることができます。
+	見慣れない書き方で難しく感じるかもしれませんが、配列[インデックス番号]がハッシュに置き換わる、というように考えると理解しやすくなります。
+	<br><%= image_tag '/assets/ハッシュの値を１行で確認する1.png' %><%= image_tag '/assets/ハッシュの値を１行で確認する2.png' %><br>
+	[index.rb]
+	exams = [
+	  {subject: "Math", score: 80},
+	  {subject: "Science", score: 55}
+	]
+	# ①配列examsのインデックス番号が1の要素の、キーが「:score」の値を出力してください。（ただし、[]を2つ用いることで、1行で書いてください。）
+	# ②インデックス番号が1の要素の、キーが「:score」の値を出力してください
+	puts exams[1][:score]
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	先ほど紹介した、ハッシュが値の配列でeachを使うとどうなるでしょうか。
+	図を見ると、変数userがハッシュになっていることがわかります。
+	これは、変数userに、配列の各要素が順番に代入されるためです。
+	<br><%= image_tag '/assets/eachを使う1.png' %><%= image_tag '/assets/eachを使う2.png' %><br>
+	先程見たとおり、|変数|であるuserにはハッシュが代入されているので、user[キー]とすることで、ハッシュの中の値を使うことができています。
+	<br><%= image_tag '/assets/eachの中でハッシュの値を使う1.png' %><%= image_tag '/assets/eachの中でハッシュの値を使う2.png' %><br>
+	[index.rb]
+	exams = [
+	  {subject: "Math", score: 80},
+	  {subject: "Science", score: 55}
+	]
+	# ①配列examsの要素を順番に取り出して処理を行うためのeach文を作成してください。ただし、それぞれの要素は変数examに代入されるようにしてください。
+	# ②each文を用いて、要素ごとに「○○の結果は△△点です」と出力してください
+	exams.each do |exam|
+	  puts "#{exam[:subject]}の結果は#{exam[:score]}点です"
+	end
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	ここまでで配列とハッシュの基礎を一通り学ぶことができました！
+	これまで学んだことを活かして、Progateのキャラクター情報を出力するプログラムを作りましょう！
+	<br><%= image_tag '/assets/総合課題にチャレンジしよう（1）1.png' %><%= image_tag '/assets/総合課題にチャレンジしよう（1）2.png' %><br>
+	[index.rb]
+	characters = [
+	  {name: "にんじゃわんこ", age: 14},
+	  {name: "ひつじ仙人"},
+	  {name: "ベイビーわんこ", age: 5},
+	  {name: "とりずきん"}
+	]
+	# ①eachを用いて、変数charactersのすべての要素に対して繰り返し処理を実行できるようにしてください。ただし、それぞれの要素は変数characterに代入されるようにしてください。
+	# ②each文でそれぞれのキャラクターの名前を表示してください
+	characters.each do |character|
+	  puts "---------------------"
+	  puts "名前は#{character[:name]}です"
+	end
 </div>
 
 <div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
+	次はキャラクターの年齢の情報も出力しましょう。
+	ただしキャラクターによっては年齢が設定されていません。年齢がない場合は、代わりに「年齢は秘密です」と出力するようにします
+	<br><%= image_tag '/assets/総合課題にチャレンジしよう（2）1.png' %><%= image_tag '/assets/総合課題にチャレンジしよう（2）2.png' %><br>
+	[index.rb]
+	characters = [
+	  {name: "にんじゃわんこ", age: 14},
+	  {name: "ひつじ仙人"},
+	  {name: "ベイビーわんこ", age: 5},
+	  {name: "とりずきん"}
+	]
+	characters.each do |character|
+	  puts "--------------------"
+	  puts "名前は#{character[:name]}です"
+	  # ①if, elseを用いて以下の条件分岐を作成してください。・キー:ageの値があるときは、年齢は◯◯歳ですと出力する。ただし◯◯の部分には、キー:ageの値を入れる。・キー:ageの値がないときは、年齢は秘密ですと出力する。
+	  # ②キー:ageの値に応じて年齢の情報を出力してください
+	  if character[:age]
+	    puts "年齢は#{character[:age]}です"
+	  else
+	    puts "年齢は秘密です"
+	  end
+	end
 </div>
 
 
