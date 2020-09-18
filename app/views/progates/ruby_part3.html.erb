@@ -101,25 +101,130 @@
 </div>
 
 <div style="padding: 100px 0 100px 0;">
-	brew install git-secrets1231223234
+	メソッドを定義するときに用意した引数は、そのメソッドの中（defからendまでの間）でしか使うことができません。
+	Ruby 学習コースⅡで学んだ「スコープ」という言葉を覚えているでしょうか？ スコープとは、その変数が使える範囲を指す言葉で、引数のスコープはメソッドの中だけであると表現できます。
+	<br><%= image_tag '/assets/メソッド定義のスコープ1.png' %><%= image_tag '/assets/メソッド定義のスコープ2.png' %><br>
+	前のスライドで引数のスコープを学びましたが、メソッドの中で定義した変数のスコープはどうなっているのでしょうか。
+	メソッドの中で定義した変数も、引数と同じように、そのメソッドの中（defからendまで）でしか使うことができません。
+	<br><%= image_tag '/assets/メソッドの中の変数1.png' %><%= image_tag '/assets/メソッドの中の変数2.png' %><br>
+	[index.rb]
+	def print_info(item)
+	  puts "わんこでんきへようこそ！"
+	  puts "今日は#{item}がセール中です！"
+	end
+	print_info("ヘッドホン")
+	# 以下のコードを削除してください.メソッドの定義の外で使おうとしています。このままではエラーが発生してしまうことを確認してみましょう
+	# puts item
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	引数は複数受け取ることもできます。括弧の中に受け取る引数をコンマ(,)で区切って並べることで、複数の引数を指定することができます。
+	引数は、左から順番に「第1引数、第2引数」というように呼びます
+	<br><%= image_tag '/assets/複数の引数を受け取る.png' %><br>
+	複数の引数を渡してメソッドを呼び出すには、定義するときと同じように、コンマ(,)を用います。
+	渡す引数の順番と、メソッドを定義したときの引数の順番は対応しているのでメソッドを呼び出すときは、引数の順番に気をつける必要があります。
+	<br><%= image_tag '/assets/引数の順番1.png' %><%= image_tag '/assets/引数の順番2.png' %><br>
+	[index.rb]
+	# すでに、引数itemを受け取るprint_infoメソッドが定義されています。値段を意味するpriceという引数も受け取れるようにしてみましょう。
+	# ①引数priceも受け取るように変更してください
+	def print_info(item, price)
+	  puts "わんこでんきへようこそ！"
+	  puts "今日は#{item}がセール中で#{price}円です！"
+	end
+	# ②print_infoメソッドを呼び出してください
+	print_info("SDカード", 1200)
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	ここからは、メソッドの処理結果を呼び出し元で受け取る方法を学びます。
+	呼び出し元で受け取る処理結果を戻り値（もどりち）と呼び、このことを「メソッドが戻り値を返す」と言います。
+	下のイメージ図では、addメソッドが「3」と「7」を受け取り、処理結果の「10」を呼び出し元に返しています。この「10」にあたるのが戻り値です。
+	<br><%= image_tag '/assets/戻り値とは-戻り値とは.gif' %><br>
+	メソッドの中でreturnを使うと、呼び出し元で値を受け取れるようになります。
+	「return 値」と書くことで、メソッドはその値を戻り値として返します。
+	<br><%= image_tag '/assets/ruby3-戻り値のあるメソッド1.png' %><%= image_tag '/assets/ruby3-戻り値のあるメソッド2.png' %><br>
+	戻り値がある場合、メソッドの呼び出し部分がそのまま戻り値に置き換わります。
+	よって、図のようにメソッドの呼び出し部分を変数に代入するように書くことで、メソッドの戻り値を受け取ることができます。
+	<br><%= image_tag '/assets/戻り値を受け取る1.png' %><%= image_tag '/assets/戻り値を受け取る2.png' %><br>
+	[index.rb]
+	def discount(price)
+	# ①discountメソッドの中で、「price / 2」を戻り値として返してください
+		return price / 2
+	end
+	puts "テレビがセール中です！"
+	# ②discountメソッドを呼び出し、その戻り値を変数half_priceに代入してください
+	half_price = discount(15000)
+	# ③変数half_priceを用いて、「特別価格で〇〇円です」となるように出力してください
+	puts "特別価格で#{half_price}円です"
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	戻り値も引数と同様に、様々な値を用いることができます。
+	また、if文で使うような条件式をreturnすると、その条件式の結果として得られる真偽値（trueまたはfalse）を返すことができます。
+	真偽値を返すメソッドは、メソッド名の末尾に「?」をつける慣習があるので、覚えておきましょう。
+	<br><%= image_tag '/assets/様々な戻り値.png' %><br>
+	[index.rb]
+	# ①引数priceを受け取る、shipping_free?メソッドを定義してください
+	# ②定義したshipping_free?メソッドの中で、price >= 5000を戻り値として返してください。
+	def shipping_free?(price)
+	  return price >= 5000
+	end
+	# ③if文の条件式でshipping_free?メソッドを呼び出してください
+	if shipping_free?(3000)
+		puts "5000円以上のお買い上げなので送料はいただきません"
+	else
+		puts "追加で送料をいただきます"
+	end
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	returnについて詳しく見ていきましょう。
+	returnは、戻り値を返すだけでなく、メソッドの処理を終了させる性質も持っています。
+	よって、returnの後にあるメソッドの処理は実行されませんので注意しましょう。
+	<br><%= image_tag '/assets/returnによる処理の終了.png' %><br>
+	メソッドでは、条件分岐を組み合わせることで複数のreturnを用いることができます。
+	図の例では、引数が80以下なのでifの中のreturnは実行されず、if文の後のreturnが実行されています。もし引数が80より大きければ、ifの中のreturnが実行され、そこで処理が終了します。
+	<br><%= image_tag '/assets/複数のreturn1.png' %><%= image_tag '/assets/複数のreturn2.png' %><br>
+	[index.rb]
+	def price_with_shipping(price)
+		# ①priceが5000以上のとき、戻り値としてpriceを返すif文を作成してください
+		if price >= 5000
+		  return price
+		end
+	  # ②priceに500を加えた値を戻り値として返してください
+		return price + 500
+	end
+	puts "商品の合計金額は3000円です"
+	puts "お支払い金額は、送料込みで#{price_with_shipping(3000)}円です"
+	puts "-----------"
+	puts "商品の合計金額は10000円です"
+	puts "お支払い金額は、送料込みで#{price_with_shipping(10000)}円です"
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	最後に、キーワード引数という特殊な書き方について見てみましょう。
+	引数の数が多くなると、呼び出し側で値がどの引数に入るのかがわかりにくくなります。
+	キーワード引数を用いた書き方をすることで、右の図のように呼び出し側で引数を明記することができます。
+	<br><%= image_tag '/assets/キーワード引数とは1.png' %><%= image_tag '/assets/キーワード引数とは2.png' %><br>
+	通常のメソッドの書き方に加えて、
+	① 定義側で、引数の後にコロンを付ける
+	② 呼び出し側で、値の前に引数名を書く
+	とすることで、キーワード引数を持つメソッドを書くことができます。
+	<br><%= image_tag '/assets/キーワード引数を持つメソッド1.png' %><%= image_tag '/assets/キーワード引数を持つメソッド2.png' %><br>
+	[index.rb]
+	# 既にbuyメソッドが定義されています。このメソッドでキーワード引数を使うようにしてみましょう。
+	# ①buyメソッドがキーワード引数を使うように書き換えてください
+	def buy(item:, price:, count:)
+		puts "#{item}を#{count}台のお買い上げです"
+		puts "合計金額は#{price * count}円です"
+	end
+	# キーワード引数を用いて、buyメソッドを呼び出してください。ただし、引数の値は既にある値をそのまま使ってください。引数の値を消してしまった場合は、以下を利用してください。item:テレビ(文字列)  price:15000(数値)  count:2(数値)
+	# ②キーワード引数を使うように書き換えてください
+	buy(item:"テレビ", price:15000, count:2)
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	
 </div>
 
 <div style="padding: 100px 0 100px 0;">

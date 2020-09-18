@@ -1,0 +1,185 @@
+<div style="padding: 20px 0 20px 0;">
+	Home→<%= link_to 'Home', root_path %>
+	<%= link_to 'Progate/HTML&CSS初級編', htmlcss_first_path %>
+	first→<%= link_to 'Progate/Rubyコース1', ruby_path %>
+	prev→<%= link_to 'Progate/Rubyコース3', ruby_part3_path %>
+</div>
+
+<h1>Ruby　コース4</h1>
+
+<div style="padding: 100px 0 100px 0;">]
+	クラスを学ぼう
+	ProgateでのRubyの学習も残るは2レッスンです！
+	このレッスンでは「にんじゃわんこ」と「ひつじ仙人」と一緒に、Rubyで必須の「クラス」について学んでいきましょう！
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	今回学ぶ内容を、Webサービスに例えて説明しよう。右の図のような「料理注文サイト」では、「メニュー」が複数表示されとるな。
+	プログラミングでは、このメニューを１つの「もの」として扱うことで、複数のメニューをうまく管理するのじゃ。<br>
+	メニューを１つのかたまりとして見るんですね。<br>
+	今回のレッスンでは実際にWebサービスをつくることはできないが、コンソールを用いてシンプルな「料理注文システム」を作ってみよう。
+	<br><%= image_tag '/assets/Webサービスと「もの」.png' %><br>
+	まずは、これから作成する「料理注文システム」を確認してみましょう。
+	「料理注文システム」では、実行中にユーザーから購入する商品の番号と個数を受け取ります。
+	今回は、コンソールが入力待ちの状態になったら数字を入力し、Enterキーを押してください。
+	<br><%= image_tag '/assets/プログラム実行中に入力をする.gif' %><br>
+	RubyⅣでは、コンソールで動かせる「料理注文システム」を作ります。
+	どのような出力になるか確認してみましょう。
+	「確認して次へ」を押して、プログラムを実行してください。
+	指示にしたがって半角の数字を打ち込み、「Enterキー」を押してください。
+	入力は2回あります。最初の入力は0から3の間の数字を入力してください。
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	「料理注文システム」のそれぞれのメニューは、右図のように「名前」と「値段」という情報を持つ、と表すことができるのじゃ。<br>
+	なるほど、それぞれのメニューという「もの」ごとに情報を持ってるんですね！<br>
+	その通りじゃ。それでは次のスライドから、この「もの」の作り方を学んでいこう。<br>
+	<br><%= image_tag '/assets/メニューに注目しよう.png' %><br>
+	プログラミングでメニューという「もの」を生成するには、まずその「設計図」を用意する必要があります。
+	設計図のことをクラス、「もの」のことをインスタンスと呼びますので、覚えておきましょう。
+	<br><%= image_tag '/assets/「もの」を生成する仕組み1.png' %><%= image_tag '/assets/「もの」を生成する仕組み2.png' %><br>
+	インスタンスは、以下の画像の流れに沿って生成していきます。
+	まずは、step1から順番に進めていきましょう。
+	<br><%= image_tag '/assets/インスタンスを生成するステップ1.png' %><%= image_tag '/assets/インスタンスを生成するステップ2.png' %><%= image_tag '/assets/インスタンスを生成するステップ3.png' %><br>
+	まずは左の図のクラス（設計図）を用意します。
+	クラスは「class クラス名」とすることで定義できます。
+	クラス名は必ず大文字で始めることと、「end」を書く必要があることに注意しましょう。
+	<br><%= image_tag '/assets/クラスの定義-クラスの定義1.png' %><%= image_tag '/assets/クラスの定義-クラスの定義2.png' %><br>
+	[index.rb]
+	# ①Menuクラスを定義してください
+	class Menu
+	end
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	Menuクラスの書き方がわかりました！<br>
+	よし、ただ今の状態は、例えるなら白紙の設計図のようなものだ。<br>
+	これから設計図の内容を書いていこう。<br>
+	なるほど、具体的には何を書くんですか？<br>
+	メニューには「名前」と「値段」という情報をもたせたいから、それらの情報をもてるようにしてみるぞ。<br>
+	<br><%= image_tag '/assets/クラスの内容を用意しよう.png' %><br>
+	情報を持たせるためには、「attr_accessor シンボル」のようにします。以下の図のようにすることで、Menuクラスのインスタンスにnameという情報を持たせることができます。
+	また、この「name」という情報のことをインスタンス変数と呼びますので覚えておきましょう。
+	<br><%= image_tag '/assets/attr_accessor1.png' %><%= image_tag '/assets/attr_accessor2.png' %><br>
+	1つのクラスに対して、インスタンス変数は複数用意することも可能です。
+	今回は以下の図のように、Menuクラスに「name」と「price」の2つのインスタンス変数を用意してみましょう。
+	<br><%= image_tag '/assets/複数のインスタンス変数.png' %><br>
+	class Menu
+	  # ①nameとpriceというインスタンス変数を用意してください
+	  attr_accessor :name
+	  attr_accessor :price
+	end
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	これでクラスが用意できましたね！<br>
+	では次に、用意したMenuクラスから、実際のメニュー（インスタンス）を生成する方法を考えよう。<br>
+	はい、わかりました！<br>
+	<br><%= image_tag '/assets/クラスからインスタンスを生成しよう.png' %><br>
+	クラス（設計図）を元に、新しくインスタンスを生成するには、「クラス名.new」とします。
+	また、「変数名 = クラス名.new」とすることで、生成したインスタンスを変数に代入することができます。
+	<br><%= image_tag '/assets/ruby4インスタンスの生成1.png' %><%= image_tag '/assets/ruby4インスタンスの生成2.png' %><br>
+	class Menu
+	  attr_accessor :name
+	  attr_accessor :price
+	end
+	# ①Menuクラスのインスタンスを生成して変数menu1に代入してください
+	  menu1 = Menu.new
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	では生成した空のインスタンスに情報を追加してみよう。<br>
+	さっき作ったmenu1のインスタンスにピザって名前をつければいいんですね！<br>
+	その通りじゃ。その方法を次のスライドから学んでいこう。<br>
+	<br><%= image_tag '/assets/インスタンスに情報を追加しよう.png' %><br>
+	インスタンスに情報をもたせるには、クラスで用意したインスタンス変数に値を代入する必要があります。
+	具体的には「インスタンス.変数名 = 値」とすることで、そのインスタンス変数に値をセットすることができます。
+	<br><%= image_tag '/assets/インスタンス変数に値を代入する1.png' %><%= image_tag '/assets/インスタンス変数に値を代入する2.png' %><br>
+	また、「インスタンス.変数名」とすることで、そのインスタンス変数の値を用いることができます。
+	<br><%= image_tag '/assets/インスタンス変数を用いる1.png' %><%= image_tag '/assets/インスタンス変数を用いる2.png' %><br>
+	class Menu
+	  attr_accessor :name
+	  attr_accessor :price
+	end
+	menu1 = Menu.new
+	menu1.name = "ピザ"
+	puts menu1.name
+	# すでにmenu1のインスタンス変数nameに「ピザ」が代入されています。同じように、インスタンス変数priceにも値を代入してみましょう。
+	# ①menu1のpriceに「800」を代入してください
+	menu1.price = 800
+	# ②menu1のpriceを出力してください
+	puts menu1.price
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	これで実際に情報を持ったインスタンスがつくれるようになったな。<br>
+	やったー！<br>
+	ここからは、複数のMenuインスタンスを作ってみることで、インスタンスごとに異なる情報を持てることを確かめてみよう。<br>
+	<br><%= image_tag '/assets/インスタンスごとに情報を持つことを確認しよう.png' %><br>
+	class Menu
+	  attr_accessor :name
+	  attr_accessor :price
+	end
+	menu1 = Menu.new
+	menu1.name = "ピザ"
+	puts menu1.name
+	menu1.price = 800
+	puts menu1.price
+	# 前回の演習で生成したインスタンスに加えて、もう1つ別のインスタンスを生成して、それぞれが異なる値を持つことを確認してみましょう。
+	# ①Menuクラスのインスタンスを生成して変数menu2に代入してください
+	menu2 = Menu.new
+	# ②menu2のnameに「すし」を代入してください
+	menu2.name = "すし"
+	# ③menu2のnameを出力してください
+	puts menu2.name
+	# ④menu2のpriceに「1000」を代入してください
+	menu2.price = 1000
+	# ⑤menu2のpriceを出力してください
+	puts menu2.price
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	これでメニューごとに情報を管理できるようになりましたね！<br>
+	そうじゃな。ここからは、「料理注文システム」に必要な機能を作っていくぞ。<br>
+	「料理注文システム」には、メニューの内容を表示する処理と、どのメニューを注文するか選択してもらう処理があるのじゃ。<br>
+	まずは、これらの機能をつくるための準備をしていこう。<br>
+	クラスの中ではメソッドを定義することができます。
+	このメソッドの使い方に関しては、次のスライドでみてみましょう。
+	<br><%= image_tag '/assets/クラスの中でメソッドを定義する.png' %><br>
+	クラスの中で定義したメソッドは、インスタンスに対して使うようにして呼び出します。
+	具体的には、「インスタンス.メソッド名」のようにすることで、そのメソッドを呼び出すことができます。
+	<br><%= image_tag '/assets/クラスの中で定義したメソッドを呼び出す1.png' %><%= image_tag '/assets/クラスの中で定義したメソッドを呼び出す2.png' %><br>
+	class Menu
+	  attr_accessor :name
+	  attr_accessor :price
+	  # ①infoメソッドを定義してください
+	  def info
+	    puts "料理名と値段が表示されます"
+	  end
+	end
+	menu1 = Menu.new
+	menu1.name = "ピザ"
+	menu1.price = 800
+	# ②menu1に対してinfoメソッドを呼び出してください
+	puts menu1.info
+</div>
+
+
+
+<div style="padding: 100px 0 100px 0;">
+	
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+next→<%= link_to 'Ruby_part5', ruby_part5_path %><br>
+Home→<%= link_to 'Home', root_path %>
+</div>
