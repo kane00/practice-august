@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get 'ruby_part2' => 'progates#ruby_part2'
   get 'ruby_part3' => 'progates#ruby_part3'
   get 'ruby_part4' => 'progates#ruby_part4'
+  get 'ruby_part5' => 'progates#ruby_part5'
 
   root 'posts#index'
 end

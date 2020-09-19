@@ -45,10 +45,10 @@
 	クラスは「class クラス名」とすることで定義できます。
 	クラス名は必ず大文字で始めることと、「end」を書く必要があることに注意しましょう。
 	<br><%= image_tag '/assets/クラスの定義-クラスの定義1.png' %><%= image_tag '/assets/クラスの定義-クラスの定義2.png' %><br>
-	[index.rb]
-	# ①Menuクラスを定義してください
-	class Menu
-	end
+	[index.rb]<br>
+	# ①Menuクラスを定義してください<br>
+	class Menu<br>
+	end<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -64,10 +64,10 @@
 	1つのクラスに対して、インスタンス変数は複数用意することも可能です。
 	今回は以下の図のように、Menuクラスに「name」と「price」の2つのインスタンス変数を用意してみましょう。
 	<br><%= image_tag '/assets/複数のインスタンス変数.png' %><br>
-	class Menu
-	  # ①nameとpriceというインスタンス変数を用意してください
-	  attr_accessor :name
-	  attr_accessor :price
+	class Menu<br>
+	  # ①nameとpriceというインスタンス変数を用意してください<br>
+	  attr_accessor :name<br>
+	  attr_accessor :price<br>
 	end
 </div>
 
@@ -79,12 +79,12 @@
 	クラス（設計図）を元に、新しくインスタンスを生成するには、「クラス名.new」とします。
 	また、「変数名 = クラス名.new」とすることで、生成したインスタンスを変数に代入することができます。
 	<br><%= image_tag '/assets/ruby4インスタンスの生成1.png' %><%= image_tag '/assets/ruby4インスタンスの生成2.png' %><br>
-	class Menu
-	  attr_accessor :name
-	  attr_accessor :price
-	end
-	# ①Menuクラスのインスタンスを生成して変数menu1に代入してください
-	  menu1 = Menu.new
+	class Menu<br>
+	  attr_accessor :name<br>
+	  attr_accessor :price<br>
+	end<br>
+	# ①Menuクラスのインスタンスを生成して変数menu1に代入してください<br>
+	  menu1 = Menu.new<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -97,18 +97,18 @@
 	<br><%= image_tag '/assets/インスタンス変数に値を代入する1.png' %><%= image_tag '/assets/インスタンス変数に値を代入する2.png' %><br>
 	また、「インスタンス.変数名」とすることで、そのインスタンス変数の値を用いることができます。
 	<br><%= image_tag '/assets/インスタンス変数を用いる1.png' %><%= image_tag '/assets/インスタンス変数を用いる2.png' %><br>
-	class Menu
-	  attr_accessor :name
-	  attr_accessor :price
-	end
-	menu1 = Menu.new
-	menu1.name = "ピザ"
-	puts menu1.name
-	# すでにmenu1のインスタンス変数nameに「ピザ」が代入されています。同じように、インスタンス変数priceにも値を代入してみましょう。
-	# ①menu1のpriceに「800」を代入してください
-	menu1.price = 800
-	# ②menu1のpriceを出力してください
-	puts menu1.price
+	class Menu<br>
+	  attr_accessor :name<br>
+	  attr_accessor :price<br>
+	end<br>
+	menu1 = Menu.new<br>
+	menu1.name = "ピザ"<br>
+	puts menu1.name<br>
+	# すでにmenu1のインスタンス変数nameに「ピザ」が代入されています。同じように、インスタンス変数priceにも値を代入してみましょう。<br>
+	# ①menu1のpriceに「800」を代入してください<br>
+	menu1.price = 800<br>
+	# ②menu1のpriceを出力してください<br>
+	puts menu1.price<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -116,26 +116,26 @@
 	やったー！<br>
 	ここからは、複数のMenuインスタンスを作ってみることで、インスタンスごとに異なる情報を持てることを確かめてみよう。<br>
 	<br><%= image_tag '/assets/インスタンスごとに情報を持つことを確認しよう.png' %><br>
-	class Menu
-	  attr_accessor :name
-	  attr_accessor :price
-	end
-	menu1 = Menu.new
-	menu1.name = "ピザ"
-	puts menu1.name
-	menu1.price = 800
-	puts menu1.price
-	# 前回の演習で生成したインスタンスに加えて、もう1つ別のインスタンスを生成して、それぞれが異なる値を持つことを確認してみましょう。
-	# ①Menuクラスのインスタンスを生成して変数menu2に代入してください
-	menu2 = Menu.new
-	# ②menu2のnameに「すし」を代入してください
-	menu2.name = "すし"
-	# ③menu2のnameを出力してください
-	puts menu2.name
-	# ④menu2のpriceに「1000」を代入してください
-	menu2.price = 1000
-	# ⑤menu2のpriceを出力してください
-	puts menu2.price
+	class Menu<br>
+	  attr_accessor :name<br>
+	  attr_accessor :price<br>
+	end<br>
+	menu1 = Menu.new<br>
+	menu1.name = "ピザ"<br>
+	puts menu1.name<br>
+	menu1.price = 800<br>
+	puts menu1.price<br>
+	# 前回の演習で生成したインスタンスに加えて、もう1つ別のインスタンスを生成して、それぞれが異なる値を持つことを確認してみましょう。<br>
+	# ①Menuクラスのインスタンスを生成して変数menu2に代入してください<br>
+	menu2 = Menu.new<br>
+	# ②menu2のnameに「すし」を代入してください<br>
+	menu2.name = "すし"<br>
+	# ③menu2のnameを出力してください<br>
+	puts menu2.name<br>
+	# ④menu2のpriceに「1000」を代入してください<br>
+	menu2.price = 1000<br>
+	# ⑤menu2のpriceを出力してください<br>
+	puts menu2.price<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -149,35 +149,261 @@
 	クラスの中で定義したメソッドは、インスタンスに対して使うようにして呼び出します。
 	具体的には、「インスタンス.メソッド名」のようにすることで、そのメソッドを呼び出すことができます。
 	<br><%= image_tag '/assets/クラスの中で定義したメソッドを呼び出す1.png' %><%= image_tag '/assets/クラスの中で定義したメソッドを呼び出す2.png' %><br>
-	class Menu
-	  attr_accessor :name
-	  attr_accessor :price
-	  # ①infoメソッドを定義してください
-	  def info
-	    puts "料理名と値段が表示されます"
-	  end
-	end
-	menu1 = Menu.new
-	menu1.name = "ピザ"
-	menu1.price = 800
-	# ②menu1に対してinfoメソッドを呼び出してください
-	puts menu1.info
-</div>
-
-
-
-<div style="padding: 100px 0 100px 0;">
-	
+	class Menu<br>
+	  attr_accessor :name<br>
+	  attr_accessor :price<br>
+	  # ①infoメソッドを定義してください<br>
+	  def info<br>
+	    puts "料理名と値段が表示されます"<br>
+	  end<br>
+	end<br>
+	menu1 = Menu.new<br>
+	menu1.name = "ピザ"<br>
+	menu1.price = 800<br>
+	# ②menu1に対してinfoメソッドを呼び出してください<br>
+	puts menu1.info<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	さきほど作ったような、クラスの中で定義し、インスタンスに対して呼び出すメソッドのことをインスタンスメソッドと呼ぶぞ。<br>
+	インスタンスに対して使うからインスタンスメソッド、そのまんまですね！<br>
+	インスタンスメソッドは、インスタンスに対して呼び出す、ということ以外は「Ruby 学習コース Ⅲ」で学んだメソッドと同じです。
+	したがって、インスタンスメソッドも、引数を受け取ったり戻り値を返すことができます。
+	<br><%= image_tag '/assets/インスタンスメソッドを使いこなす1.png' %><%= image_tag '/assets/インスタンスメソッドを使いこなす2.png' %><br>
+	class Menu<br>
+	  attr_accessor :name<br>
+	  attr_accessor :price<br>
+	  def info<br>
+	    # 先程のページで既にinfoメソッドを定義しました。今回はそのインスタンスメソッド内に、戻り値を返す処理を書いてみましょう。<br>
+	    # ①文字列「料理名と値段が表示されます」をreturnしてください<br>
+	    return "料理名と値段が表示されます"<br>
+	  end<br>
+	end<br>
+	menu1 = Menu.new<br>
+	menu1.name = "ピザ"<br>
+	menu1.price = 800<br>
+	#  ②menu1に対してinfoメソッドを呼び出して戻り値を出力してください<br>
+	puts menu1.info<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	インスタンスメソッドの使い方がわかりました！<br>
+	よし。ではまずは、「料理注文システム」のうち、メニューの内容を表示する処理をつくろう。<br>
+	そのために、メニューの内容を出力するインスタンスメソッドを用意していくぞ。<br>
+	はい、頑張ります！<br>
+	インスタンスメソッドの中では、特殊な変数「self」を用いて「self.変数名」とすることで、インスタンス変数を扱うことができるようになります。
+	インスタンスメソッドでは、変数「self」に、呼び出したインスタンス自身が代入されています。
+	<br><%= image_tag '/assets/インスタンスメソッドの中でインスタンス変数を扱う1.png' %><%= image_tag '/assets/インスタンスメソッドの中でインスタンス変数を扱う2.png' %><br>
+	class Menu<br>
+	  attr_accessor :name<br>
+	  attr_accessor :price<br>
+	  def info<br>
+	    # infoメソッドの中で、「○○ △△円」というような文字列を戻り値として返してください。<br>
+	    # ただし、記号の部分には、selfを用いて、○○にはインスタンス変数nameの値を、△△にはインスタンス変数priceの値を入れてください。<br>
+	    # ①「#{}」の中身を埋めてください<br>
+	    return "#{self.name} #{self.price}円"<br>
+	  end<br>
+	end<br>
+	menu1 = Menu.new<br>
+	menu1.name = "ピザ"<br>
+	menu1.price = 800<br>
+	puts menu1.info<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	ここで一度、クラスとインスタンスについておさらいしましょう。
+	クラスは設計図のようなもので、その設計図からつくる実際の「もの」にあたるものがインスタンスです。
+	インスタンスが持つ情報である「インスタンス変数」と、インスタンスに対して呼び出す「インスタンスメソッド」は、クラスの中で定義します。
+	<br><%= image_tag '/assets/クラスとインスタンスをおさらいしよう1.png' %><%= image_tag '/assets/クラスとインスタンスをおさらいしよう2.png' %><br>
+	ここまで学んだことをいかして、メニューの合計金額を求めるメソッドをつくってみましょう。
+	購入数が3個以上の場合には、100円割引になるようにします。
+	<br><%= image_tag '/assets/合計金額を求めるメソッド1.png' %><%= image_tag '/assets/合計金額を求めるメソッド2.png' %><br>
+	class Menu<br>
+	  attr_accessor :name<br>
+	  attr_accessor :price<br>
+	  def info<br>
+	    return "#{self.name} #{self.price}円"<br>
+	  end<br>
+	  # ①get_total_priceメソッドを定義してください<br>
+	  # ②get_total_priceメソッドの中で、以下の処理を実行するようにしてください。<br>
+	  # ・変数total_priceを定義し、インスタンス変数priceと引数countを掛けた結果を代入する<br>
+	  # ・引数countが3以上だったらtotal_priceから100を引く #・total_priceを戻り値として返す<br>
+	  def get_total_price(count)<br>
+	    total_price = self.price * count  #get_total_priceメソッドの中に、「self.price」がありません<br>
+	    if count >= 3<br>
+	      return total_price - 100<br>
+	    end<br>
+	    return total_price<br>
+	  end<br>
+	end<br>
+	menu1 = Menu.new<br>
+	menu1.name = "ピザ"<br>
+	menu1.price = 800<br>
+	# ③menu1に対してget_total_priceメソッドを呼び出してください<br>
+	puts menu1.get_total_price(3)<br>
 </div>
+
+<div style="padding: 100px 0 100px 0;">
+	これまでは、「Menu.new」としてインスタンスを作ってから、nameとpriceにそれぞれ値を代入するようにしてきたな。<br>
+	はい、そうですね！<br>
+	実は、インスタンスを生成するのと同時に、インスタンス変数に値を代入する方法があるのじゃ。<br>
+	これを活用することで、インスタンスをつくるのが楽になるんじゃ。これからその方法を順に学んでみよう<br>
+	<br><%= image_tag '/assets/インスタンス生成時に値を代入しよう.png' %><br>
+	まずは、インスタンスを生成した直後に処理を実行することができる、initializeメソッドというものを学びましょう。
+	initializeメソッドは、「クラス名.new」でインスタンスを生成した直後に自動で呼び出されます。
+	実際の使い方については、次のスライドで見てみましょう
+	<br><%= image_tag '/assets/initializeメソッド.png' %><br>
+	initializeメソッドは、他のインスタンスメソッドと同じように定義することができます。
+	以下の例では、「Menu.new」でMenuインスタンスが生成された直後にinitializeメソッドが呼び出され、その中の処理が実行されます。
+	<br><%= image_tag '/assets/initializeメソッドを用いる1.png' %><%= image_tag '/assets/initializeメソッドを用いる2.png' %><br>
+	initializeメソッドの中で、インスタンス変数に値を代入してみましょう。
+	インスタンスメソッドの中では、「self.変数名」でインスタンス変数を扱うことができるので、「self.変数名 = 値」でインスタンス変数に値を代入できます。
+	<br><%= image_tag '/assets/initializeメソッドでインスタンス変数を扱う1.png' %><%= image_tag '/assets/initializeメソッドでインスタンス変数を扱う2.png' %><br>
+	class Menu<br>
+	  attr_accessor :name<br>
+	  attr_accessor :price<br>
+	  # ①initializeメソッドを定義してください<br>
+	  # ②initializeメソッドの中で、以下の処理を実行してください。・インスタンス変数nameに文字列ピザを代入する  ・インスタンス変数priceに数値800を代入する<br>
+	  def initialize<br>
+	    self.name = "ピザ"<br>
+	    self.price = 800<br>
+	  end<br>
+	  def info<br>
+	    return "#{self.name} #{self.price}円"<br>
+	  end<br>
+	  def get_total_price(count)<br>
+	    total_price = self.price * count<br>
+	    if count >= 3<br>
+	      total_price -= 100<br>
+	    end<br>
+	    return total_price<br>
+	  end<br>
+	end<br>
+	menu1 = Menu.new<br>
+	# ③menu1に対してinfoメソッドを呼び出して戻り値を出力してください<br>
+	puts menu1.info<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	でも、これではどのインスタンスもnameが「ピザ」になってしまいますね。<br>
+	そうじゃな。これはinitializeメソッドに引数を渡すことで、インスタンス毎に値を変えることができるぞ。<br>
+	なるほど、initializeメソッドも引数を受け取れるのですね！<br>
+	そうじゃ。その方法を次から見ていこう。<br>
+	initializeメソッドは通常のインスタンスメソッドと同じように、引数を渡すこともできます。
+	その際、「クラス.new」に対して引数を渡すことで、initializeメソッドにその値を渡すことができます。
+	<br><%= image_tag '/assets/initializeメソッドの引数1.png' %><%= image_tag '/assets/initializeメソッドの引数2.png' %><br>
+	図のように、initializeメソッドでインスタンス変数に引数の値を代入することで、インスタンスごとにインスタンス変数の値を変えることができます。
+	その際に、キーワード引数を使うことで見やすく書くことができます。
+	<br><%= image_tag '/assets/initializeメソッドでインスタンス変数に値を代入する.png' %><br>
+	class Menu<br>
+	  attr_accessor :name<br>
+	  attr_accessor :price<br>
+	  # 現在のコードでは、どのインスタンスもnameとpriceが同じになってしまいます。initializeメソッドで引数を受け取って、インスタンスの生成ごとにnameとpriceを指定できるようにしましょう。<br>
+	  # ①initializeメソッドでキーワード引数name、priceを受け取るように書き換えてください。<br>
+	  def initialize(name: , price: )<br>
+	    self.name = name  #「self.name = "ピザ"」を書き換えてください<br>
+	    self.price = price<br>
+	  end<br>
+	  def info<br>
+	    return "#{self.name} #{self.price}円"<br>
+	  end<br>
+	  def get_total_price(count)<br>
+	    total_price = self.price * count<br>
+	    if count >= 3<br>
+	      total_price -= 100<br>
+	    end<br>
+	    return total_price<br>
+	  end<br>
+	end<br>
+	# ②引数を渡してインスタンスを生成してください<br>
+	menu1 = Menu.new(name: "すし", price: 1000)<br>
+	puts menu1.info<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	必要なメソッドも揃ってきたので、ここからは最初にページで確認したプログラムに近づけていこう。<br>
+	はい、わかりました！<br>
+	ここからはコードの量が増えてくるぞ。まずはMenuクラスの定義部分のコードを「menu.rb」に移すことで、プログラムを管理しやすくしよう。<br>
+	なるほど、ファイルを分けることができるんですね！<br>
+	<br><%= image_tag '/assets/目標物に近づけよう.png' %><br>
+	Menuクラスの定義をmenu.rbに移動させたら、menu.rbのコードをindex.rbでも使えるようにしましょう。
+	index.rbの一番上の行で、「require "./menu"」とすることで、menu.rbのコードを読み込めるようになります。
+	<br><%= image_tag '/assets/ファイルを分割する-require1.png' %><%= image_tag '/assets/ファイルを分割する-require2.png' %><br>
+	[index.rb]<br>
+	# ①Menuクラスをmenu.rbに移動して、このファイルからは削除してください<br>
+	# ③Menuクラスを移動したら、menu.rbを読み込んでください<br>
+	require "./menu"  #"./menu.rb"ではない<br>
+	# ④以下のコードは移動させないでください<br>
+	menu1 = Menu.new(name: "すし", price: 1000)<br>
+	puts menu1.info<br>
+	[menu.rb]<br>
+	# ①ここにMenuクラスを貼り付けてください<br>
+	class Menu<br>
+	  attr_accessor :name<br>
+	  attr_accessor :price<br>
+	  def initialize(name:, price:)<br>
+	    self.name = name<br>
+	    self.price = price<br>
+	  end<br>
+	  def info<br>
+	    return "#{self.name} #{self.price}円"<br>
+	  end<br>
+	  def get_total_price(count)<br>
+	    total_price = self.price * count<br>
+	    if count >= 3<br>
+	      total_price -= 100<br>
+	    end<br>
+	    return total_price<br>
+	  end<br>
+	end<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	Menuクラスの定義部分を「menu.rb」に分けられました！<br>
+	さっそく「料理注文システム」を作っていきたいのですが、何から始めればいいですか？<br>
+	まずは、それぞれのメニューを一覧で表示できるようにしてみよう。<br>
+	複数のメニューのインスタンスを配列に入れて、その配列に対して繰り返し処理をすることができるぞ。<br>
+	<br><%= image_tag '/assets/メニューを一覧表示しよう.png' %><br>
+	Menuクラスから生成したインスタンスも、配列の要素にすることが可能です。
+	以下の図のように、各インスタンスを要素とする配列を変数menusに代入しその配列に対してeach文を用いることで、それぞれのメニューを表示してみましょう。
+	<br><%= image_tag '/assets/インスタンスの配列1.png' %><%= image_tag '/assets/インスタンスの配列2.png' %><br>
+	[index.rb]<br>
+	require "./menu"<br>
+	menu1 = Menu.new(name: "ピザ", price: 800)<br>
+	menu2 = Menu.new(name: "すし", price: 1000)<br>
+	menu3 = Menu.new(name: "コーラ", price: 300)<br>
+	menu4 = Menu.new(name: "お茶", price: 200)<br>
+	# index.rbには、すでにMenuクラスのインスタンスが4つ定義されています。これらをまとめて扱うために、まずは配列を用意しましょう。<br>
+	# ①変数menusを定義して配列を代入してください。変数menusを定義し、以下の要素をもつ配列を代入してください。　・1つ目: menu1　・2つ目: menu2　・3つ目: menu3　・4つ目: menu4<br>
+	menus = [menu1, menu2, menu3, menu4]<br>
+	# 配列menusの要素を順番に取り出して処理を行うためのeach文を作成してください。このとき、それぞれの要素は変数menuに代入されるようにしてください。<br>
+	# ②menusに対して繰り返し処理を実行してください<br>
+	menus.each do |menu|<br>
+	  puts menu.info<br>
+	end<br>
+	[menu.rb]<br>
+	class Menu<br>
+	  attr_accessor :name<br>
+	  attr_accessor :price<br>
+	  def initialize(name:, price:)<br>
+	    self.name = name<br>
+	    self.price = price<br>
+	  end<br>
+	  def info<br>
+	    return "#{self.name} #{self.price}円"<br>
+	  end<br>
+	  def get_total_price(count)<br>
+	    total_price = self.price * count<br>
+	    if count >= 3<br>
+	      total_price -= 100<br>
+	    end<br>
+	    return total_price<br>
+	  end<br>
+	end<br>
+</div>
+
+
+
 
 <div style="padding: 100px 0 100px 0;">
 next→<%= link_to 'Ruby_part5', ruby_part5_path %><br>

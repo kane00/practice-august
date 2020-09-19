@@ -26,17 +26,17 @@
 	メソッドは、定義するだけでは実行されません。
 	図のように、「メソッド名」とすることで実行できます。メソッドを実行することを、「メソッドを呼び出す」と言います。
 	<br><%= image_tag '/assets/メソッドとは-メソッドとは-メソッドの呼び出し1.png' %><%= image_tag '/assets/メソッドとは-メソッドとは-メソッドの呼び出し2.png' %><br>
-	[index.rb]
-	def introduce
-	  puts "こんにちは"
-	  puts "私はにんじゃわんこです"
-	  # ②今の状態でコードを実行すると、2つの出力が確認できるはずです。今度はメソッドの処理を追加してみましょう。
-	  # ③出力を追加してください　introduceメソッドに、14歳ですと出力する処理を追加してください。
-	  puts "14歳です"
-	end
-	puts "-----自己紹介-----"
-	# ①introduceメソッドを呼び出してください
-	introduce
+	[index.rb]<br>
+	def introduce<br>
+	  puts "こんにちは"<br>
+	  puts "私はにんじゃわんこです"<br>
+	  # ②今の状態でコードを実行すると、2つの出力が確認できるはずです。今度はメソッドの処理を追加してみましょう。<br>
+	  # ③出力を追加してください　introduceメソッドに、14歳ですと出力する処理を追加してください。<br>
+	  puts "14歳です"<br>
+	end<br>
+	puts "-----自己紹介-----"<br>
+	# ①introduceメソッドを呼び出してください<br>
+	introduce<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -44,15 +44,15 @@
 	大事なのは「def メソッド名」と「end」です。
 	Ruby 学習コースⅠで学んだ「インデント」を使って、見やすいコードを書きましょう。
 	<br><%= image_tag '/assets/メソッドを自作しよう.png' %><br>
-	[index.rb]
-	# ①以下の2つの文を出力する　print_infoメソッドを定義してください。1つ目の文：わんこでんきへようこそ！　2つ目の文：今日はヘッドホンがセール中です！
-	# ②print_infoメソッドを定義してください
-	def print_info
-	  puts "わんこでんきへようこそ！"
-	  puts "今日はヘッドホンがセール中です！"
-	end
-	# ③print_infoメソッドを呼び出してください
-	print_info
+	[index.rb]<br>
+	# ①以下の2つの文を出力する　print_infoメソッドを定義してください。1つ目の文：わんこでんきへようこそ！　2つ目の文：今日はヘッドホンがセール中です！<br>
+	# ②print_infoメソッドを定義してください<br>
+	def print_info<br>
+	  puts "わんこでんきへようこそ！"<br>
+	  puts "今日はヘッドホンがセール中です！"<br>
+	end<br>
+	# ③print_infoメソッドを呼び出してください<br>
+	print_info<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -68,13 +68,13 @@
 	引数はメソッド内では変数のように使用することができます。
 	以下の図で、引数を受け取るメソッドの流れを確認しましょう。
 	<br><%= image_tag '/assets/メソッド内で引数を使用する1.png' %><%= image_tag '/assets/メソッド内で引数を使用する2.png' %><br>
-	[index.rb]
-	def introduce(name)
-	  puts "こんにちは"
-	  puts "私は#{name}です"
-	end
-	# ①引数を渡してメソッドを呼び出してください
-	introduce("にんじゃ")
+	[index.rb]<br>
+	def introduce(name)<br>
+	  puts "こんにちは"<br>
+	  puts "私は#{name}です"<br>
+	end<br>
+	# ①引数を渡してメソッドを呼び出してください<br>
+	introduce("にんじゃ")<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -87,17 +87,17 @@
 	引数のあるメソッドは、引数を渡さずに呼び出すことができません。
 	引数を渡さないで呼び出そうとすると、エラーになってしまいますので注意しましょう。
 	<br><%= image_tag '/assets/呼び出し時の注意1.png' %><%= image_tag '/assets/呼び出し時の注意2.png' %><br>
-	[index.rb]
-	# ①print_infoメソッドを定義してください ただし、引数名はitemとしてください。
-	# ②print_infoメソッドで、以下の2つの文を出力するようにしてください。　1つ目：わんこでんきへようこそ！　2つ目：今日は○○がセール中です！　ただし、「○○」の部分には、引数itemの値を入れてください。
-	def print_info(item)
-	  puts "わんこでんきへようこそ！"
-	  puts "今日は#{item}がセール中です！"
-	end
-	# ③引数を「ヘッドホン」としてメソッドを呼び出してください
-	print_info("ヘッドホン")
-	# ④引数を「テレビ」としてメソッドを呼び出してください
-	print_info("テレビ")
+	[index.rb]<br>
+	# ①print_infoメソッドを定義してください ただし、引数名はitemとしてください。<br>
+	# ②print_infoメソッドで、以下の2つの文を出力するようにしてください。　1つ目：わんこでんきへようこそ！　2つ目：今日は○○がセール中です！　ただし、「○○」の部分には、引数itemの値を入れてください。<br>
+	def print_info(item)<br>
+	  puts "わんこでんきへようこそ！"<br>
+	  puts "今日は#{item}がセール中です！"<br>
+	end<br>
+	# ③引数を「ヘッドホン」としてメソッドを呼び出してください<br>
+	print_info("ヘッドホン")<br>
+	# ④引数を「テレビ」としてメソッドを呼び出してください<br>
+	print_info("テレビ")<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -107,14 +107,14 @@
 	前のスライドで引数のスコープを学びましたが、メソッドの中で定義した変数のスコープはどうなっているのでしょうか。
 	メソッドの中で定義した変数も、引数と同じように、そのメソッドの中（defからendまで）でしか使うことができません。
 	<br><%= image_tag '/assets/メソッドの中の変数1.png' %><%= image_tag '/assets/メソッドの中の変数2.png' %><br>
-	[index.rb]
-	def print_info(item)
-	  puts "わんこでんきへようこそ！"
-	  puts "今日は#{item}がセール中です！"
-	end
-	print_info("ヘッドホン")
-	# 以下のコードを削除してください.メソッドの定義の外で使おうとしています。このままではエラーが発生してしまうことを確認してみましょう
-	# puts item
+	[index.rb]<br>
+	def print_info(item)<br>
+	  puts "わんこでんきへようこそ！"<br>
+	  puts "今日は#{item}がセール中です！"<br>
+	end<br>
+	print_info("ヘッドホン")<br>
+	# 以下のコードを削除してください.メソッドの定義の外で使おうとしています。このままではエラーが発生してしまうことを確認してみましょう<br>
+	# puts item<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -124,15 +124,15 @@
 	複数の引数を渡してメソッドを呼び出すには、定義するときと同じように、コンマ(,)を用います。
 	渡す引数の順番と、メソッドを定義したときの引数の順番は対応しているのでメソッドを呼び出すときは、引数の順番に気をつける必要があります。
 	<br><%= image_tag '/assets/引数の順番1.png' %><%= image_tag '/assets/引数の順番2.png' %><br>
-	[index.rb]
-	# すでに、引数itemを受け取るprint_infoメソッドが定義されています。値段を意味するpriceという引数も受け取れるようにしてみましょう。
-	# ①引数priceも受け取るように変更してください
-	def print_info(item, price)
-	  puts "わんこでんきへようこそ！"
-	  puts "今日は#{item}がセール中で#{price}円です！"
-	end
-	# ②print_infoメソッドを呼び出してください
-	print_info("SDカード", 1200)
+	[index.rb]<br>
+	# すでに、引数itemを受け取るprint_infoメソッドが定義されています。値段を意味するpriceという引数も受け取れるようにしてみましょう。<br>
+	# ①引数priceも受け取るように変更してください<br>
+	def print_info(item, price)<br>
+	  puts "わんこでんきへようこそ！"<br>
+	  puts "今日は#{item}がセール中で#{price}円です！"<br>
+	end<br>
+	# ②print_infoメソッドを呼び出してください<br>
+	print_info("SDカード", 1200)<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -146,16 +146,16 @@
 	戻り値がある場合、メソッドの呼び出し部分がそのまま戻り値に置き換わります。
 	よって、図のようにメソッドの呼び出し部分を変数に代入するように書くことで、メソッドの戻り値を受け取ることができます。
 	<br><%= image_tag '/assets/戻り値を受け取る1.png' %><%= image_tag '/assets/戻り値を受け取る2.png' %><br>
-	[index.rb]
-	def discount(price)
-	# ①discountメソッドの中で、「price / 2」を戻り値として返してください
-		return price / 2
-	end
-	puts "テレビがセール中です！"
-	# ②discountメソッドを呼び出し、その戻り値を変数half_priceに代入してください
-	half_price = discount(15000)
-	# ③変数half_priceを用いて、「特別価格で〇〇円です」となるように出力してください
-	puts "特別価格で#{half_price}円です"
+	[index.rb]<br>
+	def discount(price)<br>
+	# ①discountメソッドの中で、「price / 2」を戻り値として返してください<br>
+		return price / 2<br>
+	end<br>
+	puts "テレビがセール中です！"<br>
+	# ②discountメソッドを呼び出し、その戻り値を変数half_priceに代入してください<br>
+	half_price = discount(15000)<br>
+	# ③変数half_priceを用いて、「特別価格で〇〇円です」となるように出力してください<br>
+	puts "特別価格で#{half_price}円です"<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -163,18 +163,18 @@
 	また、if文で使うような条件式をreturnすると、その条件式の結果として得られる真偽値（trueまたはfalse）を返すことができます。
 	真偽値を返すメソッドは、メソッド名の末尾に「?」をつける慣習があるので、覚えておきましょう。
 	<br><%= image_tag '/assets/様々な戻り値.png' %><br>
-	[index.rb]
-	# ①引数priceを受け取る、shipping_free?メソッドを定義してください
-	# ②定義したshipping_free?メソッドの中で、price >= 5000を戻り値として返してください。
-	def shipping_free?(price)
-	  return price >= 5000
-	end
-	# ③if文の条件式でshipping_free?メソッドを呼び出してください
-	if shipping_free?(3000)
-		puts "5000円以上のお買い上げなので送料はいただきません"
-	else
-		puts "追加で送料をいただきます"
-	end
+	[index.rb]<br>
+	# ①引数priceを受け取る、shipping_free?メソッドを定義してください<br>
+	# ②定義したshipping_free?メソッドの中で、price >= 5000を戻り値として返してください。<br>
+	def shipping_free?(price)<br>
+	  return price >= 5000<br>
+	end<br>
+	# ③if文の条件式でshipping_free?メソッドを呼び出してください<br>
+	if shipping_free?(3000)<br>
+		puts "5000円以上のお買い上げなので送料はいただきません"<br>
+	else<br>
+		puts "追加で送料をいただきます"<br>
+	end<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -185,20 +185,20 @@
 	メソッドでは、条件分岐を組み合わせることで複数のreturnを用いることができます。
 	図の例では、引数が80以下なのでifの中のreturnは実行されず、if文の後のreturnが実行されています。もし引数が80より大きければ、ifの中のreturnが実行され、そこで処理が終了します。
 	<br><%= image_tag '/assets/複数のreturn1.png' %><%= image_tag '/assets/複数のreturn2.png' %><br>
-	[index.rb]
-	def price_with_shipping(price)
-		# ①priceが5000以上のとき、戻り値としてpriceを返すif文を作成してください
-		if price >= 5000
-		  return price
-		end
-	  # ②priceに500を加えた値を戻り値として返してください
-		return price + 500
-	end
-	puts "商品の合計金額は3000円です"
-	puts "お支払い金額は、送料込みで#{price_with_shipping(3000)}円です"
-	puts "-----------"
-	puts "商品の合計金額は10000円です"
-	puts "お支払い金額は、送料込みで#{price_with_shipping(10000)}円です"
+	[index.rb]<br>
+	def price_with_shipping(price)<br>
+		# ①priceが5000以上のとき、戻り値としてpriceを返すif文を作成してください<br>
+		if price >= 5000<br>
+		  return price<br>
+		end<br>
+	  # ②priceに500を加えた値を戻り値として返してください<br>
+		return price + 500<br>
+	end<br>
+	puts "商品の合計金額は3000円です"<br>
+	puts "お支払い金額は、送料込みで#{price_with_shipping(3000)}円です"<br>
+	puts "-----------"<br>
+	puts "商品の合計金額は10000円です"<br>
+	puts "お支払い金額は、送料込みで#{price_with_shipping(10000)}円です"<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -211,20 +211,20 @@
 	② 呼び出し側で、値の前に引数名を書く
 	とすることで、キーワード引数を持つメソッドを書くことができます。
 	<br><%= image_tag '/assets/キーワード引数を持つメソッド1.png' %><%= image_tag '/assets/キーワード引数を持つメソッド2.png' %><br>
-	[index.rb]
-	# 既にbuyメソッドが定義されています。このメソッドでキーワード引数を使うようにしてみましょう。
-	# ①buyメソッドがキーワード引数を使うように書き換えてください
-	def buy(item:, price:, count:)
-		puts "#{item}を#{count}台のお買い上げです"
-		puts "合計金額は#{price * count}円です"
-	end
-	# キーワード引数を用いて、buyメソッドを呼び出してください。ただし、引数の値は既にある値をそのまま使ってください。引数の値を消してしまった場合は、以下を利用してください。item:テレビ(文字列)  price:15000(数値)  count:2(数値)
-	# ②キーワード引数を使うように書き換えてください
-	buy(item:"テレビ", price:15000, count:2)
+	[index.rb]<br>
+	# 既にbuyメソッドが定義されています。このメソッドでキーワード引数を使うようにしてみましょう。<br>
+	# ①buyメソッドがキーワード引数を使うように書き換えてください<br>
+	def buy(item:, price:, count:)<br>
+		puts "#{item}を#{count}台のお買い上げです"<br>
+		puts "合計金額は#{price * count}円です"<br>
+	end<br>
+	# キーワード引数を用いて、buyメソッドを呼び出してください。ただし、引数の値は既にある値をそのまま使ってください。引数の値を消してしまった場合は、以下を利用してください。<br>item:テレビ(文字列)  price:15000(数値)  count:2(数値)<br>
+	# ②キーワード引数を使うように書き換えてください<br>
+	buy(item:"テレビ", price:15000, count:2)<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
-	
+
 </div>
 
 <div style="padding: 100px 0 100px 0;">

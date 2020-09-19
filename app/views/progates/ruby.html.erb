@@ -21,9 +21,9 @@
 	まずは、Rubyのコードを実行してみましょう。コンソールという部分に文字を出力（表示）します。
 	「puts "○○"」というRubyのコードを書くと、putsの後の○○という文字がコンソールに出力されます。
 	<br><%= image_tag '/assets/Rubyを実行しよう.png' %><br><%= image_tag '/assets/Rubyを実行しよう.png' %><br>
-	[index.rb]
-	# 1行目の「Hello World」の部分を、Hello Rubyに書き換えてください
-	puts "Hello Ruby"
+	[index.rb]<br>
+	# 1行目の「Hello World」の部分を、Hello Rubyに書き換えてください<br>
+	puts "Hello Ruby"<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -37,11 +37,11 @@
 	「#」も必ず半角で記述し、正しくコメントできている場合は灰色になります。
 	コメントは、プログラミングに関するメモを残したりするのに便利です。
 	<br><%= image_tag '/assets/コメントの書き方1.png' %><%= image_tag '/assets/コメントの書き方2.png' %><br>
-	[index.rb]
-	# ①「こんにちは、Ruby」と出力してください
-	puts "こんにちは、Ruby"
-	# ②以下の行をコメントにしてください
-	#puts "Hello Ruby"
+	[index.rb]<br>
+	# ①「こんにちは、Ruby」と出力してください<br>
+	puts "こんにちは、Ruby"<br>
+	# ②以下の行をコメントにしてください<br>
+	#puts "Hello Ruby"<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -52,26 +52,26 @@
 	プログラミングの世界では「文字列と数値は別物」です。例えば文字列の"3"と数値の3をコンピュータは別物として扱います。
 	下図のように、5 + 2は7になりますが、"5 + 2"は文字列と認識されるので、そのまま「5 + 2」と出力されています。
 	<br><%= image_tag '/assets/文字列と数値の違い1.png' %><%= image_tag '/assets/文字列と数値の違い2.png' %><br>
-	[index.rb]
-	# ①数値の37を出力してください
-	puts 37
-	# ②「+」を用いて、2に9を足した値を出力してください
-	puts 2 + 9
-	# ③文字列「2 + 9」を出力してください
-	puts "2 + 9"
+	[index.rb]<br>
+	# ①数値の37を出力してください<br>
+	puts 37<br>
+	# ②「+」を用いて、2に9を足した値を出力してください<br>
+	puts 2 + 9<br>
+	# ③文字列「2 + 9」を出力してください<br>
+	puts "2 + 9"<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	足し算・引き算以外の計算も可能です。
 	掛け算は「*」(アスタリスク)、割り算は「/」(スラッシュ)という記号を用います。また「%」を用いると、割り算の余りを計算できます。この3つの記号は数学で用いるものと少し違いますので、しっかり覚えましょう。
 	<br><%= image_tag '/assets/掛け算・割り算・余りの計算1.png' %><%= image_tag '/assets/掛け算・割り算・余りの計算2.png' %><br>
-	[index.rb]
-	# ①「*」を用いて、13に9を掛けた値を出力してください
-	puts 13 * 9
-	# ②「/」を用いて、32を8で割った値を出力してください
-	puts 32 / 8
-	# ③「%」を用いて、18を5で割った余りを出力してください
-	puts 18 % 5
+	[index.rb]<br>
+	# ①「*」を用いて、13に9を掛けた値を出力してください<br>
+	puts 13 * 9<br>
+	# ②「/」を用いて、32を8で割った値を出力してください<br>
+	puts 32 / 8<br>
+	# ③「%」を用いて、18を5で割った余りを出力してください<br>
+	puts 18 % 5<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -81,11 +81,11 @@
 	"3" + "5"は"35"という文字列になりますが、3 + 5は8になります。
 	「文字列と数値は別物」ということをしっかり意識しましょう。
 	<br><%= image_tag '/assets/文字列と数値の違い（２）1.png' %><%= image_tag '/assets/文字列と数値の違い（２）2.png' %><br>
-	[index.rb]
-	# ①「私は」と「にんじゃわんこです」を連結して出力してください
-	puts "私は" + "にんじゃわんこです"
-	# ②文字列の「38」と「19」を連結して出力してください
-	puts "38" + "19"
+	[index.rb]<br>
+	# ①「私は」と「にんじゃわんこです」を連結して出力してください<br>
+	puts "私は" + "にんじゃわんこです"<br>
+	# ②文字列の「38」と「19」を連結して出力してください<br>
+	puts "38" + "19"<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -103,11 +103,11 @@
 	<br><%= image_tag '/assets/変数の使い方1.png' %><%= image_tag '/assets/変数の使い方2.png' %><%= image_tag '/assets/変数の使い方3.png' %><br>
 	左の図のように、変数を使う時に誤って変数をクォーテーションで囲まないようにしましょう。クォーテーションで囲んでしまうと、変数ではなく単なる文字列として扱われてしまいます。
 	<br><%= image_tag '/assets/変数を使う時の注意点1.png' %><%= image_tag '/assets/変数を使う時の注意点2.png' %><br>
-	[index.rb]
-	# ①変数nameに、文字列「にんじゃわんこ」を代入してください
-	name = "にんじゃわんこ"
-	# ②変数nameを出力してください
-	puts name
+	[index.rb]<br>
+	# ①変数nameに、文字列「にんじゃわんこ」を代入してください<br>
+	name = "にんじゃわんこ"<br>
+	# ②変数nameを出力してください<br>
+	puts name<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -120,14 +120,14 @@
 	同様に、数値が入った変数なら、数値と同じように扱うことができます。
 	変数と数値の計算も、変数同士の計算も可能です。
 	<br><%= image_tag '/assets/数値の入った変数1.png' %><%= image_tag '/assets/数値の入った変数2.png' %><br>
-	[index.rb]
-	text = "プログラミングを学ぼう"
-	# ①文字列「Progateで」と変数textを連結して、出力してください
-	puts "Progateで" + text
-	# ②変数lengthと変数widthを掛けて出力してください
-	length = 8
-	width = 9
-	puts length * width
+	[index.rb]<br>
+	text = "プログラミングを学ぼう"<br>
+	# ①文字列「Progateで」と変数textを連結して、出力してください<br>
+	puts "Progateで" + text<br>
+	# ②変数lengthと変数widthを掛けて出力してください<br>
+	length = 8<br>
+	width = 9<br>
+	puts length * width<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -146,14 +146,14 @@
 	変数名は自由に決めることができますが、Rubyではいくつか命名のルールがあります。
 	特に、2語以上を組み合わせた変数名をつけるときは、アンダーバー（_）を用いるということは覚えておきましょう。
 	<br><%= image_tag '/assets/ruby変数名のルール1.png' %><%= image_tag '/assets/ruby変数名のルール2.png' %><br>
-	[index.rb]
-	# 現在、「HTML」「CSS」「Ruby」という文字列が出力されていますが、下記の3つの文章を出力するように変更します。・HTMLをマスターしよう・CSSをマスターしよう・Rubyをマスターしよう
-	# ①変数textに「をマスターしよう」を代入してください
-	text = "をマスターしよう"
-	# ②下記の文字列に変数textを連結してください
-	puts "HTML" + text
-	puts "CSS" + text
-	puts "Ruby" + text
+	[index.rb]<br>
+	# 現在、「HTML」「CSS」「Ruby」という文字列が出力されていますが、下記の3つの文章を出力するように変更します。・HTMLをマスターしよう・CSSをマスターしよう・Rubyをマスターしよう<br>
+	# ①変数textに「をマスターしよう」を代入してください<br>
+	text = "をマスターしよう"<br>
+	# ②下記の文字列に変数textを連結してください<br>
+	puts "HTML" + text<br>
+	puts "CSS" + text<br>
+	puts "Ruby" + text<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -164,17 +164,17 @@
 	下図の変数の更新のイメージを見て、後で代入された値で変数の中身が更新されることを意識しておきましょう。
 	プログラムが上から順に実行されることを思い出せば、特別難しくはありません。
 	<br><%= image_tag '/assets/更新のイメージ.png' %><br>
-	[index.rb]
-	length = 9
-	width = 8
-	puts width
-	puts length * width
-	puts "----"
-	#変数length、変数widthが用意されており、・width・length * widthの2つの値が出力されています。変数widthの定義後に、widthの値を変更してみましょう。
-	# ①変数widthの値を13に変更してください
-	width = 13
-	puts width
-	puts length * width
+	[index.rb]<br>
+	length = 9<br>
+	width = 8<br>
+	puts width<br>
+	puts length * width<br>
+	puts "----"<br>
+	#変数length、変数widthが用意されており、・width・length * widthの2つの値が出力されています。変数widthの定義後に、widthの値を変更してみましょう。<br>
+	# ①変数widthの値を13に変更してください<br>
+	width = 13<br>
+	puts width<br>
+	puts length * width<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -186,17 +186,17 @@
 	「number = number + 3」といった書き方には、省略した書き方もあります。
 	よく使いますので、下図をぜひ覚えましょう。
 	<br><%= image_tag '/assets/省略した書き方.png' %><br>
-	[index.rb]
-	length = 9
-	width = 8
-	puts width
-	puts length * width
-	puts "----"
-	# 変数widthの定義後に、widthの値を変更してみましょう。
-	# ①widthの値に5を足して、widthの値を変更してください
-	width += 5    #width = width + 5の省略系
-	puts width
-	puts length * width
+	[index.rb]<br>
+	length = 9<br>
+	width = 8<br>
+	puts width<br>
+	puts length * width<br>
+	puts "----"<br>
+	# 変数widthの定義後に、widthの値を変更してみましょう。<br>
+	# ①widthの値に5を足して、widthの値を変更してください<br>
+	width += 5    #width = width + 5の省略系<br>
+	puts width<br>
+	puts length * width<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -212,13 +212,13 @@
 	しかし右の図のように変数展開を用いると、数値の入った変数も問題なく文字列に含めることが可能です。
 	変数を文字列に含める場合は、基本的に変数展開を使うようにしましょう。
 	<br><%= image_tag '/assets/変数展開のメリット1.png' %><%= image_tag '/assets/変数展開のメリット2.png' %><br>
-	[index.rb]
-	length = 9
-	width = 8
-	area = length * width
-	# 四角形の面積が、「見本」のようにわかりやすくコンソールに出力されるようにしてあげましょう。求められた面積は、変数areaに代入されています。
-	# ①「面積は◯◯です」となるように出力してください
-	puts "面積は#{area}です"		#囲む時は""(ダブルクォーテーション)で、#{変数名}でかく
+	[index.rb]<br>
+	length = 9<br>
+	width = 8<br>
+	area = length * width<br>
+	# 四角形の面積が、「見本」のようにわかりやすくコンソールに出力されるようにしてあげましょう。求められた面積は、変数areaに代入されています。<br>
+	# ①「面積は◯◯です」となるように出力してください<br>
+	puts "面積は#{area}です"		#囲む時は""(ダブルクォーテーション)で、#{変数名}でかく<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -234,16 +234,16 @@
 	if文の条件式が成り立たなければ処理は実行されません。
 	下図で、条件が成り立たない場合も見ておきましょう。
 	<br><%= image_tag '/assets/条件が成り立たないとき1.png' %><%= image_tag '/assets/条件が成り立たないとき2.png' %><br>
-	[index.rb]
-	# ③scoreは45なので、コンソールには何も出力されないはずです。条件式が成り立つように、scoreに代入する値を数値の92に書き換えてください。
-	score = 92
-	# ①変数scoreが用意されています。if文を自分で記述してみましょう。
-	# ②条件式を「score > 80」とするif文をつくってください
-	if score > 80
-	    puts "よくできました"
-	  else
-	    puts "まだまだだね"
-	end
+	[index.rb]<br>
+	# ③scoreは45なので、コンソールには何も出力されないはずです。条件式が成り立つように、scoreに代入する値を数値の92に書き換えてください。<br>
+	score = 92<br>
+	# ①変数scoreが用意されています。if文を自分で記述してみましょう。<br>
+	# ②条件式を「score > 80」とするif文をつくってください<br>
+	if score > 80<br>
+	    puts "よくできました"<br>
+	  else<br>
+	    puts "まだまだだね"<br>
+	end<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -263,18 +263,18 @@
 	「a < b」は、aの方がbより小さいときtrue, 大きいときfalseになります。
 	また「a <= b」とすると、aの方がbより小さいまたは等しい（つまりb以下）のときtrueになります。これは数学で用いる「≦」という記号と似ています。
 	<br><%= image_tag '/assets/ruby大小比較1.png' %><%= image_tag '/assets/ruby大小比較2.png' %><%= image_tag '/assets/ruby大小比較3.png' %><br>
-	[index.rb]
-	score = 80
-	# 変数scoreが用意されています。まずは、比較演算子で比較した結果を出力してみましょう。
-	# ①「score > 80」を出力してください
-	puts score > 80
-	# ②「score <= 80」を出力してください
-	puts score <= 80
-	# いまscoreの値は80なので、「score > 80」はfalse、「score <= 80」はtrueに置き換わっているはずです。次は自分でif文を作ってみましょう。
-	# ③scoreの値が80以下の場合に、「がんばりましょう」と出力してください
-	if score <= 80
-	  puts "がんばりましょう"
-	end
+	[index.rb]<br>
+	score = 80<br>
+	# 変数scoreが用意されています。まずは、比較演算子で比較した結果を出力してみましょう。<br>
+	# ①「score > 80」を出力してください<br>
+	puts score > 80<br>
+	# ②「score <= 80」を出力してください<br>
+	puts score <= 80<br>
+	# いまscoreの値は80なので、「score > 80」はfalse、「score <= 80」はtrueに置き換わっているはずです。次は自分でif文を作ってみましょう。<br>
+	# ③scoreの値が80以下の場合に、「がんばりましょう」と出力してください<br>
+	if score <= 80<br>
+	  puts "がんばりましょう"<br>
+	end<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -283,18 +283,18 @@
 	「a != b」はその逆です。
 	この記号は数値だけでなく、文字列同士の比較にも使えます。
 	<br><%= image_tag '/assets/ruby比較演算子（２）1.png' %><%= image_tag '/assets/ruby比較演算子（２）2.png' %><%= image_tag '/assets/ruby比較演算子（２）3.png' %><br>
-	[index.rb]
-	score = 100
-	# ①scoreの値が100の場合、「満点です」と出力してください
-	if score == 100
-	    puts "満点です"
-	  #else
-	    #puts "満点ではありません"
-	end
-	# ②scoreの値が100でない場合、「満点ではありません」と出力してください
-	if score != 100
-	  puts "満点ではありません"
-	end
+	[index.rb]<br>
+	score = 100<br>
+	# ①scoreの値が100の場合、「満点です」と出力してください<br>
+	if score == 100<br>
+	    puts "満点です"<br>
+	  #else<br>
+	    #puts "満点ではありません"<br>
+	end<br>
+	# ②scoreの値が100でない場合、「満点ではありません」と出力してください<br>
+	if score != 100<br>
+	  puts "満点ではありません"<br>
+	end<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -311,15 +311,15 @@
 	下図をみてみましょう。インデントを入れることでifの処理とelseの処理がどこまでか一目でわかります。
 	tabキーを1回押すと、半角スペース2つ分インデントできます。
 	<br><%= image_tag '/assets/rubyインデント1.png' %><%= image_tag '/assets/rubyインデント2.png' %><br>
-	[index.rb]
-	score = 60
-	# scoreが80より大きい場合に、「よくできました」と出力されるif文が用意されています。コンソールの▶を押してみましょう。いまscoreの値は60なので何も出力されません。
-	# ①条件式が成り立たない場合に「がんばりましょう」と出力されるように書き換えてください
-	if score > 80
-	  puts "よくできました"
-	else
-	  puts "がんばりましょう"
-	end
+	[index.rb]<br>
+	score = 60<br>
+	# scoreが80より大きい場合に、「よくできました」と出力されるif文が用意されています。コンソールの▶を押してみましょう。いまscoreの値は60なので何も出力されません。<br>
+	# ①条件式が成り立たない場合に「がんばりましょう」と出力されるように書き換えてください<br>
+	if score > 80<br>
+	  puts "よくできました"<br>
+	else<br>
+	  puts "がんばりましょう"<br>
+	end<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -334,20 +334,20 @@
 	elsifは必要な数だけ並べることができますが、複数の条件に合致したとしても、実行されるのは最初に合致した条件の処理のみです。そのため条件の順番を間違えると、期待した分岐がなされないことがあります。
 	例えば、左の図は「score > 60」の条件を最初に書いていることで、scoreが98にも関わらず「まずまずです」と出力されてしまう失敗例です。
 	<br><%= image_tag '/assets/elsifの注意点1.png' %><%= image_tag '/assets/elsifの注意点2.png' %><br>
-	[index.rb]
-	score = 73
-	# 下記のような条件分岐を行います。
-	#① scoreが80より大きければ、「よくできました」と出力
-	#② scoreが60より大きければ、「まずまずです」と出力
-	#③ ①も②も成り立たない場合は、「がんばりましょう」と出力すでにifとelseは用意されています。
-	# ④scoreの値が60より大きい場合に「まずまずです」と出力されるように書き換えてください
-	if score > 80
-	  puts "よくできました"
-	elsif score > 60
-	  puts "まずまずです"
-	else
-	  puts "がんばりましょう"
-	end
+	[index.rb]<br>
+	score = 73<br>
+	# 下記のような条件分岐を行います。<br>
+	#① scoreが80より大きければ、「よくできました」と出力<br>
+	#② scoreが60より大きければ、「まずまずです」と出力<br>
+	#③ ①も②も成り立たない場合は、「がんばりましょう」と出力すでにifとelseは用意されています。<br>
+	# ④scoreの値が60より大きい場合に「まずまずです」と出力されるように書き換えてください<br>
+	if score > 80<br>
+	  puts "よくできました"<br>
+	elsif score > 60<br>
+	  puts "まずまずです"<br>
+	else<br>
+	  puts "がんばりましょう"<br>
+	end<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -361,13 +361,13 @@
 	変数scoreを使った「かつ」の具体例を見てみましょう。
 	左の図では、「score <= 80」も「score > 60」もともにtrueなので、処理が実行されています。
 	<br><%= image_tag '/assets/組み合わせの具体例1.png' %><%= image_tag '/assets/組み合わせの具体例2.png' %><br>
-	[index.rb]
-	score = 96
-	# ①「95以上かつ99以下」の場合のif文を作ってください
-	# ②「&&」を用いて、scoreの値が「95以上かつ99以下」の場合、高得点です！次は満点を目指しましょう。と出力してください。
-	if score >= 95 && score <= 99
-	  puts "高得点です！次は満点を目指しましょう。"
-	end
+	[index.rb]<br>
+	score = 96<br>
+	# ①「95以上かつ99以下」の場合のif文を作ってください<br>
+	# ②「&&」を用いて、scoreの値が「95以上かつ99以下」の場合、高得点です！次は満点を目指しましょう。と出力してください。<br>
+	if score >= 95 && score <= 99<br>
+	  puts "高得点です！次は満点を目指しましょう。"<br>
+	end<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
@@ -378,20 +378,20 @@
 	・いずれでもない
 	を判定するプログラムを作りましょう。
 	<br><%= image_tag '/assets/総合課題にチャレンジしよう！1.png' %><%= image_tag '/assets/総合課題にチャレンジしよう！2.png' %><br>
-	[index.rb]
-	number = 48
-	# 条件分岐を作成してください
-	# 条件分岐の総合課題に取り組みましょう。  ある整数が  ・3の倍数かつ5の倍数（= 15の倍数）  ・5の倍数  ・3の倍数  ・いずれでもないを判定するプログラムを作ります。コードの量が多いですが、クリアを目指してがんばりましょう！
-
-	if number % 3 == 0 && number % 5 == 0  #「number%3 == 0 && number%5 == 0」がありません
-	  puts "15の倍数です"
-	elsif number % 5 == 0
-	  puts "5の倍数です"
-	elsif number % 3 == 0
-	  puts "3の倍数です"
-	else
-	  puts "3の倍数でも5の倍数でもありません"
-	end
+	[index.rb]<br>
+	number = 48<br>
+	# 条件分岐を作成してください<br>
+	# 条件分岐の総合課題に取り組みましょう。  ある整数が  ・3の倍数かつ5の倍数（= 15の倍数）  ・5の倍数  ・3の倍数  <br>・いずれでもないを判定するプログラムを作ります。コードの量が多いですが、クリアを目指してがんばりましょう！<br>
+<br>
+	if number % 3 == 0 && number % 5 == 0  #「number%3 == 0 && number%5 == 0」がありません<br>
+	  puts "15の倍数です"<br>
+	elsif number % 5 == 0<br>
+	  puts "5の倍数です"<br>
+	elsif number % 3 == 0<br>
+	  puts "3の倍数です"<br>
+	else<br>
+	  puts "3の倍数でも5の倍数でもありません"<br>
+	end<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
