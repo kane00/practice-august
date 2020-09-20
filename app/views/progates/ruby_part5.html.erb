@@ -7,58 +7,189 @@
 
 <h1>Ruby　コース5</h1>
 
-
-
 <div style="padding: 100px 0 100px 0;">
+	継承を学ぼう
+	Ruby学習コースもこれが最後のレッスンです！
+	にんじゃわんこ達と一緒に、クラスの応用的な使い方について学んでいきましょう。
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	今回は「Ruby 学習コース IV」でつくった「料理注文システム」を改良してみよう。<br>
+	具体的にはどのようにするんですか？<br>
+	今回は、食べ物と飲み物で表示する内容を変えられるようにするぞ。<br>
+	はい、わかりました！<br>
+	まずは今回作成する目標物を確認してみよう。<br>
+	まずはこのレッスンで作る目標物を確認します。
+	以下の図のように、食べ物の場合には「カロリー」が、飲み物の場合には「容量」が表示されていることを確かめてみましょう。
+	また、今日が日曜日の場合には100円引きになるようになっています。
+	<br><%= image_tag '/assets/目標物の特徴.png' %><br>
+	先ほど確認したように、食べ物の場合はカロリーを、飲み物の場合は容量を表示できるようにしていこう。
+	では、前回作ったMenuクラスにカロリーと容量を扱うインスタンス変数を追加すればいいんですね！
+	いや、そうするのではなく、食べ物用のFoodクラスと、飲み物用のDrinkクラスを新たに作っていくのじゃ。
+	<br><%= image_tag '/assets/食べ物と飲み物をカスタマイズしよう.png' %><br>
+	それでは新たにFoodクラスとDrinkクラスをつくっていきましょう。
+	1から新たにつくることもできますが、すでにあるMenuクラスを利用して、それをもとにFoodクラスとDrinkクラスをつくることができます。
+	そうすることで、共通部分をまとめることができ、効率的にコードを書くことができます。
+	<br><%= image_tag '/assets/既存のクラスを活用する1.png' %><%= image_tag '/assets/既存のクラスを活用する2.png' %><br>
+	あるクラスを元にして新たなクラスをつくることを「継承」と呼びます。
+	「class 新しいクラス名 < 元となるクラス名」とすることで他のクラスを継承して、新しいクラスを定義することができます。
+	このとき、新しいクラスは「子クラス」、元となるクラスは「親クラス」と呼ばれます。
+	<br><%= image_tag '/assets/継承とは1.png' %><%= image_tag '/assets/継承とは2.png' %><br>
+	[Menu.rb]
+	class Menu
+	  attr_accessor :name
+	  attr_accessor :price
+	  def initialize(name:, price:)
+	    self.name = name
+	    self.price = price
+	  end
+	  def info
+	    return "#{self.name} #{self.price}円"
+	  end
+	  def get_total_price(count)
+	    total_price = self.price * count
+	    if count >= 3
+	      total_price -= 100
+	    end
+	    return total_price
+	  end
+	end
+	[Food.rb]
+	# ①Menuクラスを継承したFoodクラスを、food.rbに定義しましょう。
+	# ②requireを使ってmenu.rbを読み込んでください
+	require "./menu"
+	# ③Menuクラスを継承したFoodクラスをつくってください
+	class Food < Menu
+	end
+	[Drink.rb]
+	# ④Drinkクラスも同様にして、drink.rbに定義しましょう。
+	# ⑤requireを使ってmenu.rbを読み込んでください
+	require "./menu"
+	# ⑥Menuクラスを継承したDrinkクラスをつくってください
+	class Drink < Menu
+	end
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	これでMenuクラスをもとに、FoodクラスとDrinkクラスがつくれたんですね！<br>
+	そうじゃ。継承をすると子クラスには、親クラスのインスタンス変数とインスタンスメソッドが引き継がれるぞ。<br>
+	なるほど、ではFoodクラスのインスタンスも、Menuクラスのインスタンスと同じように使えるか確かめてみますね！<br>
+	<br><%= image_tag '/assets/継承されるもの.png' %><br>
+	継承をすると、子クラスは親クラスのインスタンス変数とインスタンスメソッドを引き継ぎます。
+	図のようにFoodクラスのインスタンスは、Menuクラスのインスタンス変数やインスタンスメソッドを呼び出すことが出来ます。
+	<br><%= image_tag '/assets/子クラスのインスタンス1.png' %><%= image_tag '/assets/子クラスのインスタンス2.png' %><br>
+	[index.rb]
+	# ①requireを使ってfood.rbとdrink.rbを読み込んでください
+	require "./food"
+	require "./drink"
+	# ②Foodクラスのインスタンスを生成して変数food1に代入してください。ただし、インスタンスを生成するときの引数は以下のようにしてください。・name: ピザ(文字列)　　・price: 800(数値)
+	food1 = Food.new(name: "ピザ", price: 800)  #Food.newには、キーワード引数を用いてください
+	# ③food1に対してinfoメソッドを呼び出して戻り値を出力してください
+	puts food1.info
+	# ④Drinkクラスのインスタンスを生成して変数drink1に代入してください。ただし、インスタンスを生成するときの引数は以下のようにしてください。・name: コーラ(文字列)　　・price: 300(数値)
+	drink1 = Drink.new(name: "コーラ", price: 300)
+	# drink1に対してinfoメソッドを呼び出して戻り値を出力してください
+	puts drink1.info
+	[menu.rb][food.rb][drink.rb]
+	前回から変更なし、省略
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	継承についてはわかったかな？<br>
+	はい、インスタンス変数やインスタンスメソッドを引き継ぐんですね！<br>
+	うむ、その通りじゃ。FoodクラスとDrinkクラスが用意できたから、ここからFoodクラスにはカロリーの、Drinkクラスには容量のインスタンス変数を追加してみよう。<br>
+	<br><%= image_tag '/assets/独自のインスタンス変数を追加しよう.png' %><br>
+	子クラスにインスタンス変数を追加するためには、これまで通り「attr_accessor」を用います。
+	以下のFoodクラスの例では、親クラスで定義してあるnameとpriceに加え、新たに追加したcalorieというインスタンス変数を用いることができます。
+	<br><%= image_tag '/assets/子クラスにインスタンス変数を追加する1.png' %><%= image_tag '/assets/子クラスにインスタンス変数を追加する2.png' %><br>
+	[index.rb]
+	require "./food"
+	require "./drink"
+	food1 = Food.new(name: "ピザ", price: 800)
+	drink1 = Drink.new(name: "コーラ", price: 300)
+	# ③food1.calorieに「700」を代入してください
+	food1.calorie = 700
+	# ④food1.calorieを出力してください
+	puts food1.calorie
+	# ⑤drink1.amountに「500」を代入してください
+	drink1.amount = 500
+	# ⑥drink1.amountを出力してください
+	puts drink1.amount
+	[food.rb]
+	require "./menu"
+	class Food < Menu
+	  # ①calorieというインスタンス変数を追加してください  attr_accessor は、型に縛られず値を入れることができます。(テーブルのカラム=オブジェクトの属性)をクラスの中で定義しているイメージ
+	  attr_accessor :calorie
+	end
+	[drink.rb]
+	require "./menu"
+	class Drink < Menu
+	  # ②amountというインスタンス変数を追加してください
+	  attr_accessor :amount
+	end
+	[menu.rb]
+	変更なし、省略
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	子クラスに独自のインスタンス変数が追加できたように、インスタンスメソッドも追加することができるぞ。<br>
+	なるほど、やってみます！<br>
+	<br><%= image_tag '/assets/インスタンスメソッドを追加しよう.png' %><br>
+	[index.rb]
+	require "./food"
+	require "./drink"
+	food1 = Food.new(name: "ピザ", price: 800)
+	food1.calorie = 700
+	# ③food1に対してcalorie_infoメソッドを呼び出して戻り値を出力してください
+	puts food1.calorie_info
+	[food.rb]
+	require "./menu"
+	class Food < Menu
+	  attr_accessor :calorie
+	  # Foodクラスにインスタンスメソッドを追加してみましょう。
+	  # ①calorie_infoメソッドを定義してください。calorie_infoメソッドの中で、○○は△△kcalですというような文字列を戻り値として返してください。ただし、○○の部分にはインスタンス変数nameの値を、△△の部分にはインスタンス変数calorieの値を入れてください。
+	  def calorie_info
+	    return "#{self.name}は#{self.calorie}kcalです"
+	  end
+	end
+	[menu.rb][drink.rb]
+	変更なし、省略
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	継承について、だいぶわかってきました！<br>
+	では、いよいよ料理注文システムの改良にとりかかるぞ。「Ruby学習コースⅣ」ではMenuクラスを用いて作ってきたが、それをFoodクラスとDrinkクラスに置き換えてみよう。<br>
+	はい、わかりました！<br>
+	[index.rb]
+	# RubyⅣでつくったプログラムが用意されています。まずは、MenuクラスのかわりにFoodクラスとDrinkクラスを使うようにしてみましょう
+	# ①require "./menu"を削除して、food.rbとdrink.rbを読み込むように書き換えてください
+	require "./food"
+	require "./drink"
+	# ②food1とfood2をFoodクラスのインスタンスに書き換えてください
+	food1 = Food.new(name: "ピザ", price: 800)
+	food2 = Food.new(name: "すし", price: 1000)
+	# ③drink1とdrink2をDrinkクラスのインスタンスに書き換えてください
+	drink1 = Drink.new(name: "コーラ", price: 300)
+	drink2 = Drink.new(name: "お茶", price: 200)
+	menus = [food1, food2, drink1, drink2]
+	index = 0
+	menus.each do |menu|
+	  puts "#{index}. #{menu.info}"
+	  index += 1
+	end
+	puts "--------------"
+	puts "メニューの番号を選択してください"
+	order = gets.chomp.to_i
+	selected_menu = menus[order]
+	puts "選択されたメニュー: #{selected_menu.name}"
+	puts "個数を入力してください(3つ以上で100円割引)"
+	count = gets.chomp.to_i
+	puts "お会計は#{selected_menu.get_total_price(count)}円です"
+	# FoodクラスとDrinkクラスはどちらもMenuクラスを継承しているので、クラスの部分を書き換えても正常にプログラムは動作するはずです。実行して確かめてみましょう。
+	[menu.rb][food.rb][drink.rb]
+	変更なし、省略
 </div>
 
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
-
-<div style="padding: 100px 0 100px 0;">
-</div>
 
 
 <div style="padding: 100px 0 100px 0;">

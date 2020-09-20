@@ -1,5 +1,8 @@
 class ProgatesController < ApplicationController
 
+	def all_link
+	end
+
 	def first
 	end
 

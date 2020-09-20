@@ -402,7 +402,96 @@
 	end<br>
 </div>
 
+<div style="padding: 100px 0 100px 0;">
+	これでメニューの情報を１つずつ表示できるようになりましたね！<br>
+	そうじゃな。では次に右の図のように、それぞれのメニューに０から始まる番号を付けるようにしてみよう。<br>
+	はい、わかりました！<br>
+	<br><%= image_tag '/assets/メニューの番号を表示しよう.png' %><br>
+	目標物では、メニュー名の左に0から順番に番号がついていました。
+	番号をつけるには、番号を保存するための変数（図の例では変数index）をeach文の外で用意して、each文の処理の中で値を1だけ増やして更新するようにします。
+	<br><%= image_tag '/assets/繰り返し処理で番号をつける1.png' %><%= image_tag '/assets/繰り返し処理で番号をつける2.png' %><br>
+	[index.rb]<br>
+	require "./menu"<br>
+	menu1 = Menu.new(name: "ピザ", price: 800)<br>
+	menu2 = Menu.new(name: "すし", price: 1000)<br>
+	menu3 = Menu.new(name: "コーラ", price: 300)<br>
+	menu4 = Menu.new(name: "お茶", price: 200)<br>
+	menus = [menu1, menu2, menu3, menu4]<br>
+	# each文より前で、変数indexを定義し、数値の0を代入してください。<br>
+	# ①変数indexを定義して「0」を代入してください<br>
+	index = 0<br>
+	menus.each do |menu|<br>
+	  # each文の中で以下の処理を実行してください。・menu.infoの代わりに、"#{index}. #{menu.info}"を出力する  ・変数indexの値に1を加える<br>
+	  # ②番号をつけてメニューの内容が出力されるように書き換えてください<br>
+	  puts "#{index}. #{menu.info}"<br>
+	  # ③変数indexに1を加えて値を更新してください<br>
+	  index += 1<br>
+	end<br>
+	[menu.rb]<br>
+	前回から変更なし<br>
+</div>
 
+<div style="padding: 100px 0 100px 0;">
+	これでメニューの一覧表示が完成したな。次に、どのメニューを注文するかを選べるようにしてみよう。<br>
+	なるほど、「料理注文システム」らしくなってきましたね！<br>
+	まずはそのために、コンソールから入力を受け取る方法を学んでみよう。<br>
+	入力を受け付けるには「gets.chomp」を使います。このコードが実行されると、コンソールが入力待機状態になります。
+	「変数 = gets.chomp」とすることで、エンターキーを押されるまでに入力された値を変数に代入することができます。
+	<br><%= image_tag '/assets/gets.chomp1.png' %><%= image_tag '/assets/gets.chomp2.gif' %><br>
+	「gets.chomp」で入力された値を受け取ることができましたが、実はこれは文字列になるため、「3」と入力しても文字列の"3"になってしまいます。
+	数値の計算などに用いる場合は、これを数値に変換する必要があります。
+	そのためには、「gets.chomp.to_i」とすることで、入力された内容を数値に変換し、計算などにも使えるようになります。
+	<br><%= image_tag '/assets/数値を受け取る1.png' %><%= image_tag '/assets/数値を受け取る2.gif' %><br>
+	[index.rb]<br>
+	puts "名前を入力してください"<br>
+	# 今回は目標物の「料理注文システム」から一旦離れて、gets.chompの使い方をマスターしましょう。<br>
+	# ①入力を受け取って変数nameに代入してください。gets.chompを用いて、変数nameに、入力された文字列を代入してください。<br>
+	name = gets.chomp<br>
+	# ②「○○さん、いらっしゃいませ」となるように出力してください<br>
+	puts "#{name}さん、いらっしゃいませ"<br>
+	puts "1つ100円のお菓子があります"<br>
+	puts "いくつ買いますか?"<br>
+	# ②入力を数値として受け取って変数countに代入してください<br>
+	count = gets.chomp.to_i<br>
+	# ③変数total_priceに、100とcountを掛けた値を代入してください<br>
+	total_price = 100 * count<br>
+	# ④「お会計は○○円です」となるように出力してください<br>
+	puts "お会計は#{total_price}円です"<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	「gets.chomp」で入力が受け取れるんですね！<br>
+	それでは先ほど学んだことをいかして、実際にメニューを選べるようにしてみよう。これで「料理注文システム」も完成じゃ。<br>
+	よし、頑張るぞー！<br>
+	[index.rb]<br>
+	require "./menu"<br>
+	menu1 = Menu.new(name: "ピザ", price: 800)<br>
+	menu2 = Menu.new(name: "すし", price: 1000)<br>
+	menu3 = Menu.new(name: "コーラ", price: 300)<br>
+	menu4 = Menu.new(name: "お茶", price: 200)<br>
+	menus = [menu1, menu2, menu3, menu4]<br>
+	index = 0<br>
+	menus.each do |menu|<br>
+	  puts "#{index}. #{menu.info}"<br>
+	  index += 1<br>
+	end<br>
+	puts "--------------"<br>
+	puts "メニューの番号を選択してください"<br>
+	# 「料理注文システム」を完成させましょう！少し演習が多いですが、1つずつ指示にしたがって進めていきましょう。<br>
+	# ①入力を数値として受け取って変数orderに代入してください<br>
+	order = gets.chomp.to_i<br>
+	# ②選択されたメニューのインスタンスを変数selected_menuに代入してください<br>
+	selected_menu = menus[order]<br>
+	# ③「選択されたメニュー: ○○」となるように出力してください。このとき、○○の部分には、変数selected_menuのnameの値を入れてください。<br>
+	puts "選択されたメニュー:#{selected_menu.name}"<br>
+	puts "個数を入力してください(3つ以上で100円割引)"<br>
+	# ④入力を数値として受け取って変数countに代入してください<br>
+	count = gets.chomp.to_i<br>
+	# ⑤「お会計は○○円です」となるように出力してください<br>
+	puts "お会計は#{selected_menu.get_total_price(count)}円です"  #「selected_menu.get_total_price...」として、get_total_priceメソッドを呼び出してください<br>
+	[menu.rb]<br>
+	前回と同様のため省略<br>
+</div>
 
 
 <div style="padding: 100px 0 100px 0;">
