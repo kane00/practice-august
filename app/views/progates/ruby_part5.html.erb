@@ -190,6 +190,214 @@
 	変更なし、省略
 </div>
 
+<div style="padding: 100px 0 100px 0;">
+	次はメニューの一覧でカロリーの情報を表示したいですね！<br>
+	では、インスタンスの情報を表示するinfoメソッドを改良してみよう。<br>
+	でも、infoメソッドってMenuクラスで定義されてるから、calorieって使えないですよね…？<br>
+	うむ、そんなときはinfoメソッドをFoodクラス内で上書きすればいいのじゃ。<br>
+	親クラスにあるメソッドと同じ名前のメソッドを子クラスで定義すると、メソッドを上書きすることができます。これをメソッドの「オーバーライド」と呼びます。
+	オーバーライドをすると、子クラスのインスタンスは親クラスのメソッドではなく、子クラスで定義したメソッドを呼び出すようになります。
+	<br><%= image_tag '/assets/ruby5オーバーライド1.png' %><%= image_tag '/assets/ruby5オーバーライド2.png' %><%= image_tag '/assets/ruby5オーバーライド3.png' %><br>
+	オーバーライドについてもう少し見てみましょう。
+	図のように、子クラスのインスタンスは、子クラスで定義したメソッドを優先して呼び出すようになっています。したがって、子クラスと親クラスに同名のメソッドがある場合は子クラスのメソッドを呼び出すので、結果的にメソッドの内容が上書きされたようになります。
+	<br><%= image_tag '/assets/ruby5オーバーライドの仕組み.png' %><br>
+	[food.rb]
+	require "./menu"
+	class Food < Menu
+	  attr_accessor :calorie
+	  # ①infoメソッドをオーバーライドして、追加した情報を出力するようにしましょう。
+	  # ②infoメソッドを定義してください。infoメソッドの中で、○○ △△円 (□□kcal)というような文字列を戻り値として返してください。ただし、記号の部分は、以下に示すインスタンス変数の値を入れてください。　・○○: name　・△△: price　・□□: calorie
+	  def info
+	    return "#{self.name} #{self.price}円 (#{self.calorie}kcal)"
+	  end
+	  def calorie_info
+	    return "#{self.name}は#{self.calorie}kcalです"
+	  end
+	end
+	[drink.rb]
+	require "./menu"
+	class Drink < Menu
+	  attr_accessor :amount
+	  # ③同じように、Drinkクラスでもinfoメソッドをオーバーライドしましょう。
+	  # ④infoメソッドを定義してください。infoメソッドの中で、○○ △△円 (□□mL)というような文字列を戻り値として返してください。ただし、記号の部分は、以下に示すインスタンス変数の値を入れてください。　・○○: name　・△△: price　・□□: amount
+	  def info
+	    return "#{self.name} #{self.price}円 (#{self.amount}mL)"
+	  end
+	end
+	[index.rb][menu.rb]
+	変更なし、省略
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	先程学んだオーバーライドをinitializeメソッドにも用いてみよう。<br>
+	なるほど、initializeメソッドも子クラスでオーバーライドできるんですね！<br>
+	そうすることで、Foodクラスではcalorieのインスタンス変数の値を、Food.newのときに代入できるようになるぞ。<br>
+	[index.rb]
+	require "./food"
+	require "./drink"
+	#  ③initializeメソッドをオーバーライドしたので、Food.newの引数を追加しましょう。
+	#  ③Food.newの引数を書き換えてください。またfood1のインスタンス変数 calorieに値を代入している部分を削除してください。
+	food1 = Food.new(name: "ピザ", price: 800, calorie: 700)
+	food2 = Food.new(name: "すし", price: 1000, calorie: 600)
+	drink1 = Drink.new(name: "コーラ", price: 300)
+	drink1.amount = 500
+	drink2 = Drink.new(name: "お茶", price: 200)
+	drink2.amount = 400
+	menus = [food1, food2, drink1, drink2]
+	index = 0
+	menus.each do |menu|
+	  puts "#{index}. #{menu.info}"
+	  index += 1
+	end
+	puts "--------------"
+	puts "メニューの番号を選択してください"
+	order = gets.chomp.to_i
+	selected_menu = menus[order]
+	puts "選択されたメニュー: #{selected_menu.name}"
+	puts "個数を入力してください(3つ以上で100円割引)"
+	count = gets.chomp.to_i
+	puts "お会計は#{selected_menu.get_total_price(count)}円です"
+	[food.rb]
+	require "./menu"
+	class Food < Menu
+	  attr_accessor :calorie
+	  #  ①Foodクラスの中で、initializeメソッドを定義してください。ただし、引数は以下のキーワード引数を受け取るようにしてください。・name  ・price  ・calorie
+	  #  ②initializeメソッドで、インスタンス変数name、price、calorieに、引数 name、price、calorieの値をそれぞれ代入してください。
+	  def initialize(name:, price:, calorie:)  #(引数)を加える
+	    self.name = name
+	    self.price = price
+	    self.calorie = calorie
+	  end
+	  def info
+	    return "#{self.name} #{self.price}円 (#{self.calorie}kcal)"
+	  end
+	  def calorie_info
+	    return "#{self.name}は#{self.calorie}kcalです"
+	  end
+	end
+	[menu.rb][drink.rb]
+	変更なし、省略
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	Foodクラスでinitializeメソッドをオーバライドしたが、nameとpriceについては共通の処理で、Menuクラスのinitializeメソッドにも含まれているな。	このメソッド内の重複をまとめる方法を見ていこう。<br>
+	はい、わかりました！<br>
+	<br><%= image_tag '/assets/メソッド内の重複.png' %><br>
+	オーバーライドしたメソッドの中で「super」とすることで、親クラスの同名のメソッドを呼び出すことができます。
+	あくまでメソッドを呼び出しているので、親クラスのメソッドの定義に合わせて、superに対して引数を渡す必要があります。
+	<br><%= image_tag '/assets/ruby5-super1.png' %><%= image_tag '/assets/ruby5-super2.png' %><br>
+	[food.rb]
+	require "./menu"
+	class Food < Menu
+	  attr_accessor :calorie
+	  def initialize(name:, price:, calorie:)
+	    # ①superを使って書き換えてください。initializeメソッドの中でsuperを呼び出してください。ただし、引数は以下のキーワード引数を渡してください。・name: 引数nameの値・price: 引数priceの値
+	    super(name: name, price: price)
+	    # ②initializeメソッドの中でインスタンス変数nameとpriceに値を代入している部分を削除してください。
+	    #self.name = name
+	    #self.price = price
+	    self.calorie = calorie
+	  end
+	  def info
+	    return "#{self.name} #{self.price}円 (#{self.calorie}kcal)"
+	  end
+	  def calorie_info
+	    return "#{self.name}は#{self.calorie}kcalです"
+	  end
+	end
+	[index.rb][menu.rb][drink.rb]
+	変更なし、省略
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	superを用いてFoodクラスでinitializeメソッドを定義できました！<br>
+	よし、ではDrinkクラスでも同様に、initializeメソッドをオーバーライドしてみよう。<br>
+	[index.rb]
+	require "./food"
+	require "./drink"
+	food1 = Food.new(name: "ピザ", price: 800, calorie: 700)
+	food2 = Food.new(name: "すし", price: 1000, calorie: 600)
+	#　③Drink.newの引数を書き換えてください
+	#  ④drink1に代入しているDrink.newの引数に、以下のキーワード引数を追加してください。amount: 500
+	#  ⑤drink1のインスタンス変数 amountに値を代入している部分を削除してください。
+	drink1 = Drink.new(name: "コーラ", price: 300, amount: 500)
+	#  ⑥・drink2に代入しているDrink.newの引数に、以下のキーワード引数を追加してください。amount: 400
+	#  ⑦・drink2のインスタンス変数 amountに値を代入している部分を削除してください。
+	drink2 = Drink.new(name: "お茶", price: 200, amount: 400)
+	menus = [food1, food2, drink1, drink2]
+	index = 0
+	menus.each do |menu|
+	  puts "#{index}. #{menu.info}"
+	  index += 1
+	end
+	puts "--------------"
+	puts "メニューの番号を選択してください"
+	order = gets.chomp.to_i
+	selected_menu = menus[order]
+	puts "選択されたメニュー: #{selected_menu.name}"
+	puts "個数を入力してください(3つ以上で100円割引)"
+	count = gets.chomp.to_i
+	puts "お会計は#{selected_menu.get_total_price(count)}円です"
+	[drink.rb]
+	require "./menu"
+	class Drink < Menu
+	  attr_accessor :amount
+	  # ①Drinkクラスの中で、initializeメソッドを定義してください。ただし、引数は以下のキーワード引数を受け取るようにしてください。・name  ・price  ・amount
+	  def initialize(name:, price:, amount:)
+	    #　②initializeメソッドの中で、インスタンス変数amountに、引数amountの値を代入してください。
+	    super(name: name, price: price)
+	    self.amount = amount
+	  end
+	  def info
+	    return "#{self.name} #{self.price}円 (#{self.amount}mL)"
+	  end
+	end
+	[menu.rb][food.rb]
+	変更なし、省略
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	ここから、もう１つ機能を追加してみよう。<br>
+	具体的には、今日が日曜日である場合には100円引きにする機能を作ってみるぞ。<br>
+	「今日が日曜日かどうか」って、どうしたらわかるのですか？<br>
+	まずはその方法を順に学んでいこう。<br>
+	日付を扱うためには、Dateクラスというものを用います。
+	DateクラスとはRubyがすでに用意しているクラスで、図のようにrequireを用いて読み込むことで、自分でクラスを定義しなくても使うことができます。		このようにすでに用意されているクラスは、requireの書き方が少し異なるので注意しましょう。
+	<br><%= image_tag '/assets/Dateクラスの読み込み.png' %><br>
+	Dateクラスは今まで扱ってきたクラスと同様に、Date.newとすることでインスタンスを生成することができます。
+	Dateクラスのインスタンスをputsすると、右の図のようにその日付を表示することができます。
+	<br><%= image_tag '/assets/Dateクラスのインスタンス1.png' %><%= image_tag '/assets/Dateクラスのインスタンス2.png' %><br>
+	Dateクラスには多くのインスタンスメソッドが用意されています。
+	今回は、Dateクラスのインスタンスの日付が、「日曜日かどうか」を真偽値で返すsunday?メソッドを使ってみましょう。
+	<br><%= image_tag '/assets/Dateクラスのインスタンスメソッド1.png' %><%= image_tag '/assets/Dateクラスのインスタンスメソッド2.png' %><br>
+	[]
+	# 料理注文システムに機能を追加するために必要な、Dateクラスを使ってみましょう。まずは、Dateクラスを読み込みましょう。
+	# ①requireを用いて、Dateクラスを読み込んでください
+	  require "date"
+	# ②変数birthdayに、Dateクラスのインスタンスを代入してください。Date.newの引数には、(年, 月, 日)を順番にいれる必要があります。今回は、あなたの誕生日をいれてみましょう！
+	birthday = Date.new(2000, 1, 1)
+	# ③変数birthdayをputsしてください
+	puts birthday
+	# ④変数birthdayにsunday?メソッドを用いた結果をputsしてください
+	puts birthday.sunday?
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	Dateクラスは簡単に使うことができて便利ですね！<br>
+	そうじゃな、もう少しDateクラスについて見てみよう。<br>
+	DateクラスのインスタンスをつくるためにDate.newを使いましたが、Dateクラスでは、Date.todayとすることで、今日の日付のインスタンスをつくることができるようになっています。
+	<br><%= image_tag '/assets/今日の日付のDateインスタンスを取得する1.png' %><%= image_tag '/assets/今日の日付のDateインスタンスを取得する2.png' %><br>
+	[]
+	require "date"
+	# ①変数todayに、Date.todayの戻り値を代入してください
+	today = Date.today
+	# ②変数todayをputsしてください
+	puts today
+	# ③変数todayに対してsunday?メソッドを用いた結果をputsしてください
+	puts today.sunday?
+</div>
+
+
 
 
 <div style="padding: 100px 0 100px 0;">
