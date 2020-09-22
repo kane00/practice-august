@@ -397,7 +397,122 @@
 	puts today.sunday?
 </div>
 
+<div style="padding: 100px 0 100px 0;">
+	先程、Date.todayのように、クラス名に対してメソッドを呼び出したな。<br>
+	このように、クラスに対して呼び出すメソッドのことをクラスメソッドというぞ。<br>
+	なるほど！<br>
+	これからクラスメソッドの使い方について学んでいこう。<br>
+	<br><%= image_tag '/assets/クラスメソッドとは.png' %><br>
+	クラスメソッドは、「def クラス名.メソッド名」とすることで定義できます。インスタンスメソッドとの違いはメソッド名の前にクラス名を書く必要がある点です。
+	今回はMenuクラスに、「is_discount_day?」というクラスメソッドを定義してみましょう。
+	<br><%= image_tag '/assets/クラスメソッドの定義1.png' %><%= image_tag '/assets/クラスメソッドの定義2.png' %><br>
+	[Menu.rb]
+	class Menu
+	  attr_accessor :name
+	  attr_accessor :price
+	  def initialize(name:, price:)
+	    self.name = name
+	    self.price = price
+	  end
+	  def info
+	    return "#{self.name} #{self.price}円"
+	  end
+	  def get_total_price(count)
+	    total_price = self.price * count
+	    if count >= 3
+	      total_price -= 100
+	    end
+	    return total_price
+	  end
+	  # ここからは、目標物の機能をつくりながら、クラスメソッドについて学んでいきましょう
+	  # ①クラスメソッド「is_discount_day?」を定義してください
+	  def Menu.is_discount_day?
+	  end
+	end
+</div>
 
+<div style="padding: 100px 0 100px 0;">
+	Menuクラスに「is_discount_day?」というクラスメソッドを定義しました！<br>
+	これはどのような処理をするのですか？<br>
+	今日の日付が日曜日の場合にはtrueを返し、そうでない場合にはfalseを返す、という処理にしてみよう。<br>
+	<br><%= image_tag '/assets/クラスメソッドの処理を作ろう.png' %><br>
+	クラスメソッドの中の処理を作っていきます。今回はDateクラスを用いて、今日の日付を取得しましょう。
+	以下の図のように、クラスメソッドの中でもDateクラスを用いることが可能です。
+	<br><%= image_tag '/assets/クラスメソッドの中でDateクラスを用いる.png' %><br>
+	[menu.rb]
+	# ①requireを用いて、Dateクラスを読み込んでください
+	require "date"
+	class Menu
+	  attr_accessor :name
+	  attr_accessor :price
+	  def initialize(name:, price:)
+	    self.name = name
+	    self.price = price
+	  end
+	  def info
+	    return "#{self.name} #{self.price}円"
+	  end
+	  def get_total_price(count)
+	    total_price = self.price * count
+	    if count >= 3
+	      total_price -= 100
+	    end
+	    return total_price
+	  end
+	  def Menu.is_discount_day?
+	    # Menuクラスのクラスメソッドis_discount_day?で、今日が日曜日かどうかの真偽値を返すようにしましょう。
+	    # ②is_discount_day?メソッドの中で、変数todayを定義し、今日の日付のDateクラスのインスタンスを代入してください。
+	    today = Date.today
+	    # ③日曜日であればtrue、そうでなければfalseを返してください
+	    return today.sunday?
+	  end
+	end
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	これで「is_discount_day?」メソッドが完成しましたね！<br>
+	そうじゃな。よくやったぞ。では最後に、作成したクラスメソッドを実際に用いてみよう。<br>
+	クラスメソッドは定義時と同じように、「クラス名.メソッド名」とすることで呼び出すことができます。
+	<br><%= image_tag '/assets/クラスメソッドを呼び出す1.png' %><%= image_tag '/assets/クラスメソッドを呼び出す2.png' %><br>
+	クラスメソッドはクラスの中でも、同じように呼び出すことができます。
+	今回は、Menuクラスのインスタンスメソッドである「get_total_price」メソッドの中で、クラスメソッド「is_discount_day?」を呼び出してみましょう！
+	<br><%= image_tag '/assets/インスタンスメソッドの中でクラスメソッドを呼び出す.png' %><br>
+	インスタンスに対して呼び出すメソッドは「インスタンスメソッド」、クラスに対して呼び出すメソッドは「クラスメソッド」という違いを、ここで復習しておきましょう。
+	<br><%= image_tag '/assets/インスタンスメソッドとクラスメソッド1.png' %><%= image_tag '/assets/インスタンスメソッドとクラスメソッド2.png' %><br>
+	[menu.rb]
+	require "date"
+	class Menu
+	  attr_accessor :name
+	  attr_accessor :price
+	  def initialize(name:, price:)
+	    self.name = name
+	    self.price = price
+	  end
+	  def info
+	    return "#{self.name} #{self.price}円"
+	  end
+	  def get_total_price(count)
+	    total_price = self.price * count
+	    if count >= 3
+	      total_price -= 100
+	    end
+	    # ①get_total_priceメソッドの中で、以下の条件のif文を作成してください。　
+	    # ・引数countが1以上かつ　　・Menu.is_discount_day?の結果がtrueである
+	    if count >= 1 && Menu.is_discount_day?
+	      # ②上記のif文が成り立つ場合、変数total_priceから100だけ引いて値を更新してください。
+	      #return total_price = total_price - 100
+	      total_price -= 100
+	    end
+	    return total_price
+	  end
+	  def Menu.is_discount_day?
+	    today = Date.today
+	    return today.sunday?
+	  end
+	end
+	[index.rb][food.rb][drink.rb]
+	変更なし、省略
+</div>
 
 
 <div style="padding: 100px 0 100px 0;">

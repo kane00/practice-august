@@ -1,0 +1,2 @@
+module PaizaHelper
+end

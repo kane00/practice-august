@@ -17,5 +17,7 @@ Rails.application.routes.draw do
   get 'ruby_part4' => 'progates#ruby_part4'
   get 'ruby_part5' => 'progates#ruby_part5'
 
+  get 'CSharp' => 'paiza#CSharp'
+
   root 'posts#index'
 end
