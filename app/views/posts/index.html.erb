@@ -36,6 +36,165 @@
 
 <%= link_to 'Progate/Ruby コース1', ruby_path %>
 
+<%= link_to 'Paiza/C#コース1', csharp_path %>
+
+
+
+
+Google Cloud Vision APIを使って、食品パッケージ画像からテキストを非同期で読み取りフォームに記載してみる(コメントアウトで記載)<br>
+<!-- Rails
+jQuery
+GoogleCloudVisionAPI
+概要
+ポートフォリオでGoogle Cloud Vision APIを使ってみたので紹介したいと思います。
+ちなみに食品パッケージのサンプルは世界一おいしいアマタケのサラダチキン(ピザ味)を使用してます
+
+Image from Gyazo
+
+詳細
+下準備
+詳細は省きますが、Cloud Vision API を利用するため GCP のサービスアカウントの json ファイルをダウンロードします。gem 'google-cloud-vision'も bundle installしてください。keyファイルのPathはcredentials.yml.encで管理しました。
+（時間が空いたときに詳細手順を記載します...）
+参考:RailsにGoogle Cloud Vision APIを導入し、簡単に過激な画像を検知する
+
+各種ファイルの作成
+ルート
+本件に関係あるものは、post "upload" だけです
+
+route.rb
+  resources :foods, only: %i[index show new create] do
+    collection do
+      get "search"
+      post "upload"
+    end
+ビュー
+3行目のinput行で発火させます。
+
+views/foods/new.html.haml
+= form_with model: @food , data: { remote: false }, class: "common-form" do |food|
+  .common-form__upload-image
+    %input#image-upload.common-form__upload-image--input{name: "image", type: "file"}
+    %label.common-form__image--icon{for: "image-upload"}
+      .common-form__upload-image--icon-wrap
+        %i.fas.fa-image
+        .common-form__upload-image--icon-text 画像からPFCを取得する
+  #~中略~
+  .plan-form__pfc
+    .plan-form__pfc--protein
+      = food.number_field :protein, step:"0.1", min:0
+      = food.label 'たんぱく質(g)'
+      .plan-form__pfc--protein--description 画像を挿入すると自動で数値が入力されます。
+    .plan-form__pfc--fat
+      = food.number_field :fat, step:"0.1", min:0
+      = food.label '脂質(g)'
+      .plan-form__pfc--fat--description 画像を挿入すると自動で数値が入力されます。
+    .plan-form__pfc--carbo
+      = food.number_field :carbo, step:"0.1", min:0
+      = food.label '炭水化物(g)'
+      .plan-form__pfc--carbo--description 画像を挿入すると自動で数値が入力されます。
+  #~後略~
+jQuery
+FormDataでコントローラーに送信します。
+formData.append("image",$('input[type=file]')[0].files[0]);
+が個人的に気づきにくかったところです。
+こうすることで後述のコントローラーでデータを受け取れます。
+
+upload.js
+$(function(){
+  if(document.URL.match(/\/foods\/new/)) {
+ //~中略~
+    $(document).on('change', 'input[type= "file"]',function(e) {
+ //~中略~
+      e.preventDefault();
+      var formData = new FormData();
+      formData.append("image",$('input[type=file]')[0].files[0]);
+      $.ajax({
+        type:'POST',
+        url: '/foods/upload',
+        data: formData,
+        dataType:'json',
+        processData: false,
+        contentType: false
+      })
+ //~後略~
+    })
+  }
+})
+コントローラー
+image = params[:image].pathでjQuery側で設定したformDataを受け取れます。
+正規表現で抽出した文字列を加工してます。1例なので、食品パッケージのバリエーションの種類分作る必要があります。(まだやってない...)
+
+foods_controller.rb
+class FoodsController < ApplicationController
+#~中略~
+  def upload
+    require 'google/cloud/vision'
+    ENV["GOOGLE_CLOUD_PROJECT"] = Rails.application.credentials.google[:GOOGLE_CLOUD_PROJECT]
+    ENV["GOOGLE_CLOUD_KEYFILE"] = if Rails.env.production?
+                                    Rails.application.credentials.google[:GOOGLE_CLOUD_KEYFILE_PRO]
+                                  else
+                                    Rails.application.credentials.google[:GOOGLE_CLOUD_KEYFILE_DEV]
+                                  end
+    image = params[:image].path
+    image_annotator_client = Google::Cloud::Vision::ImageAnnotator.new
+    image_text = (image_annotator_client.document_text_detection image: image).to_s
+    if image_text.include?("たんぱく質")
+      @protein = image_text[/たんぱく質(.{0,3}\d+\.?\d+)/][/\d+\.?\d+/].to_f
+      @fat = image_text[/脂質(.{0,3}\d+\.?\d+)/][/\d+\.?\d+/].to_f
+      @carbo = image_text[/炭水化物(.{0,3}\d+\.?\d+)/][/\d+\.?\d+/].to_f
+      @data = { protein: @protein, fat: @fat, carbo: @carbo }
+    end
+    respond_to do |format|
+      format.html
+      format.json
+    end
+  end
+
+#~後略~
+
+json.jbuilder
+上記のコントローラーで処理したデータをjQueryで使えるようにします。
+
+upload.json.jbuilder
+json.data do |data|
+  data.protein @data[:protein]
+  data.fat @data[:fat]
+  data.carbo @data[:carbo]
+end
+jQuery
+再度jQueryファイルに戻ります。
+data.data.protein等にするとデータを取り出せます。
+
+upload.js
+$(function(){
+  if(document.URL.match(/\/foods\/new/)) {
+ //~中略~
+    $(document).on('change', 'input[type= "file"]',function(e) {
+ //~中略~
+      e.preventDefault();
+      var formData = new FormData();
+      formData.append("image",$('input[type=file]')[0].files[0]);
+      $.ajax({
+        type:'POST',
+        url: '/foods/upload',
+        data: formData,
+        dataType:'json',
+        processData: false,
+        contentType: false
+      })
+      .done(function(data){
+        $('#food_protein').val(data.data.protein)
+        $('#food_fat').val(data.data.fat)
+        $('#food_carbo').val(data.data.carbo)
+        alert(`画像の読み込みに成功しました! たんぱく質:${data.data.protein}g 脂質:${data.data.fat}g 炭水化物:${data.data.carbo}g`)
+      })
+      .fail(function(){
+        alert('画像の読み込みに失敗しました')
+      })
+    })
+  }
+})
+完成です -->
 
 <div style="padding: 100px 0 100px 0;">
 </div>

@@ -18,5 +18,5 @@
 <%= link_to 'Progate/Rubyコース3', ruby_part3_path %>
 <%= link_to 'Progate/Rubyコース4', ruby_part4_path %>
 <%= link_to 'Progate/Rubyコース5', ruby_part5_path %><br>
-<%= link_to 'Paiza/C#コース1', CSharp_path %>
+<%= link_to 'Paiza/C#コース1', :controller => 'paiza', :action => 'csharp' %>  <!-- controller, actionを定義したらルートは二重になるためカット -->
 </div>

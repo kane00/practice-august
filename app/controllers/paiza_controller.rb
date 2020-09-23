@@ -1,6 +1,9 @@
 class PaizaController < ApplicationController
 
-	def CSharp
+	def csharp
 	end
-	
+
+	def csharp_part2
+	end
+
 end

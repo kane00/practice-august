@@ -1,15 +1,69 @@
 <div style="padding: 20px 0 20px 0;">
 	Home→<%= link_to 'Home', root_path %>
-	first→<%= link_to 'Paiza/C#コース1', CSharp_path %>
+	first→<%= link_to 'Paiza/C#コース1', csharp_path %>
 	prev→
 </div>
 
 <h1>Paiza C#コース1</h1>
 
 <div style="padding: 100px 0 100px 0;">
+	・間違いやすいポイント<br>
+- 末尾のセミコロン忘れ。<br>
+- カッコやダブルクォーテーションが全角文字になっている。<br>
+- メソッドが、正しい表記で記述されていない。（× writeline、　○ WriteLine）<br>
+- System と Console の先頭は、大文字にする。<br>
+	・メソッドとは<br>
+C#では、この「WriteLine」のような命令を「メソッド」と呼んでいます。<br>
+プログラミングでは、「WriteLine」のようなメソッドで、コンピュータに対して動作を指示していきます。
+「WriteLine」と書くと、文字を表示するのだなとC#が理解して、そのとおり動いてくれるのです。<br>
+プログラミング言語は、このようなメソッドをたくさん持っています。
+各メソッドがどのように動作をするか、プログラミング言語ごとに決まっています。<br>
+	・ シンタックスハイライト<br>
+paizaラーニングでは、正しく命令を入力すると、自動的に色が変わります。<br>
+色が変わっていない場合は、正しく入力できていないという合図です。<br>
+プログラムを実行する前に、間違いがないか確認しましょう。<br>
+using System;<br>
+public class Hello{<br>
+    public static void Main(){<br>
+        // Here your code !<br>
+        // Console.WriteLine("Hello C#");<br>
+        Console.WriteLine("こんにちは");<br>
+    }<br>
+}<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
-next→<%= link_to 'Paiza/C#コース2', CSharp_part2_path %><br>
+
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+next→<%= link_to 'Paiza/C#コース2', csharp_part2_path %><br>
 Home→<%= link_to 'Home', root_path %>
 </div>
