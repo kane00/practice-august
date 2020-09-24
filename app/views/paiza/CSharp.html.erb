@@ -33,7 +33,84 @@ public class Hello{<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	右側のコードエリアに表示されているプログラムは、このままではエラーになります。
+	コードを修正して、「hello paizaラーニング」と出力されるように修正してください。<br>
+	[演習1]
+	using System;
+	public class Hello{
+	    public static void Main(){
+	        Console.WriteLine("hello paizaラーニング");
+	    }
+	}
+	[演習2]
+	[演習3]
+	using System;
+	public class Hello{
+	    public static void Main(){
+	        Console.WriteLine("hello paizaラーニング');   #「'」→「"」
+	    }
+	}
+	[演習④]
+	using System;
+	public class Hello{
+	    public static void Main(){
+	        Console.writeLine("hello paizaラーニング");  #「writeLine」→「WriteLine」
+	    }
+	}
+	[演習⑤]
+	using System;
+	public class Hello{
+	    public static void Main(){
+	    // ここに、出力するコードを書く
+	        Console.WriteLine("ハローpaizaラーニング");  ##この１行を描く
+	    }
+	}
+</div>
 
+<div style="padding: 100px 0 100px 0;">
+	コメントアウトの方法<br>
+	C# では、「//」から行末までがコメントになります。<br>
+	複数の行をコメントアウトするときは、コメント行の先頭に「/*」を、末尾に「*/」を記述します。<br>
+	C#入門編03：コメントでプログラムを見やすく！<br>
+	// コメントを入力する、コメントアウト
+	using System;
+	public class Program{
+	    public static void Main(){
+	        Console.WriteLine("hello world1");  //後ろもOK
+	        /*Console.WriteLine("hello world2");
+	        Console.WriteLine("hello world3");*/  /* 複数行のコメントアウト */
+	        //コメントはメモがわり、プログラムの指示を変えたりできる
+	    }
+	}
+	<video src="assets/videos/コメントでプログラムを見やすく！.mp4" controls preload muted></video>  <!-- /public/assets/videos/...や/public/assets/video/...はダメだった  -->
+	[演習1]
+	右側のコードエリアにあるプログラムで、最初のWriteLine行をコメントアウトして、2番目の「モンスターがあらわれた」というメッセージだけが表示されるようにしてください。<br>
+	プログラムを実行して、コメントアウトが正しくできれば演習課題クリアです！<br>
+	using System;
+	public class Program{
+	    public static void Main(){
+	        // Console.WriteLine("勇者は、荒野を歩いていた");
+	        Console.WriteLine("モンスターがあらわれた");
+	    }
+	}
+	[演習②]
+	右側のコードエリアにあるプログラムで、WriteLineで出力する文字の先頭が「A:」となっている行がいくつかあります。このような行を先頭からコメントアウトして、残った行のメッセージだけが表示されるようにしてください。<br>
+	using System;
+	public class Program{
+	    public static void Main(){
+	        Console.WriteLine("勇者は荒野を歩いていた");
+	        //  Console.WriteLine("A:モンスターがあらわれた");
+	        Console.WriteLine("勇者はすごい剣を手にいれた");
+	        // Console.WriteLine("A:ドラゴンがあらわれた");
+	        // Console.WriteLine("A:魔王があらわれた");
+	        Console.WriteLine("勇者は世界を救った");
+	    }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	
+	<video src="assets/videos/コメントでプログラムを見やすく！.mp4" controls preload muted></video>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
