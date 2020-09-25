@@ -109,23 +109,374 @@ public class Hello{<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
-	
-	<video src="assets/videos/コメントでプログラムを見やすく！.mp4" controls preload muted></video>
+	C# プログラムでは、文字データのことを「テキスト」「文字列」(もじれつ)「String」(ストリング/ストリングス)と呼ぶことがあります。<br>
+	C# で改行したくない場合、Console.Write("<h1>hello world</h1>");<br>
+	＃04:HTMLを表示してみよう<br>
+	// HTMLを表示する
+	using System;
+	public class Program{
+	    public static void Main(){
+	        Console.WriteLine("<h1>hello world</h1>");  //WriteLineで1行
+	        Console.Write("<p>世界のみなさん、");   //C#で改行たくない場合、Writeだけでは改行されない
+	        Console.Write("<b>こんにちは</b></p>");
+	    }
+	}
+	<video src="assets/videos/HTMLを表示してみよう.mp4" controls preload muted></video>
+	[演習1]
+	右側のコードエリアにあるプログラムで、出力されるメッセージを p タグで囲んで、htmlとして表示されるようにしてください。<br>
+	// HTMLを表示する
+	using System;
+	public class Program{
+	    public static void Main(){
+	        Console.WriteLine("<p>勇者は荒野を歩いていた</p>");
+	    }
+	}
+	[演習②]
+	右側のコードエリアにあるプログラムで、「モンスター」という文字を、b タグで太字にしてください。<br>
+	// HTMLを表示する
+	using System;
+	public class Program{
+	    public static void Main(){
+	        Console.WriteLine("勇者は荒野を歩いていた");
+	        Console.WriteLine("<b>モンスター</b>があらわれた");
+	    }
+	}
+	[演習③]
+	右側のコードエリアにあるプログラムで、<#br> タグを追加して複数行表示されるようにしてください。<br>
+	// HTMLを表示する
+	using System;
+	public class Program{
+	    public static void Main(){
+	        Console.WriteLine("<p>勇者は荒野を歩いていた<br>");
+	        Console.WriteLine("モンスターがあらわれた</p>");
+	    }
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/変数を使えるようになろう.mp4" controls preload muted></video>
+	＃05:変数を使えるようになろう
+	文字や数字などのデータを格納する変数(へんすう)について学びます。変数を使うと、データが変化したとき、いちいちプログラムの複数個所を修正しなくてもよくなります。<br>
+	・変数の名前は、次のルールに従って付けます。<br>
+	- 最初の1文字目：英文字または、「_」(アンダーバー)、「$」<br>
+	- 2文字目以降　：英文字・数字「_」(アンダーバー) 、「$」<br>
+	・ 変数名の例<br>
+	○ player　 1文字目が、英小文字
+	○ Player　 1文字目が、英大文字
+	○ _weapon　 1文字目が、「_」(アンダーバー)
+	○ player01 2文字目以降に数字
+	× 1player 1文字目に数字は使えない
+	また、C# は、予約語(キーワード)と呼ばれる単語が決まっており、この予約語は変数名に利用できません。
+	例えば、「public」や「class」といった単語が予約語になっています。
+	- C# の予約語(キーワード)
+	https://msdn.microsoft.com/ja-jp/library/x53a06bb.aspx
+	・ 変数の宣言<br>
+	変数を使うとき、データの種類が明らかな場合は、var を指定して宣言します。
+	var player = "勇者"; // 文字列データの変数が自動で選択
+	var number = 3; // 整数データの変数が自動で選択
+	- C# のコーディング規則 (C# プログラミング ガイド)
+	https://msdn.microsoft.com/ja-jp/library/ff926074.aspx
+	最初にデータの種類を指定して宣言することもできます。
+	String player = "勇者"; // 文字列データの変数
+	int number = 3; // 整数データの変数
+	Stringの頭文字は大文字にします。intは、すべて小文字です。
+	宣言以降、変数にデータを代入する時には、データの種類の指定は不要です。
+	var player = "勇者"; // 変数の作成と代入
+	player = "戦士"; // 戦士を代入
+	・ 文字列と変数を連結<br>
+	変数と文字列は、「+」記号で連結できます。
+	player = "戦士";
+	WriteLine(player + "は、荒野を歩いていた");
+	// 変数を使う<br>
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var player = "戦士";  //変数に代入する、varだと文字列が自動で認識する、StringでもintでもOK
+	        Console.WriteLine(player);
+	        Console.WriteLine(player + "は、荒野を歩いていた");
+	        Console.WriteLine(player + "は、モンスターと戦った");
+	        Console.WriteLine(player + "は、モンスターをたおした");
+	    }
+	}
+	[演習１]<br>
+	右側のコードエリアにあるプログラムには、「はレベルアップした」と表示するプログラムです。これを修正して、「勇者はレベルアップした」と出力してください。<br>
+	// 変数を使う
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var player = "勇者";
+	        Console.WriteLine(player + "はレベルアップした");		//playerをつける
+	    }
+	}
+	[演習②]<br>
+	右側のコードエリアにあるプログラムは、実行するとエラーになります。プログラムを修正して、「勇者の体力が回復した」と表示されるようにしてください。<br>
+	// 変数を使う
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var player = "勇者";			//""をきちんとつける
+	        Console.WriteLine(player + "の体力が回復した");
+	    }
+	}
+	[演習③]<br>
+	右側のコードエリアにあるプログラムは、実行するとエラーになります。プログラムを修正して、「勇者と戦士の体力が回復した」と表示されるようにしてください。<br>
+	// 変数を使う
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var team = "勇者と戦士";
+	        Console.WriteLine(team + "の体力が回復した");  //playerをteamへ
+	    }
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/サイコロを作ろう.mp4" controls preload muted></video>
+	＃06:サイコロを作ろう<br>
+	このチャプターでは、サイコロのようにランダムで数値を表示する方法を学び、出現したモンスターの数を表示するプログラムを作ります。<br>
+	①サイコロを作ろう<br>
+	このチャプターでは、出現したモンスターの数を表示するプログラムを作ります。そして、数値を表示するプログラムについて学びます。
+	また、いくつかの数値の中から、サイコロのようにランダムにひとつの数値を選択できるRandomメソッドの使い方についても説明します。
+	②インスタンス（実体）<br>
+	インスタンスとは、クラスから作成される実体の事を表します。
+	クラスは、設計図の様なもので、そのままでは実行できません。
+	クラスを実体化して実行できるようにしたものをインスタンスといいます。
+	実体化するときには、new を使用します。
+	C# では、new は作るという意味があります。
+	インスタンス化:
+	var random = new Random();
+	③メソッドとは<br>
+	メソッドとは、C# が持つ特別な機能を呼び出す方法です。
+	WriteLine メソッドや Nextメソッドのように、便利なメソッドが多数用意されています。
+
+	メソッドの例：
+	Console.WriteLine(data) ：指定したデータを出力する（改行あり）
+	Console.Write(data) ：指定したデータを出力する（改行なし）
+	random.Next() ：0以上のランダムな数値を作成する
+	④引数とは<br>
+	メソッドの引数(ひきすう)とは、メソッドに与えるデータです。
+	引数は、メソッドに続くカッコの中に記述します。複数の引数がある場合は、「,」(カンマ)で区切ります。
+
+	引数の例：
+	Console.WriteLine(data) ：dataを引き数として出力する（改行あり）
+	random.Next(10,21) ：10～20までのランダムな数値を作成する
+	⑤戻り値とは
+	メソッドの戻り値(もどりち)とは、メソッドの処理結果のデータのことです。返り値と呼ぶ場合もあります。
+	random.Next(10,21)というメソッドを呼び出すと、10から20の間のランダムな数値が戻り値となります。
+
+	var number = random.Next(10,21) // number変数にrandom.Nextメソッドが作ったランダムな値が代入される
+
+	// 数の表示とサイコロ<br>
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var random = new Random();  //かっこの中身は「引数」という
+	        var number = random.Next(10,21);  //10以上21未満　　//numberの部分は「戻り値」という
+	        Console.WriteLine("スライムが" + number + "匹現れた");
+	    }
+	}
+	演習課題「1から6のサイコロを作る」<br>
+	Randomクラスを使用して「サイコロの目は*です」と出力をしてください。*のところには、1 ～ 6のランダムな数字が入ります。<br>
+	[演習①]<br>
+	// 数の表示とサイコロ
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var random = new Random();      // クラスを実体化
+	        var number = random.Next(1,7);  // 最大値は未満なので注意（目的の数値 + 1）
+	        Console.WriteLine("サイコロの目は" + number + "です" );  //サイコロの目は〜を記載
+	    }
+	}
+	[演習②]
+	演習課題「モンスターに与えるダメージを出力！」
+	Nextメソッドを使用して「モンスターに*のダメージを与えた」と出力をしてください。*のところには、50 ～ 99のランダムな数字を入れます。
+	// モンスターに与えるダメージを出力
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var random = new Random();          // クラスを実体化
+	        var number = random.Next(50, 100);         // 最大値は未満なので注意（目的の数値 + 1）  50~99の数字になるよう引数を入れる
+	        Console.WriteLine("モンスターに" + number + "のダメージを与えた");
+	    }
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/演算子で計算してみよう.mp4" controls preload muted></video>
+	＃07:演算子で計算してみよう <br>
+	数値を使って計算する方法について学んでいきます。
+	①基本的な算術演算子
+	+ 足し算 6 + 2 → 8
+	- 引き算 6 - 2 → 4
+	* 掛け算 6 * 2 → 12
+	/ 割り算 6 / 2 → 3
+	% 余り 6 % 4 → 2
+	② 計算の優先順位
+	高い ( )
+	｜ * / %
+	低い + -
+	③計算例
+	(100 + 2) * 3 → 306
+	100 % 30 → 10
+	④文字列と数値を”＋”でつなぐ場合
+	"西暦" + 2000 + 5 + "年"
+	の結果は"西暦20005年"になります。なぜでしょうか？
+	これは、演算の優先順位が同じ場合は左から計算がされるためです。
+	まず”西暦" + ”2000”で文字列が結合して”西暦2000”という文字列になり、
+	次に”西暦2000” + "5"で文字列が結合して”西暦20005”になります。
+	そして最後に"西暦20005"+"年"で”西暦20005年”になるわけです。
+	// 演算子で計算してみよう<br>
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var number = 100 + 2 * 3;  //計算式に置き換えることができる
+	        Console.WriteLine(number + 30);  //WriteLineないでも可能
+	        Console.WriteLine(number);
+	    }
+	}
+	演習課題「計算してみよう」<br>
+	①1234かける5678割る2を計算して、出力してみましょう。
+	// 演算子で計算してみよう
+	using System;
+	public class Program{
+	    public static void Main(){
+	        // ここに計算式を書いて、出力する
+	        Console.WriteLine(1234 * 5678 / 2);  //A.記載のみ
+	    }
+	}
+	②演習課題「変数で計算してみよう」
+	右側のコードエリアにあるプログラムは、2つの変数に数値を代入しています。
+	このコードに続けて、次の計算をおこない、その計算結果を出力するコードを書いてください。
+	a変数とb変数をかけ算する。
+	// 演算子で計算してみよう 
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var a = 31;
+	        var b = 17;
+	        // 以下に、aとbのかけ算し、結果を出力するコードを書いてください
+	        Console.WriteLine(a * b);  //A.記載のみ
+	    }
+	}
+	③演習課題「余りを計算してみよう」
+	右側のコードエリアにあるプログラムは、2つの変数に数値を代入しています。
+	このコードに続けて、次の計算をおこない、その計算結果を出力するコードを書いてください。
+	x変数をy変数でわり算した時の余りを求める
+	// 演算子で計算してみよう 
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var x = 8;
+	        var y = 5;
+	        // 以下に、xをyで割ったときの余りを計算し、結果を出力するコードを書いてください
+	        Console.Write(x % y);  		//A.記載のみ
+	    }
+	}
+	④演習課題「カッコを付けて計算してみよう」
+	1234と5678を足し算して、それを3倍した結果を計算して出力してみましょう。
+	// 演算子で計算してみよう 
+	using System;
+	public class Program{
+	    public static void Main(){
+	        // 以下に計算式を書いて、結果を出力する
+	        int a = 1234;
+	        int b = 5678;
+	        Console.Write((a + b) * 3);  //aとbに代入してみた
+	    }
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/値段計算をしてみよう.mp4" controls preload muted></video>
+	＃08:値段計算をしてみよう <br>
+	ここまでの応用として演算子とrandom（ランダム）クラスを使ってリンゴの値段を計算するプログラムを書きます。
+	// 値段計算をしてみよう 
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var random = new Random();
+	        // apple_price リンゴの単価
+	        int apple_price = random.Next(1,4)*100;  //１以上4未満、そこに*100  
+	        // apple_num リンゴを買う数
+	        int apple_num = random.Next(10) + 1;  //0以上10未満、そこに+1
+	        Console.WriteLine("りんごの単価" + apple_price + "円");
+	        Console.WriteLine("りんごを買う数" + apple_num + "個");
+	        // total 合計金額の計算
+	        var total = apple_price * apple_num;
+	        Console.WriteLine("合計金額" + total + "円");
+	    }
+	}
+	①演習課題「獲得賞金を等分」
+	右側のコードエリアのプログラムは、賞金金額と人数を表示するプログラムです。
+	賞金を均等に分割した金額を表示しましょう。
+	喧嘩にならないように、余りも計算しましょうね。
+	// 値段計算をしてみよう
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var random=new Random();
+	        var bounty_price=random.Next(1,4)*1000;
+	        var bounty_num=random.Next(10)+1;
+	        Console.WriteLine("賞金は"+bounty_price+"円です");
+	        Console.WriteLine(bounty_num + "人で分けようと思ってます");
+	        // 均等割りの計算式を作る
+	        var price_per = bounty_price / bounty_num;  //人数で割った金額
+	        var price_remainder = bounty_price % bounty_num;    //余りがないか確認
+	        Console.WriteLine("ひとり"+price_per+"円です");
+	        Console.WriteLine("余り"+price_remainder+"円です");
+	    }
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/データの型を覚えよう.mp4" controls preload muted></video>  <!-- C#の文字、：を使うとうまく反映されない？ -->
+	＃09:データの型を覚えよう <br>
+	データの種類について学びます。
+	// データの型を覚えよう 
+	using System;
+	public class Program{
+	    public static void Main(){
+	        int number=100 + 30;     //varをintへ　　//""で囲むと文字列になる
+	        string text="Hello " + "paiza";   //varをStringへ
+	        Console.WriteLine(number);
+	        Console.WriteLine(text);
+	        Console.WriteLine(number + text);   //130はこの計算式内ではstring型になる
+	        Console.WriteLine(number);
+	        Console.WriteLine(number + 20);
+	    }
+	}
+	① 演習課題「エラー箇所を正しく修正しよう vol.1」
+	右側のコードエリアにあるプログラムは、このままではエラーになります。x変数には、「50」という数値を代入するように修正してください。
+	// データの型を覚えよう 
+	using System;
+	public class Program{
+	    public static void Main(){
+	        int x=50;   //""を外す
+	        Console.WriteLine(x-10);
+	    }
+	}
+	②演習課題「エラー箇所を正しく修正しよう vol.2」
+	右側のコードエリアにあるプログラムは、このままではエラーになります。正しく文字列を連結できるように修正してください。
+	// データの型を覚えよう
+	using System;
+	public class Program{
+	    public static void Main(){
+	        string a = "モンスターが";      //""で囲む
+	        string b = "あらわれた";
+	        Console.WriteLine(a + b);
+	    }
+	}
+	③演習課題「エラー箇所を正しく修正しよう vol.3」
+	右側のコードエリアにあるプログラムは、このままではエラーになります。足し算ではなく、文字列として連結するように修正をしてください。
+	// データの型を覚えよう 
+	using System;
+	public class Program{
+	    public static void Main(){
+	        string a = "01234";     //intをstringへ
+	        string b = "56789";     //intをstringへ、""で囲む
+	        Console.WriteLine(a + b);
+	    }
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
