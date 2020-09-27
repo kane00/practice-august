@@ -8,466 +8,466 @@
 
 <div style="padding: 100px 0 100px 0;">
 	<video src="assets/videos/if 文による条件分岐.mp4" controls preload muted></video><br>  <!-- /public/assets/videos/...や/public/assets/video/...はダメだった  -->
-	＃01:if 文による条件分岐 
-	このチャプターでは、数値に応じて、表示するメッセージを切り替えるプログラムを作成します。
-	そして、条件に応じて、処理を枝分かれさせる if 文について学習します。
-	作ったプログラムを「スキ！／キライ」占いにする方法
-	このチャプターで作ったプログラムを元に
-	number = 1 としているところを
-	var random = new Random();
-	var number = random.Next( 1, 3 );
+	＃01:if 文による条件分岐 <br>
+	このチャプターでは、数値に応じて、表示するメッセージを切り替えるプログラムを作成します。<br>
+	そして、条件に応じて、処理を枝分かれさせる if 文について学習します。<br>
+	作ったプログラムを「スキ！／キライ」占いにする方法<br>
+	このチャプターで作ったプログラムを元に<br>
+	number = 1 としているところを<br>
+	var random = new Random();<br>
+	var number = random.Next( 1, 3 );<br>
 	とすると、コードの実行毎にランダムで結果が変わる「スキ！／キライ」占いが作れます！<br>
-
-	// if文による条件分岐
-	using System;
-	public class Program{
-	    public static void Main(){
-	        if ( 条件式 ){
-	            // 条件式が成立した時の処理
-	    }
-	}
-	// if文による条件分岐
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var random = new Random();
-	        int number = random.Next(1,3);  //1以上3未満、これでランダム化できる
-	        if ( number == 1 ) {
-	            // 条件式が成立した時の処理
-	            Console.WriteLine("スキ！");
-	        } else {
-	            // 条件式が成立しなかった時の処理
-	            Console.WriteLine("キライ");
-	            Console.WriteLine("キライ");
-	        }
-	    }
-	}
-	[演習]
-	①演習課題「順位が1位だったら「おめでとう」と表示しよう」
-	右側のコードエリアにあるプログラムは、実行するたびに、1から3までの数値をランダムに生成して、順位として表示します。ここにif文を追加して、1位の時には「おめでとう」と表示するようにしてください。
-	// if文による条件分岐
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var random = new Random();
-	        var number = random.Next(1, 4);
-	        Console.WriteLine("あなたの順位は" + number + "位です"); 
-	        // ここにif文を追加する
-	        if (number == 1) {
-	            Console.WriteLine("おめでとう");  //(number == 1)の時の条件式を追加
-	        } else {
-	            // 何もない
-	        }
-	    }
-	}
-	②演習課題「順位が2位以下だったら「あと少し」と表示する」
-	右側のコードエリアにあるプログラムは、実行するたびに、1から5までの数値をランダムに生成して、順位として表示します。ここにif文を追加して、1位の時には「おめでとう」と表示し、それ以外の時には「あと少し」と表示するようにしてください。
-	// if文による条件分岐
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var random = new Random();
-	        var number = random.Next(1, 6);
-	        Console.WriteLine("あなたの順位は" + number + "位です"); 
-	        // ここにif文を追加する
-	        if (number == 1) {
-	            Console.WriteLine("おめでとう");
-	        } else {
-	            Console.WriteLine("あと少し");		//追加
-	        }
-	    }
-	}
-	③演習課題「間違い探し Vol.1」
-	右側のコードエリアのプログラムは、実行するたびに、100～300の数値を100刻みでランダムに生成して、ポイントとして表示するプログラムです。
-	またポイントが300であれば「おめでとう」と表示するように書いていますが、エラーになってしまいます。このプログラムを修正して、正しく表示されるようにしてください。
-	// if文による条件分岐
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var random = new Random();
-	        var number = random.Next(1, 4) * 100;  //100刻みなどは*100で行った方が良い
-	        Console.WriteLine("あなたの得点は" + number + "ポイントです"); 
-	        if (number == 300) {    //=を==にする
-	            Console.WriteLine("おめでとう");
-	        }
-	    }
-	}
-	④演習課題「間違い探し Vol.2」
-	右側のコードエリアのプログラムは、実行するたびに、100～300の数値を100刻みでランダムに生成して、ポイントとして表示するプログラムです。
-	またポイントが300であれば「おめでとう」と表示し、それ以外であれば「ざんねん」と表示するように書いていますが、エラーになってしまいます。このプログラムを修正して、正しく表示されるようにしてください。
-	// if文による条件分岐
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var random = new Random();
-	        var number = random.Next(1, 4) * 100;
-	        Console.WriteLine("あなたの得点は" + number + "ポイントです");
-	        if (number == 300) {
-	            Console.WriteLine("おめでとう");
-	        } else {                            // ifの{}が足りない
-	        Console.WriteLine("ざんねん");
-	        }
-	    }
-	}
+<br>
+	// if文による条件分岐<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        if ( 条件式 ){<br>
+	            // 条件式が成立した時の処理<br>
+	    }<br>
+	}<br>
+	// if文による条件分岐<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var random = new Random();<br>
+	        int number = random.Next(1,3);  //1以上3未満、これでランダム化できる<br>
+	        if ( number == 1 ) {<br>
+	            // 条件式が成立した時の処理<br>
+	            Console.WriteLine("スキ！");<br>
+	        } else {<br>
+	            // 条件式が成立しなかった時の処理<br>
+	            Console.WriteLine("キライ");<br>
+	            Console.WriteLine("キライ");<br>
+	        }<br>
+	    }<br>
+	}<br>
+	[演習]<br>
+	①演習課題「順位が1位だったら「おめでとう」と表示しよう」<br>
+	右側のコードエリアにあるプログラムは、実行するたびに、1から3までの数値をランダムに生成して、順位として表示します。ここにif文を追加して、1位の時には「おめでとう」と表示するようにしてください。<br>
+	// if文による条件分岐<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var random = new Random();<br>
+	        var number = random.Next(1, 4);<br>
+	        Console.WriteLine("あなたの順位は" + number + "位です"); <br>
+	        // ここにif文を追加する<br>
+	        if (number == 1) {<br>
+	            Console.WriteLine("おめでとう");  //(number == 1)の時の条件式を追加<br>
+	        } else {<br>
+	            // 何もない<br>
+	        }<br>
+	    }<br>
+	}<br>
+	②演習課題「順位が2位以下だったら「あと少し」と表示する」<br>
+	右側のコードエリアにあるプログラムは、実行するたびに、1から5までの数値をランダムに生成して、順位として表示します。ここにif文を追加して、1位の時には「おめでとう」と表示し、それ以外の時には「あと少し」と表示するようにしてください。<br>
+	// if文による条件分岐<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var random = new Random();<br>
+	        var number = random.Next(1, 6);<br>
+	        Console.WriteLine("あなたの順位は" + number + "位です"); <br>
+	        // ここにif文を追加する<br>
+	        if (number == 1) {<br>
+	            Console.WriteLine("おめでとう");<br>
+	        } else {<br>
+	            Console.WriteLine("あと少し");		//追加<br>
+	        }<br>
+	    }<br>
+	}<br>
+	③演習課題「間違い探し Vol.1」<br>
+	右側のコードエリアのプログラムは、実行するたびに、100～300の数値を100刻みでランダムに生成して、ポイントとして表示するプログラムです。<br>
+	またポイントが300であれば「おめでとう」と表示するように書いていますが、エラーになってしまいます。このプログラムを修正して、正しく表示されるようにしてください。<br>
+	// if文による条件分岐<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var random = new Random();<br>
+	        var number = random.Next(1, 4) * 100;  //100刻みなどは*100で行った方が良い<br>
+	        Console.WriteLine("あなたの得点は" + number + "ポイントです"); <br>
+	        if (number == 300) {    //=を==にする<br>
+	            Console.WriteLine("おめでとう");<br>
+	        }<br>
+	    }<br>
+	}<br>
+	④演習課題「間違い探し Vol.2」<br>
+	右側のコードエリアのプログラムは、実行するたびに、100～300の数値を100刻みでランダムに生成して、ポイントとして表示するプログラムです。<br>
+	またポイントが300であれば「おめでとう」と表示し、それ以外であれば「ざんねん」と表示するように書いていますが、エラーになってしまいます。このプログラムを修正して、正しく表示されるようにしてください。<br>
+	// if文による条件分岐<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var random = new Random();<br>
+	        var number = random.Next(1, 4) * 100;<br>
+	        Console.WriteLine("あなたの得点は" + number + "ポイントです");<br>
+	        if (number == 300) {<br>
+	            Console.WriteLine("おめでとう");<br>
+	        } else {                            // ifの{}が足りない<br>
+	        Console.WriteLine("ざんねん");<br>
+	        }<br>
+	    }<br>
+	}<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	<video src="assets/videos/複数の条件を組み合わせてみよう.mp4" controls preload muted></video><br>  <!-- /public/assets/videos/...や/public/assets/video/...はダメだった  -->
-	＃02:複数の条件を組み合わせてみよう 
-	ここでは、条件をひとつではなく複数にして、それぞれ異なるメッセージを表示するプログラムを作成します。そして、if文で、複数の条件式を指定する「else if」について学習します
-	①if - else if - else文の基本形
-	// if文による条件分岐　else if
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var number = 1;
-	        if (条件式1) {
-	            // 条件式1が成立したときの処理
-	        } else if (条件式2) {
-	            // 条件式2が成立したときの処理
-	        } else {
-	            // 条件式がどれも成立しなかったときの処理
-	        }
-	    }
-	}
-	// if文による条件分岐　else if
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var number = 2;
-	        if ( number == 1 ) {
-	            Console.WriteLine("スキ！");    // 条件式が成立した時の処理
-	        } else if (number == 2) {                         // C#はelse ifで書く
-	            Console.WriteLine("どちらでもない");
-	        } else {
-	            Console.WriteLine("キライ");    // 条件式がどれも成立しなかったときの処理
-	        }
-	    }
-	}
-	[演習]
-	①演習課題「順位に合わせてメッセージを表示する」
-	右側のコードエリアのプログラムは、実行するたびに、1から5までの数値をランダムに生成して、順位として表示します。ここにif文を追加して、次のように表示するようにしてください。
-	- 1位の時: 「おめでとう」と表示する
-	- 2位の時: 「あと少し」と表示する
-	- その他の時: 「よくがんばったね」と表示する
-	// if文による条件分岐　else if
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var random = new Random();
-	        var number = random.Next(1, 6);
-	        Console.WriteLine("あなたの順位は" + number + "位です");
-	        // ここにif文を追加する
-	        if (number == 1) {
-	            Console.WriteLine("おめでとう");
-	        } else if (number == 2) {
-	            Console.WriteLine("あと少し");
-	        } else {
-	            Console.WriteLine("よくがんばったね");
-	        }
-	    }
-	}
-	②演習課題「間違い探し」
-	右のコードは、実行するたびに、1から5までの数値をランダムに生成して、順位として表示します。順位ごとに下記のメッセージを表示しますが、このまま実行しても、エラーになってしまいます。このプログラムを修正して、正しく表示されるようにしてください。
-	- 1位の時 「おめでとう」と表示する
-	- 2位の時 「あと少し」と表示する
-	- その他の時 「よくがんばったね」と表示する
-	// if文による条件分岐　else if
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var random = new Random();
-	        var number = random.Next(1, 6);
-	        Console.WriteLine("あなたの順位は" + number + "位です");
-	        if (number == 1) {
-	            Console.WriteLine("おめでとう");
-	        } else if (number == 2) {           // else ifの半角スペースがない
-	            Console.WriteLine("あと少し");
-	        } else {
-	            Console.WriteLine("よくがんばったね");
-	        }
-	    }
-	}
+	＃02:複数の条件を組み合わせてみよう <br>
+	ここでは、条件をひとつではなく複数にして、それぞれ異なるメッセージを表示するプログラムを作成します。そして、if文で、複数の条件式を指定する「else if」について学習します<br>
+	①if - else if - else文の基本形<br>
+	// if文による条件分岐　else if<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var number = 1;<br>
+	        if (条件式1) {<br>
+	            // 条件式1が成立したときの処理<br>
+	        } else if (条件式2) {<br>
+	            // 条件式2が成立したときの処理<br>
+	        } else {<br>
+	            // 条件式がどれも成立しなかったときの処理<br>
+	        }<br>
+	    }<br>
+	}<br>
+	// if文による条件分岐　else if<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var number = 2;<br>
+	        if ( number == 1 ) {<br>
+	            Console.WriteLine("スキ！");    // 条件式が成立した時の処理<br>
+	        } else if (number == 2) {                         // C#はelse ifで書く<br>
+	            Console.WriteLine("どちらでもない");<br>
+	        } else {<br>
+	            Console.WriteLine("キライ");    // 条件式がどれも成立しなかったときの処理<br>
+	        }<br>
+	    }<br>
+	}<br>
+	[演習]<br>
+	①演習課題「順位に合わせてメッセージを表示する」<br>
+	右側のコードエリアのプログラムは、実行するたびに、1から5までの数値をランダムに生成して、順位として表示します。ここにif文を追加して、次のように表示するようにしてください。<br>
+	- 1位の時: 「おめでとう」と表示する<br>
+	- 2位の時: 「あと少し」と表示する<br>
+	- その他の時: 「よくがんばったね」と表示する<br>
+	// if文による条件分岐　else if<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var random = new Random();<br>
+	        var number = random.Next(1, 6);<br>
+	        Console.WriteLine("あなたの順位は" + number + "位です");<br>
+	        // ここにif文を追加する<br>
+	        if (number == 1) {<br>
+	            Console.WriteLine("おめでとう");<br>
+	        } else if (number == 2) {<br>
+	            Console.WriteLine("あと少し");<br>
+	        } else {<br>
+	            Console.WriteLine("よくがんばったね");<br>
+	        }<br>
+	    }<br>
+	}<br>
+	②演習課題「間違い探し」<br>
+	右のコードは、実行するたびに、1から5までの数値をランダムに生成して、順位として表示します。順位ごとに下記のメッセージを表示しますが、このまま実行しても、エラーになってしまいます。このプログラムを修正して、正しく表示されるようにしてください。<br>
+	- 1位の時 「おめでとう」と表示する<br>
+	- 2位の時 「あと少し」と表示する<br>
+	- その他の時 「よくがんばったね」と表示する<br>
+	// if文による条件分岐　else if<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var random = new Random();<br>
+	        var number = random.Next(1, 6);<br>
+	        Console.WriteLine("あなたの順位は" + number + "位です");<br>
+	        if (number == 1) {<br>
+	            Console.WriteLine("おめでとう");<br>
+	        } else if (number == 2) {           // else ifの半角スペースがない<br>
+	            Console.WriteLine("あと少し");<br>
+	        } else {<br>
+	            Console.WriteLine("よくがんばったね");<br>
+	        }<br>
+	    }<br>
+	}<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	<video src="assets/videos/比較演算子で条件分岐してみよう.mp4" controls preload muted></video><br>  <!-- /public/assets/videos/...や/public/assets/video/...はダメだった  -->
 	＃03:比較演算子で条件分岐してみよう <br>
-	ここでは、数値が一定以上だったら、メッセージを表示するプログラムを作成します。そして、if文で、数値が大きかったら、小さかったらといった場合の条件式を作る、比較演算子について学習します。
-	①if - else if - else文の基本形
-	// if文による条件分岐　else if
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var number = 1;
-	        if (条件式1) {
-	            // 条件式1が成立したときの処理
-	        } else if (条件式2) {
-	            // 条件式2が成立したときの処理
-	        } else {
-	            // 条件式がどれも成立しなかったときの処理
-	        }
-	    }
-	}
-	②比較演算子の種類
-	利用例	意味	真になる例
-	a < b	a が b よりも小さい	10 < 15
-	a > b	a が b よりも大きい	10 > 7
-	a <= b	a が b 以下である	10 <= 15
-	a >= b	a が b 以上である	10 >= 7
-	a != b	a と b が等しくない	10 != 1
+	ここでは、数値が一定以上だったら、メッセージを表示するプログラムを作成します。そして、if文で、数値が大きかったら、小さかったらといった場合の条件式を作る、比較演算子について学習します。<br>
+	①if - else if - else文の基本形<br>
+	// if文による条件分岐　else if<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var number = 1;<br>
+	        if (条件式1) {<br>
+	            // 条件式1が成立したときの処理<br>
+	        } else if (条件式2) {<br>
+	            // 条件式2が成立したときの処理<br>
+	        } else {<br>
+	            // 条件式がどれも成立しなかったときの処理<br>
+	        }<br>
+	    }<br>
+	}<br>
+	②比較演算子の種類<br>
+	利用例	意味	真になる例<br>
+	a < b	a が b よりも小さい	10 < 15<br>
+	a > b	a が b よりも大きい	10 > 7<br>
+	a <= b	a が b 以下である	10 <= 15<br>
+	a >= b	a が b 以上である	10 >= 7<br>
+	a != b	a と b が等しくない	10 != 1<br>
 
-	// if文による条件分岐　比較演算子
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var time = 12;
-	        if (time < 12 ) {
-	            Console.WriteLine("午前中");    // 条件式が成立したときの処理
-	        } else if (time == 12 ) {
-	            Console.WriteLine("正午");
-	        } else if (time > 12 ) {
-	            Console.WriteLine("午後");
-	        }
-	    }
-	}
-	// a == b   等しい
-	// a > b    aはbより大きい
-	// a < b    aはbより小さい
-	// a >= b   aはb以上
-	// a <= b   aはb以下
-	// a != b   aはbと等しくない
-	[演習]
-	① 演習課題「飲酒可能な年齢か判定する！」
-	右側のコードエリアのプログラムをもとに、プログラムを完成させてください。age変数の中には、飲酒可能か判定する人の年齢が、18〜22才までのランダムな数値が代入されています。
-	例）19才だったら、19が代入されているとします。
-	20才未満の場合は「○才は飲酒不可」と表示し、20才以上だったら「○才は飲酒可能」と表示するプログラムを書きましょう。
-	// if文による条件分岐　比較演算子
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var random = new Random();
-	        var age = random.Next(0, 5) + 18;
-	        Console.Write(age + "才は");
-	        // ここにif文を追加する
-	        if (age < 20) {
-	            Console.Write("飲酒不可");
-	        } else if (age >= 20) {
-	            Console.Write("飲酒可能");
-	        }
-	    }
-	}
-	②演習課題「間違い修正：入賞圏内か判別する」
-	右側のコードエリアのプログラムは、実行しても期待通りの動きをしていません。間違いの箇所を見つけてプログラムを完成させてください。placeの中には入賞判別したい人のレースの順位が、1〜12位までランダムな数値で代入されています。
-	例）5位だったら、5が代入されているものとします。
-	6位以内の場合は「●位入賞」と表示し、そうでなければ「●位入賞圏外」と表示するプログラムを書きましょう。
-	// if文による条件分岐　比較演算子
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var random = new Random();
-	        var place = random.Next(1, 13);
-	        Console.Write(place + "位"); 
-	        // ここにif文を追加する
-	        if (place <= 6) {
-	            Console.WriteLine("入賞");
-	        } else if (place > 6) {
-	            Console.WriteLine("入賞圏外");
-	        }
-	    }
-	}
+	// if文による条件分岐　比較演算子<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var time = 12;<br>
+	        if (time < 12 ) {<br>
+	            Console.WriteLine("午前中");    // 条件式が成立したときの処理<br>
+	        } else if (time == 12 ) {<br>
+	            Console.WriteLine("正午");<br>
+	        } else if (time > 12 ) {<br>
+	            Console.WriteLine("午後");<br>
+	        }<br>
+	    }<br>
+	}<br>
+	// a == b   等しい<br>
+	// a > b    aはbより大きい<br>
+	// a < b    aはbより小さい<br>
+	// a >= b   aはb以上<br>
+	// a <= b   aはb以下<br>
+	// a != b   aはbと等しくない<br>
+	[演習]<br>
+	① 演習課題「飲酒可能な年齢か判定する！」<br>
+	右側のコードエリアのプログラムをもとに、プログラムを完成させてください。age変数の中には、飲酒可能か判定する人の年齢が、18〜22才までのランダムな数値が代入されています。<br>
+	例）19才だったら、19が代入されているとします。<br>
+	20才未満の場合は「○才は飲酒不可」と表示し、20才以上だったら「○才は飲酒可能」と表示するプログラムを書きましょう。<br>
+	// if文による条件分岐　比較演算子<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var random = new Random();<br>
+	        var age = random.Next(0, 5) + 18;<br>
+	        Console.Write(age + "才は");<br>
+	        // ここにif文を追加する<br>
+	        if (age < 20) {<br>
+	            Console.Write("飲酒不可");<br>
+	        } else if (age >= 20) {<br>
+	            Console.Write("飲酒可能");<br>
+	        }<br>
+	    }<br>
+	}<br>
+	②演習課題「間違い修正：入賞圏内か判別する」<br>
+	右側のコードエリアのプログラムは、実行しても期待通りの動きをしていません。間違いの箇所を見つけてプログラムを完成させてください。placeの中には入賞判別したい人のレースの順位が、1〜12位までランダムな数値で代入されています。<br>
+	例）5位だったら、5が代入されているものとします。<br>
+	6位以内の場合は「●位入賞」と表示し、そうでなければ「●位入賞圏外」と表示するプログラムを書きましょう。<br>
+	// if文による条件分岐　比較演算子<br>
+	using System;<br><br>
+	public class Program{<br><br>
+	    public static void Main(){<br><br>
+	        var random = new Random();<br><br>
+	        var place = random.Next(1, 13);<br><br>
+	        Console.Write(place + "位"); <br><br>
+	        // ここにif文を追加する<br><br>
+	        if (place <= 6) {<br><br>
+	            Console.WriteLine("入賞");<br><br>
+	        } else if (place > 6) {<br><br>
+	            Console.WriteLine("入賞圏外");<br><br>
+	        }<br><br>
+	    }<br><br>
+	}<br><br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	<video src="assets/videos/おみくじを作ってみよう.mp4" controls preload muted></video><br>  <!-- /public/assets/videos/...や/public/assets/video/...はダメだった  -->
 	＃04:おみくじを作ってみよう <br>
-	ここまで覚えたif文による条件分岐とランダム関数を使って、実行するたびに結果が変わる「おみくじプログラム」を作成してみましょう。
-	① if - else if - else文の基本形
-	// if文による条件分岐 else if
-	using System;
-	public class Program{
-	    public static void Main(){
-	        int number = 1;
-	        if (条件式1) {
-	            // 条件式1が成立したときの処理
-	        } else if (条件式2) {
-	            // 条件式2が成立したときの処理
-	        } else {
-	            // 条件式がどれも成立しなかったときの処理
-	        }
-	    }
-	}
-	② 比較演算子の種類
-	利用例	意味	真になる例
-	a < b	a が b よりも小さい	10 < 15
-	a > b	a が b よりも大きい	10 > 7
-	a <= b	a が b 以下である	10 <= 15
-	a >= b	a が b 以上である	10 >= 7
-	a != b	a と b が等しくない	10 != 1
+	ここまで覚えたif文による条件分岐とランダム関数を使って、実行するたびに結果が変わる「おみくじプログラム」を作成してみましょう。<br>
+	① if - else if - else文の基本形<br>
+	// if文による条件分岐 else if<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        int number = 1;<br>
+	        if (条件式1) {<br>
+	            // 条件式1が成立したときの処理<br>
+	        } else if (条件式2) {<br>
+	            // 条件式2が成立したときの処理<br>
+	        } else {<br>
+	            // 条件式がどれも成立しなかったときの処理<br>
+	        }<br>
+	    }<br>
+	}<br>
+	② 比較演算子の種類<br>
+	利用例	意味	真になる例<br>
+	a < b	a が b よりも小さい	10 < 15<br>
+	a > b	a が b よりも大きい	10 > 7<br>
+	a <= b	a が b 以下である	10 <= 15<br>
+	a >= b	a が b 以上である	10 >= 7<br>
+	a != b	a と b が等しくない	10 != 1<br>
 
-	// おみくじを作る
-	// 比較演算子  ==  >  <   >=  <=  !=
-	// 大吉  中吉  小吉  凶  大凶
-	using System;
-	public class Program{
-	    public static void Main(){
-	    var random = new Random();
-	    var omikuji = random.Next(1,11);    //1~10で表示  
-	    // Console.WriteLine(omikuji);      //数字だけを表示させる、デバック
-	    if (omikuji == 1) {
-	        Console.WriteLine("大吉");
-	    } else if (omikuji == 2) {
-	        Console.WriteLine("中吉");
-	    } else if (omikuji <= 4) {
-	        Console.WriteLine("小吉");  //3,4
-	    } else if (omikuji <= 7) {
-	        Console.WriteLine("凶");  //5,6,7
-	    } else {
-	        Console.WriteLine("凶");  //8~
-	    }
-	    }
-	}
-	[演習]
-	演習課題「大吉の確率を上げてみよう」
-	右のコードを完成させて、「大吉」か「大凶」を出力する、次のようなおみくじプログラムを作成してください。
-	- omikuji変数には、1から100までの値がランダムに代入されます。
-	- omikuji変数の値が30から100の場合は、「omikujiの中身は○○なので大吉」と表示
-	- omikuji変数の値が29以下の場合は、「omikujiの中身は○○なので大凶」と表示
-	例1: omikujiの中身は32なので大吉
-	例2: omikujiの中身は12なので大凶
-	// おみくじを作る
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var random = new Random();
-	        int omikuji = random.Next(1, 101);  // 1～101未満の値をランダムに選択されます。
-	        // Console.WriteLine(omikuji);      //デバック用
-	        if (omikuji >= 30) {                // 30以上
-	             Console.WriteLine("omikujiの中身は" + omikuji + "なので大吉");
-	        } else {                            // 30未満
-	             Console.WriteLine("omikujiの中身は" + omikuji + "なので大凶");
-	        }
-	    }
-	}
+	// おみくじを作る<br>
+	// 比較演算子  ==  >  <   >=  <=  !=<br>
+	// 大吉  中吉  小吉  凶  大凶<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	    var random = new Random();<br>
+	    var omikuji = random.Next(1,11);    //1~10で表示  <br>
+	    // Console.WriteLine(omikuji);      //数字だけを表示させる、デバック<br>
+	    if (omikuji == 1) {<br>
+	        Console.WriteLine("大吉");<br>
+	    } else if (omikuji == 2) {<br>
+	        Console.WriteLine("中吉");<br>
+	    } else if (omikuji <= 4) {<br>
+	        Console.WriteLine("小吉");  //3,4<br>
+	    } else if (omikuji <= 7) {<br>
+	        Console.WriteLine("凶");  //5,6,7<br>
+	    } else {<br>
+	        Console.WriteLine("凶");  //8~<br>
+	    }<br>
+	    }<br>
+	}<br>
+	[演習]<br>
+	演習課題「大吉の確率を上げてみよう」<br>
+	右のコードを完成させて、「大吉」か「大凶」を出力する、次のようなおみくじプログラムを作成してください。<br>
+	- omikuji変数には、1から100までの値がランダムに代入されます。<br>
+	- omikuji変数の値が30から100の場合は、「omikujiの中身は○○なので大吉」と表示<br>
+	- omikuji変数の値が29以下の場合は、「omikujiの中身は○○なので大凶」と表示<br>
+	例1: omikujiの中身は32なので大吉<br>
+	例2: omikujiの中身は12なので大凶<br>
+	// おみくじを作る<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var random = new Random();<br>
+	        int omikuji = random.Next(1, 101);  // 1～101未満の値をランダムに選択されます。<br>
+	        // Console.WriteLine(omikuji);      //デバック用<br>
+	        if (omikuji >= 30) {                // 30以上<br>
+	             Console.WriteLine("omikujiの中身は" + omikuji + "なので大吉");<br>
+	        } else {                            // 30未満<br>
+	             Console.WriteLine("omikujiの中身は" + omikuji + "なので大凶");<br>
+	        }<br>
+	    }<br>
+	}<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	<video src="assets/videos/RPGのクリティカルヒットを再現.mp4" controls preload muted></video><br>  <!-- /public/assets/videos/...や/public/assets/video/...はダメだった  -->
-	＃05:RPGのクリティカルヒットを再現 
-	このチャプターでは、これまで覚えたif文による条件分岐とRandomクラスを使って、RPGの戦闘シーンに出てくるようなクリティカルヒットをメッセージとして表示します。
-	① if - else if - else文の基本形
-	// if文による条件分岐 else if
-	using System;
-	public class Program{
-	    public static void Main(){
-	        int number = 1;
-	        if (条件式1) {
-	            // 条件式1が成立したときの処理
-	        } else if (条件式2) {
-	            // 条件式2が成立したときの処理
-	        } else {
-	            // 条件式がどれも成立しなかったときの処理
-	        }
-	    }
-	}
-	②比較演算子の種類
-	前回と同様、省略
+	＃05:RPGのクリティカルヒットを再現 <br>
+	このチャプターでは、これまで覚えたif文による条件分岐とRandomクラスを使って、RPGの戦闘シーンに出てくるようなクリティカルヒットをメッセージとして表示します。<br>
+	① if - else if - else文の基本形<br>
+	// if文による条件分岐 else if<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        int number = 1;<br>
+	        if (条件式1) {<br>
+	            // 条件式1が成立したときの処理<br>
+	        } else if (条件式2) {<br>
+	            // 条件式2が成立したときの処理<br>
+	        } else {<br>
+	            // 条件式がどれも成立しなかったときの処理<br>
+	        }<br>
+	    }<br>
+	}<br>
+	②比較演算子の種類<br>
+	前回と同様、省略<br>
 
-	// RPGのクリティカルヒットを再現
-	// 比較演算子 == > < >= <= !=
-	// スライムと戦っている。
-	// 1から10のサイコロをふって、
-	// 6未満：サイコロの目だけダメージを与えたと表示。
-	// 6以上：クリティカルヒットとして、100のダメージを与えたと表示。
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var random = new Random();
-	        var hit = random.Next(1,11);
-	        // Console.WriteLine(hit);  //デバック用
-	        if (hit < 6) {
-	            Console.WriteLine("スライムに" + hit + "のダメージを与えた！");
-	        } else {
-	            Console.WriteLine("クリティカルヒット！スライムに100のダメージを与えた！");
-	        }
-	    }
-	}
-	[演習①]
-	演習課題「攻撃を回避させてみよう」
-	右のプログラムでは出目が1から6のサイコロをふっています。サイコロの出目によってスライムからの攻撃を回避するプログラムを書いてみましょう。
-	出目が4から6ならば、「スライムの攻撃をかわした」と表示してください。そうでなければ、「スライムから10のダメージを受けた」と表示してください。
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var random = new Random();
-	        var dice = random.Next(1, 7);
-	        Console.WriteLine("サイコロは" + dice);
-	        if (dice >= 4) {
-	            Console.WriteLine("スライムの攻撃をかわした");
-	        } else {
-	            Console.WriteLine("スライムから10のダメージを受けた");
-	        }
-	    }
-	}
+	// RPGのクリティカルヒットを再現<br>
+	// 比較演算子 == > < >= <= !=<br>
+	// スライムと戦っている。<br>
+	// 1から10のサイコロをふって、<br>
+	// 6未満：サイコロの目だけダメージを与えたと表示。<br>
+	// 6以上：クリティカルヒットとして、100のダメージを与えたと表示。<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var random = new Random();<br>
+	        var hit = random.Next(1,11);<br>
+	        // Console.WriteLine(hit);  //デバック用<br>
+	        if (hit < 6) {<br>
+	            Console.WriteLine("スライムに" + hit + "のダメージを与えた！");<br>
+	        } else {<br>
+	            Console.WriteLine("クリティカルヒット！スライムに100のダメージを与えた！");<br>
+	        }<br>
+	    }<br>
+	}<br>
+	[演習①]<br>
+	演習課題「攻撃を回避させてみよう」<br>
+	右のプログラムでは出目が1から6のサイコロをふっています。サイコロの出目によってスライムからの攻撃を回避するプログラムを書いてみましょう。<br>
+	出目が4から6ならば、「スライムの攻撃をかわした」と表示してください。そうでなければ、「スライムから10のダメージを受けた」と表示してください。<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var random = new Random();<br>
+	        var dice = random.Next(1, 7);<br>
+	        Console.WriteLine("サイコロは" + dice);<br>
+	        if (dice >= 4) {<br>
+	            Console.WriteLine("スライムの攻撃をかわした");<br>
+	        } else {<br>
+	            Console.WriteLine("スライムから10のダメージを受けた");<br>
+	        }<br>
+	    }<br>
+	}<br>
 </div>
 
 <div style="padding: 100px 0 100px 0;">
 	<video src="assets/videos/西暦から平成何年かを求めてみよう.mp4" controls preload muted></video><br>  <!-- /public/assets/videos/...や/public/assets/video/...はダメだった  -->
-	＃06:西暦から平成何年かを求めてみよう 
-	このチャプターでは、入力しておいた西暦に応じて、平成何年か計算するプログラムを作成してみます。
-	①DateTime 構造体
-	- DateTime.Today：現在の日付を返します。
-	https://msdn.microsoft.com/ja-jp/library/system.datetime.aspx
-	②西暦年／平成年の計算方法
-	平成年から西暦年を求めるには、平成年に「1988」を足します
-	　例)
-	　平成1年に「1988」を足すと、1989 > 平成1年は1989年
-	　平成2年に「1988」を足すと、1990 > 平成2年は1990年
-	　平成3年に「1988」を足すと、1990 > 平成3年は1991年
-	　平成12年に「1988」を足すと、2000 > 平成12年は2000年
-	　平成27年に「1988」を足すと、2015 > 平成27年は2015年
-	西暦年から平成年を求めるには、これとは逆に、西暦年から「1988」を引きます。
-	　例)
-	　西暦1989年から「1988」を引くと、1 > 1989年は平成1年
-	　西暦1990年から「1988」を引くと、2 > 1990年は平成2年
-	　西暦1991年から「1988」を引くと、3 > 1991年は平成3年
-	　西暦2000年から「1988」を引くと、12 > 2000年は平成12年
-	　西暦2015年から「1988」を引くと、27 > 2015年は平成27年
+	＃06:西暦から平成何年かを求めてみよう <br>
+	このチャプターでは、入力しておいた西暦に応じて、平成何年か計算するプログラムを作成してみます。<br>
+	①DateTime 構造体<br>
+	- DateTime.Today：現在の日付を返します。<br>
+	https://msdn.microsoft.com/ja-jp/library/system.datetime.aspx<br>
+	②西暦年／平成年の計算方法<br>
+	平成年から西暦年を求めるには、平成年に「1988」を足します<br>
+	　例)<br>
+	　平成1年に「1988」を足すと、1989 > 平成1年は1989年<br>
+	　平成2年に「1988」を足すと、1990 > 平成2年は1990年<br>
+	　平成3年に「1988」を足すと、1990 > 平成3年は1991年<br>
+	　平成12年に「1988」を足すと、2000 > 平成12年は2000年<br>
+	　平成27年に「1988」を足すと、2015 > 平成27年は2015年<br>
+	西暦年から平成年を求めるには、これとは逆に、西暦年から「1988」を引きます。<br>
+	　例)<br>
+	　西暦1989年から「1988」を引くと、1 > 1989年は平成1年<br>
+	　西暦1990年から「1988」を引くと、2 > 1990年は平成2年<br>
+	　西暦1991年から「1988」を引くと、3 > 1991年は平成3年<br>
+	　西暦2000年から「1988」を引くと、12 > 2000年は平成12年<br>
+	　西暦2015年から「1988」を引くと、27 > 2015年は平成27年<br>
 
-	// 西暦年から平成年を求める
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var today = DateTime.Today;  //C#での今日の年月日を取り出すメソッド
-	        var seireki = today.Year;
-	        Console.Write("西暦" + seireki + "年は、");
-	        // 西暦年から平成年を計算する
-	        // 平成1年は西暦1988年。その差は1988
-	        // 西暦年 - 1988 = 平成*年
-	        // 例：西暦1989年 - 1988 = 平成1年
-	        // 例：西暦2017年 - 1988 = 平成29年
-	        var heisei = seireki - 1988;
-	        Console.Write("平成" + heisei + "年、または");
-	        var reiwa = seireki - 2018;
-	        Console.WriteLine("令和" + reiwa + "年です");
-	    }
-	}
-	[演習]
-	演習課題「西暦年から昭和年を計算する」
-	右のコードは、実行するたびに1926年から1988年までの西暦年をランダムに選んで表示します。
-	ここにコードを追加して、昭和年を計算し「西暦W年は昭和S年です」と表示してください。なお、昭和年は、「seireki - 1925」で求めることができます。
-	// 西暦年から昭和年を求める
-	using System;
-	public class Program{
-	    public static void Main(){
-	        var random = new Random();
-	        var seireki = random.Next(0, 63) + 1926;    //0~62のランダム+1926で西暦に
-	        Console.Write("西暦" + seireki + "年は");
-	        // 昭和年を計算
-	        var showa = seireki - 1925;         //昭和年=showa-1925
-	        Console.WriteLine("昭和" + showa + "年です");
-	    }
-	}
+	// 西暦年から平成年を求める<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var today = DateTime.Today;  //C#での今日の年月日を取り出すメソッド<br>
+	        var seireki = today.Year;<br>
+	        Console.Write("西暦" + seireki + "年は、");<br>
+	        // 西暦年から平成年を計算する<br>
+	        // 平成1年は西暦1988年。その差は1988<br>
+	        // 西暦年 - 1988 = 平成*年<br>
+	        // 例：西暦1989年 - 1988 = 平成1年<br>
+	        // 例：西暦2017年 - 1988 = 平成29年<br>
+	        var heisei = seireki - 1988;<br>
+	        Console.Write("平成" + heisei + "年、または");<br>
+	        var reiwa = seireki - 2018;<br>
+	        Console.WriteLine("令和" + reiwa + "年です");<br>
+	    }<br>
+	}<br>
+	[演習]<br>
+	演習課題「西暦年から昭和年を計算する」<br>
+	右のコードは、実行するたびに1926年から1988年までの西暦年をランダムに選んで表示します。<br>
+	ここにコードを追加して、昭和年を計算し「西暦W年は昭和S年です」と表示してください。なお、昭和年は、「seireki - 1925」で求めることができます。<br>
+	// 西暦年から昭和年を求める<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var random = new Random();<br>
+	        var seireki = random.Next(0, 63) + 1926;    //0~62のランダム+1926で西暦に<br>
+	        Console.Write("西暦" + seireki + "年は");<br>
+	        // 昭和年を計算<br>
+	        var showa = seireki - 1925;         //昭和年=showa-1925<br>
+	        Console.WriteLine("昭和" + showa + "年です");<br>
+	    }<br>
+	}<br>
 </div>
 
 

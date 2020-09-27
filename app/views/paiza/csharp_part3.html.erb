@@ -6,15 +6,706 @@
 
 <h1>Paiza C#コース3　C#入門編3: ループ処理を学ぶ</h1>
 
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/条件によるくり返し処理1 - while.mp4" controls preload muted></video><br>  <!-- /public/assets/videos/...や/public/assets/video/...はダメだった  -->
+	＃01:条件によるくり返し処理1 - while <br>
+	ここでは、数字を0から5まで表示させます。そのために、条件に合わせてループ処理する while という繰り返し命令について学習します。<br>
+	①whileによるループ処理の基本形<br>
+	// whileによるループ処理<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        // カウンタ変数の初期化<br>
+	        while (条件式) {<br>
+	            // 繰り返し処理<br>
+	            // カウンタ変数の更新<br>
+	        }<br>
+	    }<br>
+	}<br>
+	②作成コード<br>
+	このチャプターで作成した、C# のコードです。<br>
+	// whileによるループ処理<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var i=0;    // カウンタ変数の初期化<br>
+	        while(i <= 5) { // 0 -> 1 -> 2 -> 3 ・・・ 5 -> 6<br>
+	            Console.WriteLine("hello world " + i);  // 繰り返し処理<br>
+	            i = i + 1;  // カウンタ変数の更新<br>
+	        }<br>
+	        Console.WriteLine("last " + i);<br>
+	    }<br>
+	}<br>
+	③参考になるWebページ<br>
+	- while文 - 繰り返し処理 - while (C# リファレンス)<br>
+	https://msdn.microsoft.com/ja-jp/library/2aeyhxcd.aspx<br>
+	- while文の書き方 | 反復処理<br>
+	http://ufcpp.net/study/csharp/st_loop.html<br>
+	- C# によるプログラミング入門<br>
+
+	// whileによるループ処理<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var i = 0;      // カウンタ変数の初期化<br>
+	        while (i <= 5 ) {       // 0,1,2,3,4,5でstop<br>
+	            Console.WriteLine("hell world" + i);    // 繰り返し処理<br>
+	            i = i + 1;      // カウンタ変数の更新<br>
+	        }<br>
+	        Console.WriteLine("last" + i);      //i変数の表示<br>
+	    }<br>
+	}<br>
+	[演習]<br>
+	①演習課題「「ハローpaizaラーニング」と10回表示する」<br>
+	右のコードは、「ハローpaizaラーニング」と表示するプログラムです。whileを使って、「ハローpaizaラーニング」と10回出力するよう修正してください。<br>
+	// whileによるループ処理<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var i = 0;				//i(カウント用)を定義<br>
+	        while (i < 10) {		//iの上限を設定<br>
+	             Console.WriteLine("ハローpaizaラーニング");<br>
+	             i += 1;			//iを増やしていくよう描かないと無限になるため注意<br>
+	        }<br>
+	    }<br>
+	}<br>
+	②演習課題「数値を0から15まで表示する」<br>
+	while命令を使って、0から15まで、数値を一行ずつ表示するプログラムを作成してください。<br>
+	// whileによるループ処理<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var i = 0;<br>
+	        while (i <= 15) {<br>
+	            Console.WriteLine(i);<br>
+	            i += 1;<br>
+	        }<br>
+	        // Console.WriteLine("last" + i);<br>
+	    }<br>
+	}<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/条件によるくり返し処理2 - while.mp4" controls preload muted></video><br>
+	＃02:条件によるくり返し処理2 - while <br>
+	ここでは whileを使ったループ処理について、もう少し学習します。そして、初期値や条件式を変更するとどうなるか試します。<br>
+	①whileによるループ処理の基本形<br>
+	前回同様、省略<br>
+	②作成コード<br>
+	このチャプターで作成した、C# のコードです。<br>
+	// whileによるループ処理２<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var i = 3;  // カウンタ変数の初期化<br>
+	        while(i <= 10) {<br>
+	            Console.WriteLine("hello world " + i);  // 繰り返し処理<br>
+	            i = i + 2;  // カウンタ変数の更新<br>
+	        }<br>
+	        Console.WriteLine("last " + i);<br>
+	    }<br>
+	}<br>
+	③参考になるWebページ<br>
+	前回同様、省略<br>
+
+	// whileによるループ処理２<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var i = 3;  // カウンタ変数の初期化<br>
+	        while(i <= 10) {<br>
+	            Console.WriteLine("hello world " + i);  // 繰り返し処理<br>
+	            i = i + 2;  // カウンタ変数の更新、描かないと無限ループ、注意<br>
+	        }<br>
+	        Console.WriteLine("last " + i);<br>
+	    }<br>
+	}<br>
+	[演習]<br>
+	演習課題「1から10までの偶数を表示する」<br>
+	whileを使って、1から10までの偶数を一行ずつ表示するプログラムを作成してください。<br>
+	// whileによるループ処理２<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	       var i = 2;           // カウンタ初期化<br>
+	        while (i <= 10) {       // ループ条件<br>
+	        Console.WriteLine(i);   // データ出力<br>
+	        i += 2;             // カウントアップ<br>
+	        }<br>
+	    }<br>
+	}<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/RPG の攻撃シーンを作る.mp4" controls preload muted></video><br>
+	＃03:RPG の攻撃シーンを作る <br>
+	ここでは、数値を５から１までカウントダウン表示させるプログラムを作ります。そして、whileの具体例として、RPGの攻撃シーンのようなプログラムを作ってみましょう。<br>
+	①whileによるループ処理の基本形<br>
+	前回同様、省略<br>
+	②自己代入演算子<br>
+	演算子	使用例	意味	別の書き方<br>
+	+=	a += 1	a変数の値を1増加させる。	a = a + 1 と同じ<br>
+	-=	a -= 1	a変数の値を1減少させる。	a = a - 1 と同じ<br>
+	③作成コード<br>
+	このチャプターで作成した、C# のコードです。<br>
+	// whileによるループ処理３<br>
+	//スライムを何度も攻撃<br>
+	//ダメージは、１から１０までランダム<br>
+	//スライムのｈｐが０になるまで繰り返す<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var random = new Random();<br>
+	        var hp = 30;  // カウンタ変数の初期化<br>
+	        var hit = 0;<br>
+	        while(hp >= 1) {<br>
+	            hit = random.Next(1, 11);<br>
+	            Console.WriteLine(hit + "のダメージを与えた！");  // 繰り返し処理<br>
+	            hp -= hit;  // カウンタ変数の更新<br>
+	        }<br>
+	        Console.WriteLine("スライムを倒した");<br>
+	    }<br>
+	}<br>
+	④参考になるWebページ<br>
+	前回同様、省略<br>
+
+	// whileによるループ処理３<br>
+	//スライムを何度も攻撃<br>
+	//ダメージは、１から１０までランダム<br>
+	//スライムのｈｐが０になるまで繰り返す<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var random = new Random();<br>
+	        var hp = 30;        // カウンタ変数の初期化<br>
+	        var hit = 0;<br>
+	        while (hp > 0) {         // 繰り返し処理<br>
+	            Console.WriteLine("現在のスライムのHP：" + hp);<br>
+	            hit = random.Next(1,11);<br>
+	            Console.WriteLine(hit + "のダメージを与えた！");<br>
+	            hp -= hit;      // カウンタ変数の更新<br>
+	        }<br>
+	        Console.WriteLine("スライムを倒した！");<br>
+	    }<br>
+	}<br>
+	[演習]<br>
+	①演習課題「数値を10から1までカウントダウン表示する」<br>
+	whileを使って、10から1まで、数値を一行ずつカウントダウン表示するプログラムを作成してください。<br>
+	// whileによるループ処理３<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var i = 10;<br>
+	        while (i > 0) {<br>
+	            Console.WriteLine(i);<br>
+	            i -= 1;<br>
+	        }<br>
+	    }<br>
+	}<br>
+	②演習課題「数値を20から10までカウントダウン表示する」<br>
+	whileを使って、20から10まで、数値を一行ずつカウントダウン表示するプログラムを作成してください。<br>
+	// whileによるループ処理３<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var i = 20;<br>
+	        while (i >= 10) {<br>
+	            Console.WriteLine(i);<br>
+	            i -= 1;<br>
+	        }<br>
+	    }<br>
+	}<br>
+	③演習課題「数値を20から10までの奇数をカウントダウン表示する」<br>
+	whileを使って、20から10までの奇数を一行ずつカウントダウン表示するプログラムを作成してください。<br>
+	// whileによるループ処理３<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        int i = 20;<br>
+	        while (i >=10) {<br>
+	            if (i % 2 == 1) {       //余りが1==奇数ならif文で表示<br>
+	                Console.WriteLine(i);<br>
+	            }<br>
+	            i -= 1;<br>
+	        }<br>
+	    }<br>
+	}<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/0から5までを表示してみよう - for.mp4" controls preload muted></video><br>
+	＃04:0から5までを表示してみよう - for <br>
+	ここでは、forという繰り返し命令について学習します。そのために、数字を0から4まで表示させてみましょう。<br>
+	①for によるループ処理の基本形<br>
+	// for によるループ処理<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        for(カウンタ変数を初期化; 条件式; カウンタ変数を更新) {<br>
+	             // 繰り返し処理<br>
+	        }<br>
+	    }<br>
+	}<br>
+	②インクリメント演算子<br>
+	前回と同じ、省略<br>
+	③作成コード<br>
+	このチャプターで作成した、C# のコードです。<br>
+	//forによるループ処理<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var i=0;<br>
+	        for(i=0; i<3; i++) {<br>
+	            Console.WriteLine("hello world " + i);   //繰り返し処理<br>
+	        }<br>
+	        Console.WriteLine("last " + i);<br>
+	    }<br>
+	}<br>
+	④参考になるWebページ<br>
+	前回同様、省略<br>
+
+	// forによるループ処理<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var i = 0;<br>
+	        for(var i = 0; i < 3; i++ ) {<br>
+	            Console.WriteLine("hello world " + i);        // 繰り返し処理<br>
+	        }<br>
+	        Console.WriteLine("last" + i);       //for文以外でiを書いてもエラーになる,表示させるにはfor文外でiを定義する<br>
+	    }<br>
+	}<br>
+	[演習]<br>
+	①演習課題「「ハローpaizaラーニング」を10回表示する」<br>
+	右のコードは、「ハローpaizaラーニング」と表示するプログラムです。for命令を使って、「ハローpaizaラーニング」と10回出力するよう修正してください。<br>
+	// forによるループ処理<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        for (var i = 0; i < 10; i++ ) {<br>
+	            Console.WriteLine("ハローpaizaラーニング");<br>
+	        }<br>
+	    }<br>
+	}<br>
+	②演習課題「数値を0から15まで表示する」<br>
+	for命令を使って、0から15まで、数値を一行ずつ表示する出力するプログラムを作成してください。<br>
+	// forによるループ処理<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var i = 0;<br>
+	        for (i = 0; i <= 15; i++ ) {        //iを既に定義している場合はfor文でvarを描かなくて良い<br>
+	            Console.WriteLine(i);<br>
+	        }<br>
+	        //  Console.WriteLine("last" + i);		//デバック用<br>
+	    }<br>
+	}<br>
+	③演習課題「1月から12月まで表示する」<br>
+	for命令を使って、1月から12月まで、一行ずつ表示する出力するプログラムを作成してください。<br>
+	// forによるループ処理<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var i = 1;<br>
+	        for (i = 1; i <= 12; i++ ) {<br>
+	            Console.WriteLine(i + "月");<br>
+	        }<br>
+	    }<br>
+	}<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/繰り返しでHTMLを作成する.mp4" controls preload muted></video><br>
+	＃05:繰り返しでHTMLを作成する <br>
+	ここでは、ループ処理の具体例として、HTMLのプルダウンメニューを作成します。<br>
+	そして、会員登録の入力フォームで、年齢を1歳から100歳まで選択できるようにしましょう。<br>
+	①プルダウン表示の基本形<br>
+	<select name='age'><br>
+	  <option>1才</option><br>
+	  <option>2才</option><br>
+	  <option>3才</option><br>
+	</select><br>
+	②forによるループ処理の基本形<br>
+	// 年齢入力のプルダウン作成<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        for(カウンタ変数を初期化; 条件式; カウンタ変数を更新) {<br>
+	             // 繰り返し処理<br>
+	        }<br>
+	    }<br>
+	}<br>
+	③作成コード<br>
+	このチャプターで作成した、C# のコードです。<br>
+	// 年齢入力のプルダウン作成<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        Console.WriteLine("<select name='age'>");<br>
+	        for(var i=1; i<=100; i++) {<br>
+	            Console.WriteLine("<option>" + i + "歳</option>");<br>
+	        }<br>
+	        Console.WriteLine("</select>");<br>
+	    }<br>
+	}<br>
+
+	// 年齢入力のプルダウン作成<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        Console.WriteLine("<select name='age'>");<br>
+	        for (var i = 1; i <= 100; i++ ) {<br>
+	            Console.WriteLine("<option>" + i + "歳</option>");      //数字をfor文にして簡略化する<br>
+	        }<br>
+	        // Console.WriteLine("<option>1才</option>");<br>
+	        // Console.WriteLine("<option>2才</option>");<br>
+	        // Console.WriteLine("<option>3才</option>");   //全て書いていくのは面倒…<br>
+	        Console.WriteLine("</select>");<br>
+	    }<br>
+	}<br>
+	[演習]<br>
+	演習課題「HTMLの箇条書き表示」<br>
+	右のコードは、HTMLの箇条書きで1から3まで表示するプログラムです。for命令を使って、箇条書きで1から100まで出力するよう修正してください。<br>
+	// HTMLによる箇条書き<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        Console.WriteLine("<ul>");<br>
+	        for (var i = 1; i <= 100; i++ ) {<br>
+	            Console.WriteLine("<li>" + i + "</li>");<br>
+	            // Console.WriteLine("<li>1</li>");<br>
+	            // Console.WriteLine("<li>2</li>");<br>
+	            // Console.WriteLine("<li>3</li>");<br>
+	        }<br>
+	        Console.WriteLine("</ul>");<br>
+	    }<br>
+	}<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/データの入力方法を理解しよう.mp4" controls preload muted></video><br>
+	＃06:データの読み込み（標準入力） <br>
+	ループ処理からちょっと離れて、プログラムの外部からデータを入力する標準入力について学習します。標準入力を使うと、ファイルのデータを読み込んだり、プログラムの実行時にデータを指定したりできます。<br>
+	①標準入力とは<br>
+	もともとはLINUXなどのUnix系OSで用意されていた仕組みです。<br>
+	標準入力に対応するようにプログラムを作っておけば、プログラム実行時に、ファイルを読み込んだり、<br>
+	キーボードからデータを読み込んだり、パラメータを指定したりというように、入力先を切り替えることができます。<br>
+<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/データを読み込んでみよう - 標準入力.mp4" controls preload muted></video><br>
+	＃07:データを読み込んでみよう - 標準入力 <br>
+	ここでは、実際に、C#で標準入力から読み込むプログラムを作成します。標準入力を使うと、ファイルからデータを読み込んだり、プログラムの実行時にデータを受け取ったりできます。
+	①標準入力とは<br>
+	もともとはLINUXなどのUnix系OSで用意されていた仕組みです。<br>
+	標準入力に対応するようにプログラムを作っておけば、プログラム実行時に、ファイルを読み込んだり、キーボードからデータを読み込んだり、パラメータを指定したりというように、入力先を切り替えることができます。<br>
+	②標準入力から文字列の読み込み<br>
+	// 標準入力<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var data = "";<br>
+	        data = Console.ReadLine();<br>
+	        Console.WriteLine(data * 2);<br>
+	    }<br>
+	}<br>
+	③標準入力から数値の読み込み<br>
+	// 標準入力<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var data = 0;<br>
+	        data = int.Parse(Console.ReadLine());<br>
+	        Console.WriteLine(data * 2);<br>
+	    }<br>
+	}<br>
+	④作成コード<br>
+	このチャプターで作成した、C# のコードです。<br>
+	// 標準入力<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var data = 0;				//数字で表示したい時は<br>
+	        data = int.Parse(Console.ReadLine());		//ReadLineの前に「int.Parse」をつける<br>
+	        Console.WriteLine(data*2);<br>
+	    }<br>
+	}<br>
+	⑤参考になるWebページ<br>
+	- キーボードから入力 - ReadLine メソッド<br>
+	https://msdn.microsoft.com/ja-jp/library/system.io.streamreader.readline.aspx<br>
+	- C# によるプログラミング入門 [基礎] 値の入出力<br>
+	http://ufcpp.net/study/csharp/st_consoleio.html<br>
+	⑥チュートリアル問題に挑戦<br>
+	チュートリアル問題にまだ挑戦してないなら、paizaラーニングのトップページからチャレンジしてみましょう。<br>
+	https://paiza.jp/works<br>
+	// 標準入力<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var data = "";<br>
+	        data = Console.ReadLine();<br>
+	        Console.WriteLine(data);<br>
+	    }<br>
+	}<br>
+	[演習]<br>
+	①演習課題「標準入力からテキストを取得する」<br>
+	標準入力から文字列を1行取得して、テキストを出力するプログラムを作成してください。読み込む文字列には、空白やタブは含まれません。<br>
+	// 標準入力<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        var data = "";          //白紙にしておく<br>
+	        data = Console.ReadLine();     //ReadLineで入力を読み込む値をdataに代入<br>
+	        Console.WriteLine(data);        //読み込んだ値を表示<br>
+	    }<br>
+	}<br>
+	②演習課題「標準入力から数値を取得して計算する」<br>
+	標準入力から整数データを1行取得して、100倍にした結果を出力するプログラムを作成してください。<br>
+	// 標準入力<br>
+	using System;<br>
+	public class Program{<br>
+	    public static void Main(){<br>
+	        int data = 0;       //数字を読み込むためint型にしておく<br>
+	        data = int.Parse(Console.ReadLine());   //int.Parseで整数方を読み込む<br>
+	        Console.WriteLine(data * 100);<br>
+	    }<br>
+	}<br>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/複数データを読み込んでみよう.mp4" controls preload muted></video><br>
+	＃08:複数データを読み込んでみよう <br>
+	標準入力を使って、複数のデータを読み込む方法を学びます。そのために、標準入力にループ処理を組み合わせます。<br>
+	①Dランクになっちゃおう!!<br>
+	ここまでの知識でDランク問題にチャレンジできます!! 問題を解いて君もDランクになっちゃおう!!<br>
+	- 【paizaスキルチェック】D031:分から秒へ<br>
+	https://paiza.jp/challenges/105/ready<br>
+	② 標準入力からデータを読み込む基本形<br>
+	// 標準入力とループ処理<br>
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var data = "";
+	        data = Console.ReadLine();
+	        Console.WriteLine("hello " + data );
+	    }
+	}
+	③作成コード
+	このチャプターで作成した、C# のコードです。
+	// 標準入力とループ処理
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var count = 0;
+	        count = int.Parse(Console.ReadLine());
+	//        Console.WriteLine("データ個数 " + count );
+	        var data = "";
+	        for( var i=0; i< count; i++) {
+	            data = Console.ReadLine();
+	            Console.WriteLine(data + "は、スライムを攻撃した");
+	        }
+	    }
+	}
+
+	// 標準入力とループ処理
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var count = 0;
+	        count = int.Parse(Console.ReadLine());
+	        Console.WriteLine("パーティーメンバー:" + count);
+	        var data = "";
+	        for (var i = 0; i < count; i++) {       //iを0に、iがcountの個数になるまで実行、1ずつ増やす
+	            data = Console.ReadLine();          //ReadLineで入力データを読み込む
+	            Console.WriteLine(data + "は、スライムを攻撃した"); //WriteLineで表示する
+	        }
+	        // var data = "";
+	        // data = Console.ReadLine();
+	        // Console.WriteLine("hello " + data );
+	        // data = Console.ReadLine();
+	        // Console.WriteLine("hello " + data );    //ちなみに２行にすると複数入力行を表示できる
+	    }
+	}
+	[演習]
+	①演習課題「同じテキストを指定回数出力する」
+	標準入力から整数が1つ与えられます。for命令を使って、その整数回分「スライムがあらわれた」と出力するプログラムを作成してください。
+	// 標準入力とループ処理
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var count = 0;
+	        count = int.Parse(Console.ReadLine());
+	        for (var i = 0; i < count; i++) {
+	           Console.WriteLine("スライムがあらわれた"); 
+	        }
+	    }
+	}
+	②演習課題「標準入力とfor文の組み合せ」
+	標準入力で2つ（２行）の整数が与えられます。1つ目の数値から２つ目の数値までを、1ずつ増加させながら、1行ずつ順番に出力するプログラムを作成してください。
+	// 標準入力とループ処理
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var num1 = 0;
+	        var num2 = 0;
+	        num1 = int.Parse(Console.ReadLine());   //ReadLineでもってくる
+	        num2 = int.Parse(Console.ReadLine());   //ここ2つは繰り返し文できそう
+	        for(var i = num1; i < num2; i++) {      //iをnum1にする、num2まで、1ずつ増加
+	            Console.WriteLine(num1 ++ );        //num1を1ずつ増やしていく
+	        }
+	        Console.WriteLine(num2);
+	    }
+	}
+	③演習課題「指定行数分、標準入力を取得する」
+	入力エリアでは、1行目にデータの個数が整数で示され、2行目以降に実際の文字列データが示されています。
+	入力エリアからデータを取得して、2行目以降の文字列データを出力するプログラムを作成してください。2行目以降の文字列データは、空白やタブは含まれません。
+	// 標準入力とループ処理
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var count = 0;
+	        count = int.Parse(Console.ReadLine());  //１行目の個数を取得
+	        Console.WriteLine(count);               //個数表示
+	        var data = "";                          //dataを空にしておく
+	        for (var i = 0; i < count; i++) {
+	            data = Console.ReadLine();          //dataに2行目以降の入力値を加える
+	            Console.WriteLine(data);            //表示、for文に戻る
+	        }
+	    }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	D022:表面積の計算<br>
+	六面体の辺の長さ a が入力されるので表面積を出力して下さい。辺の長さ a の正六面体の表面積は以下の式で求められます。<br>
+	public class Hello{
+	    public static void Main(){
+	        // 自分の得意な言語で
+	        // Let's チャレンジ！！
+	        int line = int.Parse(System.Console.ReadLine());
+	        System.Console.WriteLine(6 * line * line);
+	    }
+	}
+	Clear!!
+	受験結果 受験言語： C# 解答時間： 3分45秒 バイト数： 229 Byte スコア： 100点
+	問題集計 受験者数： 34,378人 正解率： 95.2％ 平均解答時間： 3分43秒 平均スコア： 93.06点 難易度： 899 ±3
 
 </div>
 
 <div style="padding: 100px 0 100px 0;">
-	<video src="assets/videos/コメントでプログラムを見やすく！.mp4" controls preload muted></video><br>
-</div>
+	<video src="assets/videos/西暦年と平成年の対応表を作る.mp4" controls preload muted></video><br>
+	＃09:西暦年と平成年の対応表を作る 
+	ループ処理の具体例として、西暦年と平成年の対応表を作ります。今回は、ひとつの年だけではなく、1989年から2017年まで全ての年を出力します。
+	①forによるループ処理の基本形
+	// forによるループ処理
+	using System;
+	public class Program{
+	    public static void Main(){
+	        for(カウンタ変数を初期化; 条件式; カウンタ変数を更新) {
+	             // 繰り返し処理
+	        }
+	    }
+	}
+	②西暦年／平成年の計算方法
+	平成年から西暦年を求めるには、平成年に「1988」を足します
+	　西暦年 = 平成年 + 1988
+	　例)
+	　平成1年に「1988」を足すと、1989 > 平成1年は1989年。
+	　平成2年に「1988」を足すと、1990 > 平成2年は1990年。
+	　平成3年に「1988」を足すと、1990 > 平成3年は1991年。
+	西暦年から平成年を求めるには、これとは逆に、西暦年から「1988」を引きます。
+	　平成年 = 西暦年 + 1988
+	　例)
+	　西暦1989年から「1988」を引くと、1 > 1989年は平成1年。
+	　西暦1990年から「1988」を引くと、2 > 1990年は平成2年。
+	　西暦1991年から「1988」を引くと、3 > 1991年は平成3年。
+	③作成コード
+	このチャプターで作成した、C# のコードです。
+	// 西暦年と平成年の対応表を作る
+	// 1989年から2017年までをループで出力
+	// ループ内で、各西暦年を平成年に変換
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var seireki=0;
+	        var heisei=0;
+	        for( seireki=1989; seireki<=2017; seireki++)
+	        {
+	            Console.Write("西暦 " + seireki + "年は、");
+	            heisei = seireki - 1988;
+	            Console.WriteLine("平成 " + heisei + "年");
+	        }
+	    }
+	}
+	// 西暦年と平成年の対応表を作る
+	// 1989年から2017年までをループで出力
+	// ループ内で、各西暦年を平成年に変換
+	using System;
+	public class Program{
+	    public static void Main(){
+	        var seireki = 0;
+	        var heisei = 0;
+	        var reiwa = 0;
+	        for (seireki = 1989; seireki <= 2020; seireki++) {
+	            Console.Write("西暦" + seireki + "年は、");
+	            heisei = seireki - 1988;
+	            Console.Write("平成" + heisei + "年");
+	            if (seireki >= 2019) {              //オリジナル、令和版をif文で作る
+	                reiwa = seireki - 2018;
+	                Console.WriteLine("、または令和" + reiwa + "年");
+	            } else {
+	                Console.WriteLine("");          //異なるならば改行するのみ
+	            }
+	        }
+	    }
+	}
+	[演習]
+	①演習課題「西暦年と昭和年の対応表を作ろう」
+	西暦年と昭和年の対応表を作成してください。対応表は、「西暦XXXX年は昭和YY年」と表示します。
+	なお、昭和年は、西暦1926年から西暦1988年までの期間で、「西暦年 - 1925」で求めることができます。
+	// 西暦年と昭和年の対応表
+	// 1926年から1988年までをループで出力
+	// ループ内で、各西暦年を昭和年に変換
+	using System;
+	public class Program{
+	    public static void Main(){
+	       var seireki = 0;
+	       var showa = 0;
+	       for (seireki = 1926; seireki <= 1988; seireki++  ) {			//seireki=1926でスタートする、iじゃなくてOK
+	           Console.Write("西暦" + seireki + "年は");
+	           showa = seireki - 1925;
+	           Console.WriteLine("昭和" + showa + "年");
+	       }
+	    }
+	}
+	②演習課題「特定期間の西暦年と昭和年の対応表を作ろう」
+	標準入力から、1行目に西暦年、2行目に期間が与えられます。この西暦年から始まる、期間分の「西暦年と昭和年の対応表」を出力するプログラムを作成してください。
+	対応表の各行は、「西暦XXXX年は昭和YY年です」と表示します。昭和年は、西暦1926年から西暦1988年までで、「西暦年 - 1925」で求めることができます。
+	なお。与えられる西暦年は、昭和年に対応しています。年数も、昭和年を超えることはありません。
+	// 特定期間の西暦年と昭和年の対応表を作る
+	// 1行目：開始年
+	// 2行目：期間
+	// 昭和年 = 西暦年 - 1925
+	// 出力：西暦XXXX年は昭和YY年です
 
-<div style="padding: 100px 0 100px 0;">
-	<video src="assets/videos/コメントでプログラムを見やすく！.mp4" controls preload muted></video><br>
+	using System;
+	public class Program{
+	    public static void Main(){
+	    var seireki = 0;
+	    var showa = 0;
+	    var count = 0;
+	    seireki = int.Parse(Console.ReadLine());
+	    count = int.Parse(Console.ReadLine());
+	    for (var i = 0; i < count; i++ ) {
+	        Console.Write("西暦" + seireki + "年は");
+	        showa = seireki - 1925;
+	        Console.WriteLine("昭和" + showa + "年です");
+	        seireki++;
+	        showa++;			//どちらも１ずつ増やす
+	    }
+	    }
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">

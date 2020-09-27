@@ -12,4 +12,7 @@ class PaizaController < ApplicationController
 	def csharp_part4
 	end
 
+	def csharp_part5
+	end
+
 end
