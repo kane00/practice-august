@@ -4,10 +4,380 @@
 	prev→<%= link_to 'Paiza/C#コース3', csharp_part3_path %>
 </div>
 
-
+<h1>Paiza C#コース4  C#入門編4: 配列の基礎</h1>
 
 <div style="padding: 100px 0 100px 0;">
-	<video src="assets/videos/コメントでプログラムを見やすく！.mp4" controls preload muted></video><br>
+	<video src="assets/videos/配列とは何かを学ぼう.mp4" controls preload muted></video><br>
+	＃01:配列とは何かを学ぼう
+	ここでは、プログラミング言語 C# を使って、規模が大きなプログラムを作るときに必要になる配列にについて、基本的な考え方を学習しましょう。
+	①配列の使いどころ
+	・並び順管理が必要なデータ処理
+	・エクセルのような複数業のデータ処理
+	・フォーム等の選択肢の管理（性別、都道府県、etc）
+	・座席の空席管理
+	・CSVデータの処理（二次元配列、連想配列）
+	・将棋のような盤面の表現（二次元配列）
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/配列を作ろう.mp4" controls preload muted></video><br>
+	＃02:配列を作ろう 
+	ここでは、配列の基本操作について学びます。そして、C# (シーシャープ)を使って、配列の作成、表示、代入といった機能を試してみましょう。
+	①配列の作成
+	string[] team = {"戦士", "忍者", player_2};
+	②このチャプターで使用したメソッド
+	- String.join データを連結します。
+	https://msdn.microsoft.com/ja-jp/library/57a79xd0.aspx
+	③参考になるWebページ
+	- 【C#】表示メソッドについて
+	https://msdn.microsoft.com/ja-jp/library/system.console.aspx
+	// 配列を作ろう
+	using System;
+	public class Hello{
+	    public static void Main(){
+	        var player_1 = "勇者";
+	        var player_2 = "魔法使い";
+	        Console.WriteLine(player_1);
+	        Console.WriteLine(player_2);
+	        string[] team = {"戦士", "忍者", player_2};       //配列の要素、[]は必ず、要素は{}で囲む、同じ型しかできない
+	        Console.WriteLine(string.Join("・",team));  //配列をまとめて出力
+	        Console.WriteLine(team[0]);
+	        Console.WriteLine(team[1]);
+	        Console.WriteLine(team[2]);             //player_2も加えられる
+	    }
+	}
+	[演習]
+	①演習課題「配列の中身を出力してみよう」
+	右のコードには、配列が定義されています。	この配列の要素をWriteLineメソッドを使って順に表示してみてください。
+	// 配列の中身を出力してみよう
+	using System;
+	public class Program{
+	    public static void Main(){
+	        string[] array = {"戦士","侍","僧侶","魔法使い"};
+	        // この下で、arrayの要素を表示しよう
+	        for (var i = 0; i < 4; i++) {
+	            Console.WriteLine(array[i]);		//繰り返す所をfor文で代用
+	        }
+	    }
+	}
+	②演習課題「指定の文字を配列にしてみよう」
+	item という配列に、下記の要素をこの並び順で代入して、WriteLineメソッドで要素を順に出力をしてください。
+	「ロングソード」「ブレードソード」「エクスカリバー」
+	// 指定の文字を配列にする
+	using System;
+	public class Program{
+	    public static void Main(){
+	        string[] item = {"ロングソード", "ブレードソード", "エクスカリバー"};
+	        Console.WriteLine(item[0]);
+	        Console.WriteLine(item[1]);
+	        Console.WriteLine(item[2]);
+	    }
+	}
+	③ 演習課題「変数で、配列に代入しよう」
+	右のコードには、player_1, player_2, player_3という変数に、文字列が代入されています。
+	このplayer_1, player_2, player_3を、この順番で配列に代入して、WriteLineメソッドで要素を順に表示してください。
+	// 変数で、配列に代入する
+	using System;
+	public class Program{
+	    public static void Main(){
+	        string player_1 = "勇者";
+	        string player_2 = "魔法使い";
+	        string player_3 = "戦士";
+	        // player_1, player_2, player_3を、配列に代入して、WriteLineメソッドで表示してください。
+	        string[] hunter = {player_1, player_2, player_3};
+	        for (var i = 0; i < 3; i++) {
+	            Console.WriteLine(hunter[i]);
+	        }
+	    }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/配列の要素を取り出してみよう.mp4" controls preload muted></video><br>
+	＃03:配列の要素を取り出してみよう 
+	ここでは、配列の要素をいろいろな方法で取り出してみます。配列では、インデックスを使って要素を取り出します。
+	また、そのインデックスは変数で指定したり、計算して指定できます。
+	①このチャプターで使用したメソッド
+	配列の参照　要素の番号を指定する
+	・　team[0] 直接数値で指定する
+	・　team[n] 変数で指定する
+	・　s[n + 1] 計算式で指定する
+	②参考になるWebページ
+	配列 (C# プログラミング ガイド)
+	https://msdn.microsoft.com/ja-jp/library/9b9dty7d.aspx
+	配列 - C# 入門
+	http://ufcpp.net/study/csharp/st_array.html
+
+	// 配列を要素を取り出してみよう
+	using System;
+	public class Program{
+	    public static void Main(){
+	        string[] team = {"勇者", "魔法使い"};
+	        Console.WriteLine(string.Join("・", team));     //デバックでも使うJoin
+	        team = new string[2];       //新しくteamを上書き
+	        team[0] = "戦士";
+	        team[1] = "忍者";
+	        var number = 0;
+	        Console.WriteLine(team[number + 10]);        //計算でもOK、データ型のみ気をつけること
+	        //C#ではindexの範囲外は表示できないようになっている
+	    }
+	}
+	[演習]
+	①演習課題「配列から最初の要素を取り出してみよう」
+	右のコードエリアには、5つの要素を持つ配列が定義されています。この配列の最初の要素(インデックスが0の要素)をWriteLineメソッドで出力してください。
+	// 配列から特定要素を取り出す
+	using System;
+	public class Program{
+	    public static void Main(){
+	        string[] team = {"勇者", "戦士", "侍", "忍者", "魔法使い"};
+	        // teamの1番左の要素をWriteLineメソッドで出力する
+	        Console.WriteLine(team[0]);
+
+	    }
+	}
+	②演習課題「配列から特定要素を取り出してみよう」
+	右のコードエリアには、5つの要素を持つ配列が定義されています。この配列のインデックスが2の要素をWriteLineメソッドで出力してください。
+	// 配列から特定要素を取り出す
+	using System;
+	public class Program{
+	    public static void Main(){
+	        string[] team = {"勇者", "戦士", "侍", "忍者", "魔法使い"};
+	        // teamのインデックス 2の要素をWriteLineメソッドで出力する
+	        Console.WriteLine(team[2 + 0]);			//計算式OK
+	    }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/ループで配列を処理しよう.mp4" controls preload muted></video><br>
+	＃04:ループで配列を処理しよう
+	ここでは、ループ処理で配列を扱ってみたいと思います。
+	そのために、C#（シーシャープ）のfor（フォー）文と配列を組み合わせて、HTMLのプルダウンリストを作成します。
+	①ループで配列を扱う
+	string[] team = {"勇者", "戦士","魔法使い", "盗賊"};
+	for(var i=0; i<4; i++){
+	    Console.WriteLine(team[i]);
+	}
+	②配列の長さの取得
+	配列名.Length
+	③文字列の結合
+	string a = "aaa"
+	string b = "bbb"
+	Console.WriteLine(a+b+"です")
+	//aaabbbです
+	paizaラーニング - C#入門01 ＃09：データの型を覚えよう
+	https://paiza.jp/works/cs/primer/beginner-cs1/13008
+	④参考になるWebページ
+	前回と同様、省略
+
+	// 配列の要素を取り出してみよう
+	using System;
+	public class Program{
+	    public static void Main(){
+	        string[] team = {"勇者", "戦士", "魔法使い", "盗賊"};
+	        // Console.WriteLine(team[0]);
+	        // Console.WriteLine(team[1]);
+	        // Console.WriteLine(team[2]);
+	        Console.WriteLine("<select name='job'>");       //selectがプルダウン式
+	        for (var i = 0; i < team.Length; i++) {       //「配列名.Length」は配列の長さを習得
+	            Console.WriteLine("<option>" + team[i] + "</option>");      //optionがプルダウンの中身
+	        }
+	        Console.WriteLine("</select>");
+	    }
+	}
+	[演習]
+	①演習課題「配列の中身を1行ずつ表示してみよう」
+	右のコードエリアには、RPGの敵が、enemy配列で定義されています。	この配列から要素を順に取り出して、「＊＊が現れた」と出力してください。
+	// 配列の中身をループで表示する
+	using System;
+	public class Program{
+	    public static void Main(){
+	        string[] enemy = {"スライム", "モンスター", "ゾンビ", "ドラゴン", "魔王"};
+	        // ここに、要素をループで表示するコードを記述する
+	        for (var i=0; i < enemy.Length; i++) {
+	            Console.WriteLine(enemy[i] + "が現れた");
+	        }
+	    }
+	}
+	②演習課題「要素を合計を計算してみよう」
+	右のコードエリアでは、numbers配列に数値が格納されています。この全要素の合計値を計算して出力してください。
+	// 要素を合計を計算する
+	using System;
+	public class Program{
+	    public static void Main(){
+	        int[] numbers = {12, 34, 56, 78, 90};
+	        int sum = 0;
+	        for (int i = 0; i < numbers.Length; i++) {
+	            // ここに、合計を計算するコードを記述する
+	            sum += numbers[i];      //+=でsumにプラスしていく
+	        }
+	        Console.WriteLine(sum);
+	    }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/ループで配列を処理しよう その2.mp4" controls preload muted></video><br>
+	＃05:ループで配列を処理しよう その2 
+	引き続き、ループ処理の配列処理を扱っていきます。今回はforeach文を使います。
+	①配列の長さの取得
+	配列名.Length
+	②foreachループで配列を扱う
+	 string[] team = {"勇者", "戦士", "魔法使い"};
+	 foreach (string job in team){
+	     Console.WriteLine( job );
+	 }
+	 ③参考になるWebページ
+	- foreach - C#によるプログラミング入門- MSDN - Microsoft
+	http://ufcpp.net/study/csharp/sp_foreach.html
+	- foreach,in(C#リファレンス) - MSDN - Microsoft
+	https://msdn.microsoft.com/ja-jp/library/ttw7t8t6.aspx
+
+	using System;
+	using System.Collections;
+	public class Hello{
+	    public static void Main(){
+	        string [] team = {"勇者", "戦士", "魔法使い"};
+	        // Console.WriteLine(team.Length);
+	        // for (int i = 0; i < team.Length; i++ ) {
+	        //     Console.WriteLine(team[i]);
+	        // }   
+	        foreach(string job in team){        //jobはループ内で使う変数、取り出したい変数をinの後に
+	            Console.WriteLine(job);         //全ての要素に処理を行うループ文
+	        }
+	    }
+	}
+	[演習]
+	①演習課題「配列の中身を1行ずつ表示してみよう」
+	右のコードエリアには、RPGの敵が、enemy配列で定義されています。foreachで、この配列から要素を順に取り出して、「＊＊が現れた」と出力してください。
+	// 配列の中身をループで表示する
+		using System;
+		public class Program{
+		    public static void Main(){
+		        string[] enemy = {"スライム", "モンスター", "ゾンビ", "ドラゴン", "魔王"};
+		        // ここに、要素をループで表示するコードを記述する
+		        foreach (string i in enemy) {       //stringの後ろはなんでもいい
+		            Console.WriteLine(i + "が現れた");
+		        }
+		    }
+		}
+	②演習課題「要素を合計を計算してみよう」
+	右のコードエリアでは、numbers配列に数値が格納されています。foreachで、この全要素の合計値を計算して出力してください。
+	// 要素を合計を計算する
+	using System;
+	public class Program{
+	    public static void Main(){
+	        int[] numbers = {12, 34, 56, 78, 90};
+	        int sum = 0;
+	        foreach (int i in numbers){
+	            // ここに、合計を計算するコードを記述する
+	            sum += i;       //iにするだけでnumbers[i]を記入せずよくなる
+	        }
+	        Console.WriteLine(sum);
+	    }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/Listクラスを使おう.mp4" controls preload muted></video><br>
+	＃06:Listクラスを使おう 
+	ここでは、作った配列をListの構文に変換し、その後、要素の追加を行っていきます。
+	①Listクラスの使用
+	using System.Collections.Generic;
+	var team = new List<　string　>();
+	team.Add("勇者");
+	team.Add("戦士");
+	team.Add("魔法使い");
+	foreach(string str in team){
+	    Console.WriteLine(str);
+	}
+	②このチャプターで使用したメソッド
+	- ArrayList.Add メソッド (Object) (System.Collections)- MSDN - Microsoft
+	https://msdn.microsoft.com/ja-jp/library/system.collections.arraylist.add(v=vs.110).aspx
+	- ArrayList.Insert メソッド (Int32, Object) (System.Collections)- MSDN - Microsoft
+	https://msdn.microsoft.com/ja-jp/library/system.collections.arraylist.insert(v=vs.110).aspx
+	- ArrayList.Remove メソッド (Object) (System.Collections)- MSDN - Microsoft
+	https://msdn.microsoft.com/ja-jp/library/system.collections.arraylist.remove(v=vs.110).aspx
+	③参考になるWebページ
+	- ArrayList クラス (System.Collections)
+	https://msdn.microsoft.com/ja-jp/library/system.collections.arraylist(v=vs.110).aspx
+
+	//Listクラスを使おう
+	using System;
+	using System.Collections.Generic;     	 	//Listを使うための準備
+	public class Program{
+	    public static void Main(){
+	        var team = new List< string >();
+	        team.Add("勇者");                  	 //Addメソッドで追加していく
+	        // Console.WriteLine(team.Count);	 //要素が追加されるたびに数が増えているか確認
+	        team.Add("戦士");
+	        // Console.WriteLine(team.Count);
+	        team.Add("魔法使い");
+	        // Console.WriteLine(team.Count);
+	        team.Insert(1,"忍者"); 	    	    //Insertで要素を追加できる
+	        team.Remove("戦士");    		        //Removeで要素を削除できる
+	        foreach(string str in team) {
+	            Console.WriteLine(str);
+	        }
+	    }
+	}
+	[演習]
+	①演習課題「Listに要素を追加してみよう」
+	右のコードエリアには、weaponというListが定義されています。このListに「木の棒」「鉄の剣」「石斧」という要素を追加してください。
+	// Listに要素を追加する
+	using System;
+	using System.Collections.Generic;
+	public class Hello{
+	    public static void Main(){
+	        var weapon = new List<　string　>();
+	        // ここに、要素を追加するコードを記述する
+	            weapon.Add("木の棒");
+	            weapon.Add("鉄の剣");
+	            weapon.Add("石斧");
+	        foreach (string item in weapon){
+	            Console.WriteLine(item);
+	        }
+	    }
+	}
+	②演習課題「Listから要素を削除してみよう」
+	右のコードエリアには、4つの要素を持つweaponというListが定義されています。このListの要素から "鉄の剣" を削除してください。
+	// Listの要素を削除する
+	using System;
+	using System.Collections.Generic;
+	public class Hello{
+	    public static void Main(){
+	        var weapon = new List< string >();
+	        weapon.Add("木の棒");
+	        weapon.Add("鉄の棒");
+	        weapon.Add("鉄の剣");
+	        weapon.Add("銅の剣");
+	        // ここに、要素を削除するコードを記述する
+	        weapon.Remove("鉄の剣");
+	        foreach (string item in weapon){
+	            Console.WriteLine(item);
+	        }
+	    }
+	}
+	③演習課題「Listの要素数を出力してみよう」
+	右のコードエリアには、weaponというListが定義されています。このListの要素数を出力してください。
+	// Listの要素の個数を出力する
+	using System;
+	using System.Collections.Generic;
+	public class Hello{
+	    public static void Main(){
+	        var weapon = new List< string >();
+	        weapon.Add("木の棒");
+	        weapon.Add("鉄の棒");
+	        weapon.Add("鉄の剣");
+	        weapon.Add("石斧");
+	        weapon.Add("エクスカリバー");
+	        // ここに、要素数を出力するコードを記述する
+	        Console.WriteLine(weapon.Count);        //要素数を確認するときは.Count
+	    }
+	}
+</div>
+
+
 </div>
 
 <div style="padding: 100px 0 100px 0;">
