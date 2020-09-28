@@ -22,6 +22,7 @@ Rails.application.routes.draw do
   get 'csharp_part3' => 'paiza#csharp_part3'
   get 'csharp_part4' => 'paiza#csharp_part4'
   get 'csharp_part5' => 'paiza#csharp_part5'
+  get 'csharp_part6' => 'paiza#csharp_part6'
 
   root 'posts#index'
 end
