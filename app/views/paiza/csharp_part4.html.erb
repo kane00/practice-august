@@ -377,6 +377,317 @@
 	}
 </div>
 
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/splitで文字列を分割しよう.mp4" controls preload muted></video><br>
+	＃07:splitで文字列を分割しよう 
+	ここでは、split処理で文字列を区切って、配列に代入してみたいと思います。
+	①このチャプターで使用したメソッド
+	Splitメソッド　分割した文字列
+	    data.Split(',');
+	②考になるWebページ
+	方法: String.Split を使用して文字列を解析する (C# プログラミング ガイド)
+	https://msdn.microsoft.com/ja-jp/library/ms228388.aspx
+	String.Split メソッド (Char[]) (System)
+	https://msdn.microsoft.com/ja-jp/library/b873y76a(v=vs.110).aspx
+
+	// splitで文字列を分割してみよう
+	using System;
+	using System.Collections.Generic;
+	public class Hello{
+	    public static void Main(){
+	        var data = Console.ReadLine();
+	        Console.WriteLine(data);        //「,」で区切られているデータ類をCSV
+	        string[] array = data.Split(',');   //「,」があったらその前の文字列を1要素として入れる、「,」は加えない
+	        foreach (var str in array) {
+	            Console.WriteLine(str);
+	        }
+	    }
+	}
+	[演習]
+	演習課題「文字列をカンマで分割してみよう」
+	右のコードエリアには、teamという文字列に、RPGのプレイヤーが、カンマで区切られて代入されています。
+	この文字列を、Splitメソッドを使って カンマのところで分割してください。
+	// 文字列をカンマで分割する
+	using System;
+	using System.Collections.Generic;
+	public class Program{
+	    public static void Main(){
+	        var team = "勇者,戦士,忍者,魔法使い";
+	        // ここに文字列を分割するコードを記述する
+	        string[] array = team.Split(',');
+	        foreach (var str in array) {
+	            Console.WriteLine(str);
+	        }
+	    }
+	}
+	②演習課題「英文の単語数を数えよう」
+	右のコードエリアには、ある英文がstrという文字列に代入されています。
+	この文字列を、Splitメソッドを使って、スペースのところで分割して、単語の数を出力してください。
+	// 英文の単語数を数える
+	using System;
+	using System.Collections.Generic;
+	public class Program{
+	    public static void Main(){
+	        string str = "One cold rainy day when my father was a little boy he met an old alley cat on his street";
+	        // ここに文字列を分割するコードを記述する
+	        string[] asobi = str.Split(' ');		//Split(' ')で半角スペースの時要素に入れる
+	        int count = asobi.Length;				//Listの際はCount??
+	        Console.WriteLine(count);
+	    }
+	}
+	③演習課題「標準入力から読み込んだURLを分割しよう」
+	右のコードエリアのプログラムは、入力エリアのURLを読み込みます。
+	読み込んだURLを「/」で分割して、配列の各要素をWriteLineメソッドで出力してください。
+	// 標準入力から読み込んだURLを分割する
+	// https://paiza.jp/cgc/users/ready
+	using System;
+	using System.Collections.Generic;
+	public class Hello{
+	    public static void Main(){
+	        var url_str = Console.ReadLine();
+	        // ここに文字列を分割するコードを記述する
+	        string[] url = url_str.Split('/');
+	        foreach (var s in url) {            //sは処理内で使う文字列
+	            Console.WriteLine(s);
+	        }
+	    }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/代入式について詳しく学ぶ.mp4" controls preload muted></video><br>
+	＃08:代入式について詳しく学ぶ 
+	前回はカンマ区切りで複数のデータを取得しました。今回は代入式の仕組みを理解しながら、取得したデータを利用しましょう。
+	① 代入式の評価
+	var moji = "";
+	if( (moji = Console.ReadLine()) != null ) {
+	    Console.WriteLine("文字が入力されたね！");
+	} else {
+	    Console.WriteLine("残念入力なし");
+	}
+	②参考になるWebページ
+	- C#入門/代入演算子 - WisdomSoft
+	http://www.wisdomsoft.jp/65.html
+	- C#　演算子 - MSDN - Microsoft
+	https://msdn.microsoft.com/ja-jp/library/6a71f45d.aspx
+	- if-else (C# リファレンス) - MSDN - Microsoft
+	https://msdn.microsoft.com/ja-jp/library/5011f09h.aspx
+
+	//代入式について詳しく学ぶ
+	using System;
+	using System.Collections;
+	public class Hello{
+	    public static void Main(){
+	        // var a = 0;
+	        // var b = 100;
+	        // var c = 200;
+	        // a = b = c;          //一番右側の値が優先される
+	        // Console.WriteLine("aの中身は" + a);
+	        // var d = "";
+	        // var e = "騎士";
+	        // var f = "勇者";
+	        // d = (e = f) + "さん";            //e→fになってd→f、その後に"さん"がプラス
+	        // Console.WriteLine("dの中身は" + d);
+	        // var g = true;
+	        // var h = "戦士";
+	        // g = (h == "勇者");                          //hが勇者ならgに代入する
+	        // Console.WriteLine("g の中身は、" + g);      //hは勇者ではなかったためFalse、「h !=」だったらTrue
+	        // if ( g ){                                   //gがtrueなら処理する
+	        //     Console.WriteLine("実行されたかな？");
+	        // } else {                                    //gがFalseなら処理する
+	        //     Console.WriteLine("残念入力なし");
+	        // }
+	        // 順番に使ってみる
+	        var moji = "";
+	        var hikaku = false;
+	        // moji = Console.ReadLine();
+	        hikaku = (moji != null);                 //mojiが空でないならhikakuに代入
+	        if( (moji = Console.ReadLine()) != null ) {       //ReadLineをひとつにまとめる
+	            Console.WriteLine("文字が入力されたね！");
+	        } else {
+	            Console.WriteLine("入力なし");
+	        }
+	    }
+	}
+	[演習]
+	① 演習課題「代入式の順番を理解しよう」
+	右のコードエリアには、a、b、cの変数に、それぞれ数値が代入されています。全ての変数と、代入式を上手く使って、aの値が200になるようにしてください。
+	//代入式の順番のしくみ
+	using System;
+	using System.Collections;
+	public class Program{
+	    public static void Main(){
+	        var a =  50;
+	        var b = 200;
+	        var c = 100;
+	        // ここにaの中身が200になるようにコードを記述する
+	        a = c = b;
+	        Console.WriteLine("aの中身は" + a);
+	    }
+	}
+	②演習課題「括弧を使った代入式の順番を理解しよう」
+	右のコードエリアには、d、e、f、gの変数に、それぞれ文字列が代入されています。
+	全ての変数と、代入式と、括弧を上手く使って、出力される値が魔法使い侍になるようにしてください。
+	//括弧を使った代入式の順番の仕組み
+	using System;
+	using System.Collections;
+	public class Program{
+	    public static void Main(){
+	        var d = "戦士";
+	        var e = "魔法使い";
+	        var f = "忍者";
+	        var g = "侍";
+	        // ここにdの中身が魔法使い侍になるようにコードを記述する
+	        d = ( f = e ) + g;          //e→fに代入(fはe)、表示は左側
+	        Console.WriteLine("dの中身は" + d);
+	    }
+	}
+	③演習課題「ifを使った代入式を理解しよう」
+	右のコードエリアには、g、hの変数に、それぞれ文字列と条件が代入されています。括弧の中を埋めて、値が出力されるようにしてください。
+	//ifを使った代入式の仕組み
+	using System;
+	using System.Collections;
+	public class Program{
+	    public static void Main(){
+	        var g = false;
+	        var h = "勇者";
+	        // ここに勇者を識別するコードを記述する
+	        g = ( h == "勇者" );        //hが勇者だったらgに代入
+	        if( g ){
+	            Console.WriteLine(g + " あなたは勇者だ");
+	        }
+	    }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/複数行データを読み込んでみよう.mp4" controls preload muted></video><br>
+		09:複数行データを読み込んでみよう
+	このチャプターでは複数行データをリストに入れます。
+	while文と組み合わせながら、読み込みについて学んでいきます。
+	①複数行データの読み込み
+	var team = new List<　string　>();
+	string line;
+	while ((line=Console.ReadLine()) != null) {
+	    team.Add("hello " + line);
+	}
+	foreach(var str in team) {
+	     Console.WriteLine(str);
+	}
+	②参考になるWebページ
+	- C#でテキストファイルから1行ずつ読み込んで配列に格納する
+	http://yhei.hatenablog.com/entry/2015/09/25/163213
+	- List(T) クラス (System.Collections.Generic) - MSDN - Microsoft
+	https://msdn.microsoft.com/ja-jp/library/6sh2ey19(v=vs.110).aspx
+	- while (C# リファレンス) - MSDN - Microsoft
+	https://msdn.microsoft.com/ja-jp/library/2aeyhxcd.aspx
+
+	using System;
+	using System.Collections.Generic;       //Listを使う準備
+	public class Program{
+	    public static void Main(){
+	        // var moji = "";
+	        // if( (moji = Console.ReadLine()) != null ) {			//入力内容をmojiに代入、それがnullでないなら
+	        //     Console.WriteLine("文字が入力されたね！");
+	        // } else {
+	        //     Console.WriteLine("残念入力なし");
+	        // }
+	        var team = new List< string >();		//Listを作りましょう、
+	        // Console.WriteLine(team.Count);       //行数の検知
+	        string line;                            //lineはただの定義決め
+	        while ((line = Console.ReadLine()) != null ) {      //行数がなくなるまで(nullになるまで)繰り返す
+	            team.Add("hello " + line);          //「hello 〇〇」でteam配列に加える
+	        }
+	        foreach(var str in team) {              //teamの要素を表示して、全て出す
+	            Console.WriteLine(str);
+	        }                                       //空行で出しても「null」ではないため、忍者に飛ぶ
+	    }
+	}
+	[演習]
+	①演習課題「標準入力から読み込んだ複数行を出力しよう」
+	右のコードエリアのプログラムは、RPGの敵の名前を、入力エリアから複数行データとして読み込んで出力します。
+	この文字列を、「＊＊が現れた」という形式でListに追加し、出力してください。
+	// 読み込んだ複数行を出力する
+	using System;
+	using System.Collections.Generic;
+	public class Hello{
+	    public static void Main(){
+	        var enemy = new List< string >();     //enemyというListをつくる
+	        string line;                        //lineというstring型を作成
+	        while ((line=Console.ReadLine()) != null) {     //lineにReadLineを代入&nullではない
+	             enemy.Add(line);               //enemy配列にAddする
+	        }
+	        foreach(var str in enemy) {         //foreachでまわす
+	             Console.WriteLine(str + "が現れた");
+	        }
+	    }
+	}
+	[NG,]②演習課題「読み込んだ複数行のカンマ区切りデータを出力しよう」
+	右のコードエリアのプログラムは、入力エリアから複数行データとして読み込みます。入力エリアには、RPGの敵の名前Aと匹数Bが、カンマ区切りで用意してあります。
+	読み込んだデータをカンマで分割して、「AがB匹現れた」と出力してください。
+	// 複数行のカンマ区切りデータを出力する
+	using System;
+	using System.Collections.Generic;
+	public class Hello{
+	    public static void Main(){
+	        string line;
+	        while ((line=Console.ReadLine()) != null) {         //ReadLineなので1行毎で拾ってくる
+	            // ここに、文字列を分割して、出力するコードを書く
+	            string[] enemy = line.Split(',');               //「,」が出たらその直前を要素に入れる、
+	            Console.WriteLine(enemy[0] + "が" + enemy[1] + "匹現れた");     //1行毎で拾うので[0]と[1]でOK
+	        }
+	    }
+	}
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	<video src="assets/videos/ランダムくじを作ろう.mp4" controls preload muted></video><br>
+	＃10:ランダムくじを作ろう
+	最後のチャプターです。今回はランダムくじを作ります。今までの応用/総集編になります。
+		①ランダムくじを作ろう
+	var data = Console.ReadLine();
+	string [] enemies = data.Split(',');
+	var num = enemies.Length;
+	var random = new Random();
+	var rand = random.Next(num);
+	var attack = enemies[rand];
+	Console.WriteLine(attack + "に会心の一撃！");
+	②参考になるWebページ
+	- String.Split メソッド (Char[]) (System) - MSDN - Microsoft
+	https://msdn.microsoft.com/ja-jp/library/b873y76a(v=vs.110).aspx
+	- Random クラス (System) - MSDN - Microsoft
+	https://msdn.microsoft.com/ja-jp/library/system.random(v=vs.110).aspx
+
+	using System;
+	public class Hello{
+	    public static void Main(){
+	        var data = Console.ReadLine();
+	        string[] team = data.Split(',');        //勇者一行
+	        data = Console.ReadLine();              //2回目のdataの時はvarいらない
+	        string [] enemies = data.Split(',');        //,区切りの時はSplitを使って配列に入れる
+	        foreach (var str in enemies) {
+	            Console.WriteLine(str + "が現れた！");    //1行ごとに表示
+	        }
+	        var num = enemies.Length;       //配列の大きさを表示
+	        Console.WriteLine("敵は" + num + "匹");     //敵の数
+	        var random = new Random();      //Randomでインスタンスを作成
+	        var rand = 0;                   //
+	        //var attack = enemies[rand];     //ランダムに得られた数値に対応する敵をenemies配列から取り出し、attack変数に代入する
+	        var attack = "";
+	        foreach (var str in team) {         //teamのメンバーが1人ずつランダムで敵に攻撃する
+	            rand = random.Next(num);        //敵の数からランダムで数を1つrandに代入
+	            attack = enemies[rand];         //randの敵をattackに代入、敵を指定するような感じ
+	            Console.WriteLine(str + "の攻撃！");            //メンバー
+	            Console.WriteLine(attack + "に会心の一撃！");   //攻撃するモンスター
+	        }
+	    }
+	}
+
+	[演習]
+	①演習課題「じゃんけんプログラムを作ろう」
+	入力エリアに、じゃんけんの手(例：グー,チョキ,パー)が用意してあります。
+	右のコードエリアのコメントを参考にして、じゃんけんプログラムを作ってください。じゃんけんの手は、標準入力から読み込んだ文字列をカンマで分割して、そのうち1つをランダムに出力します。このときのじゃんけんの結果を出力してください。
+	
 
 </div>
 
