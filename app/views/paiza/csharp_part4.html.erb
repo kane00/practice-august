@@ -633,6 +633,8 @@
 	        string line;
 	        while ((line=Console.ReadLine()) != null) {         //ReadLineなので1行毎で拾ってくる
 	            // ここに、文字列を分割して、出力するコードを書く
+	            // var enemy = new List<　string　>();
+	            // enemy.Add(line.Split(','));      //line.Split('')だと別れてしまう、複数になるためもしいれるとしたら直前でSplitつかったものを入れてwhileする
 	            string[] enemy = line.Split(',');               //「,」が出たらその直前を要素に入れる、
 	            Console.WriteLine(enemy[0] + "が" + enemy[1] + "匹現れた");     //1行毎で拾うので[0]と[1]でOK
 	        }
@@ -688,7 +690,34 @@
 	入力エリアに、じゃんけんの手(例：グー,チョキ,パー)が用意してあります。
 	右のコードエリアのコメントを参考にして、じゃんけんプログラムを作ってください。じゃんけんの手は、標準入力から読み込んだ文字列をカンマで分割して、そのうち1つをランダムに出力します。このときのじゃんけんの結果を出力してください。
 	// じゃんけんプログラム
-
+	using System;
+	using System.Collections.Generic;
+	public class Hello{
+	    public static void Main(){
+	        string line = Console.ReadLine();   // 標準入力から1行取得
+	        string[] janken = line.Split(',');  // カンマで分割して、配列に代入
+	        var random = new Random();          // 配列の要素をランダムに選ぶ
+	        // var jan = janken.Length;         //janでLengthを入れても可
+	        var num = random.Next(janken.Length);            // jankenの配列数=3未満を入れて、ランダムでひとつ表示
+	        Console.WriteLine(janken[num]);     // ランダムに選んだ配列の要素を出力
+	        // Console.WriteLine(string.Join("11",janken));    //全て表示はstring.Loin("", 変数)で表示できる
+	    }
+	}
+	②演習課題「おみくじを作ろう」
+	入力エリアに、おみくじの出目(例：大吉,中吉,吉,凶)が用意してあります。右のコードエリアに、おみくじプログラムを作ってください。
+	おみくじは、標準入力から読み込んだ文字列をカンマで分割して、そのうち1つをランダムに出力します。このときのおみくじの結果を出力してください。
+	// おみくじプログラム
+	using System;
+	using System.Collections.Generic;
+	public class Hello{
+	    public static void Main(){
+	        string line = Console.ReadLine();       // 標準入力から1行取得
+	        string[] omikuji = line.Split(',');     // カンマで分割して、配列に代入
+	        var random = new Random();              // 配列の要素をランダムに選ぶ
+	        var num = random.Next(omikuji.Length);  // omikujiの数＝4未満の数をランダム1つ選択
+	        Console.WriteLine(omikuji[num]);        // ランダムに選んだ配列の要素を出力
+	    }
+	}
 </div>
 
 <div style="padding: 100px 0 100px 0;">
