@@ -1,0 +1,322 @@
+<div style="padding: 20px 0 20px 0;">
+	Home→<%= link_to 'Home', root_path %>
+	first→<%= link_to 'Prpgate/PHPコース1', progate_php_path %>
+	prev→
+</div>
+
+<h1>Progate PHPコース1</h1>
+
+<div style="padding: 100px 0 100px 0;">
+	PHPを学ぼう<br>
+	このレッスンでは図のようなお問い合わせフォームを作ることを目指します。<br>
+	PHPを学べば、ユーザーからデータを受け取りそれを表示するなど、実際のWebサービスで必要な機能を作ることが出来ます。<br>
+	<br><%= image_tag '/assets/PHPを学ぼう.png' %><br>
+	HTMLでは決められたテキストしか表示することができませんでした。
+	PHPを使うと、見る人や状況に応じて、表示するテキストを変えることができます。
+	<br><%= image_tag '/assets/PHPとは？.png' %><br>
+	PHPはHTMLに埋め込んで使うことができます。<?php 〜 ?>の中にPHPの命令を書いていきます。<?php 〜 ?>の部分がHTMLに変換された上で表示されます。
+	<br><%= image_tag '/assets/PHPの書き方1.png' %><%= image_tag '/assets/PHPの書き方2.png' %><br>
+	PHPでは文末にセミコロン「;」を使って文を区切ります。 セミコロンを忘れるとエラーが起きるので注意しましょう。また、「//」から行末まではコメントになります。動作には関係しない情報で、主にメモなどに用いられます。
+	<br><%= image_tag '/assets/PHPの文法.png' %><br>
+	「echo」は文字列などを出力するための命令です。文字列を出力する場合はシングルクォーテーション「'」かダブルクォーテーション「"」で囲みます。
+	<br><%= image_tag '/assets/文字列を出力しよう1.png' %><%= image_tag '/assets/文字列を出力しよう2.png' %><br>
+	プログラミングを使えばコンピュータに計算させることが出来ます。計算はコンピュータの最も得意なことの一つです。足し算は「+」、引き算は「-」、掛け算は「*」、割り算は「/」で表します。PHPでは割り算の余りを計算することもでき、「%」で表します。
+	<br><%= image_tag '/assets/計算してみよう.png' %><br>
+	[index.rb]
+	<!DOCTYPE html>
+	<html>
+	<head>
+	  <meta charset="utf-8">
+	  <title>Progate</title>
+	  <link rel="stylesheet" type="text/css" href="stylesheet.css">
+	</head>
+	<body>
+	  <?php
+	    // ①'Hello, world!'をechoしてください ※echoの後に半角スペースを入れるのを忘れないようにしましょう
+	    echo 'Hello World!';
+	  ?>
+	  <br>
+	  <?php
+	    // ②7 * 2をechoしてください
+	    echo 7 * 2;   //''で囲むのは文字列のみ
+	  ?>
+	  <br>
+	  <?php
+	    // ③8 % 3をechoしてください
+	    echo 8 % 3;
+	  ?>
+	</body>
+	</html>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	PHPには、「文字列」や「数値」などのデータの種類があります。「'Hello'」,「'a'」などは文字列、「1」,「3.14」などは数値となります。
+	<br><%= image_tag '/assets/データの種類.png' %><br>
+	図のように、数値として「 5 + 2 」を行うと７が出力されます。ただし「 5 + 2 」をシングルクォーテーションやダブルクォーテーションで囲むと、文字列と解釈されそのまま出力されます。
+	<br><%= image_tag '/assets/文字列と数値の違い.png' %><br>
+	[index.rb]
+	<body>
+	  // ①この下で5 + 7を出力しましょう -->
+	  <?php
+	    echo 5 + 7;
+	  ?>
+	  <br>
+	  // ②この下で'5 + 7'を出力しましょう -->
+	  <?php
+	    echo '5 + 7';
+	  ?>
+	</body>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	プログラミングの重要な概念の1つである「変数」を学びましょう。変数とは、データの入れ物です。頭に「$」記号をつけることによって変数を定義します。「$変数名 = 値;」で様々な値を変数に入れることが出来ます。「＝」はプログラミングの世界では、右辺を左辺に代入するという意味です。
+	<br><%= image_tag '/assets/変数とは？1.png' %><%= image_tag '/assets/変数とは？2.png' %><br>
+	変数を使うメリットは大きくわけて２つあります。 ①データに名前をつけることでそのデータが何を表しているかを明確にできる。②複数回使うデータを１つの変数に入れておくことで、変更があった場合も１箇所の修正ですむ。
+	<br><%= image_tag '/assets/php変数の役割1.png' %><%= image_tag '/assets/php変数の役割2.png' %><br>
+	変数名は自由につけることができますが、守らなければならないルールがいくつかあります。変数名を数字で開始したり、日本語を用いてはいけません。
+	また、読みやすいコードにするために、変数の名前から内容が想像できるような名前をつけることが望ましいです。
+	<br><%= image_tag '/assets/変数名の付け方1.png' %><%= image_tag '/assets/変数名の付け方2.png' %><br>
+		<body>
+	  // ①この下に変数$fruitを書いていきましょう！ -->
+	  <?php
+	    $fruit = 'りんご';
+	    echo $fruit;
+	  ?>
+	  <br>
+	  // ②この下に変数$sumを書いていきましょう！ -->
+	  <?php
+	    $sum = 8 + 9;
+	    echo $sum;
+	  ?>
+	</body>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	変数は、中に入っている値を変更することもできます。
+	変数に、その後再び値を代入すると、後で代入した値によって変数の中身が上書きされます。
+	<br><%= image_tag '/assets/変数の更新1.png' %><%= image_tag '/assets/変数の更新2.png' %><br>
+	それでは、「変数の値に10を足したい」という時はどのようにすればよいのでしょうか？変数に数字を足したいときは、変数に数字を足した後、変数に再び代入します。 引き算など、その他の計算も同様です。
+	「=」は代入の意味であり、左右の値が等しいことを表すわけではないことに注意してください。
+	<br><%= image_tag '/assets/変数に数字を足す（１）.png' %><br>
+	実は先程のように変数に数字を足す場合には、省略した書き方をすることが出来ます。
+	図のように、全ての計算で省略した書き方をすることができます。
+	<br><%= image_tag '/assets/変数に数字を足す（２）.png' %><br>
+	足す数字が１の時だけ、図のようにさらに省略した書き方が可能です。++を変数の前に書くとその行の命令が実行される前に足されるのに対し、++を変数の後に書くとその行の命令が実行された後に足されます。１だけ引くための--も同様です。
+	<br><%= image_tag '/assets/変数に数字を足す（３）1.png' %><%= image_tag '/assets/変数に数字を足す（３）2.png' %><br>
+	[index.rb]
+	<body>
+	  <?php
+	    $x = 5;
+	    $y = 2;
+	    $a = 8;
+	    $b = 4;
+	  ?>
+	  <!-- この下で$xの計算をしていきましょう -->
+	  // ①・$xの値に10を足し、$xを上書きしてください。・$xをechoしてください。
+	  <?php
+	    $x += 10;
+	    echo $x;
+	  ?>
+	  <br>
+	  <!-- この下で$yの計算をしていきましょう -->
+	  //  ②・$yに5をかけて、$yを上書きしてください。・echoを用いて$yを出力してください。
+	  <?php
+	    $y *= 5;
+	    echo $y;
+	  ?>
+	  <br>
+	  <!-- この下で$aの計算をしていきましょう -->
+	  //  ③・$aに1を足し、$aを上書きしてください。・echoを用いて$aを出力してください。
+	  <?php
+	    $a++;
+	    echo $a;
+	  ?>
+	  <br>
+	  <!-- この下で$bの計算をしていきましょう -->
+	  //④・$bから1を引き、$bを上書きしてください。・echoを用いて$bを出力してください。
+	  <?php
+	    $b--;
+	    echo $b;
+	  ?>
+	</body>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	ドット「.」記号を用いると文字列を連結することが出来ます。文字列同士の連結、変数と文字列の連結、変数同士の連結をすることができます。
+	<br><%= image_tag '/assets/php文字列を連結しよう.png' %><br>
+	「.=」を用いると変数と文字列の連結を省略して書くことが出来ます。
+	<br><%= image_tag '/assets/php文字列を連結しよう（２）.png' %><br>
+	ダブルクォーテーションで文字列を囲んだ場合、中の変数を{}で囲むとその部分が変数に入っている値で置き換えられます(変数展開)。シングルクォーテーションで文字列を囲んだ場合は変数展開されず、変数が{}で囲まれていてもそのまま文字列としてみなされます。
+	<br><%= image_tag '/assets/変数展開.png' %><br>
+	[index.rb]
+	<body>
+	  <?php
+	    $name = 'にんじゃわんこ';
+	    // ①'こんにちは！'という文字列と$nameを連結してechoしてください
+	    echo "こんにちは！{$name}";     //echoはダブルクォーテーションがよさそう
+	  ?>
+	</body>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	if文を使うと、条件に応じて処理を分岐することができます。if文は図のように書きます。
+	条件が成り立つ場合、｛｝の中の処理が実行されます。条件が成り立たない場合は処理が実行されません。
+	<br><%= image_tag '/assets/phpif文1.png' %><%= image_tag '/assets/phpif文2.png' %><br>
+	先ほどのスライドで出てきた、「>」のような２つの値を比較するための記号を比較演算子と呼びます。比較した結果は真「true」か偽「false」のどちらかになります。代表的な比較演算子として、図のようなものがあります。
+	<br><%= image_tag '/assets/数値を比較しよう.png' %><br>
+	比較演算子を用いて比較した結果はtrueかfalseになります。
+	trueとfalseは真偽値と呼ばれます。真偽値は文字列や数値といったデータの種類の１つです。真偽値はtrueとfalseの2つしかありません。
+	if文は、条件式がtrueの場合if文の中身が実行され、falseの場合は実行されません。
+	<br><%= image_tag '/assets/phpif文と真偽値1.png' %><%= image_tag '/assets/phpif文と真偽値2.png' %><br>
+	[index.rb]
+	<body>
+	  <?php
+	    $x = 99 * 99;
+	    $y = 77 * 77;
+	    // ここにif文を書いていきましょう
+	    // ①if文を用いて、$xが9800より大きい場合に変数xは9800より大きいです。とechoさせてください。
+	    if ($x > 9800) {
+	      echo "変数xは9800より大きいです。";
+	    }
+	    // ②if文を用いて、$yが6000より大きい場合に変数yは6000より大きいです。とechoさせてください。
+	    if ($y > 6000) {
+	      echo '変数yは6000より大きいです。';
+	    }
+	  ?>
+	</body>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	ifと組み合わせてelseを使うと、「もしも〜だったら・・・、そうでなければ・・・」といった条件分岐が可能になります。if文の条件が「false」であった場合、elseの中の処理が実行されます。
+	<br><%= image_tag '/assets/phpelse.png' %><br>
+	elseifを用いることで、「もしも〜だったら・・・、それとも〜であれば・・・、いずれでもなければ・・・」といった多岐分岐が可能になります。elseifは必要な分岐の数だけ並べることができますが、複数の条件に合致した場合、実行されるのは最初に合致したブロックだけとなります。
+	<br><%= image_tag '/assets/phpelseif.png' %><br>
+	[index.rb]
+	<body>
+	  <?php
+	    // ①$ageという変数に自分の年齢を代入してください
+	    $age = 26;
+	    // ②if-else文を用いて、$ageが30以上の場合はあなたは30歳以上です。$ageが30未満の場合はあなたは30歳未満です。とechoしてください。
+	    if ($age >= 30) {
+	      echo 'あなたは30歳以上です。';
+	    } else {
+	      echo 'あなたは30歳未満です。';
+	    }
+	  ?>
+	</body>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	「&&」と「||」は論理演算子と呼ばれ、複数の条件を１つにまとめる時に使います。&&（かつ）は左右の式がともに「true」の場合、全体も「true」になります。||（または）は左右の式のどちらか、または両方が「true」の場合、全体も「true」になります。
+	<br><%= image_tag '/assets/複数の条件式を組み合わせる.png' %><br>
+	「!」も論理演算子の１つであり、条件の否定ができます。式が「真」であれば「偽」に、「偽」であれば「真」になります。
+	<br><%= image_tag '/assets/php条件の否定.png' %><br>
+	[index.rb]
+	<body>
+	  <?php
+	    $x = 1071;
+	    // ①以下にif-elseif-else文を書いてください
+	    // if-elseif-else文を用いて、$xが3の倍数かつ7の倍数の場合はxは3の倍数かつ7の倍数です。それ以外で3の倍数の場合はxは3の倍数ですが7の倍数ではありません。
+	    // それ以外で7の倍数の場合はxは7の倍数ですが3の倍数ではありません。それ以外の場合はxは7の倍数でも3の倍数でもありません。とechoしてください。
+	    if ($x % 3 == 0 && $x % 7 == 0) {
+	      echo 'xは3の倍数かつ7の倍数です。';
+	    } elseif ($x % 3 == 0) {
+	      echo 'xは3の倍数ですが7の倍数ではありません。';     //;が足りない
+	    } elseif ($x % 7 == 0) {
+	      echo 'xは7の倍数ですが3の倍数ではありません。';     //;が足りない
+	    } else {
+	      echo 'xは7の倍数でも3の倍数でもありません。';       //;が足りない
+	    }
+	  ?>
+	</body>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	if, elseifによる分岐が多く複雑な場合、switch文で書き換えるとシンプルで読みやすいコードにできます。switch(式)の(式)がcaseの値と一致したとき、そのブロックが実行されます。caseのどれにも一致しなかった時、defaultのブロックが実行されます。
+	<br><%= image_tag '/assets/phpswitch文1.png' %><%= image_tag '/assets/phpswitch文2.png' %><br>
+	caseブロックの最後にはbreak命令を指定します。break命令は現在のブロックから脱出するための命令です。break命令がないと、後ろに続くcaseブロックが続けて実行されてしまいます。
+	<br><%= image_tag '/assets/switch文 - break1.png' %><%= image_tag '/assets/switch文 - break2.png' %><br>
+	[index.rb]
+	<body>
+	  <?php
+	    // ①変数$numを定義し、好きな数字を代入してください
+	    $num = 77;
+	    // ②変数$remainderを定義し、変数$numを3で割った時の余りを代入してください
+	    $remainder = $num % 3;
+	    // ③switch文を用いてください
+	    switch ($remainder) {
+	      case 0:     //;ではなく:
+	        echo '大吉です。';
+	        break;      //break忘れずに
+	      case 1:
+	        echo '中吉です。';
+	        break;
+	      case 2:
+	        echo '小吉です。';
+	        break;
+	      default:
+	        echo '凶です。';
+	        break;
+	    }
+	  ?>
+	</body>
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+	これまでの変数が一つしか値を扱えなかったのに対し、配列を用いると複数の値をまとめて保存することができます。配列は仕切りのある箱のようなもので、それぞれのスペースにデータが入っており、0, 1, 2...というインデックス番号によってスペースの名前が付けられています。
+	<br><%= image_tag '/assets/php配列とは？1.png' %><%= image_tag '/assets/php配列とは？2.png' %><br>
+	
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+</div>
+
+<div style="padding: 100px 0 100px 0;">
+next→<%= link_to 'Prpgate/PHPコース2', progate_php_part2_path %><br>
+Home→<%= link_to 'Home', root_path %>
+</div>

@@ -17,6 +17,10 @@ Rails.application.routes.draw do
   get 'ruby_part4' => 'progates#ruby_part4'
   get 'ruby_part5' => 'progates#ruby_part5'
 
+  get 'progate_php' => 'progates#php'
+  get 'progate_php_part2' => 'progates#php_part2'
+
+
   get 'csharp' => 'paiza#csharp'
   get 'csharp_part2' => 'paiza#csharp_part2'
   get 'csharp_part3' => 'paiza#csharp_part3'

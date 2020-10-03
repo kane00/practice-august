@@ -42,4 +42,10 @@ class ProgatesController < ApplicationController
 	def ruby_part5
 	end
 
+	def php
+	end
+
+	def php_part2
+	end
+
 end
